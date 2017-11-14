@@ -1,7 +1,7 @@
 # Events Manager
 [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 
-![eventsmanager screenshot](https://github.com/AppCypher/HelloBooks/blob/api-test/template/img/screenshot.png "events manager")
+![eventsmanager screenshot](https://github.com/AppCypher/EventsManager/blob/api-test/template/images/screenshot.png "events manager")
 
 A simple full-featured website for managing events centers and scheduling events..
 
