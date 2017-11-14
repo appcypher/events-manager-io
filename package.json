@@ -1,5 +1,5 @@
 {
-  "name": "Events Manager",
+  "name": "EventsManager",
   "version": "0.1.0",
   "description": "A simple full-featured website for managing events centers and scheduling events. https://events-manager-io.herokuapp.com/",
   "main": "server/server.js",
