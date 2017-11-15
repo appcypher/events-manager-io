@@ -4,7 +4,7 @@
   "description": "A simple full-featured website for managing events centers and scheduling events. https://events-manager-io.herokuapp.com/",
   "main": "server/server.js",
   "scripts": {
-    "sass:watch": "sass --watch ./template/scss:./template/css",
+    "sass:watch": "sass --watch ./template/scss:./template/css"
   },
   "repository": {
     "type": "git",
