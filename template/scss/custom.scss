@@ -1,0 +1,319 @@
+// COLOR FOR LOGIN/SIGNUP PAGE 
+$login-box-gray: #242835;
+$login-red: #d8312a;
+$login-pink-red: #dc6180;
+$login-title-gray: #acb1be;
+$login-border-gray: #393d52;
+$login-text-area-gray: #32364a;
+$login-placeholder-gray: #4e5462;
+$login-input-gray: #afb1be;
+$login-forgot-gray: #4e4f5f;
+$login-bg-gradient: linear-gradient(to bottom right, #e45a53, #bb6deb, #9947cc); // Change this horrid color please! ;_;
+$navbar-shadow-gray: rgba(78, 84, 98, .4);
+$navbar-bg-gradient: linear-gradient(to right, #e45a53, #bb6deb); // Change this horrid color please! ;_;
+
+// FONTS 
+@font-face {
+  font-family: quicksand;
+  src: url(../fonts/quicksand-regular-webfont.woff);
+}
+
+@font-face {
+  font-family: kaushanscript;
+  src: url(../fonts/kaushanscript-regular-webfont.woff);
+}
+
+// MIXINS
+@mixin placeholder-color($color) {
+  &::-webkit-input-placeholder { 
+    color: $color; text-overflow: ellipsis
+  }
+  &:-moz-placeholder { 
+    color: $color !important; text-overflow: ellipsis
+  }
+  &::-moz-placeholder { 
+    color: $color !important; text-overflow: ellipsis
+  } 
+  &:-ms-input-placeholder { 
+    color: $color !important; text-overflow: ellipsis
+  }
+}
+
+// CLEANUPS 
+// Taking care of some default higlights
+*:focus {
+  outline-width: 0px;
+}
+// This is needed to stop firefox from highlighting input boxes wrongly
+*:invalid {
+  box-shadow:0 0 3px transparent;
+}
+// This is needed to stop chrome from highlighting clicked buttons
+button:focus {
+  outline-width: 0px;
+}
+
+// Height needs to be 100% for vertical+horizontal centering to work
+html, body {
+  height: 100%;
+}
+
+body {
+  font-family: quicksand; // Use quicksand font instead. Like a bawse! 8)
+}
+
+// LOGIN/SIGNUP
+.io-login-container { 
+  background: $login-bg-gradient;
+  background-repeat: no-repeat;
+  display: flex; 
+  align-items: center; 
+  justify-content: center; 
+}
+
+.io-login-box { 
+  width: 310px;
+  height: 440px;
+  background-color: $login-box-gray;
+  border-top: 3px solid $login-red;
+  border-radius: 7px 7px 0px 0px;
+  color: $login-title-gray;
+  .io-title { 
+    margin-top: 75px;
+    margin-left: 20px;
+    font-size: 20px;
+  }
+  .io-input {
+    border-bottom: 2px solid $login-border-gray;
+    margin-top: 35px;
+    background-color: $login-text-area-gray;
+    &.io-signup {
+      margin-top: 10px;
+    }
+    .io-input-group {
+      display: flex;
+      align-items: center;
+      height: 40px;
+      border-top: 2px solid $login-border-gray; 
+      input {
+        background: none;
+        color: $login-input-gray; 
+        caret-color: $login-input-gray; 
+        font-size: 15px;
+        width: 250px;
+        border: none;
+        @include placeholder-color($login-placeholder-gray);
+        &.io-password {
+          color: $login-pink-red;
+          caret-color: $login-pink-red;
+        }
+      }
+      .io-icon {
+        display: inline-block;
+        margin-left: 20px;
+        margin-right: 5px;
+        width: 20px;
+      }
+      .io-mark {
+        margin-left: 10px;
+        width: 30px;
+      }
+    }
+  }
+}
+
+.io-btn { 
+  display: inline-block;
+  background: none;
+  border: 1.5px solid $login-pink-red;
+  border-radius: 30px;
+  margin-top: 20px;
+  margin-left: 20px;
+  width: 120px;
+  height: 40px;
+  font-size: 11px;
+  color: $login-pink-red;
+  &:hover {
+    background: $login-pink-red;
+    color: white;
+  }
+  &.io-signup  {
+    margin-top: 10px;
+  }
+}
+
+.io-anchor {
+  font-size: 10px;
+  color: $login-forgot-gray;
+  &:hover {
+    text-decoration: underline;
+    cursor: pointer;
+  }
+  &.io-forgot {
+    margin-left: 20px;
+  }
+}
+
+.io-extra {
+  margin-left: 20px;
+  font-size: 10px;
+  color: $login-forgot-gray;
+  &.io-high{
+    margin-top: 10px;
+  }
+  &.io-login {
+    margin-top: 120px;
+  }
+  &.io-signup {
+    margin-top: 25px;
+  }
+} 
+
+// NAVBAR 
+.io-navbar {
+  width: 100%;
+  height: 50px;
+  background-color: purple;
+  box-shadow: 0px 2px 2px $navbar-shadow-gray;
+  display: flex;
+  align-items: center;
+  z-index: 1;
+  &.io-fixed-top {
+    position: fixed; 
+    top: 0px;
+  }
+  & .io-brand {
+    width: 170px;
+    height: 100%;
+    padding-left: 5px;
+    padding-right: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: darkslateblue;
+    font-weight: 900;
+  }
+  & .io-middle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-left: 5px;
+    padding-right: 5px;
+    width: 70%;
+    background-color: yellow;
+    & .io-search-bar {
+      width: 80%;
+    }
+    & .io-search-button {
+      width: 35px;
+      margin-left: 5px;
+    }
+  }
+  & .io-end { 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: green;
+    margin-left: 10px;
+    margin-right: 5px;
+    & .io-icon {
+      display: flex;
+      justify-content: center;
+      background-color: yellow;
+      margin-left: 10px;
+      width: 35px;
+    }
+  }
+}
+
+// BODY 
+.io-body-content {
+  margin-top: 55px;
+}
+
+// TITLE BAR 
+.io-title-bar {
+  display: flex;
+  align-items: center;
+  height: 30px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  padding: 5px 10px;
+  font-weight: 900;
+  border-left: 3px solid $login-red;
+}
+
+// Customizing bootstrap
+.col-6.col-md-4.col-lg-3 {
+  margin-top: 10px;
+}
+
+// FLOATING ACTION BUTTON 
+.io-fab {
+  border-radius: 30px;
+  box-shadow: 1px 3px 3px $navbar-shadow-gray;
+  width: 50px;
+  height: 50px;
+  background-color: orange;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  z-index: 2;
+  bottom: 25px; 
+  right: 25px;
+}
+
+// PROFILE BAR 
+.io-profile-bar {
+
+}
+
+// CARD 
+.io-card {
+  width: 200px;
+  height: 300px;
+  background-color: purple;
+}
+
+
+// Desktops, Tablets Screens
+@media only screen and (min-width: 615px) {
+  .io-navbar .io-brand { 
+    & .io-image {
+      display: none;
+    }
+  }
+  .col-6.col-md-4.col-lg-3 {
+    display: flex;
+    justify-content: center;
+  }
+}
+
+// Phones, Phablets Screens
+@media only screen and (max-width: 615px) {
+  .io-navbar .io-brand { 
+    width: 50px;
+    background-color: transparent;
+    .io-text {
+      display: none;
+    }
+    .io-image {
+      display: inline;
+    }
+  }
+
+  .io-body-content {
+    .io-sidebar-container {
+      display: none;
+    }
+    .io-content {
+      width: 100%;
+    }
+  }
+
+  .col-6.col-md-4.col-lg-3 {
+    display: flex;
+    justify-content: center;
+  }
+}
