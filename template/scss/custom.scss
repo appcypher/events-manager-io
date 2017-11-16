@@ -1,16 +1,16 @@
 // COLOR FOR LOGIN/SIGNUP PAGE 
 $login-box-gray: #242835;
-$login-red: #d8312a;
-$login-pink-red: #dc6180;
 $login-title-gray: #acb1be;
 $login-border-gray: #393d52;
 $login-text-area-gray: #32364a;
 $login-placeholder-gray: #4e5462;
 $login-input-gray: #afb1be;
 $login-forgot-gray: #4e4f5f;
-$login-bg-gradient: linear-gradient(to bottom right, #e45a53, #bb6deb, #9947cc); // Change this horrid color please! ;_;
+$login-bg-gradient: linear-gradient(to bottom right, #9b40b5, #570572, #310149); // Change this horrid color please! ;_;
 $navbar-shadow-gray: rgba(78, 84, 98, .4);
 $navbar-bg-gradient: linear-gradient(to right, #e45a53, #bb6deb); // Change this horrid color please! ;_;
+$btn-purple: #AB47BC;
+$frame-purple: #6A1B9A;
 
 // FONTS 
 @font-face {
@@ -75,9 +75,10 @@ body {
   width: 310px;
   height: 440px;
   background-color: $login-box-gray;
-  border-top: 3px solid $login-red;
+  border-top: 3px solid $btn-purple;
   border-radius: 7px 7px 0px 0px;
-  color: $login-title-gray;
+  color: $login-title-gray; 
+  box-shadow: 3px 5px 5px $navbar-shadow-gray;
   .io-title { 
     margin-top: 75px;
     margin-left: 20px;
@@ -104,8 +105,8 @@ body {
         border: none;
         @include placeholder-color($login-placeholder-gray);
         &.io-password {
-          color: $login-pink-red;
-          caret-color: $login-pink-red;
+          color: $btn-purple;
+          caret-color: $btn-purple;
         }
       }
       .io-icon {
@@ -125,16 +126,17 @@ body {
 .io-btn { 
   display: inline-block;
   background: none;
-  border: 1.5px solid $login-pink-red;
+  border: 1.5px solid $btn-purple;
   border-radius: 30px;
   margin-top: 20px;
   margin-left: 20px;
   width: 120px;
   height: 40px;
   font-size: 11px;
-  color: $login-pink-red;
+  color: $btn-purple;
+  cursor: pointer; 
   &:hover {
-    background: $login-pink-red;
+    background: $btn-purple;
     color: white;
   }
   &.io-signup  {
@@ -228,7 +230,7 @@ body {
 
 // BODY 
 .io-body-content {
-  margin-top: 55px;
+  margin-top: 50px;
 }
 
 // TITLE BAR 
@@ -240,17 +242,20 @@ body {
   margin-bottom: 10px;
   padding: 5px 10px;
   font-weight: 900;
-  border-left: 3px solid $login-red;
+  border-left: 3px solid $btn-purple;
 }
 
-// Customizing bootstrap
-.col-6.col-md-4.col-lg-3 {
-  margin-top: 10px;
+// DISCOVER BANNER 
+.io-center-banner {
+  .io-img {
+    width: 100%; 
+    height: auto; 
+  }
 }
 
 // FLOATING ACTION BUTTON 
 .io-fab {
-  border-radius: 30px;
+  border-radius: 50%;
   box-shadow: 1px 3px 3px $navbar-shadow-gray;
   width: 50px;
   height: 50px;
@@ -262,35 +267,105 @@ body {
   z-index: 2;
   bottom: 25px; 
   right: 25px;
+  cursor: pointer;
 }
 
-// PROFILE BAR 
-.io-profile-bar {
-
+// PROFILE CARD 
+.io-profile-card {
+  margin-top: 70px;
+  margin-bottom: 20px;
+  // padding: 0px, 20px, 0px, 20px;
+  width: 100%;
+  height: 200px;
+  background-color: chocolate;
+  .io-img {
+    border: 3px solid red;
+    box-shadow: 0px 4px 5px $navbar-shadow-gray;
+    border-radius: 50%;
+    width: 200px;
+    position: relative;
+    top: -30%;
+    left: 5%;
+  }
 }
 
-// CARD 
-.io-card {
+// CENTER CARD 
+.io-center-card {
   width: 200px;
   height: 300px;
   background-color: purple;
 }
 
+// EVENT CARD 
+.io-event-card {
+  width: 500px;
+  height: 100px;
+  background-color: purple;
+}
 
-// Desktops, Tablets Screens
+// MODAL 
+.io-modal {
+  position: fixed;
+  z-index: 5;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0,0,0,0.4);
+  .io-modal-content {
+    background-color: red;
+    border: 2px solid green;
+    margin: 50px auto;
+    width: 400px;
+    height: 450px;
+  }
+}
+
+// CENTERING 
+.io-col-center {
+  display: flex; 
+  justify-content: center;
+  width: 100%;
+}
+
+
+// Overriding bootstrap
+.col-6.col-md-4.col-lg-3 {
+  margin-top: 10px;
+}
+
+.col-12.col-lg-6 {
+  margin-top: 10px;
+}
+
+.pagination {
+  margin-top: 50px;
+  cursor: pointer;
+}
+
+// Responsive design for desktops, tablets Screens
 @media only screen and (min-width: 615px) {
   .io-navbar .io-brand { 
-    & .io-image {
+    & .io-img {
       display: none;
     }
   }
+
+  // Overriding bootstrap
   .col-6.col-md-4.col-lg-3 {
     display: flex;
     justify-content: center;
   }
+
+  // Overriding bootstrap
+  .col-12.col-lg-6 {
+    display: flex;
+    justify-content: center;
+  }
+  
 }
 
-// Phones, Phablets Screens
+// Responsive design phones, phablets Screens
 @media only screen and (max-width: 615px) {
   .io-navbar .io-brand { 
     width: 50px;
@@ -312,8 +387,15 @@ body {
     }
   }
 
+  // Overriding bootstrap
   .col-6.col-md-4.col-lg-3 {
     display: flex;
     justify-content: center;
   }
+
+  .col-12.col-lg-6 {
+    display: flex;
+    justify-content: center;
+  }
+
 }
