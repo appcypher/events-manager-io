@@ -1,0 +1,29 @@
+{
+  "name": "EventsManager",
+  "version": "0.1.0",
+  "description": "A simple full-featured website for managing events centers and scheduling events. https://events-manager-io.herokuapp.com/",
+  "main": "server/server.js",
+  "scripts": {
+    "sass:watch": "sass --watch ./template/scss:./template/css"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/appcypher/eventsmanager"
+  },
+  "keywords": [],
+  "author": "Steve Akinyemi",
+  "license": "Apache v2.0",
+  "bugs": {
+    "url": "git+https://github.com/appcypher/eventsmanager"
+  },
+  "homepage": "",
+  "dependencies": {},
+  "devDependencies": {
+    "eslint": "^4.11.0",
+    "eslint-config-airbnb": "^16.1.0",
+    "eslint-plugin-import": "^2.8.0",
+    "eslint-plugin-jsx-a11y": "^6.0.2",
+    "eslint-plugin-react": "^7.4.0"
+  },
+  "bundledDependencies": []
+}
