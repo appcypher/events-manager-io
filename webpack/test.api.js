@@ -13,8 +13,8 @@ module.exports = {
     centers: './api/centers.js',
   },
   output: {
-    path: path.join(__dirname, '../tests/bin'),
-    filename: '[name]_api.js',
+    path: path.join(__dirname, '../tests/api/bin'),
+    filename: '[name].js',
   },
   externals: [nodeExternals()],
   module: {
