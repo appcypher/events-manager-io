@@ -1,4 +1,4 @@
-# Events Manager
+# EventsManagerIO
 ![stability wip](https://img.shields.io/badge/stability-work_in_progress-lightgrey.svg "stability wip")
 ![hound](https://camo.githubusercontent.com/23ee7a697b291798079e258bbc25434c4fac4f8b/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f50726f7465637465645f62792d486f756e642d6138373364312e737667 "hound")
 ![travis](https://travis-ci.org/AppCypher/eventsmanager.svg?branch=develop "travis")
@@ -8,10 +8,11 @@
 
 ![eventsmanager screenshot](https://github.com/AppCypher/EventsManager/blob/api-test/template/images/screenshot.png "events manager")
 
-A simple full-featured website for managing events centers and scheduling events..
+A simple full-featured website for managing events centers and scheduling events.
 
-EventsManager is proudly hosted on [heroku](https://events-manager-io.herokuapp.com/) :smile:.
+EventsManagerIO is proudly hosted on [heroku](https://events-manager-io.herokuapp.com/) :smile:.
 
+The static version of EventsManagerIO can be accessed on [github pages](https://appcypher.github.io/EventsManager/template).
 
 ## Made With 
   ### Client
