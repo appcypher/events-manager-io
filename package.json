@@ -13,7 +13,8 @@
     "build:server:watch": "cross-env NODE_ENV=development webpack --config webpack/server.dev.js --watch --progress",
     "build:client:dev:watch": "cross-env NODE_ENV=development webpack --config webpack/client.dev.js --watch --progress",
     "build:client:prod:watch": "cross-env NODE_ENV=production webpack --config webpack/client.prod.js --watch --progress",
-    "sass:watch": "sass --watch ./template/scss:./template/css"
+    "sass:watch": "sass --watch ./template/scss:./template/css",
+    "lint": "eslint --ext .jsx,.js ./"
   },
   "repository": {
     "type": "git",
