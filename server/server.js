@@ -1,5 +1,5 @@
 import express from 'express';
-import path from 'path';
+import path from 'upath';
 import bodyParser from 'body-parser';
 import logger from 'morgan';
 // import router from './routes/router';
@@ -20,17 +20,16 @@ app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
-// // Set router for path
-// app.use('/', router);
-// Test route
-app.get('/api/v1/test', (req, res) => {
-  res.send({
-    message: 'This is sparta',
-  });
+// Router
+const router = express.Router();
+router.get('/api/v1/test', (req, res) => {
+  res.sendFile(path.join(__dirname, '../../template/index.html'));
 });
+app.use('/api/v1/test', router);
 
 // Set template folder
-app.use(express.static(path.join(__dirname, '/template')));
+app.use(express.static(path.join(__dirname, '/../../template')));
+app.use('/api/v1/test', express.static(path.join(__dirname, '/../../template')));
 
 // Open port and listen from it
 app.listen(port, () => {
