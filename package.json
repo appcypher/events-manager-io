@@ -2,7 +2,7 @@
   "name": "EventsManager",
   "version": "0.1.0",
   "description": "A simple full-featured website for managing events centers and scheduling events. https://events-manager-io.herokuapp.com/",
-  "main": "server/server.js",
+  "main": "server/bin/server.js",
   "scripts": {
     "server": "node server/bin/server.js",
     "webpack:watch": "webpack-dev-server --config webpack/client.dev.js --content-base client/public --inline --hot",
