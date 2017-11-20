@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="en">
+  <!-- Head -->
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Profile • EventsManagerIO</title>
+    <!-- Favicon-->
+    <link href="icons/favicon.png" type="image/x-icon" rel="icon">
+    <!-- Stylesheets-->
+    <link href="css/bootstrap.min.css" type="text/css" rel="stylesheet">
+    <link href="css/custom.css" type="text/css" rel="stylesheet">
+  </head>
+  <!-- Body -->
+  <body>
+    <!-- Navbar -->
+    <nav class="io-navbar io-fixed-top"><a href="index.html" class="io-brand"> 
+        <div class="io-text">EventsManagerIO</div><img src="icons/brand.png" class="io-img"></a>
+      <div class="io-middle">
+        <input placeholder="Type keyword here" type="text" class="io-search-bar">
+        <icon class="io-search-button">☐</icon>
+      </div>
+      <div class="io-end"> <a href="discover.html" class="io-icon">X</a>
+        <icon id="notifications" class="io-icon">O</icon>
+        <icon id="settings" class="io-icon">☐</icon>
+      </div>
+    </nav>
+    <!-- Dropdown -->
+    <div id="settings-dropdown" class="io-dropdown-content hide">
+      <ul> 
+        <li>Add new center</li>
+        <li>Log out </li>
+      </ul>
+    </div>
+    <div id="notifications-dropdown" class="io-dropdown-content io-notifications hide">
+      <ul> 
+        <li>Event not accepted!</li>
+        <li>New event hall at Alagbado</li>
+        <li>Reminder: Dad's birthday in an hour</li>
+      </ul>
+    </div>
+    <!-- Content Body-->
+    <div class="io-body-content">
+      <div class="container-fluid">
+        <!-- PROFILE CARD-->
+        <div class="io-col-center">
+          <div class="io-profile-card">
+            <div class="io-header">
+              <div class="io-name">Bradley Cooper </div>
+              <div class="io-spacer"></div><span>X</span>
+            </div>
+            <div class="io-short">Python Ninja </div>
+            <div class="io-long">I love travelling, meeting new people and learning experiences.</div>
+            <div class="io-long">Thanks to Guido, Python has  become my tool of choice. </div><img src="images/profile.jpg" class="io-img">
+          </div>
+        </div>
+        <!-- EVENT CARDS-->
+        <div class="row">
+          <div class="col-12 col-lg-6">
+            <div class="io-event-card"><img src="images/center3.jpg">
+              <div class="io-content">
+                <div class="io-details">
+                  <div class="io-header"> 
+                    <h5>Bode's Birthday</h5><span>X</span><span>O</span>
+                  </div>
+                  <p>Mobolake Multipurpose Hall</p>
+                  <p class="io-location">5, Adebayo Jegede Street, Off Jagaban Rd., Ikeja, Lagos.</p>
+                </div>
+                <div class="io-date-time"><span class="io-date">28/11/2017 </span><span class="io-time">15:00 </span></div>
+              </div>
+            </div>
+          </div>
+          <div class="col-12 col-lg-6">
+            <div class="io-event-card"><img src="images/center4.jpg">
+              <div class="io-content">
+                <div class="io-details">
+                  <div class="io-header">
+                    <h5>Sango's Fall - Drama</h5><span>X</span><span>O</span>
+                  </div>
+                  <p>Johnson Theater</p>
+                  <p class="io-location">25, Lagbaja street, off Tamedun road, Lagos.</p>
+                </div>
+                <div class="io-date-time"><span class="io-date">2/12/2017 </span><span class="io-time">08:00</span></div>
+              </div>
+            </div>
+          </div>
+          <div class="col-12 col-lg-6">
+            <div class="io-event-card"><img src="images/center1.jpg">
+              <div class="io-content">
+                <div class="io-details">
+                  <div class="io-header">
+                    <h5>Chile & Tonia Wedding</h5><span>X</span><span>O</span>
+                  </div>
+                  <p>Xenon WHite Hall</p>
+                  <p class="io-location">25, Lagbaja street, off Tamedun road, Lagos.</p>
+                </div>
+                <div class="io-date-time"><span class="io-date">1/12/2017</span><span class="io-time">08:00</span></div>
+              </div>
+            </div>
+          </div>
+          <div class="col-12 col-lg-6">
+            <div class="io-event-card"><img src="images/center3.jpg">
+              <div class="io-content">
+                <div class="io-details">
+                  <div class="io-header">
+                    <h5>TGIF</h5><span>X</span><span>O</span>
+                  </div>
+                  <p>Jiro Club</p>
+                  <p class="io-location">25, Lagbaja street, off Tamedun road, Lagos.</p>
+                </div>
+                <div class="io-date-time"><span class="io-date">15/12/2017 </span><span class="io-time">19:30</span></div>
+              </div>
+            </div>
+          </div>
+          <div class="col-12 col-lg-6">
+            <div class="io-event-card"><img src="images/center2.jpg">
+              <div class="io-content">
+                <div class="io-details">
+                  <div class="io-header">
+                    <h5>Christmas with Family</h5><span>X</span><span>O</span>
+                  </div>
+                  <p>Johnsons' Entertainment Center</p>
+                  <p class="io-location">25, Lagbaja street, off Tamedun road, Lagos.</p>
+                </div>
+                <div class="io-date-time"><span class="io-date">25/12/2017</span><span class="io-time">09:00 </span></div>
+              </div>
+            </div>
+          </div>
+          <div class="col-12 col-lg-6">
+            <div class="io-event-card"><img src="images/center1.jpg">
+              <div class="io-content">
+                <div class="io-details">
+                  <div class="io-header">
+                    <h5>My Anniversary</h5><span>X</span><span>O</span>
+                  </div>
+                  <p>Onike Amphitheatre</p>
+                  <p class="io-location">25, Lagbaja street, off Tamedun road, Lagos.</p>
+                </div>
+                <div class="io-date-time"><span class="io-date">29/12/2017 </span><span class="io-time">09:00 </span></div>
+              </div>
+            </div>
+          </div>
+          <div class="col-12 col-lg-6">
+            <div class="io-event-card"><img src="images/center4.jpg">
+              <div class="io-content">
+                <div class="io-details">
+                  <div class="io-header">
+                    <h5>Sango's Fall - Drama</h5><span>X</span><span>O</span>
+                  </div>
+                  <p>Johnson Theater</p>
+                  <p class="io-location">25, Lagbaja street, off Tamedun road, Lagos.</p>
+                </div>
+                <div class="io-date-time"><span class="io-date">2/12/2017 </span><span class="io-time">08:00</span></div>
+              </div>
+            </div>
+          </div>
+          <div class="col-12 col-lg-6">
+            <div class="io-event-card io-done"><img src="images/center1.jpg">
+              <div class="io-content">
+                <div class="io-details">
+                  <div class="io-header">
+                    <h5>Chile & Tonia Wedding</h5><span>X</span><span>O</span>
+                  </div>
+                  <p>Xenon WHite Hall</p>
+                  <p class="io-location">25, Lagbaja street, off Tamedun road, Lagos.</p>
+                </div>
+                <div class="io-date-time"><span class="io-date">1/12/2017</span><span class="io-time">12:00</span></div>
+              </div>
+            </div>
+          </div>
+          <div class="col-12 col-lg-6">
+            <div class="io-event-card io-done"><img src="images/center3.jpg">
+              <div class="io-content">
+                <div class="io-details">
+                  <div class="io-header">
+                    <h5>TGIF</h5><span>X</span><span>O</span>
+                  </div>
+                  <p>Jiro Club</p>
+                  <p class="io-location">25, Lagbaja street, off Tamedun road, Lagos.</p>
+                </div>
+                <div class="io-date-time"><span class="io-date">15/12/2017 </span><span class="io-time">19:30</span></div>
+              </div>
+            </div>
+          </div>
+          <div class="col-12 col-lg-6">
+            <div class="io-event-card io-done"><img src="images/center2.jpg">
+              <div class="io-content">
+                <div class="io-details">
+                  <div class="io-header">
+                    <h5>Christmas with Family</h5><span>X</span><span>O</span>
+                  </div>
+                  <p>Johnsons' Entertainment Center</p>
+                  <p class="io-location">25, Lagbaja street, off Tamedun road, Lagos.</p>
+                </div>
+                <div class="io-date-time"><span class="io-date">25/12/2017</span><span class="io-time">09:00 </span></div>
+              </div>
+            </div>
+          </div>
+          <div class="col-12 col-lg-6">
+            <div class="io-event-card io-done"><img src="images/center1.jpg">
+              <div class="io-content">
+                <div class="io-details">
+                  <div class="io-header">
+                    <h5>My Anniversary</h5><span>X</span><span>O</span>
+                  </div>
+                  <p>Onike Amphitheatre</p>
+                  <p class="io-location">25, Lagbaja street, off Tamedun road, Lagos.</p>
+                </div>
+                <div class="io-date-time"><span class="io-date">29/12/2017 </span><span class="io-time">09:00 </span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Pagination-->
+    <div class="io-col-center">
+      <ul class="pagination">
+        <li class="page-item disabled"><a class="page-link"><<</a></li>
+        <li class="page-item active"><a class="page-link">1</a></li>
+        <li class="page-item"> <a class="page-link">2</a></li>
+        <li class="page-item"> <a class="page-link">3</a></li>
+        <li class="page-item"> <a class="page-link">4</a></li>
+        <li class="page-item"> <a class="page-link">5</a></li>
+        <li class="page-item"> <a class="page-link">>></a></li>
+      </ul>
+    </div>
+    <!-- Floating Action Buttons-->
+    <div id="main-fab" class="io-fab">X</div>
+    <div id="fab-group" class="io-fab-group hide">
+      <div id="fab-3" class="io-labeled-fab io-3"><span>Make Admin</span>
+        <button>X</button>
+      </div>
+      <div id="fab-2" class="io-labeled-fab io-2"><span>Create New Center</span>
+        <button>O</button>
+      </div>
+      <div id="fab-1" class="io-labeled-fab io-1"><span>Create New Event</span>
+        <button>#</button>
+      </div>
+    </div>
+    <!-- Add Center Modal -->
+    <div id="add-center-modal" class="io-modal hide">
+      <div class="io-modal-body">
+        <div class="io-header">CREATE NEW CENTER</div>
+        <div class="io-body io-overflow">
+          <div class="io-content io-start">
+            <div class="io-section">
+              <div class="io-text">Name</div>
+              <input placeholder="Enter name of hall here" class="io-input io-input-field">
+            </div>
+            <div class="io-section">
+              <div class="io-text">Description</div>
+              <input placeholder="Enter description here" class="io-input io-input-field">
+            </div>
+            <div class="io-section">
+              <div class="io-text">Type</div>
+              <input placeholder="Enter type of center here" class="io-input io-input-field">
+            </div>
+            <div class="io-section">
+              <div class="io-text">Location</div>
+              <input placeholder="Enter location here" class="io-input io-input-field">
+            </div>
+            <div class="io-section">
+              <div class="io-text">Price</div><span>₦</span>
+              <input placeholder="Enter price here" type="number" class="io-input-grow io-input-field"><span>per hour</span>
+            </div>
+            <div class="io-section">
+              <div class="io-text">Pictures</div>
+              <input type="file" multiple class="io-upload-btn">
+            </div>
+            <div class="io-section io-start">
+              <div class="io-text">Facilities</div>
+              <ul> 
+                <li> 
+                  <input type="checkbox"><span class="io-check-text">Chairs</span>
+                </li>
+                <li> 
+                  <input type="checkbox"><span class="io-check-text">Tables</span>
+                </li>
+                <li> 
+                  <input type="checkbox"><span class="io-check-text">Parking Lot</span>
+                </li>
+                <li> 
+                  <input type="checkbox"><span class="io-check-text">Rest Rooms</span>
+                </li>
+                <li> 
+                  <input type="checkbox"><span class="io-check-text">Telescreens</span>
+                </li>
+                <li> 
+                  <input type="checkbox"><span class="io-check-text">Lighting & Sounds</span>
+                </li>
+                <li> 
+                  <input type="checkbox"><span class="io-check-text">Stage</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="io-footer">
+          <button id="add-center-cancel" class="io-submit-btn io-sm">CANCEL</button>
+          <button id="add-center-submit" class="io-submit-btn io-sm">SUBMIT</button>
+        </div>
+      </div>
+    </div>
+    <!-- View Center Modal -->
+    <div id="view-center-modal" class="io-modal hide">
+      <div class="io-modal-body">
+        <div class="io-header">CENTER DETAILS</div>
+        <div class="io-body io-overflow">
+          <div class="io-img-hgroup"><img src="images/center2.jpg"><img src="images/center1.jpg"><img src="images/center4.jpg"><img src="images/center3.jpg"></div>
+          <div class="io-content"> 
+            <div class="io-section"> 
+              <p>Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet</p>
+              <p>Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet</p>
+              <p>Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet</p>
+              <p>Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet</p>
+              <p>Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet</p>
+              <p>Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet</p>
+              <p>Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet</p>
+            </div>
+          </div>
+        </div>
+        <div class="io-footer"> 
+          <button id="view-center-ok" class="io-submit-btn io-sm">OK </button>
+        </div>
+      </div>
+    </div>
+    <!-- Add Event Modal -->
+    <div id="add-event-modal" class="io-modal hide">
+      <div class="io-modal-body">
+        <div class="io-header">CREATE NEW EVENT</div>
+        <div class="io-body io-overflow">
+          <div class="io-content io-start">
+            <div class="io-section">
+              <div class="io-text">Title</div>
+              <input placeholder="Enter name of hall here" class="io-input io-input-field">
+            </div>
+            <div class="io-section">
+              <div class="io-text">Description</div>
+              <input placeholder="Enter description here" class="io-input io-input-field">
+            </div>
+            <div class="io-section">
+              <div class="io-text">Center</div>
+              <input placeholder="Enter type of center here" class="io-input io-input-field">
+            </div>
+            <div class="io-section">
+              <div class="io-text">Location</div>
+              <input placeholder="Enter location here" class="io-input io-input-field">
+            </div>
+            <div class="io-section">
+              <div class="io-text">Date</div>
+              <input placeholder="DD/MM/YYYY" class="io-input io-input-field">
+            </div>
+            <div class="io-section">
+              <div class="io-text">Time</div>
+              <input placeholder="HH:MM" class="io-input io-input-field">
+            </div>
+            <div class="io-section">
+              <div class="io-text">Duration</div>
+              <input placeholder="Enter duration here" type="number" class="io-input io-input-field"><span>hours</span>
+            </div>
+          </div>
+        </div>
+        <div class="io-footer">
+          <button id="add-event-cancel" class="io-submit-btn io-sm">CANCEL</button>
+          <button id="add-event-submit" class="io-submit-btn io-sm">SUBMIT</button>
+        </div>
+      </div>
+    </div>
+  </body>
+  <!-- Scripts -->
+  <script src="js/jquery-3.2.1.min.js"></script>
+  <script src="js/bootstrap.min.js"></script>
+  <script src="js/custom.js"></script>
+</html>
