@@ -7,12 +7,14 @@ module.exports = {
   context: path.join(__dirname, '../tests'),
   node: { __filename: true, __dirname: false },
   devtool: 'source-map',
-  entry: [
-    './api/test.js',
-  ],
+  entry: {
+    users: './api/users.js', 
+    events: './api/events.js',
+    centers: './api/centers.js',
+  },
   output: {
     path: path.join(__dirname, '../tests/bin'),
-    filename: './test_api.js',
+    filename: '[name]_api.js',
   },
   externals: [nodeExternals()],
   module: {
