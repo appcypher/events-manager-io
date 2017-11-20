@@ -1,1 +1,3 @@
-bin/
+api/bin/
+e2e/bin/
+react/bin/
