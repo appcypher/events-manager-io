@@ -1,0 +1,1007 @@
+// COLOR FOR LOGIN/SIGNUP PAGE 
+$login-box-gray: #242835;
+$login-title-gray: #acb1be;
+$login-border-gray: #393d52;
+$login-text-area-gray: #32364a;
+$login-placeholder-gray: #4e5462;
+$login-input-gray: #afb1be;
+$login-forgot-gray: #4e4f5f;
+$login-bg-gradient: linear-gradient(to bottom right, rgb(198, 189, 201), rgb(159, 114, 186), #733296); // Change this horrid color please! ;_;
+$general-bg-gradient: linear-gradient(to bottom right, rgb(198, 189, 201), rgb(181, 149, 201), #a571c1); // Change this horrid color please! ;_;
+$navbar-shadow: rgba(0, 0, 0, .2);
+$navbar-bg-gradient: linear-gradient(to right, #e45a53, #bb6deb); // Change this horrid color please! ;_;
+$card-btn-gradient: linear-gradient(to bottom right, #e8ccff, #9913ff); // Change this horrid color please! ;_;
+$btn-purple: #AB47BC;
+$frame-purple: #6A1B9A;
+$card-btn-purple: #AB47BC;
+$card-btn-purple-light: rgb(200, 148, 209);
+$card-btn-gray: #595959;
+$navbar-gray: #3a3f4f;
+$navbar-gray-deep: #242835;
+$title-bar-light-purple: rgb(238, 211, 238);
+$highlight-purple: #AB47BC;
+$fab-purple-1: rgb(74, 10, 85);
+$fab-purple-2: rgb(122, 57, 135);
+$fab-purple-3: rgb(158, 103, 169);
+
+// FONTS 
+@font-face {
+  font-family: quicksand;
+  src: url(../fonts/quicksand-regular-webfont.woff);
+}
+
+@font-face {
+  font-family: kaushanscript;
+  src: url(../fonts/kaushanscript-regular-webfont.woff);
+}
+
+// MIXINS
+@mixin placeholder-color($color) {
+  &::-webkit-input-placeholder { 
+    color: $color; text-overflow: ellipsis
+  }
+  &:-moz-placeholder { 
+    color: $color !important; text-overflow: ellipsis
+  }
+  &::-moz-placeholder { 
+    color: $color !important; text-overflow: ellipsis
+  } 
+  &:-ms-input-placeholder { 
+    color: $color !important; text-overflow: ellipsis
+  }
+}
+
+// CLEANUPS 
+// Taking care of some default higlights
+*:focus {
+  outline-width: 0px;
+}
+// This is needed to stop firefox from highlighting input boxes wrongly
+*:invalid {
+  box-shadow:0 0 3px transparent;
+}
+// This is needed to stop chrome from highlighting clicked buttons
+button:focus {
+  outline-width: 0px;
+}
+// Remove default styles
+a {
+  color: white;
+  &:hover {
+    color: white; 
+    text-decoration: none;
+  }
+  &:focus {
+    color: white; 
+    text-decoration: none;
+  }
+}
+
+ul {
+  padding-left: 0;
+}
+
+li {
+  list-style: none;
+}
+
+// Height needs to be 100% for vertical+horizontal centering to work
+html, body {
+  height: 100%;
+}
+
+body {
+  font-family: quicksand; // Use quicksand font instead. Like a bawse! 8)
+  // background-attachment: fixed;
+  // background: $general-bg-gradient; 
+  // background-color: #f2eff7; 
+}
+
+// LOGIN/SIGNUP
+.io-login-container { 
+  background: $login-bg-gradient;  
+  background-repeat: no-repeat;
+  display: flex; 
+  align-items: center; 
+  justify-content: center; 
+}
+
+.io-login-box { 
+  width: 310px;
+  height: 440px;
+  background-color: $login-box-gray;
+  border-top: 3px solid $btn-purple;
+  border-radius: 7px 7px 0px 0px;
+  color: $login-title-gray; 
+  box-shadow: 3px 5px 5px $navbar-shadow;
+  .io-title { 
+    margin-top: 75px;
+    margin-left: 20px;
+    font-size: 20px;
+  }
+  .io-input {
+    border-bottom: 2px solid $login-border-gray;
+    margin-top: 35px;
+    background-color: $login-text-area-gray;
+    &.io-signup {
+      margin-top: 10px;
+    }
+    .io-input-group {
+      display: flex;
+      align-items: center;
+      height: 40px;
+      border-top: 2px solid $login-border-gray; 
+      input {
+        background: none;
+        color: $login-input-gray; 
+        caret-color: $login-input-gray; 
+        font-size: 15px;
+        width: 250px;
+        border: none;
+        @include placeholder-color($login-placeholder-gray);
+        &.io-password {
+          color: $btn-purple;
+          caret-color: $btn-purple;
+        }
+      }
+      .io-icon {
+        display: inline-block;
+        margin-left: 20px;
+        margin-right: 5px;
+        width: 20px;
+      }
+      .io-mark {
+        margin-left: 10px;
+        width: 30px;
+      }
+    }
+  }
+  .io-btn { 
+    display: inline-block;
+    background: none;
+    border: 1.5px solid $btn-purple;
+    border-radius: 30px;
+    margin-top: 20px;
+    margin-left: 20px;
+    width: 120px;
+    height: 40px;
+    font-size: 11px;
+    color: $btn-purple;
+    cursor: pointer; 
+    &:hover {
+      background: $btn-purple;
+      color: white;
+    }
+    &.io-signup {
+      margin-top: 10px;
+    }
+  }
+}
+
+
+.io-anchor {
+  font-size: 10px;
+  color: $login-forgot-gray;
+  &:hover {
+    text-decoration: underline;
+    cursor: pointer;
+  }
+  &.io-forgot {
+    margin-left: 20px;
+  }
+}
+
+.io-extra {
+  margin-left: 20px;
+  font-size: 10px;
+  color: $login-forgot-gray;
+  &.io-high{
+    margin-top: 10px;
+  }
+  &.io-login {
+    margin-top: 120px;
+  }
+  &.io-signup {
+    margin-top: 25px;
+  }
+} 
+
+// NAVBAR 
+.io-navbar {
+  width: 100%;
+  height: 50px;
+  background-color: $navbar-gray;
+  color: white;
+  box-shadow: 0px 2px 2px $navbar-shadow;
+  display: flex;
+  justify-content: space-between; 
+  align-items: center;
+  z-index: 1;
+  cursor: pointer;
+  &.io-fixed-top {
+    position: fixed; 
+    top: 0px;
+  }
+  .io-brand {
+    width: 170px;
+    height: 100%;
+    padding-left: 5px;
+    padding-right: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: $navbar-gray-deep;
+    font-weight: 900;
+  }
+  .io-middle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-right: 5px;
+    width: 80%;
+    height: 100%;
+    margin-left: 20px;
+    &.io-start {
+      justify-content: flex-start;
+      a {
+        margin-left: 10px; 
+        padding: 5px;
+        &:hover {
+          background-color: $login-box-gray;
+          border-radius: 5px;
+        }
+      }
+    }
+    .io-search-bar {
+      background-color: $navbar-gray-deep;
+      border: none;
+      width: 100%;
+      border-radius: 30px;
+      padding-left: 10px;
+      padding-right: 10px;
+      color: $login-input-gray;
+      caret-color: $login-input-gray;
+      @include placeholder-color($login-input-gray);
+    }
+    .io-search-button {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 30px;
+      height: 30px;
+      margin-left: 10px;
+      padding: 5px;
+      cursor: pointer;
+      background: none;
+      border: none;
+      &:hover {
+        background-color: $navbar-gray-deep;
+        border-radius: 50%;
+      }
+    }
+  }
+  .io-end { 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    margin-left: 10px;
+    margin-right: 5px;
+    .io-icon {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 30px;
+      height: 30px;
+      margin-left: 10px;
+      padding: 5px;
+      cursor: pointer;
+      &:hover {
+        border-radius: 50%;
+        background-color: $navbar-gray-deep;
+      }
+    }
+    .io-text {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-left: 10px;
+      width: 70px;
+      height: 35px;
+      cursor: pointer;
+      &:hover {
+        background-color: $login-box-gray;
+        border-radius: 5px;
+      }
+    }
+  }
+}
+
+// BODY 
+.io-body-content {
+  margin-top: 55px;
+  &.io-banner-head {
+    margin-top: 50px;
+  }
+}
+
+// TITLE BAR 
+.io-title-bar {
+  display: flex;
+  align-items: center;
+  height: 50px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  padding: 5px 10px;
+  font-weight: 900;
+  border-left: 3px solid $navbar-gray-deep;
+  box-shadow: 3px 0px 2px $navbar-shadow;
+  border-radius: 10px 0px 10px 0px;
+  background-color: $title-bar-light-purple;
+}
+
+// FLOATING ACTION BUTTON 
+.io-fab {
+  border-radius: 50%;
+  box-shadow: 1px 3px 3px $navbar-shadow;
+  width: 50px;
+  height: 50px;
+  background-color: $navbar-gray-deep; 
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  z-index: 2;
+  bottom: 25px; 
+  right: 25px;
+  cursor: pointer;
+  &:hover {
+    filter: brightness(130%);
+  }
+}
+
+.io-fab-group {
+  display: flex;
+  justify-content: flex-end;
+  flex-direction: column;
+  position: fixed;
+  bottom: 80px; 
+  right: 30px;
+
+  &.hide {
+    display: none;
+  }
+
+  .io-labeled-fab {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    margin: 10px 5px;
+    color: white;
+    cursor: pointer;
+
+    &.io-1 button { background-color: $fab-purple-1; }
+    &.io-2 button { background-color: $fab-purple-2; }
+    &.io-3 button { background-color: $fab-purple-3; }
+    &.io-1 span { background-color: $fab-purple-1; }
+    &.io-2 span { background-color: $fab-purple-2; }
+    &.io-3 span { background-color: $fab-purple-3; }
+    
+    span {
+      margin-right: 10px;
+      padding: 5px 10px;
+      background-color: gray;
+      border-radius: 5px;
+    }
+  
+    button {
+      width: 30px;
+      height: 30px;
+      background-color: red;
+      border: none;
+      border-radius: 50%;
+      cursor: pointer;
+    }
+
+    &:hover {
+      filter: brightness(130%);
+    }
+  }
+}
+
+// PROFILE CARD 
+.io-profile-card {
+  margin-top: 70px;
+  margin-bottom: 20px;
+  padding: 10px;
+  width: 100%;
+  min-height: 200px;
+  border-radius: 6px;
+  background-color: $login-text-area-gray;
+  box-shadow: 1px 3px 3px $navbar-shadow;
+  position: relative;
+  word-wrap: break-word;
+  color: $login-input-gray;
+  .io-img {
+    border: 3px solid $navbar-gray-deep;
+    box-shadow: 0px 4px 5px $navbar-shadow;
+    border-radius: 50%;
+    width: 150px; 
+    position: absolute;
+    top: -50px;
+    right: 10%;
+  }
+  .io-header {
+    display: flex;
+    align-items: flex-start;
+    width: 100%;
+    .io-name {
+      font-size: 38px;
+      line-height: 46px;
+      font-weight: 500;
+      display: inline;
+    }
+    .io-spacer {
+      flex-grow: 1;
+    }
+    span {
+      width: 30px;
+      height: 30px;
+      padding: 5px;
+      display: flex; 
+      align-items: center;
+      justify-content: center;
+      &:hover {
+        border-radius: 50%;
+        background-color: $highlight-purple;
+        cursor: pointer;
+        color: white;
+      }
+    }
+  }
+  .io-short {
+    font-family: kaushanscript;
+    font-size: 20px;
+    font-weight: 600;
+    color: $navbar-gray-deep;
+  }
+  .io-long {}
+}
+
+// CENTER CARD 
+.io-center-card {
+  width: 200px;
+  height: 300px;
+  display: relative;
+  box-shadow: 3px 3px 5px $navbar-shadow;
+  &:hover {
+    box-shadow: 5px 5px 5px $navbar-shadow;
+  }
+  cursor: pointer;
+  .io-img { 
+    border-radius: 5px 5px 0px 0px;
+    border-top: 3px solid $navbar-gray-deep;
+    top: 50px;
+    width: 100%;
+  }
+  .io-content {
+    padding: 10px;
+    height: 100px;
+    background-color: $title-bar-light-purple; 
+    .io-title {
+      font-weight: 900;
+    }
+    .io-body {
+      font-size: 12px;
+    }
+    p {
+      font-size: 10px;
+    }
+  }
+}
+
+// EVENT CARD 
+.io-event-card {
+  width: 520px;
+  height: 150px;
+  border-left: 4px solid $navbar-gray-deep;
+  background-color: $title-bar-light-purple;
+  box-shadow: 3px 0px 2px $navbar-shadow;
+  border-radius: 5px;  
+  display: flex;
+  line-height: 15px;
+  &:hover {
+    box-shadow: 5px 3px 5px $navbar-shadow;
+  }
+  &.io-done {
+    background-color: #fff; 
+    opacity: .5;
+    &:hover {
+      box-shadow: 3px 0px 2px $navbar-shadow;
+      cursor: no-drop;
+    }
+  }
+  .io-header {
+    display: flex;
+    align-items: flex-start;
+    h5 {
+      color: $btn-purple;
+      font-weight: 700;
+      display: inline-block;
+      flex-grow: 1;
+    }
+    span {
+      width: 30px;
+      height: 30px;
+      padding: 5px;
+      display: flex; 
+      align-items: center;
+      justify-content: center;
+      &:hover {
+        border-radius: 50%;
+        background-color: $highlight-purple;
+        cursor: pointer;
+        color: white;
+      }
+    }
+  }
+  img {
+    width: 200px;
+    height: 150px;
+    opacity: .8;
+  }
+  .io-content {
+    margin: 5px 5px;
+    display: flex; 
+    width: 100%;
+    flex-direction: column;
+    .io-details {
+      flex-grow: 1;
+      p { font-weight: 900; }
+      .io-location {
+        font-size: 11px;
+      }
+    }
+    .io-date-time {
+      display: flex; 
+      .io-date {
+        flex-grow: 1;
+        color: $btn-purple; 
+        font-size: 900;
+      }
+      .io-time {
+        color: $btn-purple; 
+        font-size: 900;
+      }
+    }
+  }
+}
+
+// MODAL 
+.io-modal {
+  &.hide {
+    display: none; 
+  }
+  display: flex;
+  position: fixed;
+  z-index: 5;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0,0,0,.4);
+  justify-content: center;
+  .io-modal-body {
+    border-top: 5px solid $navbar-gray-deep;
+    border-bottom: 5px solid $navbar-gray-deep;
+    border-radius: 5px 5px 5px 5px;
+    box-shadow: 4px 4px 5px $navbar-shadow;
+    background-color: white;
+    width: 465px;
+    height: calc(100vh - 100px);
+    min-height: 400px;
+    background-color: white;
+    margin-top: 53px;
+    .io-header {
+      padding: 10px; 
+      font-weight: 900;
+      color: $navbar-gray;
+      background-color: $title-bar-light-purple;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 45px;
+    }
+    .io-body {
+      height: calc(100% - 90px);
+      &.io-overflow {
+        overflow-y: auto;
+      }
+      .io-img-hgroup {
+        display: flex;
+        align-items: center; 
+        margin: 10px;
+        overflow-x: auto;
+        img {
+          width: 200px;
+          border-radius: 7px;
+          margin-left: 10px;
+        }
+      }
+      .io-content {
+        margin: 7px 15px; 
+        font-size: 700;
+        .io-section {
+          display: flex;
+          align-items: center;
+          &.io-start {
+            display: flex;
+            align-items: flex-start;
+          }
+          .io-text {
+            width: 21%; 
+            border-radius: 0px 0px 0px 2px;
+            font-size: 15px;
+            font-weight: 900;
+            color: $login-text-area-gray;
+          }
+          .io-input {
+            flex-grow: 1; 
+            padding-left: 0px;
+          }
+          .io-input-grow {
+            flex-grow: 1; 
+            margin-right: 5px;
+            padding-left: 0px;
+          }
+          .io-check-text {
+            margin-left: 5px; 
+          }
+          .io-file-input {
+          }
+        }
+        .io-price {
+          color: $btn-purple;
+          font-weight: 700;
+        }
+        .io-divider-text {
+          display: flex;
+          align-items: center;
+          .io-text {
+            margin: 0px 10px;
+          }
+          .io-divider {
+            background-color: $frame-purple; 
+            flex-grow: 1;
+            height: 2px;
+            border-radius: 1px;
+          }
+        }
+        h2 {
+          font-weight: 700;
+        }
+        ul {
+          font-weight: 700;
+          li {
+            margin-left: 10px;  
+          }
+        }
+        .io-event {
+          display: flex;
+          border-left: 3px solid $frame-purple;
+          padding-left: 10px;
+          flex-direction: column;
+          line-height: 10px;
+          margin-bottom: 20px;
+          h5 {
+            color: purple;
+          }
+        }
+      }
+    }
+    .io-footer {
+      padding: 10px; 
+      font-weight: 900;
+      color: $navbar-gray;
+      background-color: $title-bar-light-purple;
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      height: 45px;
+      button {
+        margin-left: 10px;
+        // TODO
+      }
+    }
+  }
+}
+
+// [MODAL] INPUT FIELD 
+.io-input-field {
+  padding-left: 5px;
+  border: none;
+  border-bottom: 1px solid $login-input-gray;
+  color: $navbar-gray-deep;
+  caret-color: $navbar-gray-deep;
+  @include placeholder-color($login-input-gray);
+}
+
+// [MODAL] SUBMIT BUTTON
+.io-submit-btn {
+  border: none; 
+  background: none;
+  border: 1px solid $navbar-gray-deep;
+  color: $navbar-gray-deep;
+  border-radius: 30px;
+  float: right;
+  &:hover {
+    background-color: $navbar-gray-deep;
+    color: white;
+  }
+  &.io-sm {
+    border: 2px solid $navbar-gray-deep;
+    width: 80px;
+    height: 30px;
+    font-size: 12px;
+  }
+  &.io-lg {
+    width: 120px;
+    height: 40px;
+    font-size: 18px;
+  }
+}
+
+// DROPDOWN 
+.io-dropdown-content {
+  display: flex;
+  flex-direction: column;
+  min-width: 150px;
+  max-height: 300px;
+  background-color: $navbar-gray; 
+  color: white;
+  position: fixed; 
+  border-radius: 3px;
+  right: 10px; 
+  z-index: 2;
+  padding-bottom: 0px;
+  box-shadow: 3px 3px 3px $navbar-shadow; 
+  &.hide {
+    display: none;
+  }
+  &.notifications {
+    position: fixed; 
+    right: 30px; 
+  }
+  ul {
+    li {
+      display: flex;
+      padding: 5px 10px;
+      cursor: pointer;
+      &:hover {
+        background-color: white;
+        color: $navbar-gray-deep;
+      }
+    }
+  }
+}
+
+// SNACKBAR // UNIMPLEMENTED (remember: snackbar is like fab)
+.snackbar {
+}
+
+// PARALLAX
+.io-parallax {
+  background-image: url("../images/hall-banner-lg.jpg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-attachment: fixed;
+  background-size: cover; 
+  min-height: 400px;
+  padding: 30px 30px;
+ 
+  h1 {
+    color: white;
+    font-weight: 900; 
+    font-family: kaushanscript;
+    font-size: 50px;
+    background-color: rgba(0,0,0,.4);
+    display: inline-block; 
+    padding: 10px;
+    border-radius: 6px;
+    padding-right: 35px;
+  }
+
+  p {
+    font-size: 30px;
+    color: white;
+  }
+}
+
+// HOME CARD 
+.io-home-card {
+  margin-top: 20px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  img {
+    width: 200px;
+    height: 200px;
+    border-radius: 5px; 
+  }
+}
+
+
+// SLANT 
+.io-slant {
+  display: flex;
+  height:300px;
+  width:100%x;
+  background-image: url("../images/hall-banner-lg.jpg");
+  .io-content {
+    height:100%;
+    width:500px;
+    background-color:rgba(0, 0, 0, .4); 
+    color: white;
+    clip-path: polygon(
+      0 0,
+      80% 0,
+      100% 100%,
+      0 100%
+    );
+    padding: 10px 20px;
+    * { 
+      width: 350px;
+    }
+  }
+  &.io-reverse {
+    justify-content: flex-end;
+    background-image: url("../images/hall-banner-lg.jpg");
+    .io-content {
+      display: flex;
+      justify-content: flex-start;
+      align-items: flex-end;
+      flex-direction: column;
+      clip-path: polygon(
+        20% 0,
+        100% 0,
+        100% 100%,
+        0 100%
+      );
+    }
+  }
+}
+
+// ABOUT US 
+.io-about { 
+  min-height: 300px;
+  padding: 30px 20px; 
+  h1 { 
+    font-weight: 700px;
+  }
+}
+
+// FOOTER 
+.io-footer {
+  height: 500px;
+  color: $login-input-gray;
+  background-color: $navbar-gray;
+  padding: 20px 20px; 
+}
+
+// CENTERING 
+.io-col-center {
+  display: flex; 
+  justify-content: center;
+  width: 100%;
+}
+
+// OVERRIDING BOOTSTRAP
+.col-6.col-md-4.col-lg-3 {
+  margin-top: 10px;
+}
+
+.col-12.col-lg-6 {
+  margin-top: 10px;
+}
+
+.pagination {
+  margin-top: 50px;
+  cursor: pointer;
+  .page-item.active .page-link {
+    background-color: $title-bar-light-purple;
+    border-color: $title-bar-light-purple;
+  }
+}
+
+.container-fluid {
+  padding-bottom: 50px;
+}
+
+// Responsive design for desktops, tablets Screens
+@media only screen and (min-width: 615px) {
+  .io-navbar .io-brand { 
+    & .io-img {
+      display: none;
+    }
+  }
+
+  // Overriding bootstrap
+  .col-6.col-md-4.col-lg-3 {
+    display: flex;
+    justify-content: center;
+  }
+
+  // Overriding bootstrap
+  .col-12.col-lg-6 {
+    display: flex;
+    justify-content: center;
+  }
+  
+}
+
+// Responsive design phones, phablets Screens
+@media only screen and (max-width: 615px) {
+  .io-navbar .io-brand { 
+    background-color: transparent;
+    width: 50px;
+    .io-text {
+      display: none;
+    }
+    .io-img {
+      display: inline;
+    }
+  }
+
+  .io-body-content {
+    .io-sidebar-container {
+      display: none;
+    }
+    .io-content {
+      width: 100%;
+    }
+  }
+
+  // Overriding bootstrap
+  .col-6.col-md-4.col-lg-3 {
+    display: flex;
+    justify-content: center;
+  }
+
+  .col-12.col-lg-6 {
+    display: flex;
+    justify-content: center;
+  }
+
+  .io-profile-card .io-name {
+    width:200px;
+  }
+
+}
+
+@media only screen and (max-width: 700px) {
+  .io-slant {
+    margin-bottom: 50px;
+    .io-content {
+      height:100%; 
+      color: black;
+      width:500px;
+      background-color: rgba(0, 0, 0, 0);
+      clip-path: polygon(
+        0% 0,
+        100% 0,
+        100% 100%,
+        0 100%
+      );
+    }
+    &.io-reverse {
+      justify-content: flex-end;
+      clip-path: polygon(
+        0% 0,
+        100% 0,
+        100% 100%,
+        0 100%
+      );
+    }
+  }
+}
