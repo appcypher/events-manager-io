@@ -27,19 +27,11 @@ export default (sequelize, DataTypes) => {
     picture4: {
       type: DataTypes.BLOB,
     },
-  }, {
-    classMethods: {
-      associate: (models) => {
-        // associations can be defined here
-        EventCenter.hasMany(models.Event, {
-          foreignKey: 'center',
-        });
-
-        EventCenter.hasOne(models.Facility, {
-          foreignKey: 'center',
-        });
-      },
-    },
   });
+
+  EventCenter.associate = (models) => {
+    EventCenter.hasMany(models.Event, { foreignKey: 'center' });
+  };
+
   return EventCenter;
 };

@@ -31,15 +31,11 @@ export default (sequelize, DataTypes) => {
     tagline: {
       type: DataTypes.STRING,
     },
-  }, {
-    classMethods: {
-      associate: (models) => {
-        // associations can be defined here
-        User.hasMany(models.Event, {
-          foreignKey: 'user',
-        });
-      },
-    },
   });
+
+  User.associate = (models) => {
+    User.hasMany(models.Events, { foreignKey: 'user' });
+  };
+
   return User;
 };

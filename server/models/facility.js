@@ -27,16 +27,20 @@ export default (sequelize, DataTypes) => {
     stage: {
       type: DataTypes.BOOLEAN,
     },
-  }, {
-    classMethods: {
-      associate: (models) => {
-        // associations can be defined here
-        Facility.belongsTo(models.EventCenter, {
-          foreignKey: 'center',
-          onDelete: 'CASCADE',
-        });
+    center: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      references: {
+        model: 'EventCenters',
+        key: 'id',
       },
     },
   });
+
+  Facility.associate = (models) => {
+    Facility.belongsTo(models.EventCenter);
+  };
+
   return Facility;
 };
+

@@ -15,19 +15,28 @@ export default (sequelize, DataTypes) => {
       type: DataTypes.INTEGER,
       allowNull: false,
     },
-  }, {
-    classMethods: {
-      associate: (models) => {
-        Event.belongsTo(models.User, {
-          foreignKey: 'user',
-          onDelete: 'CASCADE',
-        });
-
-        Event.belongsTo(models.EventCenter, {
-          foreignKey: 'center',
-        });
+    center: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      references: {
+        model: 'EventCenters',
+        key: 'id',
+      },
+    },
+    user: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      references: {
+        model: 'Users',
+        key: 'id',
       },
     },
   });
+
+  Event.associate = (models) => {
+    Event.belongsTo(models.User);
+    Event.belongsTo(models.EventCenter);
+  };
+
   return Event;
 };
