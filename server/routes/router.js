@@ -9,7 +9,7 @@ router.route('/')
     res.status(200).sendFile(path.join(__dirname, '/../../template/index.html'));
   });
 
-router.route('/api/v1/users/')
+router.route('/api/v1/users/login')
   .post((req, res) => {
     res.status(200).send({ id: 2 });
   });
