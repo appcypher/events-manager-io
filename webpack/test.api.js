@@ -8,9 +8,7 @@ module.exports = {
   node: { __filename: true, __dirname: false },
   devtool: 'source-map',
   entry: {
-    users: './api/users.js', 
-    events: './api/events.js',
-    centers: './api/centers.js',
+    test: './api/test.js', 
   },
   output: {
     path: path.join(__dirname, '../tests/api/bin'),

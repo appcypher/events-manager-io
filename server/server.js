@@ -32,8 +32,8 @@ app.use(express.static(path.join(__dirname, '/../../template')));
 app.use('/api/v1/test', express.static(path.join(__dirname, '/../../template')));
 
 // Open port and listen from it
-app.listen(port, () => {
-  console.log(`Listening on port ${port}!`);
-});
+if (!module.parent) {
+  app.listen(port, () => { console.log(`Listening on port ${port}!`); });
+}
 
 export default app;
