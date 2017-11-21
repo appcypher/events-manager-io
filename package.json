@@ -5,6 +5,8 @@
   "main": "server/bin/server.js",
   "scripts": {
     "server": "node server/bin/server.js",
+    "server:prod": "cross-env NODE_ENV=production node server/bin/server.js",
+    "compile:sequelize": "babel server/migrations --out-dir server/bin/migrations & babel server/seeders --out-dir server/bin/seeders",
     "webpack:watch": "webpack-dev-server --config webpack/client.dev.js --content-base client/public --inline --hot",
     "build": "npm run build:client:prod & npm run build:server & npm run build:test:api  & npm run build:test:e2e  & npm run build:test:react",
     "test": "npm run test:api & npm run test:react",
@@ -44,9 +46,14 @@
     "express-session": "^1.15.6",
     "jsonwebtoken": "^8.1.0",
     "morgan": "^1.9.0",
+    "pg": "^7.4.0",
+    "pg-hstore": "^2.3.2",
+    "sequelize": "^4.22.11",
+    "sequelize-cli": "^3.1.0",
     "upath": "^1.0.2"
   },
   "devDependencies": {
+    "babel-cli": "^6.26.0",
     "babel-core": "^6.26.0",
     "babel-loader": "^7.1.2",
     "babel-preset-env": "^1.6.1",
