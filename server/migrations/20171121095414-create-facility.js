@@ -34,6 +34,14 @@ module.exports = {
       stage: {
         type: Sequelize.BOOLEAN,
       },
+      center: {
+        type: Sequelize.INTEGER,
+        allowNull: false,
+        references: {
+          model: 'EventCenters',
+          key: 'id',
+        },
+      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE,

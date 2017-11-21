@@ -9,6 +9,7 @@ module.exports = {
   devtool: 'source-map',
   entry: {
     test: './api/test.js', 
+    junk: './api/junk.js',
   },
   output: {
     path: path.join(__dirname, '../tests/api/bin'),

@@ -2,16 +2,18 @@ import express from 'express';
 import path from 'upath';
 import bodyParser from 'body-parser';
 import logger from 'morgan';
-// import router from './routes/router';
+import dotenv from 'dotenv';
+import process from 'process';
+import router from './routes/router';
 
 // Set up the express app
 const app = express();
 
+// Load config files
+dotenv.config();
+
 // Port to listen from should be determined by evironment and defaults to 3000
 const port = process.env.PORT || 3000;
-
-// Key for authenticating user sessions
-process.env.SECRET_KEY = 'OX8b79Ie89Fd6sh5ysg1JR93d8tR5E892j7Yi0';
 
 // Log requests to the console.
 app.use(logger('dev'));
@@ -20,20 +22,14 @@ app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
-// Router
-const router = express.Router();
-router.get('/api/v1/test', (req, res) => {
-  res.sendFile(path.join(__dirname, '../../template/index.html'));
-});
-app.use('/api/v1/test', router);
-
 // Set template folder
-app.use(express.static(path.join(__dirname, '/../../template')));
-app.use('/api/v1/test', express.static(path.join(__dirname, '/../../template')));
+// This must be before setting the router
+app.use('/', express.static(path.join(__dirname, '/../../template')));
+
+// Set router
+app.use('/', router);
 
 // Open port and listen from it
-if (!module.parent) {
-  app.listen(port, () => { console.log(`Listening on port ${port}!`); });
-}
+app.listen(port, () => { console.log(`Listening on port ${port}!`); });
 
 export default app;

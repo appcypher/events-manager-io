@@ -22,6 +22,22 @@ module.exports = {
         type: Sequelize.INTEGER,
         allowNull: false,
       },
+      center: {
+        type: Sequelize.INTEGER,
+        allowNull: false,
+        references: {
+          model: 'EventCenters',
+          key: 'id',
+        },
+      },
+      user: {
+        type: Sequelize.INTEGER,
+        allowNull: false,
+        references: {
+          model: 'Users',
+          key: 'id',
+        },
+      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE,
