@@ -5,6 +5,7 @@
   "main": "server/bin/server.js",
   "scripts": {
     "server": "node server/bin/server.js",
+    "server:prod": "cross-env NODE_ENV=production node server/bin/server.js",
     "webpack:watch": "webpack-dev-server --config webpack/client.dev.js --content-base client/public --inline --hot",
     "build": "npm run build:client:prod & npm run build:server & npm run build:test:api  & npm run build:test:e2e  & npm run build:test:react",
     "test": "npm run test:api & npm run test:react",
