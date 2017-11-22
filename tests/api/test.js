@@ -6,7 +6,18 @@ const should = chai.should();
 chai.use(chaiHttp);
 
 describe('Users', () => {
-  it('(POST /users) should respond with the newly signed-up user data');
+  const testUser = {
+    username: 'jegede', password: 'jinadu', email: 'jinadu@yahoo.com', fullname: 'Jegede Jinadu',
+  };
+  it('(POST /users) should respond with 201', (done) => {
+    chai.request(server)
+      .post('/api/v1/users')
+      .send(testUser)
+      .end((err, res) => {
+        res.should.have.status(201);
+        done();
+      });
+  });
   it('(POST /users/login) should respond with a session token');
 });
 
