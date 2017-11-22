@@ -10,7 +10,7 @@ cache:
 script: npm run test:api
 before_script:
     - psql -c "CREATE DATABASE eventsmanager_test;" -U postgres
-    - npm install -nyc
+    - npm install nyc coveralls -g
 after_script: 
     - nyc report --reporter=text-lcov | coveralls
     # - codeclimate-test-reporter < ./coverage/lcov.info
