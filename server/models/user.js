@@ -34,8 +34,16 @@ export default (sequelize, DataTypes) => {
   });
 
   User.associate = (models) => {
-    User.hasMany(models.Events, { foreignKey: 'user' });
+    User.hasMany(models.Event, { foreignKey: 'user' });
   };
+
+  // Use hook to save hashed password later
+  /* eslint-disable no-param-reassign */
+  // User.hook('beforeValidate', (user) => {
+  //   const hash = bcrypt.hashSync(user.password, 10);
+  //   user.password = hash;
+  // });
+  /* eslint-disable no-param-reassign */
 
   return User;
 };
