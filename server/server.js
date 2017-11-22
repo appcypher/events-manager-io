@@ -3,7 +3,6 @@ import path from 'upath';
 import bodyParser from 'body-parser';
 import logger from 'morgan';
 import dotenv from 'dotenv';
-import process from 'process';
 import router from './routes/router';
 
 // Set up the express app
@@ -11,6 +10,7 @@ const app = express();
 
 // Load config files
 dotenv.config();
+console.log(process.env.SECRET_KEY);
 
 // Port to listen from should be determined by evironment and defaults to 3000
 const port = process.env.PORT || 3000;
