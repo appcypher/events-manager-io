@@ -1,5 +1,4 @@
 # EventsManagerIO
-![stability wip](https://img.shields.io/badge/stability-work_in_progress-lightgrey.svg "stability wip")
 ![hound](https://camo.githubusercontent.com/23ee7a697b291798079e258bbc25434c4fac4f8b/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f50726f7465637465645f62792d486f756e642d6138373364312e737667 "hound")
 [![Build Status](https://travis-ci.org/AppCypher/EventsManager.svg?branch=dev)](https://travis-ci.org/AppCypher/EventsManager "travis")
 [![Coverage Status](https://coveralls.io/repos/github/AppCypher/EventsManager/badge.svg?branch=ch-continuous-integration-153009907)](https://coveralls.io/github/AppCypher/EventsManager?branch=ch-continuous-integration-153009907 "coveralls")
