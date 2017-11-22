@@ -4,13 +4,13 @@ install:
     - npm install 
 services: 
     - postgresql 
-after_install:
-    - psql -c "CREATE DATABASE eventsmanager_test;" -U postgres
-    - sequelize db:migrate:all && sequelize db:seed:all
 cache: 
     directories: 
         - "node_modules"
 script: npm run test:api
+before_script:
+    - psql -c "CREATE DATABASE eventsmanager_test;" -U postgres
+    - sequelize db:migrate:all && sequelize db:seed:all
 after_script: 
     - nyc report --reporter=text-lcov | coveralls
     # - codeclimate-test-reporter < ./coverage/lcov.info
