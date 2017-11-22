@@ -2,10 +2,7 @@ import chai from 'chai';
 import chaiHttp from 'chai-http';
 import server from '../../server/server';
 
-/* eslint-disable no-unused-vars */
-const should = chai.should();
-/* eslint-disable no-unused-vars */
-
+chai.should();
 chai.use(chaiHttp);
 
 describe('Users', () => {
