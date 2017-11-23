@@ -4,8 +4,8 @@ module.exports = {
       id: {
         allowNull: false,
         primaryKey: true,
-        type: Sequelize.UUID,
-        defaultValue: Sequelize.UUIDV4,
+        type: Sequelize.INTEGER,
+        autoIncrement: true,
       },
       title: {
         type: Sequelize.STRING,
@@ -19,7 +19,7 @@ module.exports = {
         allowNull: false,
       },
       center: {
-        type: Sequelize.UUID,
+        type: Sequelize.INTEGER,
         allowNull: false,
         references: {
           model: 'EventCenters',
@@ -27,7 +27,7 @@ module.exports = {
         },
       },
       user: {
-        type: Sequelize.UUID,
+        type: Sequelize.INTEGER,
         allowNull: false,
         references: {
           model: 'Users',

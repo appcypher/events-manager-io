@@ -3,8 +3,8 @@ export default (sequelize, DataTypes) => {
     id: {
       allowNull: false,
       primaryKey: true,
-      type: DataTypes.UUID,
-      defaultValue: DataTypes.UUIDV4,
+      type: DataTypes.INTEGER,
+      autoIncrement: true,
     },
     title: {
       type: DataTypes.STRING,
@@ -18,7 +18,7 @@ export default (sequelize, DataTypes) => {
       allowNull: false,
     },
     center: {
-      type: DataTypes.UUID,
+      type: DataTypes.INTEGER,
       allowNull: false,
       references: {
         model: 'EventCenters',
@@ -26,7 +26,7 @@ export default (sequelize, DataTypes) => {
       },
     },
     user: {
-      type: DataTypes.UUID,
+      type: DataTypes.INTEGER,
       allowNull: false,
       references: {
         model: 'Users',

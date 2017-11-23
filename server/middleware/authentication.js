@@ -15,7 +15,7 @@ export default function checkUserSession(req, res, next) {
     // Check if token matches the one provided at login
     jwt.verify(token, process.env.SECRET_KEY, (err) => {
       if (err) {
-        res.status(500).send({ status: 500, message: 'Invalid token!' });
+        res.status(500).send({ message: 'Invalid session token!' });
       } else {
         next();
       }

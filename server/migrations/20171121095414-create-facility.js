@@ -4,8 +4,8 @@ module.exports = {
       id: {
         allowNull: false,
         primaryKey: true,
-        type: Sequelize.UUID,
-        defaultValue: Sequelize.UUIDV4,
+        type: Sequelize.INTEGER,
+        autoIncrement: true,
       },
       projector: {
         type: Sequelize.BOOLEAN,
@@ -35,7 +35,7 @@ module.exports = {
         type: Sequelize.BOOLEAN,
       },
       center: {
-        type: Sequelize.UUID,
+        type: Sequelize.INTEGER,
         allowNull: false,
         references: {
           model: 'EventCenters',

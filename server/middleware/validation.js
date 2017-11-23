@@ -1,7 +1,7 @@
 import bcrypt from 'bcrypt';
 import db from '../models';
 
-const { User } = db;
+const { User, EventCenter } = db;
 
 class Validation {
   /**
@@ -91,10 +91,10 @@ class Validation {
       })
       .then((user) => {
         if (!user) {
-          res.status(409).send({ status: 409, message: 'Username does not exist!' });
+          res.status(404).send({ message: 'Username does not exist!' });
         } else next();
       })
-      .catch(err => res.status(400).send({ status: 400, message: err.errors[0].messsge || err }));
+      .catch(err => res.status(400).send({ message: err.errors[0].messsge || err }));
   }
 
   /**
@@ -111,10 +111,10 @@ class Validation {
       })
       .then((user) => {
         if (user) {
-          res.status(409).send({ status: 409, message: 'Username already taken!' });
+          res.status(409).send({ message: 'Username already taken!' });
         } else next();
       })
-      .catch(err => res.status(400).send({ status: 400, message: err.errors[0].messsge || err }));
+      .catch(err => res.status(400).send({ message: err.errors[0].messsge || err }));
   }
 
   /**
@@ -131,10 +131,43 @@ class Validation {
       })
       .then((user) => {
         if (user) {
-          res.status(409).send({ status: 409, message: 'Email already taken!' });
+          res.status(409).send({ message: 'Email already taken!' });
         } else next();
       })
-      .catch(err => res.status(400).send({ status: 400, message: err.errors[0].messsge || err }));
+      .catch(err => res.status(400).send({ message: err.errors[0].messsge || err }));
+  }
+
+  /**
+   * Checks if center already exists
+   * @param{Object} req - api request
+   * @param{Object} res - route response
+   * @param{Function} next - next middleware
+   * @return{undefined}
+   */
+  static checkParamsValid(req, res, next) {
+    if (!Number.isInteger(req.params.centerId)) {
+      res.status(404).send({ message: 'Param type is not invalid!' });
+    } else next();
+  }
+
+  /**
+   * Checks if center already exists
+   * @param{Object} req - api request
+   * @param{Object} res - route response
+   * @param{Function} next - next middleware
+   * @return{undefined}
+   */
+  static checkCenterExists(req, res, next) {
+    EventCenter
+      .findOne({
+        where: { id: req.params.centerId },
+      })
+      .then((center) => {
+        if (center === undefined || center === null) {
+          res.status(404).send({ message: 'Cannot find specified event center!' });
+        } else next();
+      })
+      .catch(err => res.status(400).send({ message: err.errors[0].messsge || err }));
   }
 }
 
