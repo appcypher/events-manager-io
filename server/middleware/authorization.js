@@ -17,7 +17,7 @@ export default function checkUserAdmin(req, res, next) {
     jwt.verify(token, process.env.SECRET_KEY, (err, decoded) => {
       // Check id session is of admin
       if (decoded.admin !== true) {
-        res.status(403).send({ status: 403, message: 'You don\'t have enough permission to access this route!' });
+        res.status(403).send({ message: 'You don\'t have enough permission to access this route!' });
       } else next();
     });
   }
