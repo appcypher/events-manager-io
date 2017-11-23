@@ -50,19 +50,32 @@ The static version of EventsManagerIO can be accessed on [github pages](https://
 
 
 ## Available Task Runners
-  ### Development 
-    * ```npm run sass:watch``` to generate css files 
-    * 
+  ### Production
+    * start → required for starting the server on Heroku; transpiles project and runs it from output folder
 
-  ### Production 
-    *
-    *
+  ### Development
+    * server →  transpiles the project on the fly and runs the server
+    * server:watch → watches for file changes, transpiles them and runs the server
+    * webpack:watch → watches and bundles react project on the fly
+    * build:client:dev → sets NODE_ENV to development and builds react project using client.dev.js config file
+    * build:client:prod → sets NODE_ENV to production and builds react project using client.prod.js config file
+    * build:client:dev:watch → sets NODE_ENV to development and watches and bundles react project
+    * build:client:prod:watch → sets NODE_ENV to production and watches and bundles react project
+    * lint → runs the linter on .js and .jsx files
+    * sass:watch → watches the scss folder and transpiles the scss files to css on the fly
 
+  ### Test
+    * test → sets NODE_ENV to test runs all tests "npm run test:api & npm run test:react",
+    * test:api → demigrates and remigrates test database; sets NODE_ENV to test; runs tests related to api endpoints; and creates a test report
+    * test:e2e → sets NODE_ENV to test and runs end-to-end unit tests
+    * test:react → sets NODE_ENV to test and runs react tests
+    * test:api:migrate → sets NODE_ENV to test and migrates test database
+    * test:api:demigrate → sets NODE_ENV to test and demigrates test database
 
 ## Available APIs
 - API routes for users to create accounts and login to the application
   * POST : ```/api/v1/users```  (username, fullname, password, email)
-  *  POST : ```/api/v1/users/login``` (username, password)
+  * POST : ```/api/v1/users/login``` (username, password)
 
 - An API route for logging out user
   * POST : ```/api/v1/users/logout```
