@@ -3,8 +3,8 @@ export default (sequelize, DataTypes) => {
     id: {
       allowNull: false,
       primaryKey: true,
-      type: DataTypes.UUID,
-      defaultValue: DataTypes.UUIDV4,
+      type: DataTypes.INTEGER,
+      autoIncrement: true,
     },
     projector: {
       type: DataTypes.BOOLEAN,
@@ -34,7 +34,7 @@ export default (sequelize, DataTypes) => {
       type: DataTypes.BOOLEAN,
     },
     center: {
-      type: DataTypes.UUID,
+      type: DataTypes.INTEGER,
       allowNull: false,
       references: {
         model: 'EventCenters',
