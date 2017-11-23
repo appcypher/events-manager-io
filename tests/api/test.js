@@ -22,12 +22,12 @@ describe('Users', () => {
       });
   });
 
-  it('(POST /api/v1/users/login) should respond with 201 and a session token', (done) => {
+  it('(POST /api/v1/users/login) should respond with 202 and a session token', (done) => {
     chai.request(server)
       .post('/api/v1/users/login')
       .send(userLogin)
       .end((err, res) => {
-        res.should.have.status(201);
+        res.should.have.status(202);
         done();
       });
   });
