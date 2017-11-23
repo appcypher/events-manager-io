@@ -5,8 +5,7 @@
   "main": "server/bin/server.js",
   "scripts": {
     "start": "npm run babel && node dist/server.js",
-    
-    "babel": "babel ./server --out-dir dist/",
+    "babel": "node_modules/.bin/babel ./server --out-dir dist/",
     "server": "node server/server.js --exec babel-node server/server.js",
     "server:watch": "nodemon server/server.js --exec babel-node server/server.js",
     "compile:sequelize": "babel server/migrations --out-dir server/bin/migrations & babel server/seeders --out-dir server/bin/seeders & babel server/models --out-dir server/bin/models",
