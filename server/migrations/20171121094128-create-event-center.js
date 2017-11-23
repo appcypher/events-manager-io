@@ -34,6 +34,14 @@ module.exports = {
       picture4: {
         type: Sequelize.BLOB,
       },
+      user: {
+        type: Sequelize.INTEGER,
+        allowNull: false,
+        references: {
+          model: 'Users',
+          key: 'id',
+        },
+      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE,

@@ -38,10 +38,19 @@ export default (sequelize, DataTypes) => {
     picture4: {
       type: DataTypes.BLOB,
     },
+    user: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      references: {
+        model: 'Users',
+        key: 'id',
+      },
+    },
   });
 
   EventCenter.associate = (models) => {
-    EventCenter.hasMany(models.Event, { foreignKey: 'center' });
+    EventCenter.hasMany(models.Event, { as: 'events', foreignKey: 'center' });
+    EventCenter.belongsTo(models.Event, { foreignKey: 'user' });
   };
 
   return EventCenter;

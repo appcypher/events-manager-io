@@ -40,7 +40,8 @@ export default (sequelize, DataTypes) => {
   });
 
   User.associate = (models) => {
-    User.hasMany(models.Event, { foreignKey: 'user' });
+    User.hasMany(models.Event, { as: 'events', foreignKey: 'user' });
+    User.hasMany(models.EventCenter, { as: 'centers', foreignKey: 'user' });
   };
 
   // Use hook to save hashed password later

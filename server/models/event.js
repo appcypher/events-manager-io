@@ -13,7 +13,7 @@ export default (sequelize, DataTypes) => {
     description: {
       type: DataTypes.STRING,
     },
-    datetime: {
+    date: {
       type: DataTypes.DATE,
       allowNull: false,
     },
@@ -36,8 +36,8 @@ export default (sequelize, DataTypes) => {
   });
 
   Event.associate = (models) => {
-    Event.belongsTo(models.User);
-    Event.belongsTo(models.EventCenter);
+    Event.belongsTo(models.User, { foreignKey: 'user' });
+    Event.belongsTo(models.EventCenter, { foreignKey: 'center' });
   };
 
   return Event;
