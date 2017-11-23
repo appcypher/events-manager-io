@@ -6,19 +6,31 @@ chai.should();
 chai.use(chaiHttp);
 
 describe('Users', () => {
-  const testUser = {
+  const userSignup = {
     username: 'jegede', password: 'jinadu', email: 'jinadu@yahoo.com', fullname: 'Jegede Jinadu',
   };
-  it('(POST /users) should respond with 201', (done) => {
+  const userLogin = {
+    username: 'jegede', password: 'jinadu',
+  };
+  it('(POST /api/v1/users) should respond with 201', (done) => {
     chai.request(server)
       .post('/api/v1/users')
-      .send(testUser)
+      .send(userSignup)
       .end((err, res) => {
         res.should.have.status(201);
         done();
       });
   });
-  it('(POST /users/login) should respond with a session token');
+
+  it('(POST /api/v1/users/login) should respond with 201 and a session token', (done) => {
+    chai.request(server)
+      .post('/api/v1/users/login')
+      .send(userLogin)
+      .end((err, res) => {
+        res.should.have.status(201);
+        done();
+      });
+  });
 });
 
 describe('Events', () => {
