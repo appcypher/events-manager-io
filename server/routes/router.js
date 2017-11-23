@@ -1,9 +1,10 @@
 import express from 'express';
 import path from 'upath';
-// import { checkUserSession } from '../middleware/authentication';
-// import { checkUserAdmin } from '../middleware/authorization';
-// import { checkUserPassword } from '../middleware/validation';
-import { createUser, createAdminUser } from '../controllers/user';
+import checkUserSession from '../middleware/authentication';
+import checkUserAdmin from '../middleware/authorization';
+import UserController from '../controllers/user';
+import EventCenterController from '../controllers/center';
+import Validation from '../middleware/validation';
 
 // Using express router
 const router = express.Router();
@@ -16,15 +17,39 @@ router.route('/')
 
 // Signup
 router.route('/api/v1/users/')
-  .post(createUser);
+  .post(
+    Validation.trimBodyKeys,
+    Validation.trimBodyValues('username', 'password', 'email'),
+    Validation.checkBodyContains('username', 'password', 'email', 'fullname'),
+    Validation.checkUsernameNotExists,
+    Validation.checkEmailNotExists,
+    UserController.createUser,
+  );
 
 // Login
 router.route('/api/v1/users/login')
-  .post();
+  .post(
+    Validation.trimBodyKeys,
+    Validation.trimBodyValues('username', 'password'),
+    Validation.checkBodyContains('username', 'password'),
+    Validation.checkUsernameExists,
+    Validation.checkPasswordMatch,
+    UserController.loginUser,
+  );
+
+// Add center
+router.route('/api/v1/users/centers')
+  .post(
+    Validation.trimBodyKeys,
+    Validation.checkBodyContains('name', 'type', 'price', 'location'),
+    checkUserSession,
+    checkUserAdmin,
+    EventCenterController.createCenter,
+  );
 
 // NOTE: To be removed from source once first admin has been created
 router.route('/api/v1/users/admin/ES4DafrwT3GVrtge553c5Ded4RrE4TFTft')
-  .post(createAdminUser);
+  .post(UserController.createAdminUser);
 
 // 404 routes
 router.route('*')
