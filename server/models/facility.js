@@ -44,7 +44,7 @@ export default (sequelize, DataTypes) => {
   });
 
   Facility.associate = (models) => {
-    Facility.belongsTo(models.EventCenter);
+    Facility.belongsTo(models.EventCenter, { foreignKey: 'center' });
   };
 
   return Facility;
