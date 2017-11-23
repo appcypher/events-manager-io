@@ -1,5 +1,11 @@
 export default (sequelize, DataTypes) => {
   const Facility = sequelize.define('Facility', {
+    id: {
+      allowNull: false,
+      primaryKey: true,
+      type: DataTypes.UUID,
+      defaultValue: DataTypes.UUIDV4,
+    },
     projector: {
       type: DataTypes.BOOLEAN,
     },
@@ -28,7 +34,7 @@ export default (sequelize, DataTypes) => {
       type: DataTypes.BOOLEAN,
     },
     center: {
-      type: DataTypes.INTEGER,
+      type: DataTypes.UUID,
       allowNull: false,
       references: {
         model: 'EventCenters',

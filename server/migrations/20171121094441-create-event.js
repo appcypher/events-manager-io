@@ -3,9 +3,9 @@ module.exports = {
     queryInterface.createTable('Events', {
       id: {
         allowNull: false,
-        autoIncrement: true,
         primaryKey: true,
-        type: Sequelize.INTEGER,
+        type: Sequelize.UUID,
+        defaultValue: Sequelize.UUIDV4,
       },
       title: {
         type: Sequelize.STRING,
@@ -14,16 +14,12 @@ module.exports = {
       description: {
         type: Sequelize.STRING,
       },
-      datetime: {
+      date: {
         type: Sequelize.DATE,
         allowNull: false,
       },
-      duration: {
-        type: Sequelize.INTEGER,
-        allowNull: false,
-      },
       center: {
-        type: Sequelize.INTEGER,
+        type: Sequelize.UUID,
         allowNull: false,
         references: {
           model: 'EventCenters',
@@ -31,7 +27,7 @@ module.exports = {
         },
       },
       user: {
-        type: Sequelize.INTEGER,
+        type: Sequelize.UUID,
         allowNull: false,
         references: {
           model: 'Users',

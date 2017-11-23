@@ -1,5 +1,11 @@
 export default (sequelize, DataTypes) => {
   const Event = sequelize.define('Event', {
+    id: {
+      allowNull: false,
+      primaryKey: true,
+      type: DataTypes.UUID,
+      defaultValue: DataTypes.UUIDV4,
+    },
     title: {
       type: DataTypes.STRING,
       allowNull: false,
@@ -11,12 +17,8 @@ export default (sequelize, DataTypes) => {
       type: DataTypes.DATE,
       allowNull: false,
     },
-    duration: {
-      type: DataTypes.INTEGER,
-      allowNull: false,
-    },
     center: {
-      type: DataTypes.INTEGER,
+      type: DataTypes.UUID,
       allowNull: false,
       references: {
         model: 'EventCenters',
@@ -24,7 +26,7 @@ export default (sequelize, DataTypes) => {
       },
     },
     user: {
-      type: DataTypes.INTEGER,
+      type: DataTypes.UUID,
       allowNull: false,
       references: {
         model: 'Users',
