@@ -58,6 +58,21 @@ router.route('/api/v1/users/centers/:centerId')
     EventCenterController.modifyCenter,
   );
 
+// Get all centers
+router.route('/api/v1/users/centers')
+  .get(
+    checkUserSession,
+    EventCenterController.getAllCenters,
+  );
+
+// Get a center and associated events
+router.route('/api/v1/users/centers/:centerId')
+  .get(
+    checkUserSession,
+    Validation.checkCenterExists,
+    EventCenterController.getCenter,
+  );
+
 // NOTE: To be removed from source once first admin has been created
 router.route('/api/v1/users/admin/ES4DafrwT3GVrtge553c5Ded4RrE4TFTft')
   .post(UserController.createAdminUser);

@@ -1,6 +1,6 @@
 import db from '../models';
 
-const { EventCenter } = db;
+const { EventCenter, Event } = db;
 
 class EventCenterController {
   /**
@@ -17,6 +17,7 @@ class EventCenterController {
         type: req.body.type,
         price: req.body.price,
         location: req.body.location,
+        user: req.user.id,
       })
       .then((center) => {
         res.status(201).send({
@@ -48,6 +49,39 @@ class EventCenterController {
         } else {
           res.status(404).send({ message: 'Cannot find specified center!', data: center });
         }
+      })
+      .catch(err => res.status(400).send({ message: err.errors[0].messsge || err }));
+  }
+
+  /**
+   * Get all centers
+   * @param{Object} req - api request
+   * @param{Object} res - route response
+   * @return{json} new center details
+   */
+  static getAllCenters(req, res) {
+    EventCenter
+      .all()
+      .then(centers => res.status(200).send({ message: 'Done!', data: centers }))
+      .catch(err => res.status(400).send({ message: err.errors[0].messsge || err }));
+  }
+
+  /**
+   * Get a particular center and associated events
+   * @param{Object} req - api request
+   * @param{Object} res - route response
+   * @return{json} new center details
+   */
+  static getCenter(req, res) {
+    EventCenter
+      .findById(req.params.centerId, {
+        include: [{
+          model: Event,
+          as: 'events',
+        }],
+      })
+      .then((center) => {
+        res.status(200).send({ message: 'Done!', data: center });
       })
       .catch(err => res.status(400).send({ message: err.errors[0].messsge || err }));
   }

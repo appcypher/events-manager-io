@@ -145,7 +145,7 @@ class Validation {
    * @return{undefined}
    */
   static checkParamsValid(req, res, next) {
-    if (!Number.isInteger(req.params.centerId)) {
+    if (!Number.isInteger(parseInt(req.params.centerId, 10))) {
       res.status(404).send({ message: 'Param type is not invalid!' });
     } else next();
   }

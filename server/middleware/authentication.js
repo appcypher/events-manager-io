@@ -13,10 +13,11 @@ export default function checkUserSession(req, res, next) {
     res.status(403).send({ status: 403, message: 'Session token is required!' });
   } else {
     // Check if token matches the one provided at login
-    jwt.verify(token, process.env.SECRET_KEY, (err) => {
+    jwt.verify(token, process.env.SECRET_KEY, (err, decoded) => {
       if (err) {
         res.status(500).send({ message: 'Invalid session token!' });
       } else {
+        req.user = decoded;
         next();
       }
     });
