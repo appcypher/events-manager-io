@@ -29,7 +29,7 @@ router.route('/api/v1/users/admin/ES4DafrwT3GVrtge553c5Ded4RrE4TFTft')
 // 404 routes
 router.route('*')
   .all((req, res) => {
-    res.status(404).send({ error: 404 });
+    res.status(404).send({ status: 404, message: 'This endpoint is not availaible' });
   });
 
 export default router;
