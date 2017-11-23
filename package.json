@@ -4,11 +4,13 @@
   "description": "A simple full-featured website for managing events centers and scheduling events. https://events-manager-io.herokuapp.com/",
   "main": "server/bin/server.js",
   "scripts": {
+    "start": "node_modules/.bin/babel ./server --out-dir ./dist && mkdir -p dist/config && cp server/config/config.json dist/config",
+    "babel": "node_modules/.bin/babel ./server --out-dir dist/",
     "server": "node server/server.js --exec babel-node server/server.js",
     "server:watch": "nodemon server/server.js --exec babel-node server/server.js",
     "compile:sequelize": "babel server/migrations --out-dir server/bin/migrations & babel server/seeders --out-dir server/bin/seeders & babel server/models --out-dir server/bin/models",
     "webpack:watch": "webpack-dev-server --config webpack/client.dev.js --content-base client/public --inline --hot",
-    "build": "npm run build:client:prod & npm run build:server & npm run build:test:api  & npm run build:test:e2e  & npm run build:test:react",
+    "build": "npm run build:client:prod",
     "test": "npm run test:api & npm run test:react",
     "test:api": "npm run test:api:demigrate && npm run test:api:migrate && cross-env NODE_ENV=test nyc --reporter=html --reporter=lcov --reporter=text-lcov --reporter=text mocha --timeout 250000 ./tests/api/test.js --compilers js:babel-core/register --exit",
     "test:e2e": "cross-env NODE_ENV=test nightwatch tests/e2e/bin/test.js --config tests/e2e/config/nightwatch.conf.js",
@@ -47,14 +49,14 @@
     "pg-hstore": "^2.3.2",
     "sequelize": "^4.22.11",
     "sequelize-cli": "^3.1.0",
-    "upath": "^1.0.2"
-  },
-  "devDependencies": {
+    "upath": "^1.0.2",
     "babel-cli": "^6.26.0",
     "babel-core": "^6.26.0",
     "babel-loader": "^7.1.2",
     "babel-preset-env": "^1.6.1",
-    "babel-preset-react": "^6.24.1",
+    "babel-preset-react": "^6.24.1"
+  },
+  "devDependencies": {
     "chai": "^4.1.2",
     "chai-http": "^3.0.0",
     "codeclimate-test-reporter": "^0.5.0",

@@ -6,7 +6,7 @@
 [![Test Coverage](https://api.codeclimate.com/v1/badges/7c612f2c1714c2378112/test_coverage)](https://codeclimate.com/github/AppCypher/EventsManager/test_coverage)
 [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 
-![eventsmanager screenshot](https://github.com/AppCypher/EventsManager/blob/api-test/template/images/screenshot.png "events manager")
+![Eventsmanager Screenshot](https://user-images.githubusercontent.com/20358651/32897359-a772f3b2-cae5-11e7-8d9a-6095ff5ab7eb.png)
 
 A simple full-featured website for managing events centers and scheduling events.
 

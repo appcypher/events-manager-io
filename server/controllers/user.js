@@ -24,12 +24,8 @@ export function createUser(req, res) {
       description: null,
       tagline: null,
     })
-    .then(user =>
-      res.status(201)
-        .send(user))
-    .catch(err =>
-      res.status(400)
-        .send(`${err.errors[0].message}!`));
+    .then(user => res.status(201).send({ status: 201, message: 'User created', data: user }))
+    .catch(err => res.status(400).send({ status: 400, message: err.errors[0].messsge || err }));
 }
 
 /**
@@ -46,9 +42,9 @@ export function loginUser(req, res) {
     .then((user) => {
       // Create a session token with 30-minute session
       const token = jwt.sign({ username: user.username, admin: user.isadmin }, process.env.SECRET_KEY, { expiresIn: '30m' });
-      res.status(200).send({ status: 200, message: 'Successfully Logged in!', token });
+      res.status(200).send({ status: 200, message: 'Successfully Logged in!', data: token });
     })
-    .catch(err => res.status(400).send(`${err.errors[0].message}!`));
+    .catch(err => res.status(400).send({ status: 400, message: err.errors[0].messsge || err }));
 }
 
 /**
@@ -71,6 +67,6 @@ export function createAdminUser(req, res) {
       description: null,
       tagline: null,
     })
-    .then(user => res.status(201).send({ status: 201, message: 'User created', user }))
+    .then(user => res.status(201).send({ status: 201, message: 'User created', data: user }))
     .catch(err => res.status(400).send({ status: 400, message: err.errors[0].messsge || err }));
 }
