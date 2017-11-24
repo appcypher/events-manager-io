@@ -218,9 +218,8 @@ var Validation = function () {
         if (center === undefined || center === null) {
           res.status(404).send({ message: 'cannot find specified event center!' });
         } else next();
-      }).catch(function (err) {
-        return res.status(400).send({ message: err.errors[0].messsge || err });
       });
+      // .catch(err => res.status(400).send({ message: err.errors[0].messsge || err }));
     }
 
     /**
