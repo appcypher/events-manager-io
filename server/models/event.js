@@ -16,6 +16,11 @@ export default (sequelize, DataTypes) => {
     date: {
       type: DataTypes.DATE,
       allowNull: false,
+      validate: {
+        isDate: { args: true, msg: 'date format is invalid!\nmake sure it is in YYYY-MM-DD format' },
+        isAfter: { args: '2017-11-24', msg: 'date format is invalid!\nmake sure it is within a month\'s range' },
+        isBefore: { args: '2017-12-24', msg: 'date format is invalid!\nmake sure it is within a month\'s range' },
+      },
     },
     center: {
       type: DataTypes.INTEGER,
