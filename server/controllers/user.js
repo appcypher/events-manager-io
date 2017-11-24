@@ -30,7 +30,7 @@ class UserController {
         );
         res.status(201).send({ message: 'user created!', data: user, token });
       })
-      .catch(err => res.status(400).send({ message: err.errors[0].messsge || err }));
+      .catch(err => res.status(400).send({ message: err.errors[0].message || err }));
   }
 
   /**
@@ -52,7 +52,7 @@ class UserController {
         );
         res.status(200).send({ message: 'user logged in!', token });
       })
-      .catch(err => res.status(400).send({ message: err.errors[0].messsge || err }));
+      .catch(err => res.status(400).send({ message: err.errors[0].message || err }));
   }
 
   /**

@@ -24,7 +24,7 @@ class Validation {
           } else next();
         });
       })
-      .catch(err => res.status(400).send({ status: 400, message: err.errors[0].messsge || err }));
+      .catch(err => res.status(400).send({ status: 400, message: err.errors[0].message || err }));
   }
 
   /**
@@ -94,7 +94,7 @@ class Validation {
           res.status(404).send({ message: 'username does not exist!' });
         } else next();
       })
-      .catch(err => res.status(400).send({ message: err.errors[0].messsge || err }));
+      .catch(err => res.status(400).send({ message: err.errors[0].message || err }));
   }
 
   /**
@@ -114,7 +114,7 @@ class Validation {
           res.status(409).send({ message: 'username already taken!' });
         } else next();
       })
-      .catch(err => res.status(400).send({ message: err.errors[0].messsge || err }));
+      .catch(err => res.status(400).send({ message: err.errors[0].message || err }));
   }
 
   /**
@@ -134,7 +134,7 @@ class Validation {
           res.status(409).send({ message: 'email already taken!' });
         } else next();
       })
-      .catch(err => res.status(400).send({ message: err.errors[0].messsge || err }));
+      .catch(err => res.status(400).send({ message: err.errors[0].message || err }));
   }
 
   /**
@@ -167,7 +167,7 @@ class Validation {
           res.status(404).send({ message: 'cannot find specified event center!' });
         } else next();
       })
-      .catch(err => res.status(400).send({ message: err.errors[0].messsge || err }));
+      .catch(err => res.status(400).send({ message: err.errors[0].message || err }));
   }
 
   /**
@@ -194,7 +194,7 @@ class Validation {
             res.status(404).send({ message: 'event already slated for that date!' });
           } else next();
         })
-        .catch(err => res.status(400).send({ message: err.errors[0].messsge || err }));
+        .catch(err => res.status(400).send({ message: err.errors[0].message || err }));
     }
   }
 
@@ -218,7 +218,7 @@ class Validation {
           res.status(404).send({ message: 'cannot find specified event!' });
         } else next();
       })
-      .catch(err => res.status(400).send({ message: err.errors[0].messsge || err }));
+      .catch(err => res.status(400).send({ message: err.errors[0].message || err }));
   }
 }
 

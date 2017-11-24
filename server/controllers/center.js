@@ -22,7 +22,7 @@ class EventCenterController {
       .then((center) => {
         res.status(201).send({ message: 'center created!', data: center });
       })
-      .catch(err => res.status(400).send({ message: err.errors[0].messsge || err }));
+      .catch(err => res.status(400).send({ message: err.errors[0].message || err }));
   }
 
   /**
@@ -48,7 +48,7 @@ class EventCenterController {
           res.status(404).send({ message: 'cannot find specified center!' });
         }
       })
-      .catch(err => res.status(400).send({ message: err.errors[0].messsge || err }));
+      .catch(err => res.status(400).send({ message: err.errors[0].message || err }));
   }
 
   /**
@@ -61,7 +61,7 @@ class EventCenterController {
     EventCenter
       .all()
       .then(centers => res.status(200).send({ message: 'all centers gotten!', data: centers }))
-      .catch(err => res.status(400).send({ message: err.errors[0].messsge || err }));
+      .catch(err => res.status(400).send({ message: err.errors[0].message || err }));
   }
 
   /**
@@ -81,7 +81,7 @@ class EventCenterController {
       .then((center) => {
         res.status(200).send({ message: 'center gotten!', data: center });
       })
-      .catch(err => res.status(400).send({ message: err.errors[0].messsge || err }));
+      .catch(err => res.status(400).send({ message: err.errors[0].message || err }));
   }
 }
 
