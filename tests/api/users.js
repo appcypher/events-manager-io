@@ -3,6 +3,7 @@ import chaiHttp from 'chai-http';
 import server from '../../server/server';
 
 chai.use(chaiHttp);
+const { expect } = chai;
 
 describe('Users', () => {
   const userSignup = {
@@ -13,17 +14,28 @@ describe('Users', () => {
     username: 'jegede', password: 'jinadu',
   };
 
-  // SIGN UP
-  it('(POST /api/v1/users) should respond with 201', (done) => {
+  // First sign up should be successful
+  it('(POST /api/v1/users) should create user', (done) => {
     chai.request(server)
       .post('/api/v1/users')
       .send(userSignup)
       .end((err, res) => {
-        res.body.SUCCESS.message.should.equal('user created!');
-        res.should.have.status(201);
-        // res.should.be.a('object');
+        expect(res).to.have.status(201);
+        expect(res.body.message).to.equal('user created!');
+        expect(res).to.be.json;
         done();
       });
   });
 
+  // Signing up with the same email and password
+  it('(POST /api/v1/users) should not create user on when email and username is reused', (done) => {
+    chai.request(server)
+      .post('/api/v1/users')
+      .send(userSignup)
+      .end((err, res) => {
+        expect(res).to.have.status(409);
+        expect(res).to.be.json;
+        done();
+      });
+  });
 });
