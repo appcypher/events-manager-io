@@ -33,7 +33,7 @@ export default (sequelize, DataTypes) => {
       type: DataTypes.STRING,
       allowNull: false,
       validate: {
-        is: { args: /^![\\\-+;./'"@~!#$%^&*()[]=?]+$/, msg: 'name format is invalid!\nmake sure it doesn\'t contain punctuations' },
+        is: { args: /^[^\\+;./'"@~!#$%^&*()[\]=?]+$/, msg: 'fullname format is invalid!\nmake sure it doesn\'t contain punctuations' },
       },
     },
     admin: {
