@@ -114,7 +114,7 @@ class Validation {
           res.status(409).send({ message: 'username already taken!' });
         } else next();
       })
-      // .catch(err => res.status(400).send({ message: err.errors[0].messsge || err }));
+      .catch(err => res.status(400).send({ message: err.errors[0].messsge || err }));
   }
 
   /**

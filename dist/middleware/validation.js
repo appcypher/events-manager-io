@@ -158,8 +158,9 @@ var Validation = function () {
         if (user) {
           res.status(409).send({ message: 'username already taken!' });
         } else next();
+      }).catch(function (err) {
+        return res.status(400).send({ message: err.errors[0].messsge || err });
       });
-      // .catch(err => res.status(400).send({ message: err.errors[0].messsge || err }));
     }
 
     /**
