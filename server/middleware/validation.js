@@ -1,7 +1,7 @@
 import bcrypt from 'bcrypt';
 import db from '../models';
 
-const { User, EventCenter } = db;
+const { User, EventCenter, Event } = db;
 
 class Validation {
   /**
@@ -165,6 +165,54 @@ class Validation {
       .then((center) => {
         if (center === undefined || center === null) {
           res.status(404).send({ message: 'Cannot find specified event center!' });
+        } else next();
+      })
+      .catch(err => res.status(400).send({ message: err.errors[0].messsge || err }));
+  }
+
+  /**
+   * Checks if event date is not already taken
+   * @param{Object} req - api request
+   * @param{Object} res - route response
+   * @param{Function} next - next middleware
+   * @return{undefined}
+   */
+  static checkDateNotTaken(req, res, next) {
+    const dateRegex = /^201[7-8]-[0-9][0-9]-[0-3][0-9]$/;
+    if (req.body.date.match(dateRegex) === null) {
+      res.status(404).send({ message: 'Date format invalid, use format "YYYY-MM-DD"!' });
+    } else {
+      Event
+        .findOne({
+          where: {
+            center: req.body.center,
+            date: new Date(req.body.date).toISOString(),
+          },
+        })
+        .then((event) => {
+          if (event) {
+            res.status(404).send({ message: 'Event date already booked!' });
+          } else next();
+        })
+        .catch(err => res.status(400).send({ message: err.errors[0].messsge || err }));
+    }
+  }
+
+  /**
+   * Checks if event already exists
+   * @param{Object} req - api request
+   * @param{Object} res - route response
+   * @param{Function} next - next middleware
+   * @return{undefined}
+   */
+  static checkEventExists(req, res, next) {
+    Event
+      .findOne({
+        where: { id: req.params.eventId },
+      })
+      .then((event) => {
+        if (event === undefined || event === null) {
+          res.status(404).send({ message: 'Cannot find specified event!' });
         } else next();
       })
       .catch(err => res.status(400).send({ message: err.errors[0].messsge || err }));
