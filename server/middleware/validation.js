@@ -179,14 +179,14 @@ class Validation {
    */
   static checkDateNotTaken(req, res, next) {
     const dateRegex = /^201[7-8]-[0-9][0-9]-[0-3][0-9]$/;
-    if (req.body.date.match(dateRegex) === null) {
+    if (req.body.date != null && req.body.date.match(dateRegex) == null) {
       res.status(404).send({ message: 'Date format invalid, use format "YYYY-MM-DD"!' });
     } else {
       Event
         .findOne({
           where: {
             center: req.body.center,
-            date: new Date(req.body.date).toISOString(),
+            date: req.body.date != null ? new Date(req.body.date).toISOString() : null,
           },
         })
         .then((event) => {
@@ -208,10 +208,13 @@ class Validation {
   static checkEventExists(req, res, next) {
     Event
       .findOne({
-        where: { id: req.params.eventId },
+        where: {
+          id: req.params.eventId,
+          user: req.user.id, // User ids must match too
+        },
       })
       .then((event) => {
-        if (event === undefined || event === null) {
+        if (event == null) {
           res.status(404).send({ message: 'Cannot find specified event!' });
         } else next();
       })
