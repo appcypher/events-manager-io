@@ -4,6 +4,7 @@ import checkUserSession from '../middleware/authentication';
 import checkUserAdmin from '../middleware/authorization';
 import UserController from '../controllers/user';
 import EventCenterController from '../controllers/center';
+import EventController from '../controllers/event';
 import Validation from '../middleware/validation';
 
 // Using express router
@@ -38,7 +39,7 @@ router.route('/api/v1/users/login')
   );
 
 // Add center
-router.route('/api/v1/users/centers')
+router.route('/api/v1/centers')
   .post(
     Validation.trimBodyKeys,
     Validation.checkBodyContains('name', 'type', 'price', 'location'),
@@ -48,7 +49,7 @@ router.route('/api/v1/users/centers')
   );
 
 // Modify center
-router.route('/api/v1/users/centers/:centerId')
+router.route('/api/v1/centers/:centerId')
   .put(
     Validation.trimBodyKeys,
     checkUserSession,
@@ -59,18 +60,29 @@ router.route('/api/v1/users/centers/:centerId')
   );
 
 // Get all centers
-router.route('/api/v1/users/centers')
+router.route('/api/v1/centers')
   .get(
     checkUserSession,
     EventCenterController.getAllCenters,
   );
 
 // Get a center and associated events
-router.route('/api/v1/users/centers/:centerId')
+router.route('/api/v1/centers/:centerId')
   .get(
     checkUserSession,
     Validation.checkCenterExists,
     EventCenterController.getCenter,
+  );
+
+// Add event
+router.route('/api/v1/events')
+  .post(
+    Validation.trimBodyKeys,
+    Validation.checkBodyContains('title', 'date', 'center'),
+    checkUserSession,
+    Validation.checkDateNotTaken,
+    Validation.checkEventExists,
+    EventController.createEvent,
   );
 
 // NOTE: To be removed from source once first admin has been created

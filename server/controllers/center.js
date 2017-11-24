@@ -7,7 +7,7 @@ class EventCenterController {
    * Creates a new center
    * @param{Object} req - api request
    * @param{Object} res - route response
-   * @return{json} new center details
+   * @return{json}
    */
   static createCenter(req, res) {
     EventCenter
@@ -20,9 +20,7 @@ class EventCenterController {
         user: req.user.id,
       })
       .then((center) => {
-        res.status(201).send({
-          status: 201, message: 'Center created!', data: center,
-        });
+        res.status(201).send({ message: 'Center created!', data: center });
       })
       .catch(err => res.status(400).send({ message: err.errors[0].messsge || err }));
   }
@@ -31,7 +29,7 @@ class EventCenterController {
    * Modifies an existing center
    * @param{Object} req - api request
    * @param{Object} res - route response
-   * @return{json} new center details
+   * @return{json}
    */
   static modifyCenter(req, res) {
     EventCenter
@@ -57,7 +55,7 @@ class EventCenterController {
    * Get all centers
    * @param{Object} req - api request
    * @param{Object} res - route response
-   * @return{json} new center details
+   * @return{json}
    */
   static getAllCenters(req, res) {
     EventCenter
@@ -70,7 +68,7 @@ class EventCenterController {
    * Get a particular center and associated events
    * @param{Object} req - api request
    * @param{Object} res - route response
-   * @return{json} new center details
+   * @return{json}
    */
   static getCenter(req, res) {
     EventCenter
