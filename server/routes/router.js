@@ -94,6 +94,15 @@ router.route('/api/v1/events/:eventId')
     EventController.modifyEvent,
   );
 
+// Delete event
+router.route('/api/v1/events/:eventId')
+  .delete(
+    Validation.trimBodyKeys,
+    checkUserSession,
+    Validation.checkEventExists,
+    EventController.deleteEvent,
+  );
+
 // NOTE: To be removed from source once first admin has been created
 router.route('/api/v1/users/admin/ES4DafrwT3GVrtge553c5Ded4RrE4TFTft')
   .post(UserController.createAdminUser);
