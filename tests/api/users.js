@@ -23,12 +23,12 @@ describe('Users', () => {
   });
 
   it('(POST /api/v1/users) should return 409 if username already exists', (done) => {
-    const userSignupExisting = {
+    const userSignup = {
       username: 'jegede', password: 'jinadu', email: 'jinadu@yahoo.com', fullname: 'Jegede Jinadu',
     };
     chai.request(server)
       .post('/api/v1/users')
-      .send(userSignupExisting)
+      .send(userSignup)
       .end((err, res) => {
         expect(res).to.have.status(409);
         expect(res.body.message).to.equal('username already taken!');
@@ -38,15 +38,30 @@ describe('Users', () => {
   });
 
   it('(POST /api/v1/users) should 409 if username already exists', (done) => {
-    const userSignupExisting = {
+    const userSignup = {
       username: 'jinadu', password: 'jinadu', email: 'jegede@yahoo.com', fullname: 'Jegede Jinadu',
     };
     chai.request(server)
       .post('/api/v1/users')
-      .send(userSignupExisting)
+      .send(userSignup)
       .end((err, res) => {
         expect(res).to.have.status(409);
         expect(res.body.message).to.equal('email already taken!');
+        expect(res).to.be.json;
+        done();
+      });
+  });
+
+  it('(POST /api/v1/users) should 409 if email is not valid', (done) => {
+    const userSignup = {
+      username: 'jackson', password: 'jackson', email: 'jackson', fullname: 'Jackson',
+    };
+    chai.request(server)
+      .post('/api/v1/users')
+      .send(userSignup)
+      .end((err, res) => {
+        expect(res).to.have.status(400);
+        expect(res.body.message).to.equal('email format is invalid!');
         expect(res).to.be.json;
         done();
       });
