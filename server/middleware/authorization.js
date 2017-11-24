@@ -11,7 +11,7 @@ import jwt from 'jsonwebtoken';
 export default function checkUserAdmin(req, res, next) {
   const token = req.body.token || req.headers.token;
   if (!token) {
-    res.status(401).send({ status: 401, message: 'session token is required!' });
+    res.status(401).send({ message: 'session token is required!' });
   } else {
     // Check if token matches the one provided at login
     jwt.verify(token, process.env.SECRET_KEY, (err, decoded) => {
