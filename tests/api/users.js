@@ -7,6 +7,7 @@ chai.use(chaiHttp);
 const { expect } = chai;
 
 describe('Users', () => {
+  /* SIGNUP */
   it('(POST /api/v1/users) should return 201 if successful', (done) => {
     const userSignup = {
       username: 'jegede', password: 'jegede', email: 'jegede@yahoo.com', fullname: 'Jegede Jinadu',
@@ -66,4 +67,21 @@ describe('Users', () => {
         done();
       });
   });
+
+  /* LOGIN */
+  it('(POST /api/v1/users/login) should 201 if credentials valid', (done) => {
+    const userLogin = {
+      username: 'jegede', password: 'jegede',
+    };
+    chai.request(server)
+      .post('/api/v1/users/login')
+      .send(userLogin)
+      .end((err, res) => {
+        expect(res).to.have.status(200);
+        expect(res.body.message).to.equal('user logged in!');
+        expect(res).to.be.json;
+        done();
+      });
+  });
+
 });
