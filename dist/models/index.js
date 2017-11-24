@@ -12,6 +12,10 @@ var _sequelize = require('sequelize');
 
 var _sequelize2 = _interopRequireDefault(_sequelize);
 
+var _dotenv = require('dotenv');
+
+var _dotenv2 = _interopRequireDefault(_dotenv);
+
 var _config = require('../config/config.json');
 
 var _config2 = _interopRequireDefault(_config);
@@ -22,6 +26,8 @@ var basename = _path2.default.basename(module.filename);
 var env = process.env.NODE_ENV || 'development';
 var config = _config2.default[env];
 var db = {};
+
+_dotenv2.default.config();
 
 var sequelize = void 0;
 if (config.use_env_variable) {
