@@ -20,7 +20,7 @@ class Validation {
         // Compare hashed password
         bcrypt.compare(req.body.password, user.password).then((check) => {
           if (!check) {
-            res.status(401).send({ status: 401, message: 'Wrong password or username!' });
+            res.status(401).send({ status: 401, message: 'wrong password or username!' });
           } else next();
         });
       })
@@ -91,7 +91,7 @@ class Validation {
       })
       .then((user) => {
         if (!user) {
-          res.status(404).send({ message: 'Username does not exist!' });
+          res.status(404).send({ message: 'username does not exist!' });
         } else next();
       })
       .catch(err => res.status(400).send({ message: err.errors[0].messsge || err }));
@@ -111,7 +111,7 @@ class Validation {
       })
       .then((user) => {
         if (user) {
-          res.status(409).send({ message: 'Username already taken!' });
+          res.status(409).send({ message: 'username already taken!' });
         } else next();
       })
       .catch(err => res.status(400).send({ message: err.errors[0].messsge || err }));
@@ -131,7 +131,7 @@ class Validation {
       })
       .then((user) => {
         if (user) {
-          res.status(409).send({ message: 'Email already taken!' });
+          res.status(409).send({ message: 'email already taken!' });
         } else next();
       })
       .catch(err => res.status(400).send({ message: err.errors[0].messsge || err }));
@@ -146,7 +146,7 @@ class Validation {
    */
   static checkParamsValid(req, res, next) {
     if (!Number.isInteger(parseInt(req.params.centerId, 10))) {
-      res.status(404).send({ message: 'Param type is not invalid!' });
+      res.status(404).send({ message: 'param type is not invalid!' });
     } else next();
   }
 
@@ -164,7 +164,7 @@ class Validation {
       })
       .then((center) => {
         if (center === undefined || center === null) {
-          res.status(404).send({ message: 'Cannot find specified event center!' });
+          res.status(404).send({ message: 'cannot find specified event center!' });
         } else next();
       })
       .catch(err => res.status(400).send({ message: err.errors[0].messsge || err }));
@@ -180,7 +180,7 @@ class Validation {
   static checkDateNotTaken(req, res, next) {
     const dateRegex = /^201[7-8]-[0-9][0-9]-[0-3][0-9]$/;
     if (req.body.date != null && req.body.date.match(dateRegex) == null) {
-      res.status(404).send({ message: 'Date format invalid, use format "YYYY-MM-DD"!' });
+      res.status(404).send({ message: 'date format invalid, use format "YYYY-MM-DD"!' });
     } else {
       Event
         .findOne({
@@ -191,7 +191,7 @@ class Validation {
         })
         .then((event) => {
           if (event) {
-            res.status(404).send({ message: 'Event date already booked!' });
+            res.status(404).send({ message: 'event already slated for that date!' });
           } else next();
         })
         .catch(err => res.status(400).send({ message: err.errors[0].messsge || err }));
@@ -215,7 +215,7 @@ class Validation {
       })
       .then((event) => {
         if (event == null) {
-          res.status(404).send({ message: 'Cannot find specified event!' });
+          res.status(404).send({ message: 'cannot find specified event!' });
         } else next();
       })
       .catch(err => res.status(400).send({ message: err.errors[0].messsge || err }));

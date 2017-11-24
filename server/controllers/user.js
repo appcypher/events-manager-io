@@ -28,7 +28,7 @@ class UserController {
           process.env.SECRET_KEY,
           { expiresIn: '30m' },
         );
-        res.status(201).send({ message: 'User created!', data: user, token });
+        res.status(201).send({ message: 'user created!', data: user, token });
       })
       .catch(err => res.status(400).send({ message: err.errors[0].messsge || err }));
   }
@@ -50,7 +50,7 @@ class UserController {
           process.env.SECRET_KEY,
           { expiresIn: '30m' },
         );
-        res.status(200).send({ message: 'User logged in!', token });
+        res.status(200).send({ message: 'user logged in!', token });
       })
       .catch(err => res.status(400).send({ message: err.errors[0].messsge || err }));
   }
