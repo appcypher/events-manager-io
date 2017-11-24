@@ -20,7 +20,7 @@ class EventCenterController {
         user: req.user.id,
       })
       .then((center) => {
-        res.status(201).send({ message: 'Center created!', data: center });
+        res.status(201).send({ message: 'center created!', data: center });
       })
       .catch(err => res.status(400).send({ message: err.errors[0].messsge || err }));
   }
@@ -43,9 +43,9 @@ class EventCenterController {
             price: req.body.price || center.price,
             location: req.body.location || center.location,
           });
-          res.status(200).send({ message: 'Center modified!', data: center });
+          res.status(200).send({ message: 'center modified!', data: center });
         } else {
-          res.status(404).send({ message: 'Cannot find specified center!' });
+          res.status(404).send({ message: 'cannot find specified center!' });
         }
       })
       .catch(err => res.status(400).send({ message: err.errors[0].messsge || err }));
@@ -60,7 +60,7 @@ class EventCenterController {
   static getAllCenters(req, res) {
     EventCenter
       .all()
-      .then(centers => res.status(200).send({ message: 'Done!', data: centers }))
+      .then(centers => res.status(200).send({ message: 'all centers gotten!', data: centers }))
       .catch(err => res.status(400).send({ message: err.errors[0].messsge || err }));
   }
 
@@ -79,7 +79,7 @@ class EventCenterController {
         }],
       })
       .then((center) => {
-        res.status(200).send({ message: 'Done!', data: center });
+        res.status(200).send({ message: 'center gotten!', data: center });
       })
       .catch(err => res.status(400).send({ message: err.errors[0].messsge || err }));
   }
