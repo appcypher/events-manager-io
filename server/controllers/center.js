@@ -45,7 +45,7 @@ class EventCenterController {
           });
           res.status(200).send({ message: 'Center modified!', data: center });
         } else {
-          res.status(404).send({ message: 'Cannot find specified center!', data: center });
+          res.status(404).send({ message: 'Cannot find specified center!' });
         }
       })
       .catch(err => res.status(400).send({ message: err.errors[0].messsge || err }));
