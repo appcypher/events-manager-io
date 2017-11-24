@@ -22,9 +22,9 @@ export default (sequelize, DataTypes) => {
       type: DataTypes.DOUBLE,
       allowNull: false,
       validate: {
-        isDecimal: { args: true, msg: 'price format is invalid!\nmake sure value is a number' },
-        min: { args: 1000, msg: 'price format is invalid!\nmake sure the value is not less than 1000' },
-        max: { args: 10000000, msg: 'price format is invalid!\nmake sure the value is not more than 10,000,000' },
+        isDecimal: { args: true, msg: 'price format is invalid! - make sure value is a number' },
+        min: { args: 1000, msg: 'price format is invalid! - make sure the value is not less than 1000' },
+        max: { args: 10000000, msg: 'price format is invalid! - make sure the value is not more than 10,000,000' },
       },
     },
     location: {
