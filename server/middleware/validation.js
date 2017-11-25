@@ -46,35 +46,18 @@ class Validation {
   }
 
   /**
-   * Trims body keys
+   * Trims body values
    * @param{Object} req - api request
    * @param{Object} res - route response
    * @param{Function} next - next middleware
    * @return{undefined}
    */
-  static trimBodyKeys(req, res, next) {
-    // trim body keys
+  static trimBodyValues(req, res, next) {
+    // trim body values
     Object.keys(req.body).forEach((k) => {
-      req.body[k.trim()] = req.body[k];
+      if (req.body[k] !== undefined) req.body[k] = req.body[k].trim(); // trim value if body exist
     });
     next();
-  }
-
-  /**
-   * Trims body values passed to it
-   * @param{Object} req - api request
-   * @param{Object} res - route response
-   * @param{Function} next - next middleware
-   * @return{undefined}
-   */
-  static trimBodyValues(...params) {
-    return (req, res, next) => {
-      // trim body values
-      params.forEach((p) => {
-        if (req.body[p] !== undefined) req.body[p] = req.body[p].trim(); // trim value if body exist
-      });
-      next();
-    };
   }
 
   /**

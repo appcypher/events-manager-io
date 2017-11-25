@@ -19,7 +19,7 @@ router.route('/')
 // Signup
 router.route('/api/v1/users/')
   .post(
-    Validation.trimBodyKeys,
+    Validation.trimBodyValues,
     Validation.trimBodyValues('username', 'password', 'email'),
     Validation.checkBodyContains('username', 'password', 'email', 'fullname'),
     Validation.checkUsernameNotExists,
@@ -30,8 +30,7 @@ router.route('/api/v1/users/')
 // Login
 router.route('/api/v1/users/login')
   .post(
-    Validation.trimBodyKeys,
-    Validation.trimBodyValues('username', 'password'),
+    Validation.trimBodyValues,
     Validation.checkBodyContains('username', 'password'),
     Validation.checkUsernameExists,
     Validation.checkPasswordMatch,
@@ -41,7 +40,7 @@ router.route('/api/v1/users/login')
 // Add center
 router.route('/api/v1/centers')
   .post(
-    Validation.trimBodyKeys,
+    Validation.trimBodyValues,
     Validation.checkBodyContains('name', 'type', 'price', 'location'),
     checkUserSession,
     checkUserAdmin,
@@ -51,7 +50,7 @@ router.route('/api/v1/centers')
 // Modify center
 router.route('/api/v1/centers/:centerId')
   .put(
-    Validation.trimBodyKeys,
+    Validation.trimBodyValues,
     checkUserSession,
     checkUserAdmin,
     Validation.checkParamsValid,
@@ -77,7 +76,7 @@ router.route('/api/v1/centers/:centerId')
 // Add event
 router.route('/api/v1/events')
   .post(
-    Validation.trimBodyKeys,
+    Validation.trimBodyValues,
     Validation.checkBodyContains('title', 'date', 'center'),
     checkUserSession,
     Validation.checkDateNotTaken,
@@ -87,7 +86,7 @@ router.route('/api/v1/events')
 // Modify event
 router.route('/api/v1/events/:eventId')
   .put(
-    Validation.trimBodyKeys,
+    Validation.trimBodyValues,
     checkUserSession,
     Validation.checkDateNotTaken,
     Validation.checkEventExists,
@@ -97,7 +96,6 @@ router.route('/api/v1/events/:eventId')
 // Delete event
 router.route('/api/v1/events/:eventId')
   .delete(
-    Validation.trimBodyKeys,
     checkUserSession,
     Validation.checkEventExists,
     EventController.deleteEvent,
