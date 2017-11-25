@@ -7,15 +7,15 @@ import jwt from 'jsonwebtoken';
  * @param{Object} next - jumping to next handler
  * @return{undefined}
  */
-export default function checkUserSession(req, res, next) {
+export default function authenticate(req, res, next) {
   const token = req.body.token || req.headers.token;
   if (!token) {
-    res.status(401).send({ message: 'session token is required!' });
+    res.status(401).send({ message: 'token is required!' });
   } else {
     // Check if token matches the one provided at login
     jwt.verify(token, process.env.SECRET_KEY, (err, decoded) => {
       if (err) {
-        res.status(401).send({ message: 'invalid session token!' });
+        res.status(401).send({ message: 'token is invalid!' });
       } else {
         req.user = decoded;
         next();
