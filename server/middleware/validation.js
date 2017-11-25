@@ -54,9 +54,11 @@ class Validation {
    */
   static trimBodyValues(req, res, next) {
     // trim body values
-    Object.keys(req.body).forEach((k) => {
-      if (req.body[k] !== undefined) req.body[k] = req.body[k].trim(); // trim value if body exist
-    });
+    if (req.body) {
+      Object.keys(req.body).forEach((k) => {
+        if (req.body[k] !== undefined) req.body[k] = req.body[k].trim(); // trim value if body exist
+      });
+    }
     next();
   }
 

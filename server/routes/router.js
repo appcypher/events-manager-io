@@ -1,6 +1,6 @@
 import express from 'express';
 import path from 'upath';
-import checkUserSession from '../middleware/authentication';
+import authenticate from '../middleware/authentication';
 import checkUserAdmin from '../middleware/authorization';
 import UserController from '../controllers/user';
 import EventCenterController from '../controllers/center';
@@ -20,7 +20,6 @@ router.route('/')
 router.route('/api/v1/users/')
   .post(
     Validation.trimBodyValues,
-    Validation.trimBodyValues('username', 'password', 'email'),
     Validation.checkBodyContains('username', 'password', 'email', 'fullname'),
     Validation.checkUsernameNotExists,
     Validation.checkEmailNotExists,
@@ -42,7 +41,7 @@ router.route('/api/v1/centers')
   .post(
     Validation.trimBodyValues,
     Validation.checkBodyContains('name', 'type', 'price', 'location'),
-    checkUserSession,
+    authenticate,
     checkUserAdmin,
     EventCenterController.createCenter,
   );
@@ -51,7 +50,7 @@ router.route('/api/v1/centers')
 router.route('/api/v1/centers/:centerId')
   .put(
     Validation.trimBodyValues,
-    checkUserSession,
+    authenticate,
     checkUserAdmin,
     Validation.checkParamsValid,
     Validation.checkCenterExists,
@@ -61,14 +60,14 @@ router.route('/api/v1/centers/:centerId')
 // Get all centers
 router.route('/api/v1/centers')
   .get(
-    checkUserSession,
+    authenticate,
     EventCenterController.getAllCenters,
   );
 
 // Get a center and associated events
 router.route('/api/v1/centers/:centerId')
   .get(
-    checkUserSession,
+    authenticate,
     Validation.checkCenterExists,
     EventCenterController.getCenter,
   );
@@ -78,7 +77,7 @@ router.route('/api/v1/events')
   .post(
     Validation.trimBodyValues,
     Validation.checkBodyContains('title', 'date', 'center'),
-    checkUserSession,
+    authenticate,
     Validation.checkDateNotTaken,
     EventController.createEvent,
   );
@@ -87,7 +86,7 @@ router.route('/api/v1/events')
 router.route('/api/v1/events/:eventId')
   .put(
     Validation.trimBodyValues,
-    checkUserSession,
+    authenticate,
     Validation.checkDateNotTaken,
     Validation.checkEventExists,
     EventController.modifyEvent,
@@ -96,7 +95,7 @@ router.route('/api/v1/events/:eventId')
 // Delete event
 router.route('/api/v1/events/:eventId')
   .delete(
-    checkUserSession,
+    authenticate,
     Validation.checkEventExists,
     EventController.deleteEvent,
   );
