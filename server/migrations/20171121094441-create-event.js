@@ -18,7 +18,7 @@ module.exports = {
         type: Sequelize.DATE,
         allowNull: false,
       },
-      center: {
+      centerId: {
         type: Sequelize.INTEGER,
         allowNull: false,
         references: {
@@ -26,7 +26,7 @@ module.exports = {
           key: 'id',
         },
       },
-      user: {
+      userId: {
         type: Sequelize.INTEGER,
         allowNull: false,
         references: {

@@ -34,7 +34,7 @@ module.exports = {
       stage: {
         type: Sequelize.BOOLEAN,
       },
-      center: {
+      centerId: {
         type: Sequelize.INTEGER,
         allowNull: false,
         references: {

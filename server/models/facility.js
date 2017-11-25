@@ -33,7 +33,7 @@ export default (sequelize, DataTypes) => {
     stage: {
       type: DataTypes.BOOLEAN,
     },
-    center: {
+    centerId: {
       type: DataTypes.INTEGER,
       allowNull: false,
       references: {
@@ -44,7 +44,7 @@ export default (sequelize, DataTypes) => {
   });
 
   Facility.associate = (models) => {
-    Facility.belongsTo(models.EventCenter, { foreignKey: 'center' });
+    Facility.belongsTo(models.EventCenter, { foreignKey: 'centerId' });
   };
 
   return Facility;

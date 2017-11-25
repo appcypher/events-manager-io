@@ -23,18 +23,18 @@ module.exports = {
         allowNull: false,
       },
       picture1: {
-        type: Sequelize.BLOB,
+        type: Sequelize.STRING,
       },
       picture2: {
-        type: Sequelize.BLOB,
+        type: Sequelize.STRING,
       },
       picture3: {
-        type: Sequelize.BLOB,
+        type: Sequelize.STRING,
       },
       picture4: {
-        type: Sequelize.BLOB,
+        type: Sequelize.STRING,
       },
-      user: {
+      userId: {
         type: Sequelize.INTEGER,
         allowNull: false,
         references: {

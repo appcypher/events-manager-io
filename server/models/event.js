@@ -22,7 +22,7 @@ export default (sequelize, DataTypes) => {
         isBefore: { args: '2017-12-24', msg: 'date format is invalid! - make sure it is within a month\'s range' },
       },
     },
-    center: {
+    centerId: {
       type: DataTypes.INTEGER,
       allowNull: false,
       references: {
@@ -30,7 +30,7 @@ export default (sequelize, DataTypes) => {
         key: 'id',
       },
     },
-    user: {
+    userId: {
       type: DataTypes.INTEGER,
       allowNull: false,
       references: {
@@ -41,8 +41,8 @@ export default (sequelize, DataTypes) => {
   });
 
   Event.associate = (models) => {
-    Event.belongsTo(models.User, { foreignKey: 'user' });
-    Event.belongsTo(models.EventCenter, { foreignKey: 'center' });
+    Event.belongsTo(models.User, { foreignKey: 'userId' });
+    Event.belongsTo(models.EventCenter, { foreignKey: 'centerId' });
   };
 
   return Event;

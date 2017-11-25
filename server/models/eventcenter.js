@@ -32,18 +32,18 @@ export default (sequelize, DataTypes) => {
       allowNull: false,
     },
     picture1: {
-      type: DataTypes.BLOB,
+      type: DataTypes.STRING,
     },
     picture2: {
-      type: DataTypes.BLOB,
+      type: DataTypes.STRING,
     },
     picture3: {
-      type: DataTypes.BLOB,
+      type: DataTypes.STRING,
     },
     picture4: {
-      type: DataTypes.BLOB,
+      type: DataTypes.STRING,
     },
-    user: {
+    userId: {
       type: DataTypes.INTEGER,
       allowNull: false,
       references: {
@@ -54,8 +54,8 @@ export default (sequelize, DataTypes) => {
   });
 
   EventCenter.associate = (models) => {
-    EventCenter.hasMany(models.Event, { as: 'events', foreignKey: 'center' });
-    EventCenter.belongsTo(models.Event, { foreignKey: 'user' });
+    EventCenter.hasMany(models.Event, { as: 'events', foreignKey: 'centerId' });
+    EventCenter.belongsTo(models.Event, { foreignKey: 'userId' });
   };
 
   return EventCenter;
