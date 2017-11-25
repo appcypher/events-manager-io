@@ -1,10 +1,9 @@
-import chai from 'chai';
+import chai, { expect } from 'chai';
 import chaiHttp from 'chai-http';
 import server from '../../server/server';
 /* eslint-disable no-unused-expressions  */
 
 chai.use(chaiHttp);
-const { expect } = chai;
 
 describe('Users', () => {
   /* SIGNUP */
