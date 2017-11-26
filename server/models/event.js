@@ -1,3 +1,5 @@
+import moment from 'moment';
+
 export default (sequelize, DataTypes) => {
   const Event = sequelize.define('Event', {
     id: {
@@ -18,8 +20,8 @@ export default (sequelize, DataTypes) => {
       allowNull: false,
       validate: {
         isDate: { args: true, msg: 'date format is invalid! - make sure it is in YYYY-MM-DD format' },
-        isAfter: { args: '2017-11-24', msg: 'date format is invalid! - make sure it is within a month\'s range' },
-        isBefore: { args: '2017-12-24', msg: 'date format is invalid! - make sure it is within a month\'s range' },
+        isAfter: { args: moment().add(1, 'day').toISOString(), msg: 'date format is invalid! - make sure it is not less than a day from now' },
+        isBefore: { args: moment().add(30, 'day').toISOString(), msg: 'date format is invalid! - make sure it is not more than a month from now' },
       },
     },
     centerId: {
