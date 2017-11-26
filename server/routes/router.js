@@ -53,7 +53,7 @@ router.route('/api/v1/centers/:centerId')
     authenticate,
     checkUserAdmin,
     Validation.checkParamValid('centerId'),
-    Validation.checkCenterIdParamExists,
+    Validation.checkCenterExists,
     EventCenterController.modifyCenter,
   );
 
@@ -69,7 +69,7 @@ router.route('/api/v1/centers/:centerId')
   .get(
     authenticate,
     Validation.checkParamValid('centerId'),
-    Validation.checkCenterIdParamExists,
+    Validation.checkCenterExists,
     EventCenterController.getCenter,
   );
 
@@ -79,7 +79,9 @@ router.route('/api/v1/events')
     Validation.trimBodyValues,
     Validation.checkBodyContains('title', 'date', 'centerId'),
     authenticate,
+    Validation.checkDateValid,
     Validation.checkDateNotTaken,
+    Validation.checkAssociatedCenterExists,
     EventController.createEvent,
   );
 
@@ -89,8 +91,10 @@ router.route('/api/v1/events/:eventId')
     Validation.trimBodyValues,
     authenticate,
     Validation.checkParamValid('eventId'),
+    Validation.checkDateValid,
     Validation.checkDateNotTaken,
-    Validation.checkEventExists,
+    Validation.checkAssociatedCenterExists,
+    Validation.checkUserOwnEvent,
     EventController.modifyEvent,
   );
 
@@ -99,7 +103,7 @@ router.route('/api/v1/events/:eventId')
   .delete(
     authenticate,
     Validation.checkParamValid('eventId'),
-    Validation.checkEventExists,
+    Validation.checkUserOwnEvent,
     EventController.deleteEvent,
   );
 
