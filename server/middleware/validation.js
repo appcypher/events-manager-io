@@ -36,12 +36,16 @@ class Validation {
    */
   static checkBodyContains(...params) {
     return (req, res, next) => {
-      params.forEach((p) => {
-        if (req.body[p] === undefined) {
-          res.status(400).send({ status: 400, message: `${p} required in body!` });
+      let missingInBody = null;
+      params.some((p) => {
+        if (!missingInBody && req.body[p] == null) {
+          missingInBody = req.body[p];
+          return true;
         }
+        return false;
       });
-      next();
+      if (missingInBody) return res.status(400).send({ message: `${missingInBody} required in body!` });
+      return next();
     };
   }
 
@@ -123,16 +127,18 @@ class Validation {
   }
 
   /**
-   * Checks if center already exists
+   * Checks if param value is an integer
    * @param{Object} req - api request
    * @param{Object} res - route response
    * @param{Function} next - next middleware
    * @return{undefined}
    */
-  static checkParamsValid(req, res, next) {
-    if (!Number.isInteger(parseInt(req.params.centerId, 10))) {
-      res.status(404).send({ message: 'param type is not invalid!' });
-    } else next();
+  static checkParamValid(value) {
+    return (req, res, next) => {
+      if (!req.params[value].match(/^[0-9]+$/)) {
+        res.status(404).send({ message: 'parameter type is not supported! - use integer parameters' });
+      } else next();
+    };
   }
 
   /**
@@ -142,13 +148,13 @@ class Validation {
    * @param{Function} next - next middleware
    * @return{undefined}
    */
-  static checkCenterExists(req, res, next) {
+  static checkCenterIdParamExists(req, res, next) {
     EventCenter
       .findOne({
         where: { id: req.params.centerId },
       })
       .then((center) => {
-        if (center === undefined || center === null) {
+        if (center == null) {
           res.status(404).send({ message: 'cannot find specified event center!' });
         } else next();
       })
@@ -170,7 +176,7 @@ class Validation {
       Event
         .findOne({
           where: {
-            center: req.body.center,
+            centerId: req.body.centerId,
             date: req.body.date != null ? new Date(req.body.date).toISOString() : null,
           },
         })
@@ -195,7 +201,7 @@ class Validation {
       .findOne({
         where: {
           id: req.params.eventId,
-          user: req.user.id, // User ids must match too
+          userId: req.user.id, // User ids must match too
         },
       })
       .then((event) => {
