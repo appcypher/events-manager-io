@@ -5,11 +5,6 @@ export default (sequelize, DataTypes) => {
       primaryKey: true,
       type: DataTypes.INTEGER,
       autoIncrement: true,
-      validate: {
-        isInt: {
-          msg: 'EventCenter id must be an integer',
-        },
-      },
     },
     name: {
       type: DataTypes.STRING,
