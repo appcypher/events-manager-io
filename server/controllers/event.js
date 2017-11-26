@@ -21,7 +21,7 @@ class EventController {
       .then((event) => {
         res.status(201).send({ message: 'event created!', event });
       })
-      // .catch(err => res.status(400).send({ message: err.errors[0].message || err }));
+      .catch(err => res.status(400).send({ message: err.errors[0].message || err }));
   }
 
   /**
