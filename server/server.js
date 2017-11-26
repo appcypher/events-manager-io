@@ -1,5 +1,5 @@
 import express from 'express';
-import path from 'upath';
+import path from 'path';
 import bodyParser from 'body-parser';
 import logger from 'morgan';
 import dotenv from 'dotenv';

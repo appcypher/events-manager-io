@@ -1,5 +1,5 @@
 import express from 'express';
-import path from 'upath';
+import path from 'path';
 import authenticate from '../middleware/authentication';
 import checkUserAdmin from '../middleware/authorization';
 import UserController from '../controllers/user';
@@ -52,8 +52,8 @@ router.route('/api/v1/centers/:centerId')
     Validation.trimBodyValues,
     authenticate,
     checkUserAdmin,
-    Validation.checkParamsValid,
-    Validation.checkCenterExists,
+    Validation.checkParamValid('centerId'),
+    Validation.checkCenterIdParamExists,
     EventCenterController.modifyCenter,
   );
 
@@ -68,7 +68,8 @@ router.route('/api/v1/centers')
 router.route('/api/v1/centers/:centerId')
   .get(
     authenticate,
-    Validation.checkCenterExists,
+    Validation.checkParamValid('centerId'),
+    Validation.checkCenterIdParamExists,
     EventCenterController.getCenter,
   );
 
@@ -76,7 +77,7 @@ router.route('/api/v1/centers/:centerId')
 router.route('/api/v1/events')
   .post(
     Validation.trimBodyValues,
-    Validation.checkBodyContains('title', 'date', 'center'),
+    Validation.checkBodyContains('title', 'date', 'centerId'),
     authenticate,
     Validation.checkDateNotTaken,
     EventController.createEvent,
@@ -87,6 +88,7 @@ router.route('/api/v1/events/:eventId')
   .put(
     Validation.trimBodyValues,
     authenticate,
+    Validation.checkParamValid('eventId'),
     Validation.checkDateNotTaken,
     Validation.checkEventExists,
     EventController.modifyEvent,
@@ -96,13 +98,10 @@ router.route('/api/v1/events/:eventId')
 router.route('/api/v1/events/:eventId')
   .delete(
     authenticate,
+    Validation.checkParamValid('eventId'),
     Validation.checkEventExists,
     EventController.deleteEvent,
   );
-
-// NOTE: To be removed from source once first admin has been created
-router.route('/api/v1/users/admin/ES4DafrwT3GVrtge553c5Ded4RrE4TFTft')
-  .post(UserController.createAdminUser);
 
 // 404 routes
 router.route('*')
