@@ -14,14 +14,14 @@ class EventController {
       .create({
         title: req.body.title,
         description: req.body.description || null,
-        center: req.body.center,
-        user: req.user.id,
+        userId: req.user.id,
+        centerId: parseInt(req.body.centerId, 10),
         date: new Date(req.body.date).toISOString(),
       })
       .then((event) => {
-        res.status(201).send({ message: 'event created!', data: event });
+        res.status(201).send({ message: 'event created!', event });
       })
-      .catch(err => res.status(400).send({ message: err.errors[0].message || err }));
+      // .catch(err => res.status(400).send({ message: err.errors[0].message || err }));
   }
 
   /**
@@ -38,10 +38,10 @@ class EventController {
           event.update({
             title: req.body.title || event.title,
             description: req.body.description || event.description,
-            center: req.body.center || event.center,
+            centerId: req.body.centerId || event.centerId,
             date: req.body.date != null ? new Date(req.body.date).toISOString() : event.date,
           });
-          res.status(200).send({ message: 'event modified!', data: event });
+          res.status(200).send({ message: 'event modified!', event });
         } else {
           res.status(404).send({ message: 'cannot find specified event!' });
         }

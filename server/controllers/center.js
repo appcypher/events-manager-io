@@ -17,7 +17,7 @@ class EventCenterController {
         type: req.body.type,
         price: req.body.price,
         location: req.body.location,
-        user: req.user.id,
+        userId: req.user.id,
       })
       .then((center) => {
         res.status(201).send({ message: 'center created!', data: center });
