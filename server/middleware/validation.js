@@ -142,13 +142,13 @@ class Validation {
   }
 
   /**
-   * Checks if center already exists
+   * Checks if centerId parameter already exists
    * @param{Object} req - api request
    * @param{Object} res - route response
    * @param{Function} next - next middleware
    * @return{undefined}
    */
-  static checkCenterIdParamExists(req, res, next) {
+  static checkCenterExists(req, res, next) {
     EventCenter
       .findOne({
         where: { id: req.params.centerId },
@@ -162,6 +162,51 @@ class Validation {
   }
 
   /**
+   * Checks if centerId in body exists
+   * @param{Object} req - api request
+   * @param{Object} res - route response
+   * @param{Function} next - next middleware
+   * @return{undefined}
+   */
+  static checkAssociatedCenterExists(req, res, next) {
+    if (req.body.centerId) {
+      EventCenter
+        .findOne({
+          where: { id: req.body.centerId },
+        })
+        .then((center) => {
+          if (center == null) {
+            res.status(404).send({ message: 'specified event center does not exist!' });
+          } else next();
+        })
+        .catch(err => res.status(400).send({ message: err.errors[0].message || err }));
+    }
+    next();
+  }
+
+  /**
+   * Checks if event date is valid
+   * @param{Object} req - api request
+   * @param{Object} res - route response
+   * @param{Function} next - next middleware
+   * @return{undefined}
+   */
+  /* eslint-disable no-restricted-globals */
+  static checkDateValid(req, res, next) {
+    // Check if body contains a date key
+    if (!req.body.date) return next();
+
+    // Check date format
+    if (!req.body.date.match(/^[0-9]{4}-[0-9]{2}-[0-9]{2}$/)) {
+      return res.status(404).send({ message: 'date format is invalid! - make sure it is in YYYY-MM-DD format' });
+    }
+    // Check date range, .i.e, no invalid day or month value
+    if (isNaN(new Date(req.body.date))) {
+      return res.status(404).send({ message: 'date format is invalid! - make sure it is in YYYY-MM-DD format' });
+    } return next();
+  }
+
+  /**
    * Checks if event date is not already taken
    * @param{Object} req - api request
    * @param{Object} res - route response
@@ -169,45 +214,51 @@ class Validation {
    * @return{undefined}
    */
   static checkDateNotTaken(req, res, next) {
-    const dateRegex = /^201[7-8]-[0-9][0-9]-[0-3][0-9]$/;
-    if (req.body.date != null && req.body.date.match(dateRegex) == null) {
-      res.status(404).send({ message: 'date format invalid, use format "YYYY-MM-DD"!' });
-    } else {
-      Event
-        .findOne({
-          where: {
-            centerId: req.body.centerId,
-            date: req.body.date != null ? new Date(req.body.date).toISOString() : null,
-          },
-        })
-        .then((event) => {
-          if (event) {
-            res.status(404).send({ message: 'event already slated for that date!' });
-          } else next();
-        })
-        .catch(err => res.status(400).send({ message: err.errors[0].message || err }));
-    }
+    Event.findOne({ where: { id: req.params.eventId } })
+      .then((event) => {
+        Event
+          .findOne({
+            where: {
+              centerId: req.body.centerId || event.centerId,
+              date: req.body.date ? new Date(req.body.date).toISOString() : null,
+            },
+          })
+          .then((slatedEvent) => {
+            // Excluding current event
+            /* eslint-disable eqeqeq */
+            if (slatedEvent && (slatedEvent.id != req.params.eventId)) {
+              res.status(404).send({ message: 'event already slated for that date!' });
+            } else next();
+          })
+          .catch(err => res.status(400).send({ message: err.errors[0].message || err }));
+      })
+      .catch(err => res.status(400).send({ message: err.errors[0].message || err }));
   }
 
   /**
-   * Checks if event already exists
+   * Checks if user doesn't have an event with specified id
    * @param{Object} req - api request
    * @param{Object} res - route response
    * @param{Function} next - next middleware
    * @return{undefined}
    */
-  static checkEventExists(req, res, next) {
+  static checkUserOwnEvent(req, res, next) {
     Event
       .findOne({
         where: {
           id: req.params.eventId,
-          userId: req.user.id, // User ids must match too
         },
       })
       .then((event) => {
         if (event == null) {
-          res.status(404).send({ message: 'cannot find specified event!' });
-        } else next();
+          return res.status(404).send({ message: 'event does not exist!' });
+        }
+
+        if (event.userId !== req.user.id) { // User ids must match too
+          return res.status(403).send({ message: 'you do not own this event!' });
+        }
+
+        return next();
       })
       .catch(err => res.status(400).send({ message: err.errors[0].message || err }));
   }
