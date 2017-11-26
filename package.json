@@ -80,5 +80,12 @@
     "webpack-dev-server": "^2.9.4",
     "webpack-node-externals": "^1.6.0"
   },
-  "bundledDependencies": []
+  "bundledDependencies": [],
+  "nyc": {
+    "exclude": [
+      "coverage/",
+      "webpack/",
+      "template/"
+    ]
+  }
 }
