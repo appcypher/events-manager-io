@@ -1,9 +1,9 @@
-const path = require('path');
-const webpack = require('webpack'); 
+import path from 'path';
+import webpack from 'webpack'; 
 
-module.exports = {
+export default {
   context: path.join(__dirname, '../client'),
-  devtool: 'inline-source-map',
+  devtool: 'source-map',
   entry: [
     './src/client.js',
   ],
@@ -42,7 +42,5 @@ module.exports = {
       },
     ],
   },
-  plugins: [
-    new webpack.NamedModulesPlugin(),
-  ],
+  plugins: [],
 };
