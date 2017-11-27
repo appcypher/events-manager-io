@@ -1,6 +1,6 @@
 import db from '../models';
 
-const { EventCenter, Event } = db;
+const { EventCenter, Event, Facility } = db;
 
 class EventCenterController {
   /**
@@ -20,7 +20,7 @@ class EventCenterController {
         userId: req.user.id,
       })
       .then((center) => {
-        res.status(201).send({ message: 'center created!', data: center });
+        res.status(201).send({ message: 'center created!', center });
       })
       .catch(err => res.status(400).send({ message: err.errors[0].message || err }));
   }
@@ -36,14 +36,17 @@ class EventCenterController {
       .findOne({ where: { id: req.params.centerId } })
       .then((center) => {
         if (center) {
-          center.update({
-            name: req.body.name || center.name,
-            description: req.body.description || center.description,
-            type: req.body.type || center.type,
-            price: req.body.price || center.price,
-            location: req.body.location || center.location,
-          });
-          res.status(200).send({ message: 'center modified!', data: center });
+          center
+            .update({
+              name: req.body.name || center.name,
+              description: req.body.description || center.description,
+              type: req.body.type || center.type,
+              price: req.body.price || center.price,
+              location: req.body.location || center.location,
+            })
+            .then((modifiedCenter) => {
+              res.status(200).send({ message: 'center modified!', center: modifiedCenter });
+            });
         } else {
           res.status(404).send({ message: 'cannot find specified center!' });
         }
@@ -60,12 +63,18 @@ class EventCenterController {
   static getAllCenters(req, res) {
     EventCenter
       .all()
-      .then(centers => res.status(200).send({ message: 'all centers gotten!', data: centers }))
+      .then((centers) => {
+        if (centers) {
+          res.status(302).send({ message: 'all centers delivered!', centers });
+        } else {
+          res.status(404).send({ message: 'cannot find any center!' });
+        }
+      })
       .catch(err => res.status(400).send({ message: err.errors[0].message || err }));
   }
 
   /**
-   * Get a particular center and associated events
+   * Get a center's details, associated events and facility
    * @param{Object} req - api request
    * @param{Object} res - route response
    * @return{json}
@@ -73,13 +82,17 @@ class EventCenterController {
   static getCenter(req, res) {
     EventCenter
       .findById(req.params.centerId, {
-        include: [{
-          model: Event,
-          as: 'events',
-        }],
+        include: [
+          { model: Event, as: 'events' },
+          { model: Facility, as: 'facility' },
+        ],
       })
       .then((center) => {
-        res.status(200).send({ message: 'center gotten!', data: center });
+        if (center) {
+          res.status(302).send({ message: 'center delivered!', center });
+        } else {
+          res.status(404).send({ message: 'cannot find specified center!' });
+        }
       })
       .catch(err => res.status(400).send({ message: err.errors[0].message || err }));
   }
