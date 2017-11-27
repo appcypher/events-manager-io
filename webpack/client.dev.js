@@ -1,7 +1,7 @@
-import path from 'path';
-import webpack from 'webpack'; 
+const path = require('path');
+const webpack = require('webpack'); 
 
-export default {
+module.exports = {
   context: path.join(__dirname, '../client'),
   devtool: 'source-map',
   entry: [
@@ -12,7 +12,7 @@ export default {
   ],
   output: {
     path: path.join(__dirname, '../client/public'),
-    filename: './js/client.js',
+    filename: './bundle.js',
     publicPath: '/',
   },
   module: {
