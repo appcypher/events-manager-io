@@ -50,6 +50,7 @@ export default (sequelize, DataTypes) => {
 
   EventCenter.associate = (models) => {
     EventCenter.hasMany(models.Event, { as: 'events', foreignKey: 'centerId' });
+    EventCenter.hasOne(models.Facility, { as: 'facility', foreignKey: 'centerId' });
     EventCenter.belongsTo(models.Event, { foreignKey: 'userId' });
   };
 
