@@ -67,6 +67,26 @@ class EventController {
       })
       .catch(err => res.status(400).send({ message: err.errors[0].message || err }));
   }
+
+
+  /**
+   * Modifies an existing event
+   * @param{Object} req - api request
+   * @param{Object} res - route response
+   * @return{json}
+   */
+  static getAllEvents(req, res) {
+    Event
+      .findAll({ where: { userId: req.user.id } })
+      .then((events) => {
+        if (events) {
+          res.status(302).send({ message: 'all events delivered!', events });
+        } else {
+          res.status(403).send({ message: 'you have no event!' });
+        }
+      })
+      .catch(err => res.status(400).send({ message: err.errors[0].message || err }));
+  }
 }
 
 export default EventController;
