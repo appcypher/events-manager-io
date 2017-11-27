@@ -10,7 +10,7 @@
     "webpack:watch": "webpack-dev-server --config webpack/client.dev.js --content-base client/public --inline --hot",
     "build": "npm run build:client:prod",
     "test": "npm run test:api & npm run test:react",
-    "test:api": "npm run test:api:demigrate && npm run test:api:migrate && cross-env NODE_ENV=test nyc --reporter=html --reporter=lcov --reporter=text mocha --timeout 250000 ./tests/api/*.js --compilers js:babel-core/register --exit",
+    "test:api": "npm run test:api:demigrate && npm run test:api:migrate && cross-env NODE_ENV=test PORT=4200 nyc --reporter=html --reporter=lcov --reporter=text mocha --timeout 250000 ./tests/api/*.js --compilers js:babel-core/register --exit",
     "test:e2e": "cross-env NODE_ENV=test nightwatch tests/e2e/bin/test.js --config tests/e2e/config/nightwatch.conf.js",
     "test:react": "cross-env NODE_ENV=test jest tests/react/bin/test.js",
     "test:api:migrate": "cross-env NODE_ENV=test sequelize db:migrate",
