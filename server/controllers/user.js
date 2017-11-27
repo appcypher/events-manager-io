@@ -2,11 +2,11 @@ import jwt from 'jsonwebtoken';
 import bcrypt from 'bcrypt';
 import db from '../models';
 
-const { User } = db;
+const { User, Event } = db;
 
 class UserController {
   /**
-   * Creates a new user with a hashed password and creates a session token for user
+   * Creates a new user with a hashed password and creates a token for user
    * @param{Object} req - api request
    * @param{Object} res - route response
    * @return{json} registered user details
@@ -23,12 +23,14 @@ class UserController {
         admin: false,
       })
       .then((user) => {
-        const token = jwt.sign( // Create a session token with 30-minute session
+        const token = jwt.sign( // Create a token that lasts for an hour
           { id: user.id, admin: false },
           process.env.SECRET_KEY,
-          { expiresIn: '30m' },
+          { expiresIn: '60m' },
         );
-        res.status(201).send({ message: 'user created!', token });
+        const safeUser = user;
+        safeUser.password = 'xxxxxxxxxxxxxxxxxxxx';
+        res.status(201).send({ message: 'user created!', user: safeUser, token });
       })
       .catch(err => res.status(400).send({ message: err.errors[0].message || err }));
   }
@@ -45,15 +47,83 @@ class UserController {
         where: { username: req.body.username },
       })
       .then((user) => {
-        const token = jwt.sign( // Create a session token with 30-minute session
-          { id: user.id, admin: user.admin },
-          process.env.SECRET_KEY,
-          { expiresIn: '30m' },
-        );
-        res.status(200).send({ message: 'user logged in!', token });
+        if (user) { // If user exists
+          // Compare hashed password
+          bcrypt.compare(req.body.password, user.password).then((check) => {
+            if (!check) { // If password does not match
+              res.status(401).send({ message: 'wrong password or username!' });
+            } else {
+              // Create a token that lasts for an hour
+              const token = jwt.sign({ id: user.id, admin: user.admin }, process.env.SECRET_KEY, { expiresIn: '60m' });
+              res.status(200).send({ message: 'user logged in!', token });
+            }
+          });
+        } else {
+          res.status(401).send({ message: 'wrong password or username!' });
+        }
       })
       .catch(err => res.status(400).send({ message: err.errors[0].message || err }));
   }
+
+  /**
+   * Gets the user's details and associated events
+   * @param{Object} req - api request
+   * @param{Object} res - route response
+   * @return{json} registered user details
+   */
+  static getUser(req, res) {
+    User
+      .findById(req.user.id, {
+        include: [
+          { model: Event, as: 'events' },
+        ],
+      })
+      .then((user) => {
+        const safeUser = user;
+        safeUser.password = 'xxxxxxxxxxxxxxxxxxxx';
+        res.status(302).send({ message: 'user details delivered!', user: safeUser });
+      })
+      .catch(err => res.status(400).send({ message: err.errors[0].message || err }));
+  }
+
+  /**
+   * Modify user's details
+   * @param{Object} req - api request
+   * @param{Object} res - route response
+   * @return{json} registered user details
+   */
+  static modifyUserProfile(req, res) {
+    User
+      .findOne({ where: { id: req.user.id } })
+      .then((user) => {
+        if (user) {
+          user
+            .update({
+              fullname: req.body.fullname || user.fullname,
+              description: req.body.description || user.description,
+              tagline: req.body.tagline || user.tagline,
+              picture: req.body.picture || user.picture,
+            })
+            .then((modifiedUser) => {
+              const safeUser = modifiedUser;
+              safeUser.password = 'xxxxxxxxxxxxxxxxxxxx';
+              res.status(200).send({ message: 'user profile updated!', user: safeUser });
+            });
+        } else {
+          res.status(403).send({ message: 'you can only modify your own profile!' });
+        }
+      })
+      .catch(err => res.status(400).send({ message: err.errors[0].message || err }));
+  }
+
+  /**
+   * NOTE: UNIMPLEMENTED
+   * Logs out user
+   * @param{Object} req - api request
+   * @param{Object} res - route response
+   * @return{json} registered user details
+   */
+  static logoutUser(req, res) { res.send(200).send({ message: 'user logged out!' }); }
 }
 
 export default UserController;

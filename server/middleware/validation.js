@@ -1,32 +1,8 @@
-import bcrypt from 'bcrypt';
 import db from '../models';
 
 const { User, EventCenter, Event } = db;
 
 class Validation {
-  /**
-   * Checks if password matches the one sent by user
-   * @param{Object} req - api request
-   * @param{Object} res - route response
-   * @param{Function} next - next middleware
-   * @return{undefined}
-   */
-  static checkPasswordMatch(req, res, next) {
-    User
-      .findOne({
-        where: { username: req.body.username },
-      })
-      .then((user) => {
-        // Compare hashed password
-        bcrypt.compare(req.body.password, user.password).then((check) => {
-          if (!check) {
-            res.status(401).send({ status: 401, message: 'wrong password or username!' });
-          } else next();
-        });
-      })
-      .catch(err => res.status(400).send({ status: 400, message: err.errors[0].message || err }));
-  }
-
   /**
    * Checks if request body contains required keys
    * @param{Object} req - api request
@@ -36,15 +12,12 @@ class Validation {
    */
   static checkBodyContains(...params) {
     return (req, res, next) => {
-      let missingInBody = null;
-      params.some((p) => {
-        if (!missingInBody && req.body[p] == null) {
-          missingInBody = req.body[p];
-          return true;
+      /* eslint-disable no-restricted-syntax */
+      for (const p of params) {
+        if (req.body[p] == null) {
+          return res.status(400).send({ message: `${p} required in body!` });
         }
-        return false;
-      });
-      if (missingInBody) return res.status(400).send({ message: `${missingInBody} required in body!` });
+      }
       return next();
     };
   }
@@ -64,26 +37,6 @@ class Validation {
       });
     }
     next();
-  }
-
-  /**
-   * Checks if username already exists
-   * @param{Object} req - api request
-   * @param{Object} res - route response
-   * @param{Function} next - next middleware
-   * @return{undefined}
-   */
-  static checkUsernameExists(req, res, next) {
-    User
-      .findOne({
-        where: { username: req.body.username },
-      })
-      .then((user) => {
-        if (!user) {
-          res.status(404).send({ message: 'username does not exist!' });
-        } else next();
-      })
-      .catch(err => res.status(400).send({ message: err.errors[0].message || err }));
   }
 
   /**
@@ -136,29 +89,9 @@ class Validation {
   static checkParamValid(value) {
     return (req, res, next) => {
       if (!req.params[value].match(/^[0-9]+$/)) {
-        res.status(404).send({ message: 'parameter type is not supported! - use integer parameters' });
+        res.status(400).send({ message: 'parameter type is not supported! - use integer parameters' });
       } else next();
     };
-  }
-
-  /**
-   * Checks if centerId parameter already exists
-   * @param{Object} req - api request
-   * @param{Object} res - route response
-   * @param{Function} next - next middleware
-   * @return{undefined}
-   */
-  static checkCenterExists(req, res, next) {
-    EventCenter
-      .findOne({
-        where: { id: req.params.centerId },
-      })
-      .then((center) => {
-        if (center == null) {
-          res.status(404).send({ message: 'cannot find specified event center!' });
-        } else next();
-      })
-      .catch(err => res.status(400).send({ message: err.errors[0].message || err }));
   }
 
   /**
@@ -181,7 +114,6 @@ class Validation {
         })
         .catch(err => res.status(400).send({ message: err.errors[0].message || err }));
     }
-    next();
   }
 
   /**
@@ -198,11 +130,11 @@ class Validation {
 
     // Check date format
     if (!req.body.date.match(/^[0-9]{4}-[0-9]{2}-[0-9]{2}$/)) {
-      return res.status(404).send({ message: 'date format is invalid! - make sure it is in YYYY-MM-DD format' });
+      return res.status(400).send({ message: 'date format is invalid! - make sure it is in YYYY-MM-DD format' });
     }
     // Check date range, .i.e, no invalid day or month value
     if (isNaN(new Date(req.body.date))) {
-      return res.status(404).send({ message: 'date format is invalid! - make sure it is in YYYY-MM-DD format' });
+      return res.status(400).send({ message: 'date format is invalid! - make sure it is in YYYY-MM-DD format' });
     } return next();
   }
 
@@ -227,7 +159,7 @@ class Validation {
             // Excluding current event
             /* eslint-disable eqeqeq */
             if (slatedEvent && (slatedEvent.id != req.params.eventId)) {
-              res.status(404).send({ message: 'event already slated for that date!' });
+              res.status(409).send({ message: 'event already slated for that date!' });
             } else next();
           })
           .catch(err => res.status(400).send({ message: err.errors[0].message || err }));

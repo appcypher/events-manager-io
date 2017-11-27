@@ -5,6 +5,7 @@ import checkUserAdmin from '../middleware/authorization';
 import UserController from '../controllers/user';
 import EventCenterController from '../controllers/center';
 import EventController from '../controllers/event';
+import FacilityController from '../controllers/facility';
 import Validation from '../middleware/validation';
 
 // Using express router
@@ -31,8 +32,6 @@ router.route('/api/v1/users/login')
   .post(
     Validation.trimBodyValues,
     Validation.checkBodyContains('username', 'password'),
-    Validation.checkUsernameExists,
-    Validation.checkPasswordMatch,
     UserController.loginUser,
   );
 
@@ -53,7 +52,6 @@ router.route('/api/v1/centers/:centerId')
     authenticate,
     checkUserAdmin,
     Validation.checkParamValid('centerId'),
-    Validation.checkCenterExists,
     EventCenterController.modifyCenter,
   );
 
@@ -69,7 +67,6 @@ router.route('/api/v1/centers/:centerId')
   .get(
     authenticate,
     Validation.checkParamValid('centerId'),
-    Validation.checkCenterExists,
     EventCenterController.getCenter,
   );
 
@@ -105,6 +102,58 @@ router.route('/api/v1/events/:eventId')
     Validation.checkParamValid('eventId'),
     Validation.checkUserOwnEvent,
     EventController.deleteEvent,
+  );
+
+/* Additional Routes */
+// Get user's details
+router.route('/api/v1/users')
+  .get(
+    authenticate,
+    UserController.getUser,
+  );
+
+// Modify user's profile
+router.route('/api/v1/users')
+  .put(
+    authenticate,
+    Validation.trimBodyValues,
+    UserController.modifyUserProfile,
+  );
+
+// Log user out
+router.route('/api/v1/users/logout')
+  .get(
+    authenticate,
+    UserController.logoutUser,
+  );
+
+// Get all events
+router.route('/api/v1/events')
+  .get(
+    authenticate,
+    EventController.getAllEvents,
+  );
+
+// Add new facility
+router.route('/api/v1/facilities')
+  .post(
+    Validation.trimBodyValues,
+    Validation.checkBodyContains('centerId'),
+    authenticate,
+    checkUserAdmin,
+    Validation.checkAssociatedCenterExists,
+    FacilityController.createFacility,
+  );
+
+// Modify facility
+router.route('/api/v1/facilities/:facilityId')
+  .put(
+    Validation.trimBodyValues,
+    authenticate,
+    checkUserAdmin,
+    Validation.checkParamValid('facilityId'),
+    Validation.checkAssociatedCenterExists,
+    FacilityController.modifyFacility,
   );
 
 // 404 routes
