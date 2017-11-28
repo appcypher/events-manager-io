@@ -1,68 +1,81 @@
-import chai, { expect } from 'chai';
-import chaiHttp from 'chai-http';
+import { expect } from 'chai';
+import request from 'supertest';
+import bcrypt from 'bcrypt';
 import server from '../../server/server';
+import { User } from '../../server/models';
 /* eslint-disable no-unused-expressions  */
 
-chai.use(chaiHttp);
+const hash = bcrypt.hashSync;
+
+const createUser = () => {
+  User.create({
+    username: 'john', email: 'john@gmail.com', password: hash('johnp', 10), fullname: 'John', admin: false,
+  });
+};
 
 describe('Users', () => {
+  before((done) => {
+    createUser();
+    done();
+  });
+
   /* SIGNUP */
   it('(POST /api/v1/users) should return 201 if successful', (done) => {
     const userSignup = {
-      username: 'jegede', password: 'jegede', email: 'jegede@yahoo.com', fullname: 'Jegede Jinadu',
+      username: 'james', password: 'james', email: 'james@yahoo.com', fullname: 'James',
     };
-    chai.request(server)
+    request(server)
       .post('/api/v1/users')
       .send(userSignup)
       .end((err, res) => {
-        expect(res).to.have.status(201);
+        expect(res.status).to.equal(201);
+        expect(res.body).to.be.an('object');
         expect(res.body.message).to.equal('user created!');
-        expect(res).to.be.json;
         done();
       });
   });
 
   it('(POST /api/v1/users) should return 409 if username already exists', (done) => {
     const userSignup = {
-      username: 'jegede', password: 'jinadu', email: 'jinadu@yahoo.com', fullname: 'Jegede Jinadu',
+      username: 'john', password: 'jegede', email: 'jegede@yahoo.com', fullname: 'Jegede',
     };
-    chai.request(server)
+    request(server)
       .post('/api/v1/users')
       .send(userSignup)
       .end((err, res) => {
-        expect(res).to.have.status(409);
+        expect(res.status).to.equal(409);
+        expect(res.body).to.be.an('object');
         expect(res.body.message).to.equal('username already taken!');
-        expect(res).to.be.json;
         done();
       });
   });
 
-  it('(POST /api/v1/users) should 409 if username already exists', (done) => {
+  it('(POST /api/v1/users) should 409 if email already exists', (done) => {
     const userSignup = {
-      username: 'jinadu', password: 'jinadu', email: 'jegede@yahoo.com', fullname: 'Jegede Jinadu',
+      username: 'bassey', password: 'bassey', email: 'john@gmail.com', fullname: 'Bassey',
     };
-    chai.request(server)
+    request(server)
       .post('/api/v1/users')
       .send(userSignup)
       .end((err, res) => {
-        expect(res).to.have.status(409);
+        expect(res.status).to.equal(409);
+        expect(res.body).to.be.an('object');
         expect(res.body.message).to.equal('email already taken!');
-        expect(res).to.be.json;
         done();
       });
   });
 
-  it('(POST /api/v1/users) should 409 if email is not valid', (done) => {
+  it('(POST /api/v1/users) should return 400 if email is not valid', (done) => {
     const userSignup = {
-      username: 'jackson', password: 'jackson', email: 'jackson', fullname: 'Jackson',
+      username: 'bisi', password: 'bisi', email: 'bisi', fullname: 'Bisi',
     };
-    chai.request(server)
+    request(server)
       .post('/api/v1/users')
       .send(userSignup)
       .end((err, res) => {
-        expect(res).to.have.status(400);
+        expect(res.status).to.equal(400);
+        expect(res.body).to.be.an('object');
         expect(res.body.message).to.equal('email format is invalid!');
-        expect(res).to.be.json;
         done();
       });
   });
@@ -70,15 +83,45 @@ describe('Users', () => {
   /* LOGIN */
   it('(POST /api/v1/users/login) should 201 if credentials valid', (done) => {
     const userLogin = {
-      username: 'jegede', password: 'jegede',
+      username: 'john', password: 'johnp',
     };
-    chai.request(server)
+    request(server)
       .post('/api/v1/users/login')
       .send(userLogin)
       .end((err, res) => {
-        expect(res).to.have.status(200);
+        expect(res.status).to.equal(200);
+        expect(res.body).to.be.an('object');
         expect(res.body.message).to.equal('user logged in!');
-        expect(res).to.be.json;
+        done();
+      });
+  });
+
+  it('(POST /api/v1/users/login) should 401 if username does not exist', (done) => {
+    const userLogin = {
+      username: 'xxxxx', password: 'johnp',
+    };
+    request(server)
+      .post('/api/v1/users/login')
+      .send(userLogin)
+      .end((err, res) => {
+        expect(res.status).to.equal(401);
+        expect(res.body).to.be.an('object');
+        expect(res.body.message).to.equal('wrong password or username!');
+        done();
+      });
+  });
+
+  it('(POST /api/v1/users/login) should 401 if password is invalid', (done) => {
+    const userLogin = {
+      username: 'john', password: 'xxxxx',
+    };
+    request(server)
+      .post('/api/v1/users/login')
+      .send(userLogin)
+      .end((err, res) => {
+        expect(res.status).to.equal(401);
+        expect(res.body).to.be.an('object');
+        expect(res.body.message).to.equal('wrong password or username!');
         done();
       });
   });
