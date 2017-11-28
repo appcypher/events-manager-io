@@ -57,15 +57,11 @@ router.route('/api/v1/centers/:centerId')
 
 // Get all centers
 router.route('/api/v1/centers')
-  .get(
-    authenticate,
-    EventCenterController.getAllCenters,
-  );
+  .get(EventCenterController.getAllCenters);
 
 // Get a center and associated events
 router.route('/api/v1/centers/:centerId')
   .get(
-    authenticate,
     Validation.checkParamValid('centerId'),
     EventCenterController.getCenter,
   );
