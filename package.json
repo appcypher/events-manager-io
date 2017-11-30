@@ -71,7 +71,7 @@
     "redux-promise-middleware": "^5.0.0",
     "redux-thunk": "^2.2.0",
     "sequelize": "^4.22.11",
-    "sequelize-cli": "^3.1.0",
+    "sequelize-cli": "^3.1.0"
   },
   "devDependencies": {
     "chai": "^4.1.2",
