@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import UserActions from '../actions/userActions';
 
-@connect(({ user }) => ({ user }))
+@connect(({ user }) => ({ user: user.data }))
 class LoginForm extends React.Component {
   constructor() {
     super();
@@ -19,6 +19,7 @@ class LoginForm extends React.Component {
 
   submit = () => {
     const { username, password } = this.state;
+    console.log('>>>>>>>>>>>>', username, password);
     this.props.dispatch(UserActions.loginUser({ username, password }));
   }
 
