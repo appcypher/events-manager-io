@@ -14,7 +14,7 @@ class Validation {
     return (req, res, next) => {
       /* eslint-disable no-restricted-syntax */
       for (const p of params) {
-        if (req.body[p] == null) {
+        if (req.body[p] === undefined) {
           return res.status(400).send({ message: `${p} required in body!` });
         }
       }
