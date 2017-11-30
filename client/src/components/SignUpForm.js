@@ -54,11 +54,6 @@ class SignUpForm extends React.Component {
             <input placeholder="Password" type="password" className="io-password" name="password" onChange={this.saveInput} />
             <i className="io-mark fa fa-check" />
           </div>
-          <div className="io-input-group">
-            <i className="io-icon fa fa-check-circle" />
-            <input placeholder="Confirm Password" type="password" className="io-password" name="confirmpassword" onChange={this.saveInput} />
-            <i className="io-mark fa fa-check" />
-          </div>
         </div>
         <div>
           <button id="login-button" className="io-btn io-signup" onClick={this.submit}>SIGN UP</button>
