@@ -32,7 +32,7 @@ class UserController {
         safeUser.password = 'xxxxxxxxxxxxxxxxxxxx';
         res.status(201).send({ message: 'user created!', user: safeUser, token });
       })
-      // .catch(err => res.status(400).send({ message: err.errors[0].message || err }));
+      .catch(err => res.status(400).send({ message: err.errors[0].message || err }));
   }
 
   /**
@@ -62,7 +62,7 @@ class UserController {
           res.status(401).send({ message: 'wrong password or username!' });
         }
       })
-      // .catch(err => res.status(400).send({ message: err.errors[0].message || err }));
+      .catch(err => res.status(400).send({ message: err.errors[0].message || err }));
   }
 
   /**
