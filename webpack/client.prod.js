@@ -1,15 +1,16 @@
 const path = require('path');
-const webpack = require('webpack'); 
+const webpack = require('webpack');
+const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
 
 module.exports = {
   context: path.join(__dirname, '../client'),
   devtool: 'source-map',
   entry: [
-    './src/client.js',
+    './src/index.js',
   ],
   output: {
     path: path.join(__dirname, '../client/public'),
-    filename: './bundle.js',
+    filename: './bundle.min.js',
     publicPath: '/',
   },
   module: {
@@ -29,18 +30,41 @@ module.exports = {
       },
       {
         test: /\.scss$/,
-        use: ['style-loader', 'css-loader', 'sass-loader']
+        use: ['style-loader', 'css-loader', 'sass-loader'],
+        plugins: ['transform-decorators-legacy']
       },
       {
         test: /\.(png|jpg|gif)$/,
         use: [
           {
             loader: 'file-loader',
-            options: {}  
+            options: {}
+          }
+        ]
+      },
+      {
+        test: /\.(ttf|eot|woff|woff2)(\?v=\d+\.\d+\.\d+)?$/,
+        use: [
+          {
+            loader: 'url-loader',
+            options: {}
+          }
+        ]
+      },
+      {
+        test: /\.(svg)(\?v=\d+\.\d+\.\d+)?$/,
+        use: [
+          {
+            loader: 'svg-url-loader',
+            options: {}
           }
         ]
       },
     ],
   },
-  plugins: [],
+  plugins: [
+    new UglifyJSPlugin({
+      sourceMap: true
+    }),
+  ],
 };
