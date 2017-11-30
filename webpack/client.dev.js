@@ -1,5 +1,5 @@
 const path = require('path');
-const webpack = require('webpack'); 
+const webpack = require('webpack');
 
 module.exports = {
   context: path.join(__dirname, '../client'),
@@ -8,11 +8,11 @@ module.exports = {
     'react-hot-loader/patch',
     'webpack-dev-server/client?http://localhost:8080',
     'webpack/hot/only-dev-server',
-    './src/client.js'
+    './src/index.js'
   ],
   output: {
     path: path.join(__dirname, '../client/public'),
-    filename: './bundle.js',
+    filename: './bundle.min.js',
     publicPath: '/',
   },
   module: {
@@ -21,8 +21,9 @@ module.exports = {
         exclude: /node_modules/,
         use: {
           loader: 'babel-loader',
-          options: {
+          query: {
             presets: ['react', 'env', 'stage-1'],
+            plugins: ['transform-decorators-legacy']
           },
         },
       },
@@ -39,13 +40,29 @@ module.exports = {
         use: [
           {
             loader: 'file-loader',
-            options: {}  
+            options: {}
+          }
+        ]
+      },
+      {
+        test: /\.(ttf|eot|woff|woff2)(\?v=\d+\.\d+\.\d+)?$/,
+        use: [
+          {
+            loader: 'url-loader',
+            options: {}
+          }
+        ]
+      },
+      {
+        test: /\.(svg)(\?v=\d+\.\d+\.\d+)?$/,
+        use: [
+          {
+            loader: 'svg-url-loader',
+            options: {}
           }
         ]
       },
     ],
   },
-  plugins: [
-    new webpack.NamedModulesPlugin(),
-  ],
+  plugins: [],
 };
