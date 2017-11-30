@@ -35,33 +35,23 @@ class SignUpForm extends React.Component {
         <div className="io-title">Sign up for an account</div>
         <div className="io-input io-signup">
           <div className="io-input-group">
-            <i className="io-icon fa fa-envelope" />
-            <input placeholder="Email" type="email" name="email" onChange={this.saveInput} />
-            <i className="io-mark fa fa-check" />
+            <i className="io-icon fa fa-envelope" /><input placeholder="Email" type="email" name="email" onChange={this.saveInput} /><i className="io-mark fa fa-check" />
           </div>
           <div className="io-input-group">
-            <i className="io-icon fa fa-user" />
-            <input placeholder="Username" type="text" name="username" onChange={this.saveInput} />
-            <i className="io-mark fa fa-check" />
+            <i className="io-icon fa fa-user" /><input placeholder="Username" type="text" name="username" onChange={this.saveInput} /><i className="io-mark fa fa-check" />
           </div>
           <div className="io-input-group">
-            <i className="io-icon fa fa-id-card" />
-            <input placeholder="Full Name" type="text" name="fullname" onChange={this.saveInput} />
-            <i className="io-mark fa fa-check" />
+            <i className="io-icon fa fa-id-card" /><input placeholder="Full Name" type="text" name="fullname" onChange={this.saveInput} /><i className="io-mark fa fa-check" />
           </div>
           <div className="io-input-group">
-            <i className="io-icon fa fa-unlock" />
-            <input placeholder="Password" type="password" className="io-password" name="password" onChange={this.saveInput} />
-            <i className="io-mark fa fa-check" />
+            <i className="io-icon fa fa-unlock" /><input placeholder="Password" type="password" className="io-password" name="password" onChange={this.saveInput} /><i className="io-mark fa fa-check" />
           </div>
         </div>
         <div>
-          <button id="login-button" className="io-btn io-signup" onClick={this.submit}>SIGN UP</button>
-          <span className="io-extra">Subscribe for newsletter</span>
+          <button id="login-button" className="io-btn io-signup" onClick={this.submit}>SIGN UP</button><span className="io-extra">Subscribe for newsletter</span>
         </div>
         <div className="io-extra io-signup">
-          <span>Already have an account? </span>
-          <Link href to="/signin" className="io-anchor">sign in here </Link>
+          <span>Already have an account? </span><Link href to="/signin" className="io-anchor">sign in here </Link>
         </div>
       </div>
     );
