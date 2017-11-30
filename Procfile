@@ -1,1 +1,1 @@
-web: node_modules/.bin/babel ./server -d ./dist && mkdir -p dist/config && cross-env NODE_ENV=production webpack --config webpack/client.prod.js --progress && cp server/config/config.json dist/config &&  && node dist/server.js
+web: node_modules/.bin/babel ./server -d ./dist && mkdir -p dist/config && node_modules/.bin/webpack --config webpack/client.prod.js --progress && cp server/config/config.json dist/config &&  && node dist/server.js
