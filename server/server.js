@@ -3,10 +3,14 @@ import path from 'path';
 import bodyParser from 'body-parser';
 import logger from 'morgan';
 import dotenv from 'dotenv';
+import cors from 'cors';
 import router from './routes/router';
 
 // Set up the express app
 const app = express();
+
+// Using cors
+app.use(cors('*'));
 
 // Load config files
 dotenv.config();
@@ -21,11 +25,15 @@ app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
-// Set template folder
-// This must be before setting the router
-app.use('/', express.static(path.join(__dirname, '/../../template')));
+// Set public folder for react routes
+app.use('/', express.static(path.join(__dirname, '/../client/public')));
+app.use('/signin', express.static(path.join(__dirname, '/../client/public')));
+app.use('/signup', express.static(path.join(__dirname, '/../client/public')));
+app.use('/discover', express.static(path.join(__dirname, '/../client/public')));
+app.use('/profile', express.static(path.join(__dirname, '/../client/public')));
 
-// Set router
+
+// Set router for api endpoints
 app.use('/', router);
 
 // Open port and listen from it
