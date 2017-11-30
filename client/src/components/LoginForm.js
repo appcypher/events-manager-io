@@ -5,8 +5,8 @@ import UserActions from '../actions/userActions';
 
 @connect(({ user }) => ({ user: user.data }))
 class LoginForm extends React.Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
       username: null,
       password: null,
@@ -19,7 +19,6 @@ class LoginForm extends React.Component {
 
   submit = () => {
     const { username, password } = this.state;
-    console.log('>>>>>>>>>>>>', username, password);
     this.props.dispatch(UserActions.loginUser({ username, password }));
   }
 
@@ -35,7 +34,7 @@ class LoginForm extends React.Component {
           </div>
           <div className="io-input-group">
             <i className="io-icon fa fa-unlock-alt" />
-            <input placeholder="Password" type="password" className="io-password" name="password" onChange={this.showText} />
+            <input placeholder="Password" type="password" className="io-password" name="password" onChange={this.saveInput} />
             <i className="io-mark fa fa-check" />
           </div>
         </div>
