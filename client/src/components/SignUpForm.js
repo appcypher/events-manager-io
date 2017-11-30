@@ -8,10 +8,10 @@ class SignUpForm extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      username: null,
-      password: null,
-      email: null,
-      fullname: null,
+      username: '',
+      password: '',
+      email: '',
+      fullname: '',
     };
   }
 
