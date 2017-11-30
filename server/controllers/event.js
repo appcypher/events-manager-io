@@ -50,7 +50,7 @@ class EventController {
   }
 
   /**
-   * Modifies an existing event
+   * Deletes a specific event
    * @param{Object} req - api request
    * @param{Object} res - route response
    * @return{json}
@@ -70,7 +70,7 @@ class EventController {
 
 
   /**
-   * Modifies an existing event
+   * Gets details of all existing event
    * @param{Object} req - api request
    * @param{Object} res - route response
    * @return{json}
