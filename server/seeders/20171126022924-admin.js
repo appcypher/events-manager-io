@@ -1,10 +1,14 @@
 const bcrypt = require('bcrypt');
+const dotenv = require('dotenv');
+
+// Load dotenv config files
+dotenv.config();
 
 module.exports = {
   up: queryInterface =>
     queryInterface.bulkInsert('Users', [{
       username: 'admin',
-      password: bcrypt.hashSync('admin', 10),
+      password: bcrypt.hashSync(process.env.ADMIN_SEED_PASSWORD, 10),
       email: 'admin@gmail.com',
       fullname: 'admin',
       admin: true,
