@@ -16,12 +16,12 @@ EventsManagerIO is proudly hosted on [heroku](https://events-manager-io.herokuap
 
 The static version of EventsManagerIO can be accessed on [github pages](https://appcypher.github.io/EventsManager/template).
 
-## Made With 
+## Made With
   ### Client
-    * Bootstrap4 for UI styling 
+    * Bootstrap4 for UI styling
     * React for managing UI states
     * Redux for flux-like app development
-    * SASS for custom styling 
+    * SASS for custom styling
     * Webpack & Uglifyjs for bundling and load-time optimization
 
   ### Server
@@ -29,18 +29,18 @@ The static version of EventsManagerIO can be accessed on [github pages](https://
     * Express for api routes implementation
     * Json Web Tokens for session authentication
     * Postgresql & Sequelize for database management
-    * Heroku for hosting services 
+    * Heroku for hosting services
 
   ### Continuous Integration
     * Travis CI & Codeclimate for test automation
     * Coveralls for test coverage report
     * Hounds CI for linting report
-  
+
   ### Test-Driven Development
-    * Mocha & Chai for api route testing 
-    * Jest & Enzyme for UI testing 
+    * Mocha & Chai for api route testing
+    * Jest & Enzyme for UI testing
     * Nightwatch & Selenium for end-to-end testing
-    
+
 
 
 ## Installation.
@@ -83,13 +83,13 @@ The static version of EventsManagerIO can be accessed on [github pages](https://
   * POST : ```/api/v1/users/logout```
 
 - An API route that allow users to add new event
-  * POST : ```/api/v1/events``` 
+  * POST : ```/api/v1/events```
 
 - An API route that allow users to modify an event
-  * PUT : ```/api/v1/events/<eventId>``` 
+  * PUT : ```/api/v1/events/<eventId>```
 
 - An API route that allow users to delete an event
-  * DELETE : ```/api/v1/events/<eventId>``` 
+  * DELETE : ```/api/v1/events/<eventId>```
 
 - An API route that allow users to gets all available event centers
   * GET : ```/api/v1/centers```
@@ -97,10 +97,10 @@ The static version of EventsManagerIO can be accessed on [github pages](https://
 - An API route that allow users to gets more details on a particualar event center
   * GET : ```/api/v1/centers/<centerId>```
 
-- An API route that allow admin users to add new event centers 
+- An API route that allow admin users to add new event centers
   * POST : ```/api/v1/centers```
 
-- An API route that allow admin users to modify existing event centers 
+- An API route that allow admin users to modify existing event centers
   * PUT : ```/api/v1/centers```
 
 
