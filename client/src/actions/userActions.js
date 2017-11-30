@@ -1,5 +1,6 @@
 import axios from 'axios';
 import url from '../url';
+import history from '../index';
 
 class UserAction {
   /**
@@ -17,6 +18,7 @@ class UserAction {
       })
         .then((res) => {
           dispatch({ type: 'USER_SIGNUP_SUCCESSFUL', payload: res.data });
+          history.push('/discover');
         })
         .catch((err) => {
           dispatch({ type: 'REQUEST_FAILED', payload: err.response.data });
@@ -31,7 +33,6 @@ class UserAction {
    */
   static loginUser(details) {
     return (dispatch) => {
-      dispatch({ type: 'REQUEST_MADE', payload: 'loginUser' });
       axios({
         method: 'POST',
         url: `${url}/api/v1/users/login`,
@@ -39,15 +40,10 @@ class UserAction {
       })
         .then((res) => {
           dispatch({ type: 'USER_LOGIN_SUCCESSFUL', payload: res.data });
-          console.log('>>>>>>>>'); // DEBUG
-          console.log(res.data); // DEBUG
-          console.log('<<<<<<<<'); // DEBUG
+          history.push('/discover');
         })
         .catch((err) => {
           dispatch({ type: 'REQUEST_FAILED', payload: err.response.data });
-          console.log('>>>>>>>>'); // DEBUG
-          console.log(err.response.data); // DEBUG
-          console.log('<<<<<<<<'); // DEBUG
         });
     };
   }
@@ -59,7 +55,6 @@ class UserAction {
    */
   static getUser(token) {
     return (dispatch) => {
-      dispatch({ type: 'REQUEST_MADE', payload: 'getUser' });
       axios({
         method: 'POST',
         url: `${url}/api/v1/users`,
@@ -67,11 +62,9 @@ class UserAction {
       })
         .then((res) => {
           dispatch({ type: 'USER_GET_DETAILS_SUCCESSFUL', payload: res.data });
-          console.log(res.data); // DEBUG
         })
         .catch((err) => {
           dispatch({ type: 'REQUEST_FAILED', payload: err.response.data });
-          console.log(err.response.data); // DEBUG
         });
     };
   }
@@ -84,7 +77,6 @@ class UserAction {
    */
   static modifyUserProfile(token, details) {
     return (dispatch) => {
-      dispatch({ type: 'REQUEST_MADE', payload: 'modifyUserProfile' });
       axios({
         method: 'PUT',
         url: `${url}/api/v1/users`,
@@ -93,11 +85,9 @@ class UserAction {
       })
         .then((res) => {
           dispatch({ type: 'USER_MODIFY_PROFILE_SUCCESSFUL', payload: res.data });
-          console.log(res.data); // DEBUG
         })
         .catch((err) => {
           dispatch({ type: 'REQUEST_FAILED', payload: err.response.data });
-          console.log(err.response.data); // DEBUG
         });
     };
   }
@@ -109,7 +99,6 @@ class UserAction {
    */
   static logoutUser(token) {
     return (dispatch) => {
-      dispatch({ type: 'REQUEST_MADE', payload: 'modifyUserProfile' });
       axios({
         method: 'POST',
         url: `${url}/api/v1/users/logout`,
@@ -117,11 +106,9 @@ class UserAction {
       })
         .then((res) => {
           dispatch({ type: 'USER_LOGOUT_SUCCESSFUL', payload: res.data });
-          console.log(res.data); // DEBUG
         })
         .catch((err) => {
           dispatch({ type: 'REQUEST_FAILED', payload: err.response.data });
-          console.log(err.response.data); // DEBUG
         });
     };
   }
