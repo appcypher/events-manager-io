@@ -1,4 +1,11 @@
-export default (state = [], { type, payload }) => {
+const initial = {
+  data: [],
+  err: {
+    response: null,
+  },
+};
+
+export default (state = initial, { type, payload }) => {
   switch (type) {
     case 'SINGLE_CENTER_FETCH_SUCCESSFUL': {
       const [center] = payload.centers;
