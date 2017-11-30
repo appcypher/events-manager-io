@@ -3,13 +3,11 @@ import HomeNavbar from '../components/HomeNavbar';
 import LoginContainer from '../components/LoginContainer';
 import LoginForm from '../components/LoginForm';
 
+
 class SignIn extends React.Component {
   constructor() {
     super();
     this.state = {};
-  }
-
-  submitLogin = () => {
   }
 
   render() {
@@ -17,7 +15,7 @@ class SignIn extends React.Component {
       <div className="io-stretch-vertical">
         <HomeNavbar />
         <LoginContainer>
-          <LoginForm submit={this.submitLogin} />
+          <LoginForm />
         </LoginContainer>
       </div>
     );
