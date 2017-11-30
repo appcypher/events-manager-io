@@ -11,12 +11,33 @@ import Validation from '../middleware/validation';
 // Using express router
 const router = express.Router();
 
-// Home
+/** ***************** React Routes ************** */
 router.route('/')
   .get((req, res) => {
-    res.status(200).sendFile(path.join(__dirname, '/../../template/index.html'));
+    res.sendFile(path.join(__dirname, '/../client/public/index.html'));
   });
 
+router.route('/signin')
+  .get((req, res) => {
+    res.sendFile(path.join(__dirname, '/../client/public/index.html'));
+  });
+
+router.route('/signup')
+  .get((req, res) => {
+    res.sendFile(path.join(__dirname, '/../client/public/index.html'));
+  });
+
+router.route('/discover')
+  .get((req, res) => {
+    res.sendFile(path.join(__dirname, '/../client/public/index.html'));
+  });
+
+router.route('/profile')
+  .get((req, res) => {
+    res.sendFile(path.join(__dirname, '/../client/public/index.html'));
+  });
+
+/** ***************** API Endpoints ************** */
 // Signup
 router.route('/api/v1/users/')
   .post(
@@ -59,7 +80,7 @@ router.route('/api/v1/centers/:centerId')
 router.route('/api/v1/centers')
   .get(EventCenterController.getAllCenters);
 
-// Get a center and associated events
+// Get a specific center and associated events
 router.route('/api/v1/centers/:centerId')
   .get(
     Validation.checkParamValid('centerId'),
@@ -100,7 +121,8 @@ router.route('/api/v1/events/:eventId')
     EventController.deleteEvent,
   );
 
-/* Additional Routes */
+
+/** ***************** Additional Endpoints ************** */
 // Get user's details
 router.route('/api/v1/users')
   .get(
@@ -118,7 +140,7 @@ router.route('/api/v1/users')
 
 // Log user out
 router.route('/api/v1/users/logout')
-  .get(
+  .post(
     authenticate,
     UserController.logoutUser,
   );
