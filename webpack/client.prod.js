@@ -6,7 +6,7 @@ module.exports = {
   context: path.join(__dirname, '../client'),
   devtool: 'source-map',
   entry: [
-    './src/index.js',
+    './src/index.js'
   ],
   output: {
     path: path.join(__dirname, '../client/public'),
@@ -31,8 +31,7 @@ module.exports = {
       },
       {
         test: /\.scss$/,
-        use: ['style-loader', 'css-loader', 'sass-loader'],
-        plugins: ['transform-decorators-legacy']
+        use: ['style-loader', 'css-loader', 'sass-loader']
       },
       {
         test: /\.(png|jpg|gif)$/,
