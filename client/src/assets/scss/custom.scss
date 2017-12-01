@@ -278,11 +278,12 @@ body {
       justify-content: center;
       width: 30px;
       height: 30px;
-      margin-left: 10px;
-      padding: 5px;
+      margin-left: 3px;
+      padding: 2px;
       cursor: pointer;
       background: none;
       border: none;
+      font-size: 13px;
       &:hover {
         background-color: $navbar-gray-deep;
         border-radius: 50%;
@@ -315,8 +316,9 @@ body {
       justify-content: center;
       align-items: center;
       margin-left: 10px;
-      width: 70px;
+      width: auto;
       height: 35px;
+      padding: 0px 10px;
       cursor: pointer;
       &:hover {
         background-color: $login-box-gray;
@@ -797,7 +799,7 @@ body {
 
 // PARALLAX
 .io-parallax {
-  background-image: url("../images/hall-banner-lg.jpg");
+  background-image: url("../images/hall-banner2.jpg");
   background-repeat: no-repeat;
   background-position: center;
   background-attachment: fixed;
@@ -836,13 +838,13 @@ body {
   }
 }
 
-
 // SLANT
 .io-slant {
   display: flex;
   height:300px;
   width:100%x;
-  background-image: url("../images/hall-banner-lg.jpg");
+  background-image: url("../images/slant-center1.jpg");
+  background-position: center;
   .io-content {
     height:100%;
     width:500px;
@@ -859,9 +861,10 @@ body {
       width: 350px;
     }
   }
+
   &.io-reverse {
     justify-content: flex-end;
-    background-image: url("../images/hall-banner-lg.jpg");
+    background-image: url("../images/slant-center4.jpg");
     .io-content {
       display: flex;
       justify-content: flex-start;
@@ -888,7 +891,7 @@ body {
 
 // FOOTER
 .io-footer {
-  height: 500px;
+  height: auto;
   color: $login-input-gray;
   background-color: $navbar-gray;
   padding: 20px 20px;
@@ -923,10 +926,26 @@ body {
   padding-bottom: 50px;
 }
 
-// Responsive design for desktops, tablets Screens
+// Overriding bootstrap
+.io-footer .col-6 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  a {
+    display: block;
+  }
+}
+
+// Responsive design for desktops, tablets screens
 @media only screen and (min-width: 615px) {
   .io-navbar .io-brand {
-    & .io-img {
+    .io-img {
+      display: none;
+    }
+  }
+
+  .io-navbar .io-end {
+    .io-icon {
       display: none;
     }
   }
@@ -937,15 +956,13 @@ body {
     justify-content: center;
   }
 
-  // Overriding bootstrap
   .col-12.col-lg-6 {
     display: flex;
     justify-content: center;
   }
-
 }
 
-// Responsive design phones, phablets Screens
+// Responsive design phones, phablets screens
 @media only screen and (max-width: 615px) {
   .io-navbar .io-brand {
     background-color: transparent;
@@ -954,6 +971,15 @@ body {
       display: none;
     }
     .io-img {
+      display: inline;
+    }
+  }
+
+  .io-navbar .io-end {
+    .io-text.io-switchable {
+      display: none;
+    }
+    .io-icon {
       display: inline;
     }
   }
@@ -967,6 +993,10 @@ body {
     }
   }
 
+  .io-profile-card .io-name {
+    width:200px;
+  }
+
   // Overriding bootstrap
   .col-6.col-md-4.col-lg-3 {
     display: flex;
@@ -977,11 +1007,6 @@ body {
     display: flex;
     justify-content: center;
   }
-
-  .io-profile-card .io-name {
-    width:200px;
-  }
-
 }
 
 @media only screen and (max-width: 700px) {
@@ -1007,6 +1032,42 @@ body {
         100% 100%,
         0 100%
       );
+    }
+  }
+}
+
+@media only screen and (max-width: 600px) {
+    // Overriding bootstrap
+    .row {
+      flex-direction: column;
+      align-items: center;
+    }
+    .io-footer .col-6 {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      a {
+        display: block;
+      }
+    }
+}
+
+// Discover navbar responsiveness
+@media only screen and (min-width: 770px) {
+  .io-navbar .io-end {
+    .io-icon {
+      display: none;
+    }
+  }
+}
+
+@media only screen and (max-width: 770px) {
+  .io-navbar .io-end {
+    .io-text.io-switchable {
+      display: none;
+    }
+    .io-icon {
+      display: flex;
     }
   }
 }
