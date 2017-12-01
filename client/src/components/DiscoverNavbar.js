@@ -20,9 +20,14 @@ const DiscoverNavbar = () => (
       <i className="io-search-button fa fa-search" />
     </div>
     <div className="io-end">
-      <Link href to="/profile" className="io-icon">X</Link>
-      <a href id="notifications" className="io-icon">O</a>
-      <a href id="settings" className="io-icon">☐</a>
+      <Link href to="/profile">
+        <i className="io-icon fa fa-user" />
+        <div className="io-text io-switchable">PROFILE</div>
+      </Link>
+      <i className="io-icon fa fa-bell" />
+      <div className="io-text io-switchable">MESSAGES</div>
+      <i className="io-icon fa fa-cog" />
+      <div className="io-text io-switchable">SETTINGS</div>
     </div>
   </Navbar>
 );
