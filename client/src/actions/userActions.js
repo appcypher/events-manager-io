@@ -18,7 +18,6 @@ class UserAction {
       })
         .then((res) => {
           dispatch({ type: 'USER_SIGNUP_SUCCESSFUL', payload: res.data });
-          history.push('/discover');
         })
         .catch((err) => {
           dispatch({ type: 'REQUEST_FAILED', payload: err.response.data });
