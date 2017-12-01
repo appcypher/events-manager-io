@@ -1,7 +1,7 @@
 import React from 'react';
 
 const HomeAboutSection = () => (
-  <div className="io-about">
+  <div id="about" className="io-about">
     <h1>ABOUT US </h1>
     <p>
       Lorem ipsum dolor sit amet, consectetur adipiscing elit.

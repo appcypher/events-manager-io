@@ -11,13 +11,13 @@ import brand from '../assets/icons/brand.png';
  */
 const HomeNavbar = () => (
   <Navbar className="io-navbar io-fixed-top">
-    <Link href to="/" className="io-brand"> 
+    <Link href to="/" className="io-brand">
       <div className="io-text">EventsManagerIO</div>
       <img src={brand} alt="" className="io-img" />
     </Link>
     <div className="io-middle io-start">
-      <a href="#contact">CONTACT</a>
-      <a href="#about">ABOUT US</a>
+      <a href="/#footer">CONTACT</a>
+      <a href="/#about">ABOUT US</a>
     </div>
     <div className="io-end">
       <Link href to="/signin" className="io-text">LOGIN</Link>
