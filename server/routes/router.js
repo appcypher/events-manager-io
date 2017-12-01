@@ -14,27 +14,27 @@ const router = express.Router();
 /** ***************** React Routes ************** */
 router.route('/')
   .get((req, res) => {
-    res.sendFile(path.join(__dirname, '/../client/public/index.html'));
+    res.sendFile(path.join(__dirname, '/../../client/public/index.html'));
   });
 
 router.route('/signin')
   .get((req, res) => {
-    res.sendFile(path.join(__dirname, '/../client/public/index.html'));
+    res.sendFile(path.join(__dirname, '/../../client/public/index.html'));
   });
 
 router.route('/signup')
   .get((req, res) => {
-    res.sendFile(path.join(__dirname, '/../client/public/index.html'));
+    res.sendFile(path.join(__dirname, '/../../client/public/index.html'));
   });
 
 router.route('/discover')
   .get((req, res) => {
-    res.sendFile(path.join(__dirname, '/../client/public/index.html'));
+    res.sendFile(path.join(__dirname, '/../../client/public/index.html'));
   });
 
 router.route('/profile')
   .get((req, res) => {
-    res.sendFile(path.join(__dirname, '/../client/public/index.html'));
+    res.sendFile(path.join(__dirname, '/../../client/public/index.html'));
   });
 
 /** ***************** API Endpoints ************** */
@@ -177,7 +177,7 @@ router.route('/api/v1/facilities/:facilityId')
 // 404 routes
 router.route('*')
   .all((req, res) => {
-    res.status(404).send({ message: 'This endpoint is not availaible' });
+    res.status(404).sendFile(path.join(__dirname, '/../../client/public/404.html'));
   });
 
 export default router;
