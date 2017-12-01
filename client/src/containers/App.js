@@ -21,6 +21,7 @@ const App = () => (
   <div className="io-stretch-vertical">
     <Switch>
       <Route exact path="/" component={Home} />
+      <Route exact path="/home" component={Home} />
       <Route exact path="/signin" component={SignIn} />
       <Route exact path="/signup" component={SignUp} />
       <Route exact path="/discover" component={Discover} />
