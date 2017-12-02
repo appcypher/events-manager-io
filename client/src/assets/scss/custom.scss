@@ -19,12 +19,13 @@ $card-btn-purple-light: rgb(200, 148, 209);
 $card-btn-gray: #595959;
 $navbar-gray: #3a3f4f;
 $navbar-gray-deep: #242835;
+$navbar-gray-deep-transparent: rgba(36, 40, 53, .8);
 $navbar-gray-medium: rgb(72, 45, 89);
 $title-bar-light-purple: rgb(238, 211, 238);
 $highlight-purple: #AB47BC;
-$fab-purple-1: rgb(74, 10, 85);
-$fab-purple-2: rgb(122, 57, 135);
-$fab-purple-3: rgb(158, 103, 169);
+$fab-purple-1: rgb(36, 40, 53);
+$fab-purple-2: rgb(57, 57, 80);
+$fab-purple-3: rgb(72, 72, 113);
 
 // FONTS
 @font-face {
@@ -342,6 +343,7 @@ body {
 .io-title-bar {
   display: flex;
   align-items: center;
+  min-width: 300px;
   height: 50px;
   margin-top: 10px;
   margin-bottom: 10px;
@@ -359,7 +361,7 @@ body {
   box-shadow: 1px 3px 3px $navbar-shadow;
   width: 50px;
   height: 50px;
-  background-color: $navbar-gray-deep;
+  background-color: $navbar-gray-deep-transparent;
   color: white;
   display: flex;
   justify-content: center;
@@ -371,6 +373,7 @@ body {
   cursor: pointer;
   &:hover {
     filter: brightness(130%);
+    background-color: $navbar-gray-deep;
   }
 }
 
@@ -381,17 +384,15 @@ body {
   position: fixed;
   bottom: 80px;
   right: 30px;
-
   &.hide {
     display: none;
   }
 
-  .io-labeled-fab {
+  .io-labelled-fab {
     display: flex;
     justify-content: flex-end;
     align-items: center;
     margin: 10px 5px;
-    color: white;
     cursor: pointer;
 
     &.io-1 button { background-color: $fab-purple-1; }
@@ -404,6 +405,7 @@ body {
     span {
       margin-right: 10px;
       padding: 5px 10px;
+      color: white;
       background-color: gray;
       border-radius: 5px;
     }
@@ -412,6 +414,8 @@ body {
       width: 30px;
       height: 30px;
       background-color: red;
+      color: white;
+      font-size: 10px;
       border: none;
       border-radius: 50%;
       cursor: pointer;
@@ -483,8 +487,10 @@ body {
 
 // CENTER CARD
 .io-center-card {
-  width: 200px;
-  height: 300px;
+  width: 220px;
+  min-width: 220px;
+  height: 340px;
+  margin-bottom: 20px;
   display: relative;
   box-shadow: 3px 3px 5px $navbar-shadow;
   &:hover {
@@ -499,7 +505,7 @@ body {
   }
   .io-content {
     padding: 10px;
-    height: 100px;
+    height: 120px;
     background-color: $title-bar-light-purple;
     .io-title {
       font-weight: 900;
