@@ -631,7 +631,7 @@ body {
     .io-header {
       padding: 10px;
       font-weight: 900;
-      color: white;
+      color: $navbar-gray-deep;
       background-color: $title-bar-light-purple;
       display: flex;
       justify-content: center;
@@ -670,6 +670,7 @@ body {
         .io-section {
           display: flex;
           align-items: center;
+          margin: 8px 0px ;
           &.io-start {
             display: flex;
             align-items: flex-start;
