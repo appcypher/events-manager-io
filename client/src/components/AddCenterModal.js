@@ -72,8 +72,7 @@ class AddCenterModal extends React.Component {
               <ModalSection title="Facilities" extra="io-start"><ModalList list={facilityList} saveInput={this.saveInput} /></ModalSection>
             </form>
           </div>
-          <div className="io-footer">
-            <button id="add-center-cancel" className="io-submit-btn io-sm" onClick={this.cancel}>CANCEL</button>
+          <div className="io-footer"><button id="add-center-cancel" className="io-submit-btn io-sm" onClick={this.cancel}>CANCEL</button>
             <button id="add-center-submit" className="io-submit-btn io-sm" onClick={this.submit}>SUBMIT</button>
           </div>
         </div>
