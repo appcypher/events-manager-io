@@ -9,7 +9,6 @@ class UserAction {
    */
   static createUser(details) {
     return (dispatch) => {
-      dispatch({ type: 'REQUEST_MADE', payload: 'loginUser' });
       axios({
         method: 'POST',
         url: `${url}/api/v1/users`,
@@ -19,7 +18,9 @@ class UserAction {
           dispatch({ type: 'USER_SIGNUP_SUCCESSFUL', payload: res.data });
         })
         .catch((err) => {
-          dispatch({ type: 'USER_SIGNUP_FAILED', payload: err.response.data });
+          if (err.response) {
+            dispatch({ type: 'REQUEST_FAILED', payload: err.response.data });
+          }
         });
     };
   }
@@ -40,7 +41,9 @@ class UserAction {
           dispatch({ type: 'USER_LOGIN_SUCCESSFUL', payload: res.data });
         })
         .catch((err) => {
-          dispatch({ type: 'USER_LOGIN_FAILED', payload: err.response.data });
+          if (err.response) {
+            dispatch({ type: 'REQUEST_FAILED', payload: err.response.data });
+          }
         });
     };
   }
@@ -61,7 +64,9 @@ class UserAction {
           dispatch({ type: 'USER_GET_DETAILS_SUCCESSFUL', payload: res.data });
         })
         .catch((err) => {
-          dispatch({ type: 'USER_GET_DETAILS_FAILED', payload: err.response.data });
+          if (err.response) {
+            dispatch({ type: 'REQUEST_FAILED', payload: err.response.data });
+          }
         });
     };
   }
@@ -84,7 +89,9 @@ class UserAction {
           dispatch({ type: 'USER_MODIFY_PROFILE_SUCCESSFUL', payload: res.data });
         })
         .catch((err) => {
-          dispatch({ type: 'USER_MODIFY_PROFILE_FAILED', payload: err.response.data });
+          if (err.response) {
+            dispatch({ type: 'REQUEST_FAILED', payload: err.response.data });
+          }
         });
     };
   }
@@ -105,7 +112,9 @@ class UserAction {
           dispatch({ type: 'USER_LOGOUT_SUCCESSFUL', payload: res.data });
         })
         .catch((err) => {
-          dispatch({ type: 'USER_LOGOUT_FAILED', payload: err.response.data });
+          if (err.response) {
+            dispatch({ type: 'REQUEST_FAILED', payload: err.response.data });
+          }
         });
     };
   }

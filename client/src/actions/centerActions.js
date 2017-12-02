@@ -10,7 +10,6 @@ class CenterAction {
    */
   static createCenter(token, details) {
     return (dispatch) => {
-      dispatch({ type: 'REQUEST_MADE', payload: 'createCenter' });
       axios({
         method: 'POST',
         url: `${url}/api/v1/centers`,
@@ -21,7 +20,9 @@ class CenterAction {
           dispatch({ type: 'CENTER_CREATE_SUCCESSFUL', payload: res.data });
         })
         .catch((err) => {
-          dispatch({ type: 'REQUEST_FAILED', payload: err.response.data });
+          if (err.response) {
+            dispatch({ type: 'REQUEST_FAILED', payload: err.response.data });
+          }
         });
     };
   }
@@ -35,7 +36,6 @@ class CenterAction {
    */
   static modifyCenter(token, details, param) {
     return (dispatch) => {
-      dispatch({ type: 'REQUEST_MADE', payload: 'modifyCenter' });
       axios({
         method: 'PUT',
         url: `${url}/api/v1/centers/${param}`,
@@ -46,7 +46,9 @@ class CenterAction {
           dispatch({ type: 'CENTER_MODIFY_SUCCESSFUL', payload: res.data });
         })
         .catch((err) => {
-          dispatch({ type: 'REQUEST_FAILED', payload: err.response.data });
+          if (err.response) {
+            dispatch({ type: 'REQUEST_FAILED', payload: err.response.data });
+          }
         });
     };
   }
@@ -58,7 +60,6 @@ class CenterAction {
    */
   static getAllCenters(token) {
     return (dispatch) => {
-      dispatch({ type: 'REQUEST_MADE', payload: 'getAllCenters' });
       axios({
         method: 'GET',
         url: `${url}/api/v1/centers`,
@@ -68,7 +69,9 @@ class CenterAction {
           dispatch({ type: 'CENTER_GET_ALL_SUCCESSFUL', payload: res.data });
         })
         .catch((err) => {
-          dispatch({ type: 'REQUEST_FAILED', payload: err.response.data });
+          if (err.response) {
+            dispatch({ type: 'REQUEST_FAILED', payload: err.response.data });
+          }
         });
     };
   }
@@ -81,7 +84,6 @@ class CenterAction {
    */
   static getCenter(token, param) {
     return (dispatch) => {
-      dispatch({ type: 'REQUEST_MADE', payload: 'getCenter' });
       axios({
         method: 'GET',
         url: `${url}/api/v1/centers/${param}`,
@@ -91,7 +93,9 @@ class CenterAction {
           dispatch({ type: 'CENTER_GET_SUCCESSFUL', payload: res.data });
         })
         .catch((err) => {
-          dispatch({ type: 'REQUEST_FAILED', payload: err.response.data });
+          if (err.response) {
+            dispatch({ type: 'REQUEST_FAILED', payload: err.response.data });
+          }
         });
     };
   }
