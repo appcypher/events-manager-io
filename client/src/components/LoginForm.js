@@ -15,7 +15,7 @@ class LoginForm extends React.Component {
       password: '',
     };
 
-    // Watching for change in token
+    // Watching for change in user token
     const { user } = this.props;
     const { getState, subscribe } = store;
     const w = watch(getState, user.token);
