@@ -20,8 +20,10 @@ class LoginForm extends React.Component {
     const { getState, subscribe } = store;
     const w = watch(getState, user.token);
     subscribe(w((newVal) => {
-      if (newVal.user.token !== '') { // if token is not empty
-        history.push('/profile');
+      if (newVal.user.token !== '') { // if token is not empty BAD LOGIC :/
+        history.push('/discover');
+      } else {
+        this.props.showAlert(newVal.user.message);
       }
     }));
   }
