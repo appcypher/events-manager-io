@@ -7,6 +7,7 @@ $login-placeholder-gray: #4e5462;
 $login-input-gray: #afb1be;
 $login-forgot-gray: #4e4f5f;
 $login-bg-gradient: linear-gradient(to bottom right, rgb(198, 189, 201), rgb(159, 114, 186), #733296); // Change this horrid color please! ;_;
+$login-bg-gradient-transparent: linear-gradient(to bottom right, rgba(198, 189, 201, .7), rgba(159, 114, 186, .7), rgba(115, 50, 150, .7)); // Change this horrid color please! ;_;
 $general-bg-gradient: linear-gradient(to bottom right, rgb(198, 189, 201), rgb(181, 149, 201), #a571c1); // Change this horrid color please! ;_;
 $navbar-shadow: rgba(0, 0, 0, .2);
 $navbar-bg-gradient: linear-gradient(to right, #e45a53, #bb6deb); // Change this horrid color please! ;_;
@@ -18,6 +19,7 @@ $card-btn-purple-light: rgb(200, 148, 209);
 $card-btn-gray: #595959;
 $navbar-gray: #3a3f4f;
 $navbar-gray-deep: #242835;
+$navbar-gray-medium: rgb(72, 45, 89);
 $title-bar-light-purple: rgb(238, 211, 238);
 $highlight-purple: #AB47BC;
 $fab-purple-1: rgb(74, 10, 85);
@@ -602,26 +604,36 @@ body {
   height: 100%;
   background-color: rgba(0,0,0,.4);
   justify-content: center;
+  align-items: center;
   .io-modal-body {
-    border-top: 5px solid $navbar-gray-deep;
-    border-bottom: 5px solid $navbar-gray-deep;
+    border-top: 5px solid $login-box-gray;
+    border-bottom: 5px solid $login-box-gray;
     border-radius: 5px 5px 5px 5px;
     box-shadow: 4px 4px 5px $navbar-shadow;
     background-color: white;
     width: 465px;
     height: calc(100vh - 100px);
     min-height: 400px;
+    max-height: 600px;
     background-color: white;
-    margin-top: 53px;
+    &.io-error {
+      height: 250px;
+      min-height: initial;
+      background: $login-bg-gradient-transparent;
+      color: white;
+    }
     .io-header {
       padding: 10px;
       font-weight: 900;
-      color: $navbar-gray;
+      color: white;
       background-color: $title-bar-light-purple;
       display: flex;
       justify-content: center;
       align-items: center;
       height: 45px;
+      &.io-error {
+        background-color: $login-box-gray;
+      }
     }
     .io-body {
       height: calc(100% - 90px);
@@ -642,6 +654,13 @@ body {
       .io-content {
         margin: 7px 15px;
         font-size: 700;
+        &.io-error {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          height: 100%;
+          text-align: center;
+        }
         .io-section {
           display: flex;
           align-items: center;
@@ -717,9 +736,19 @@ body {
       justify-content: flex-end;
       align-items: center;
       height: 45px;
+      &.io-error {
+        position: relative;
+        bottom: 7px;
+        background-color: $login-box-gray;
+        button {
+          color: white;
+          &:hover {
+            border-color: white;
+          }
+        }
+      }
       button {
         margin-left: 10px;
-        // TODO
       }
     }
   }
