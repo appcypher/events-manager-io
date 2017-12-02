@@ -1,6 +1,5 @@
 import axios from 'axios';
 import url from '../url';
-import history from '../index';
 
 class UserAction {
   /**
@@ -20,7 +19,7 @@ class UserAction {
           dispatch({ type: 'USER_SIGNUP_SUCCESSFUL', payload: res.data });
         })
         .catch((err) => {
-          dispatch({ type: 'REQUEST_FAILED', payload: err.response.data });
+          dispatch({ type: 'USER_SIGNUP_FAILED', payload: err.response.data });
         });
     };
   }
@@ -39,10 +38,9 @@ class UserAction {
       })
         .then((res) => {
           dispatch({ type: 'USER_LOGIN_SUCCESSFUL', payload: res.data });
-          history.push('/discover');
         })
         .catch((err) => {
-          dispatch({ type: 'REQUEST_FAILED', payload: err.response.data });
+          dispatch({ type: 'USER_LOGIN_FAILED', payload: err.response.data });
         });
     };
   }
@@ -63,7 +61,7 @@ class UserAction {
           dispatch({ type: 'USER_GET_DETAILS_SUCCESSFUL', payload: res.data });
         })
         .catch((err) => {
-          dispatch({ type: 'REQUEST_FAILED', payload: err.response.data });
+          dispatch({ type: 'USER_GET_DETAILS_FAILED', payload: err.response.data });
         });
     };
   }
@@ -86,7 +84,7 @@ class UserAction {
           dispatch({ type: 'USER_MODIFY_PROFILE_SUCCESSFUL', payload: res.data });
         })
         .catch((err) => {
-          dispatch({ type: 'REQUEST_FAILED', payload: err.response.data });
+          dispatch({ type: 'USER_MODIFY_PROFILE_FAILED', payload: err.response.data });
         });
     };
   }
@@ -107,7 +105,7 @@ class UserAction {
           dispatch({ type: 'USER_LOGOUT_SUCCESSFUL', payload: res.data });
         })
         .catch((err) => {
-          dispatch({ type: 'REQUEST_FAILED', payload: err.response.data });
+          dispatch({ type: 'USER_LOGOUT_FAILED', payload: err.response.data });
         });
     };
   }
