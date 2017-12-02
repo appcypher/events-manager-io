@@ -1,9 +1,12 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
+import watch from 'redux-watch';
 import UserActions from '../actions/userActions';
+import history from '../index';
+import store from '../store';
 
-@connect(({ user }) => ({ user: user.data }))
+@connect(({ user }) => ({ user }))
 class LoginForm extends React.Component {
   constructor(props) {
     super(props);
@@ -11,6 +14,16 @@ class LoginForm extends React.Component {
       username: '',
       password: '',
     };
+
+    // Watching for change in token
+    const { user } = this.props;
+    const { getState, subscribe } = store;
+    const w = watch(getState, user.token);
+    subscribe(w((newVal) => {
+      if (newVal.user.token !== '') { // if token is not empty
+        history.push('/profile');
+      }
+    }));
   }
 
   saveInput = (e) => {
