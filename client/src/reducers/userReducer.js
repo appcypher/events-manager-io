@@ -1,5 +1,5 @@
 const initial = {
-  message: '', token: '',
+  message: '', token: '', user: {},
 };
 
 /**
@@ -16,19 +16,13 @@ export default (state = initial, { type, payload }) => {
         ...state, message, token,
       };
     }
-    case 'USER_SIGNUP_FAILED': {
-      const { message } = payload;
-      return {
-        ...state, message,
-      };
-    }
     case 'USER_LOGIN_SUCCESSFUL': {
       const { message, token } = payload;
       return {
         ...state, message, token,
       };
     }
-    case 'USER_LOGIN_FAILED': {
+    case 'REQUEST_FAILED': {
       const { message } = payload;
       return {
         ...state, message,
