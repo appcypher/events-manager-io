@@ -65,7 +65,7 @@ class EventCenterController {
       .all()
       .then((centers) => {
         if (centers) {
-          res.status(302).send({ message: 'all centers delivered!', centers });
+          res.status(200).send({ message: 'all centers delivered!', centers });
         } else {
           res.status(404).send({ message: 'cannot find any center!' });
         }
@@ -89,7 +89,7 @@ class EventCenterController {
       })
       .then((center) => {
         if (center) {
-          res.status(302).send({ message: 'center delivered!', center });
+          res.status(200).send({ message: 'center delivered!', center });
         } else {
           res.status(404).send({ message: 'cannot find specified center!' });
         }

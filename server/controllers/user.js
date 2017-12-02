@@ -12,27 +12,35 @@ class UserController {
    * @return{json} registered user details
    */
   static createUser(req, res) {
-    // Hash password to save in the database
-    const password = bcrypt.hashSync(req.body.password, 10);
-    User
-      .create({
-        username: req.body.username,
-        password,
-        email: req.body.email,
-        fullname: req.body.fullname,
-        admin: false,
-      })
-      .then((user) => {
-        const token = jwt.sign( // Create a token that lasts for an hour
-          { id: user.id, admin: false },
-          process.env.SECRET_KEY,
-          { expiresIn: '60m' },
-        );
-        const safeUser = user;
-        safeUser.password = 'xxxxxxxxxxxxxxxxxxxx';
-        res.status(201).send({ message: 'user created!', user: safeUser, token });
-      })
-      .catch(err => res.status(400).send({ message: err.errors[0].message || err }));
+    if (
+      req.body.password === undefined ||
+      req.body.password === null ||
+      req.body.password.length < 5
+    ) {
+      res.status(400).send({ message: 'password is too short! - make sure it is at least 5 characters' });
+    } else {
+      // Hash password to save in the database
+      const password = bcrypt.hashSync(req.body.password, 10);
+      User
+        .create({
+          username: req.body.username,
+          password,
+          email: req.body.email,
+          fullname: req.body.fullname,
+          admin: false,
+        })
+        .then((user) => {
+          const token = jwt.sign( // Create a token that lasts for an hour
+            { id: user.id, admin: false },
+            process.env.SECRET_KEY,
+            { expiresIn: '60m' },
+          );
+          const safeUser = user;
+          safeUser.password = 'xxxxxxxxxxxxxxxxxxxx';
+          res.status(201).send({ message: 'user created!', user: safeUser, token });
+        })
+        .catch(err => res.status(400).send({ message: err.errors[0].message || err }));
+    }
   }
 
   /**
@@ -81,7 +89,7 @@ class UserController {
       .then((user) => {
         const safeUser = user;
         safeUser.password = 'xxxxxxxxxxxxxxxxxxxx';
-        res.status(302).send({ message: 'user details delivered!', user: safeUser });
+        res.status(200).send({ message: 'user details delivered!', user: safeUser });
       })
       .catch(err => res.status(400).send({ message: err.errors[0].message || err }));
   }

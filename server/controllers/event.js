@@ -80,7 +80,7 @@ class EventController {
       .findAll({ where: { userId: req.user.id } })
       .then((events) => {
         if (events) {
-          res.status(302).send({ message: 'all events delivered!', events });
+          res.status(200).send({ message: 'all events delivered!', events });
         } else {
           res.status(403).send({ message: 'you have no event!' });
         }
