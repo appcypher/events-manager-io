@@ -10,6 +10,10 @@ class SignIn extends React.Component {
     this.state = {};
   }
 
+  componentDidMount() {
+    document.title = 'LogIn • EventsManagerIO';
+  }
+
   render() {
     return (
       <div className="io-stretch-vertical">

@@ -3,13 +3,26 @@ import HomeNavbar from '../components/HomeNavbar';
 import LoginContainer from '../components/LoginContainer';
 import SignUpForm from '../components/SignUpForm';
 
-const SignIn = () => (
-  <div className="io-stretch-vertical">
-    <HomeNavbar />
-    <LoginContainer>
-      <SignUpForm />
-    </LoginContainer>
-  </div>
-);
+class SignUp extends React.Component {
+  constructor() {
+    super();
+    this.state = {};
+  }
 
-export default SignIn;
+  componentDidMount() {
+    document.title = 'SignUp • EventsManagerIO';
+  }
+
+  render() {
+    return (
+      <div className="io-stretch-vertical">
+        <HomeNavbar />
+        <LoginContainer>
+          <SignUpForm />
+        </LoginContainer>
+      </div>
+    );
+  }
+}
+
+export default SignUp;

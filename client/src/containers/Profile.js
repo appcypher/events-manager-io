@@ -7,7 +7,11 @@ import Footer from '../components/Footer';
 class Profile extends React.Component {
   constructor(props) {
     super(props);
-    this.props = null;
+    this.state = {};
+  }
+
+  componentDidMount() {
+    document.title = 'Profile • EventsManagerIO';
   }
 
   render() {

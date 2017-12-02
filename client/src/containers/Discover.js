@@ -3,21 +3,32 @@ import { connect } from 'react-redux';
 import DiscoverNavbar from '../components/DiscoverNavbar';
 import DiscoverBody from '../components/DiscoverBody';
 import Footer from '../components/Footer';
-import CenterActions from '../actions/centerActions';
 
-// Argument is a destructured store
-@connect(({ nearCenters, otherCenters }) => ({ nearCenters, otherCenters }))
+@connect(({ centers }) => ({ centers: centers.data }))
 class Home extends React.Component {
-  componentWillMount() {
-    this.props.dispatch(CenterActions.getAllCenters);
+  constructor(props) {
+    super(props);
+    this.state = {
+      nearCenters: null,
+      availableCenters: null,
+    };
+  }
+
+  componentDidMount() {
+    document.title = 'Discover • EventsManagerIO';
+  }
+
+  filterLocation() {
+    this.setState({ nearCenters: this.props.centers.filter(center => center.location === 'Lagos') });
   }
 
   render() {
-    const { nearCenters, otherCenters } = this.props;
+    const { nearCenters } = this.state;
+    const { centers } = this.props;
     return (
       <div>
         <DiscoverNavbar />
-        <DiscoverBody nearCenters={nearCenters} otherCenters={otherCenters} />
+        <DiscoverBody nearCenters={nearCenters} availableCenters={centers} />
         <Footer />
       </div>
     );
