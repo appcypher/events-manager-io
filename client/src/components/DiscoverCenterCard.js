@@ -1,9 +1,14 @@
 import React from 'react';
+import placeholder from '../assets/images/placeholder.jpg';
 
 const DiscoverCenterCard = (props) => {
-  const {
-    imageUrl, name, type, location,
-  } = props;
+  const { name, type, location } = props;
+  let { imageUrl } = props;
+
+  // If image is not provided, use a placeholder image
+  if (!imageUrl) {
+    imageUrl = placeholder;
+  }
 
   return (
     <div className="io-center-card">
