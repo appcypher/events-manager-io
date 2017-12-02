@@ -67,7 +67,7 @@ describe('Users', () => {
 
   it('(POST /api/v1/users) should return 400 if email is not valid', (done) => {
     const userSignup = {
-      username: 'bisi', password: 'bisi', email: 'bisi', fullname: 'Bisi',
+      username: 'bisi', password: 'bisip', email: 'bisi', fullname: 'Bisi',
     };
     request(server)
       .post('/api/v1/users')

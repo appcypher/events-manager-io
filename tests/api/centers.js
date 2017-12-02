@@ -42,7 +42,7 @@ describe('Centers', () => {
         request(server)
           .get('/api/v1/centers')
           .end((err2, res2) => {
-            expect(res2.status).to.equal(302);
+            expect(res2.status).to.equal(200);
             expect(res2.body).to.be.an('object');
             expect(res2.body.message).to.equal('all centers delivered!');
             done();
@@ -58,7 +58,7 @@ describe('Centers', () => {
         request(server)
           .get('/api/v1/centers/1')
           .end((err2, res2) => {
-            expect(res2.status).to.equal(302);
+            expect(res2.status).to.equal(200);
             expect(res2.body).to.be.an('object');
             expect(res2.body.message).to.equal('center delivered!');
             done();
