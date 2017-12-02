@@ -1,34 +1,37 @@
 const initial = {
-  data: [],
-  err: {
-    response: null,
-  },
+  message: '', centers: [],
 };
 
 export default (state = initial, { type, payload }) => {
   switch (type) {
-    case 'SINGLE_CENTER_FETCH_SUCCESSFUL': {
-      const [center] = payload.centers;
+    case 'CENTER_GET_SUCCESSFUL': {
+      const { message, center } = payload;
       return {
-        ...state, center,
+        ...state, message, centers: [center],
       };
     }
-    case 'SINGLE_CENTER_FETCH_FAILED': {
-      const { err } = payload;
+    case 'CENTER_GET_ALL_SUCCESSFUL': {
+      const { message, centers } = payload;
       return {
-        ...state, err,
+        ...state, message, centers,
       };
     }
-    case 'ALL_CENTERS_FETCH_SUCCESSFUL': {
-      const { centers } = payload;
+    case 'CENTER_CREATE_SUCCESSFUL': {
+      const { message } = payload;
       return {
-        ...state, centers,
+        ...state, message,
       };
     }
-    case 'ALL_CENTERS_FETCH_FAILED': {
-      const { err } = payload;
+    case 'CENTER_MODIFY_SUCCESSFUL': {
+      const { message } = payload;
       return {
-        ...state, err,
+        ...state, message,
+      };
+    }
+    case 'REQUEST_FAILED': {
+      const { message } = payload;
+      return {
+        ...state, message,
       };
     }
     default: return state;

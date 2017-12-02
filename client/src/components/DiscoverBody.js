@@ -9,11 +9,15 @@ class DiscoverBody extends React.Component {
   }
 
   render() {
+    const { nearCenters, availableCenters } = this.props;
     return (
-      <div>
-        <DiscoverTitleCard>Event Centers Near You</DiscoverTitleCard>
-        <DiscoverCenterCardRow />
-        <DiscoverTitleCard>Available Event Centers</DiscoverTitleCard>
+      <div className="io-body-content">
+        <div className="container-fluid">
+          <DiscoverTitleCard>Event Centers Near You</DiscoverTitleCard>
+          <DiscoverCenterCardRow centers={nearCenters} />
+          <DiscoverTitleCard>Available Event Centers</DiscoverTitleCard>
+          <DiscoverCenterCardRow centers={availableCenters} />
+        </div>
       </div>
     );
   }

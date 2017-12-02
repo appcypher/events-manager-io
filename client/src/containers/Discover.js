@@ -3,28 +3,22 @@ import { connect } from 'react-redux';
 import DiscoverNavbar from '../components/DiscoverNavbar';
 import DiscoverBody from '../components/DiscoverBody';
 import Footer from '../components/Footer';
+import CenterActions from '../actions/centerActions';
 
-@connect(({ centers }) => ({ centers: centers.data }))
+@connect(({ user, center }) => ({ user, center }))
 class Home extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {
-      nearCenters: null,
-      availableCenters: null,
-    };
+    this.props.dispatch(CenterActions.getAllCenters(this.props.user.token));
   }
 
   componentDidMount() {
     document.title = 'Discover • EventsManagerIO';
   }
 
-  filterLocation() {
-    this.setState({ nearCenters: this.props.centers.filter(center => center.location === 'Lagos') });
-  }
-
   render() {
-    const { nearCenters } = this.state;
-    const { centers } = this.props;
+    const { centers } = this.props.center;
+    const nearCenters = centers.filter(eventCenter => eventCenter.location.trim().toLowerCase() === 'lagos');
     return (
       <div>
         <DiscoverNavbar />
