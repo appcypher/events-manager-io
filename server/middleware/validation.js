@@ -57,7 +57,7 @@ class Validation {
           res.status(409).send({ message: 'username already taken!' });
         } else next();
       })
-      .catch(err => res.status(400).send({ message: err.errors[0].message || err }));
+      .catch(err => res.status(400).send({ message: err.message || err }));
   }
 
   /**
@@ -77,7 +77,7 @@ class Validation {
           res.status(409).send({ message: 'email already taken!' });
         } else next();
       })
-      .catch(err => res.status(400).send({ message: err.errors[0].message || err }));
+      .catch(err => res.status(400).send({ message: err.message || err }));
   }
 
   /**
@@ -113,7 +113,7 @@ class Validation {
             res.status(404).send({ message: 'specified event center does not exist!' });
           } else next();
         })
-        .catch(err => res.status(400).send({ message: err.errors[0].message || err }));
+        .catch(err => res.status(400).send({ message: err.message || err }));
     }
   }
 
@@ -147,25 +147,30 @@ class Validation {
    * @return{undefined}
    */
   static checkDateNotTaken(req, res, next) {
-    Event.findOne({ where: { id: req.params.eventId } })
+    Event.findById(req.params.eventId)
       .then((event) => {
-        Event
-          .findOne({
-            where: {
-              centerId: req.body.centerId || event.centerId,
-              date: req.body.date ? new Date(req.body.date).toISOString() : null,
-            },
-          })
-          .then((slatedEvent) => {
-            // Excluding current event
-            /* eslint-disable eqeqeq */
-            if (slatedEvent && (slatedEvent.id != req.params.eventId)) {
-              res.status(409).send({ message: 'event already slated for that date!' });
-            } else next();
-          })
-          .catch(err => res.status(400).send({ message: err.errors[0].message || err }));
+        if (!event) {
+          res.status(404).send({ message: 'cannot find specified event!' });
+        } else {
+          const date = req.body.date ? new Date(req.body.date).toISOString() : event.date;
+          Event
+            .findOne({
+              where: {
+                centerId: req.body.centerId || event.centerId,
+                date,
+              },
+            })
+            .then((slatedEvent) => {
+              if (event.id === slatedEvent.id) {
+                next();
+              } else {
+                res.status(409).send({ message: 'event already slated for that date!' });
+              }
+            })
+            .catch(err => res.status(400).send({ message: err.message || err }));
+        }
       })
-      .catch(err => res.status(400).send({ message: err.errors[0].message || err }));
+      .catch(err => res.status(400).send({ message: err.message || err }));
   }
 
   /**
@@ -193,7 +198,7 @@ class Validation {
 
         return next();
       })
-      .catch(err => res.status(400).send({ message: err.errors[0].message || err }));
+      .catch(err => res.status(400).send({ message: err.message || err }));
   }
 }
 

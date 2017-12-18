@@ -21,7 +21,7 @@ class EventController {
       .then((event) => {
         res.status(201).send({ message: 'event created!', event });
       })
-      .catch(err => res.status(400).send({ message: err.errors[0].message || err }));
+      .catch(err => res.status(400).send({ message: err.message || err }));
   }
 
   /**
@@ -46,7 +46,7 @@ class EventController {
           res.status(404).send({ message: 'cannot find specified event!' });
         }
       })
-      .catch(err => res.status(400).send({ message: err.errors[0].message || err }));
+      .catch(err => res.status(400).send({ message: err.message || err }));
   }
 
   /**
@@ -65,7 +65,7 @@ class EventController {
           res.status(404).send({ message: 'cannot find specified event!' });
         }
       })
-      .catch(err => res.status(400).send({ message: err.errors[0].message || err }));
+      .catch(err => res.status(400).send({ message: err.message || err }));
   }
 
 
@@ -85,7 +85,7 @@ class EventController {
           res.status(403).send({ message: 'you have no event!' });
         }
       })
-      .catch(err => res.status(400).send({ message: err.errors[0].message || err }));
+      .catch(err => res.status(400).send({ message: err.message || err }));
   }
 }
 
