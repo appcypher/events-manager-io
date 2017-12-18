@@ -1,7 +1,7 @@
 language: node_js
     - "7"
 install:
-    - npm install
+    - npm rebuild && npm install
 services:
     - postgresql
 cache:
