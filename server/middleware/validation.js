@@ -114,7 +114,7 @@ class Validation {
           } else next();
         })
         .catch(err => res.status(400).send({ message: err.message || err }));
-    }
+    } else next();
   }
 
   /**
@@ -161,7 +161,10 @@ class Validation {
               },
             })
             .then((slatedEvent) => {
-              if (event.id === slatedEvent.id) {
+              if (!slatedEvent) {
+                console.log('1111');
+                next();
+              } else if (event.id === slatedEvent.id) {
                 next();
               } else {
                 res.status(409).send({ message: 'event already slated for that date!' });
