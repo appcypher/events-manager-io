@@ -57,7 +57,9 @@ class Validation {
           res.status(409).send({ message: 'username already taken!' });
         } else next();
       })
-      .catch(err => res.status(400).send({ message: err.message || err }));
+      .catch((err) => {
+        res.status(400).send({ message: err.errors ? err.errors[0].message : err.message });
+      });
   }
 
   /**
@@ -77,7 +79,9 @@ class Validation {
           res.status(409).send({ message: 'email already taken!' });
         } else next();
       })
-      .catch(err => res.status(400).send({ message: err.message || err }));
+      .catch((err) => {
+        res.status(400).send({ message: err.errors ? err.errors[0].message : err.message });
+      });
   }
 
   /**
@@ -113,7 +117,9 @@ class Validation {
             res.status(404).send({ message: 'specified event center does not exist!' });
           } else next();
         })
-        .catch(err => res.status(400).send({ message: err.message || err }));
+        .catch((err) => {
+          res.status(400).send({ message: err.errors ? err.errors[0].message : err.message });
+        });
     } else next();
   }
 
@@ -139,6 +145,29 @@ class Validation {
     } return next();
   }
 
+  static findSlatedEvent = (req, res, next, event) => {
+    const date = req.body.date ? new Date(req.body.date).toISOString() : event.date;
+    Event
+      .findOne({
+        where: {
+          centerId: req.body.centerId || event.centerId,
+          date,
+        },
+      })
+      .then((slatedEvent) => {
+        if (!slatedEvent) {
+          next();
+        } else if (event.id === slatedEvent.id) {
+          next();
+        } else {
+          res.status(409).send({ message: 'event already slated for that date!' });
+        }
+      })
+      .catch((err) => {
+        res.status(400).send({ message: err.errors ? err.errors[0].message : err.message });
+      });
+  }
+
   /**
    * Checks if event date is not already taken
    * @param{Object} req - api request
@@ -147,33 +176,21 @@ class Validation {
    * @return{undefined}
    */
   static checkDateNotTaken(req, res, next) {
-    Event.findById(req.params.eventId)
-      .then((event) => {
-        if (!event) {
-          res.status(404).send({ message: 'cannot find specified event!' });
-        } else {
-          const date = req.body.date ? new Date(req.body.date).toISOString() : event.date;
-          Event
-            .findOne({
-              where: {
-                centerId: req.body.centerId || event.centerId,
-                date,
-              },
-            })
-            .then((slatedEvent) => {
-              if (!slatedEvent) {
-                console.log('1111');
-                next();
-              } else if (event.id === slatedEvent.id) {
-                next();
-              } else {
-                res.status(409).send({ message: 'event already slated for that date!' });
-              }
-            })
-            .catch(err => res.status(400).send({ message: err.message || err }));
-        }
-      })
-      .catch(err => res.status(400).send({ message: err.message || err }));
+    if (req.params.eventId) {
+      Event.findById(req.params.eventId)
+        .then((event) => {
+          if (!event) {
+            res.status(404).send({ message: 'cannot find specified event!' });
+          } else {
+            Validation.findSlatedEvent(req, res, next, event);
+          }
+        })
+        .catch((err) => {
+          res.status(400).send({ message: err.errors ? err.errors[0].message : err.message });
+        });
+    } else {
+      Validation.findSlatedEvent(req, res, next, { id: -1, centerId: -1 });
+    }
   }
 
   /**
@@ -201,7 +218,9 @@ class Validation {
 
         return next();
       })
-      .catch(err => res.status(400).send({ message: err.message || err }));
+      .catch((err) => {
+        res.status(400).send({ message: err.errors ? err.errors[0].message : err.message });
+      });
   }
 }
 
