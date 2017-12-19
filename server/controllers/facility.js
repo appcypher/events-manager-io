@@ -28,7 +28,9 @@ class FacilityController {
             .then((modifiedFacility) => {
               res.status(200).send({ message: 'facility updated!', facility: modifiedFacility });
             })
-            .catch(err => res.status(400).send({ message: err.message || err }));
+            .catch((err) => {
+              res.status(400).send({ message: err.errors ? err.errors[0].message : err.message });
+            });
         } else { // Otherwise create a new one
           Facility
             .create({
@@ -45,10 +47,14 @@ class FacilityController {
             .then((newFacility) => {
               res.status(201).send({ message: 'facility created!', facility: newFacility });
             })
-            .catch(err => res.status(400).send({ message: err.message || err }));
+            .catch((err) => {
+              res.status(400).send({ message: err.errors ? err.errors[0].message : err.message });
+            });
         }
       })
-      .catch(err => res.status(400).send({ message: err.message || err }));
+      .catch((err) => {
+        res.status(400).send({ message: err.errors ? err.errors[0].message : err.message });
+      });
   }
 
   /**
@@ -80,7 +86,9 @@ class FacilityController {
           res.status(404).send({ message: 'cannot find specified facility!' });
         }
       })
-      .catch(err => res.status(400).send({ message: err.message || err }));
+      .catch((err) => {
+        res.status(400).send({ message: err.errors ? err.errors[0].message : err.message });
+      });
   }
 }
 
