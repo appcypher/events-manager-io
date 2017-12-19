@@ -1,7 +1,7 @@
 language: node_js
     - "7"
 install:
-    - rm -rf node_modules/bcrypt && npm install
+    - npm install
 services:
     - postgresql
 cache:
