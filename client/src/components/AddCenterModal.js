@@ -25,7 +25,6 @@ class AddCenterModal extends React.Component {
     const { getState, subscribe } = store;
     const w = watch(getState, center.message);
     subscribe(w((newVal) => {
-      console.log(newVal);
       if (newVal.center.message !== 'center created!' && newVal.center.message !== 'all centers delivered!') {
         this.props.showAlert(newVal.center.message);
       }
