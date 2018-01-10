@@ -75,7 +75,7 @@ class Home extends React.Component {
           center={this.props.center}
           user={this.props.user}
           showAlert={this.showAlert}
-          />
+        />
         <AlertModal msg={msg} className={alertClasses} hideAlert={this.hideAlert} />
       </div>
     );
