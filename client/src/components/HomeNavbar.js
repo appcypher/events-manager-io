@@ -20,6 +20,7 @@ const HomeNavbar = () => (
       <a href="/#about">ABOUT US</a>
     </div>
     <div className="io-end">
+      <Link href to="/discover" className="io-text">DISCOVER</Link>
       <Link href to="/signin" className="io-text">LOGIN</Link>
       <Link href to="/signup" className="io-text">SIGNUP</Link>
     </div>
