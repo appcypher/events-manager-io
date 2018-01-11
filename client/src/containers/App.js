@@ -14,7 +14,6 @@ import '../assets/scss/custom.scss';
 
 /**
  * Contains the routes for switching between pages
- * @param{undefined}
  * @return{React.Component}
  */
 const App = () => (
