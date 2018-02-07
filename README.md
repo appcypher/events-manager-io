@@ -5,7 +5,7 @@
 [![Maintainability](https://api.codeclimate.com/v1/badges/7c612f2c1714c2378112/maintainability)](https://codeclimate.com/github/AppCypher/EventsManager/maintainability)
 [![Test Coverage](https://api.codeclimate.com/v1/badges/7c612f2c1714c2378112/test_coverage)](https://codeclimate.com/github/AppCypher/EventsManager/test_coverage)
 [![Swagger API](https://img.shields.io/swagger/valid/2.0/https/raw.githubusercontent.com/OAI/OpenAPI-Specification/master/examples/v2.0/json/petstore-expanded.json.svg)](https://swaggerhub.com/apis/appcypher/EventsManager/1.0.0)
-![Maintained](https://img.shields.io/maintenance/yes/2017.svg)
+![Maintained](https://img.shields.io/maintenance/yes/2018.svg)
 [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 
 ![Eventsmanager Screenshot](https://user-images.githubusercontent.com/20358651/32897359-a772f3b2-cae5-11e7-8d9a-6095ff5ab7eb.png)
