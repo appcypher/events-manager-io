@@ -1,13 +1,12 @@
 language: node_js
     - "7"
 install:
-    - npm cache rm --force
     - npm install
 services:
     - postgresql
-# cache:
-#     directories:
-#         - "node_modules"
+cache:
+    directories:
+        - "node_modules"
 script: npm run test:api
 before_script:
     - psql -c "CREATE DATABASE eventsmanager_test;" -U postgres
