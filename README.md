@@ -12,8 +12,6 @@
 
 A simple full-featured website for managing events centers and scheduling events.
 
-EventsManagerIO is proudly hosted on [heroku](https://events-manager-io.herokuapp.com/) :smile:.
-
 The static version of EventsManagerIO can be accessed on [github pages](https://appcypher.github.io/EventsManager/template).
 
 ## Made With
