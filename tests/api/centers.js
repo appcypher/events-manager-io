@@ -25,15 +25,12 @@ const createCenter = () => {
   });
 };
 
-describe('Centers', () => {
-  before((done) => {
-    createNormalUser();
-    createAdminUser();
-    createCenter();
-    createCenter();
-    done();
-  });
+createNormalUser();
+createAdminUser();
+createCenter();
+createCenter();
 
+describe('Centers', () => {
   it('(GET /api/v1/centers/) should return 302 if available', (done) => {
     request(server)
       .post('/api/v1/users/login')
@@ -152,7 +149,7 @@ describe('Centers', () => {
       });
   });
 
-  it('(PUT /centers/<centerId>) should 200 return if usewr is admin', (done) => {
+  it('(PUT /centers/<centerId>) should return 200 if user is admin', (done) => {
     request(server)
       .post('/api/v1/users/login')
       .send({ username: 'bayo', password: 'bayo' })
