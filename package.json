@@ -4,7 +4,6 @@
   "description": "A simple full-featured website for managing events centers and scheduling events. https://events-manager-io.herokuapp.com/",
   "main": "server/bin/server.js",
   "scripts": {
-    "start": "node server/server.js --exec babel-node server/server.js",
     "server:watch": "nodemon server/server.js --exec babel-node server/server.js",
     "compile:sequelize": "babel server/migrations --out-dir server/bin/migrations & babel server/seeders --out-dir server/bin/seeders & babel server/models --out-dir server/bin/models",
     "build": "npm run build:client:prod",
