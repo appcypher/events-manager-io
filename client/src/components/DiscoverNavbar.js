@@ -15,7 +15,7 @@ const DiscoverNavbar = () => (
       <div className="io-text">EventsManagerIO</div>
       <img alt="" src={brand} className="io-img" />
     </Link>
-    <div className="io-middle">
+    <div className="io-middle only">
       <input placeholder="Type keyword here" type="text" className="io-search-bar" />
       <i className="io-search-button fa fa-search" />
     </div>
