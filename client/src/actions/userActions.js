@@ -7,7 +7,7 @@ class UserAction {
    * @param{Object} details - user login details
    * @return{undefined}
    */
-  static createUser(details) {
+  static signupUser(details, successFunc, failFunc) {
     return (dispatch) => {
       axios({
         method: 'POST',
@@ -16,10 +16,12 @@ class UserAction {
       })
         .then((res) => {
           dispatch({ type: 'USER_SIGNUP_SUCCESSFUL', payload: res.data });
+          successFunc();
         })
         .catch((err) => {
           if (err.response) {
             dispatch({ type: 'REQUEST_FAILED', payload: err.response.data });
+            failFunc();
           }
         });
     };
@@ -30,7 +32,7 @@ class UserAction {
    * @param{Object} details - user login details
    * @return{undefined}
    */
-  static loginUser(details) {
+  static loginUser(details, successFunc, failFunc) {
     return (dispatch) => {
       axios({
         method: 'POST',
@@ -39,10 +41,12 @@ class UserAction {
       })
         .then((res) => {
           dispatch({ type: 'USER_LOGIN_SUCCESSFUL', payload: res.data });
+          successFunc();
         })
         .catch((err) => {
           if (err.response) {
             dispatch({ type: 'REQUEST_FAILED', payload: err.response.data });
+            failFunc();
           }
         });
     };
@@ -53,7 +57,7 @@ class UserAction {
    * @param{Object} token - authentication token
    * @return{undefined}
    */
-  static getUser(token) {
+  static getUser(token, successFunc, failFunc) {
     return (dispatch) => {
       axios({
         method: 'POST',
@@ -62,10 +66,12 @@ class UserAction {
       })
         .then((res) => {
           dispatch({ type: 'USER_GET_DETAILS_SUCCESSFUL', payload: res.data });
+          successFunc();
         })
         .catch((err) => {
           if (err.response) {
             dispatch({ type: 'REQUEST_FAILED', payload: err.response.data });
+            failFunc();
           }
         });
     };
@@ -77,7 +83,7 @@ class UserAction {
    * @param{Object} details - user login details
    * @return{undefined}
    */
-  static modifyUserProfile(token, details) {
+  static modifyUserProfile(token, details, successFunc, failFunc) {
     return (dispatch) => {
       axios({
         method: 'PUT',
@@ -87,10 +93,12 @@ class UserAction {
       })
         .then((res) => {
           dispatch({ type: 'USER_MODIFY_PROFILE_SUCCESSFUL', payload: res.data });
+          successFunc();
         })
         .catch((err) => {
           if (err.response) {
             dispatch({ type: 'REQUEST_FAILED', payload: err.response.data });
+            failFunc();
           }
         });
     };
@@ -101,7 +109,7 @@ class UserAction {
    * @param{Object} token - authentication token
    * @return{undefined}
    */
-  static logoutUser(token) {
+  static logoutUser(token, successFunc, failFunc) {
     return (dispatch) => {
       axios({
         method: 'POST',
@@ -110,12 +118,20 @@ class UserAction {
       })
         .then((res) => {
           dispatch({ type: 'USER_LOGOUT_SUCCESSFUL', payload: res.data });
+          successFunc();
         })
         .catch((err) => {
           if (err.response) {
             dispatch({ type: 'REQUEST_FAILED', payload: err.response.data });
+            failFunc();
           }
         });
+    };
+  }
+
+  static clearUserToken() {
+    return (dispatch) => {
+      dispatch({ type: 'USER_TOKEN_CLEARED', payload: null });
     };
   }
 }
