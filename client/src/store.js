@@ -1,8 +1,13 @@
-import { applyMiddleware, createStore } from 'redux';
-import logger from 'redux-logger'; // NOTE: logger is a function in redux-logger v3
+import { applyMiddleware, createStore, compose } from 'redux';
 import thunk from 'redux-thunk';
 import reducers from './reducers';
 
-const middleware = applyMiddleware(thunk, logger);
+const middleware = applyMiddleware(thunk);
 
-export default createStore(reducers, middleware);
+export default createStore(
+  reducers,
+  compose(
+    middleware,
+    window.devToolsExtension ? window.devToolsExtension() : f => f
+  ),
+);
