@@ -66,7 +66,6 @@
     "react-router-dom": "^4.2.2",
     "react-strap": "0.0.1",
     "redux": "^3.7.2",
-    "redux-logger": "^3.0.6",
     "redux-middleware": "^0.1.21",
     "redux-promise-middleware": "^5.0.0",
     "redux-thunk": "^2.2.0",
