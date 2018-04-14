@@ -264,6 +264,9 @@ body {
         }
       }
     }
+    &.only {
+      margin-right: 5%;
+    }
     .io-search-bar {
       background-color: $navbar-gray-deep;
       border: none;
