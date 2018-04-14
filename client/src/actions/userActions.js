@@ -131,7 +131,7 @@ class UserAction {
 
   static clearUserToken() {
     return (dispatch) => {
-      dispatch({ type: 'USER_TOKEN_CLEARED', payload: null });
+      dispatch({ type: 'USER_TOKEN_TO_BE_CLEARED', payload: null });
     };
   }
 }
