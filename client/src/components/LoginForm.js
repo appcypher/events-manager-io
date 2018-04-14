@@ -1,12 +1,9 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-import watch from 'redux-watch';
-import UserActions from '../actions/userActions';
+import UserAction from '../actions/userActions';
 import history from '../index';
-import store from '../store';
 
-@connect(({ user }) => ({ user }))
 class LoginForm extends React.Component {
   constructor(props) {
     super(props);
@@ -14,18 +11,6 @@ class LoginForm extends React.Component {
       username: '',
       password: '',
     };
-
-    // Watching for change in user token
-    const { user } = this.props;
-    const { getState, subscribe } = store;
-    const w = watch(getState, user.token);
-    subscribe(w((newVal) => {
-      if (newVal.user.token !== '') { // if token is not empty BAD LOGIC :/
-        history.push('/discover');
-      } else {
-        this.props.showAlert(newVal.user.message);
-      }
-    }));
   }
 
   saveInput = (e) => {
@@ -34,7 +19,25 @@ class LoginForm extends React.Component {
 
   submit = () => {
     const { username, password } = this.state;
-    this.props.dispatch(UserActions.loginUser({ username, password }));
+
+    const redirectToDiscover = () => {
+      // Add token to localStorage.
+      localStorage.setItem('user.token', this.props.user.token);
+
+      // Remove token from store.
+      this.props.clearUserToken();
+
+      history.push('/discover');
+    };
+    const showError = () => this.props.showAlert(this.props.user.message);
+
+    this.props.loginUser(
+      {
+        username, password,
+      },
+      redirectToDiscover,
+      showError,
+    );
   }
 
   render() {
@@ -66,4 +69,13 @@ class LoginForm extends React.Component {
   }
 }
 
-export default LoginForm;
+
+const mapStateToProps = ({ user }) => ({ user });
+
+export default connect(
+  mapStateToProps,
+  {
+    loginUser: UserAction.loginUser,
+    clearUserToken: UserAction.clearUserToken,
+  },
+)(LoginForm);
