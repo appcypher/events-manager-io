@@ -642,6 +642,7 @@ body {
       height: 45px;
       &.io-error {
         background-color: $login-box-gray;
+        color: white;
       }
     }
     .io-body {
