@@ -21,6 +21,7 @@ const HomeNavbarLoggedIn = () => (
     </div>
     <div className="io-end">
       <Link href to="/discover" className="io-text">DISCOVER</Link>
+      <Link href to="/profile" className="io-text">PROFILE</Link>
     </div>
   </Navbar>
 );
