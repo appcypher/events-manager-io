@@ -28,6 +28,11 @@ export default (state = initial, { type, payload }) => {
         ...state, message,
       };
     }
+    case 'CLEAR_ALL_DATA': {
+      return {
+        ...state, message: '', centers: [],
+      };
+    }
     case 'REQUEST_FAILED': {
       const { message } = payload;
       return {

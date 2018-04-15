@@ -22,9 +22,15 @@ export default (state = initial, { type, payload }) => {
         ...state, message, token,
       };
     }
-    case 'USER_TOKEN_TO_BE_CLEARED': {
+    case 'USER_GET_DETAILS_SUCCESSFUL': {
+      const { message, user } = payload;
       return {
-        ...state, token: '',
+        ...state, message, user,
+      };
+    }
+    case 'CLEAR_ALL_DATA': {
+      return {
+        ...state, message: '', token: '', user: {},
       };
     }
     case 'REQUEST_FAILED': {

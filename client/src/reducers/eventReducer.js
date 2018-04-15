@@ -1,22 +1,24 @@
 const initial = {
-  data: [],
-  err: {
-    response: null,
-  },
+  message: '', events: [],
 };
 
 export default (state = initial, { type, payload }) => {
   switch (type) {
-    case 'ALL_EVENTS_FETCH_SUCCESSFUL': {
-      const { centers } = payload;
+    case 'EVENTS_GET_ALL_SUCCESSFUL': {
+      const { message, events } = payload;
       return {
-        ...state, centers,
+        ...state, message, events,
       };
     }
-    case 'ALL_EVENTS_FETCH_FAILED': {
-      const { err } = payload;
+    case 'CLEAR_ALL_DATA': {
       return {
-        ...state, err,
+        ...state, message: '', events: [],
+      };
+    }
+    case 'REQUEST_FAILED': {
+      const { message } = payload;
+      return {
+        ...state, message,
       };
     }
     default: return state;
