@@ -1,6 +1,5 @@
 import React from 'react';
 import classNames from 'classnames';
-import watch from 'redux-watch';
 import store from '../store';
 import CenterActions from '../actions/centerActions';
 import ModalSection from '../components/ModalSection';
@@ -16,19 +15,10 @@ class AddCenterModal extends React.Component {
       location: '',
       type: '',
       price: 0,
+      file: null,
       pictures: [],
       user: 0,
     };
-
-    // Watching for change in user token
-    const { center } = this.props;
-    const { getState, subscribe } = store;
-    const w = watch(getState, center.message);
-    subscribe(w((newVal) => {
-      if (newVal.center.message !== 'center created!' && newVal.center.message !== 'all centers delivered!') {
-        this.props.showAlert(newVal.center.message);
-      }
-    }));
   }
 
   saveInput = (e) => {
@@ -37,6 +27,18 @@ class AddCenterModal extends React.Component {
       this.setState({ [target.name]: target.value });
     } else {
       this.setState({ [target.name]: target.checked });
+    }
+  }
+
+  saveImageInput = (e) => {
+    let file = null;
+
+    if (e.target.files && e.target.files !== []) {
+      [file] = e.target.files;
+    }
+
+    if (file) {
+      this.setState({ file });
     }
   }
 
@@ -54,6 +56,7 @@ class AddCenterModal extends React.Component {
   render() {
     const classes = classNames({ 'io-modal': true, hide: this.state.hide });
     const facilityList = ['Chairs', 'Tables', 'Parking Lot', 'Rest Rooms', 'Telescreens', 'Stage'];
+
     return (
       <div id="add-center-modal" className={classes}>
         <div className="io-modal-body">
@@ -67,7 +70,7 @@ class AddCenterModal extends React.Component {
               <ModalSection title="Price">
                 <span>₦</span><input placeholder="Enter price here" type="number" className="io-input-grow io-input-field" name="price" onChange={this.saveInput} /><span>per day</span>
               </ModalSection>
-              <ModalSection title="Pictures"><input type="file" multiple className="io-upload-btn" name="pictures" onChange={this.saveInput} /></ModalSection>
+              <ModalSection title="Pictures"><input type="file" multiple className="io-upload-btn" name="pictures" onChange={this.saveImageInput} /></ModalSection>
               <ModalSection title="Facilities" extra="io-start"><ModalList list={facilityList} saveInput={this.saveInput} /></ModalSection>
             </form>
           </div>

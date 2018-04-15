@@ -2,6 +2,9 @@ import axios from 'axios';
 import url from '../url';
 
 class CenterAction {
+  static cloudinaryUrl = 'https://api.cloudinary.com/v1_1/appcypher/upload';
+  static cloudinaryUploadPreset = 'knlmha0j';
+
   /**
    * Creates a new center
    * @param{Object} token - authentication token
@@ -10,14 +13,37 @@ class CenterAction {
    */
   static createCenter(token, details) {
     return (dispatch) => {
+      // Upload image first.
+      const formData = new FormData();
+      formData.append('file', details.file);
+      formData.append('upload_preset', CenterAction.cloudinaryUploadPreset);
+
       axios({
         method: 'POST',
-        url: `${url}/api/v1/centers`,
-        headers: { token },
-        data: details,
+        url: CenterAction.cloudinaryUrl,
+        headers: {
+          'Content-Type': 'application/x-www-form-urlencoded',
+        },
+        data: formData,
       })
         .then((res) => {
-          dispatch({ type: 'CENTER_CREATE_SUCCESSFUL', payload: res.data });
+          console.log(res);
+
+          // Make request for creating new center.
+          axios({
+            method: 'POST',
+            url: `${url}/api/v1/centers`,
+            headers: { token },
+            data: details,
+          })
+            .then((resp) => {
+              dispatch({ type: 'CENTER_CREATE_SUCCESSFUL', payload: resp.data });
+            })
+            .catch((err) => {
+              if (err.response) {
+                dispatch({ type: 'REQUEST_FAILED', payload: err.response.data });
+              }
+            });
         })
         .catch((err) => {
           if (err.response) {
