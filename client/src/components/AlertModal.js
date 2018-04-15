@@ -5,10 +5,12 @@ const AlertModal = (props) => {
     msg, hideAlert,
   } = props;
 
+  const type = props.type ? props.type : 'ERROR!';
+
   return (
     <div id="view-center-modal" className={props.className} >
       <div className="io-modal-body io-error">
-        <div className="io-header io-error">ERROR!</div>
+        <div className="io-header io-error">{type}</div>
         <div className="io-body">
           <div className="io-content io-error">
             <h2>{msg} </h2>
