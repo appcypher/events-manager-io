@@ -8,7 +8,7 @@
 ![Maintained](https://img.shields.io/maintenance/yes/2018.svg)
 [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 
-![Eventsmanager Screenshot](https://user-images.githubusercontent.com/20358651/32897359-a772f3b2-cae5-11e7-8d9a-6095ff5ab7eb.png)
+![Eventsmanager Screenshot](screencapture.png)
 
 A simple full-featured website for managing events centers and scheduling events.
 
