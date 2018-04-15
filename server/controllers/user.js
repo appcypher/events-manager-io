@@ -133,7 +133,7 @@ class UserController {
   }
 
   /**
-   * NOTE: UNIMPLEMENTED
+   * TODO: Remove endpoint as well.
    * Logs out user
    * @param{Object} req - api request
    * @param{Object} res - route response
