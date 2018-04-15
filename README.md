@@ -1,6 +1,6 @@
 # EventsManagerIO
 ![hound](https://camo.githubusercontent.com/23ee7a697b291798079e258bbc25434c4fac4f8b/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f50726f7465637465645f62792d486f756e642d6138373364312e737667 "hound")
-[![Build Status](https://travis-ci.org/appcypher/events-manager-io.svg?branch=dev)](https://travis-ci.org/AppCypher/EventsManager "travis")
+[![Build Status](https://travis-ci.org/appcypher/events-manager-io.svg?branch=dev)](https://travis-ci.org/appcypher/events-manager-io)
 [![Coverage Status](https://coveralls.io/repos/github/AppCypher/EventsManager/badge.svg?branch=ch-continuous-integration-153009907)](https://coveralls.io/github/AppCypher/EventsManager?branch=ch-continuous-integration-153009907 "coveralls")
 [![Maintainability](https://api.codeclimate.com/v1/badges/7c612f2c1714c2378112/maintainability)](https://codeclimate.com/github/AppCypher/EventsManager/maintainability)
 [![Test Coverage](https://api.codeclimate.com/v1/badges/7c612f2c1714c2378112/test_coverage)](https://codeclimate.com/github/AppCypher/EventsManager/test_coverage)
