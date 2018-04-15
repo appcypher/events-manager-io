@@ -26,12 +26,11 @@ class SignUpForm extends React.Component {
 
 
     const redirectToDiscover = () => {
-      // Add token to localStorage.
+      // Add token and admin status to localStorage.
       localStorage.setItem('user.token', this.props.user.token);
+      localStorage.setItem('user.admin', this.props.user.user.admin);
 
-      // Remove token from store.
-      this.props.clearUserToken();
-
+      // Change page.
       history.push('/discover');
     };
     const showError = () => this.props.showAlert(this.props.user.message);
@@ -51,16 +50,16 @@ class SignUpForm extends React.Component {
         <div className="io-title">Sign up for an account</div>
         <div className="io-input io-signup">
           <div className="io-input-group">
-            <i className="io-icon fa fa-envelope" /><input placeholder="Email" type="email" name="email" onChange={this.saveInput} /><i className="io-mark fa fa-check" />
+            <i className="io-icon fa fa-envelope" /><input placeholder="Email" type="email" name="email" onChange={this.saveInput} />{/* <i className="io-mark fa fa-check" /> */}
           </div>
           <div className="io-input-group">
-            <i className="io-icon fa fa-user" /><input placeholder="Username" type="text" name="username" onChange={this.saveInput} /><i className="io-mark fa fa-check" />
+            <i className="io-icon fa fa-user" /><input placeholder="Username" type="text" name="username" onChange={this.saveInput} />{/* <i className="io-mark fa fa-check" /> */}
           </div>
           <div className="io-input-group">
-            <i className="io-icon fa fa-id-card" /><input placeholder="Full Name" type="text" name="fullname" onChange={this.saveInput} /><i className="io-mark fa fa-check" />
+            <i className="io-icon fa fa-id-card" /><input placeholder="Full Name" type="text" name="fullname" onChange={this.saveInput} />{/* <i className="io-mark fa fa-check" /> */}
           </div>
           <div className="io-input-group">
-            <i className="io-icon fa fa-unlock" /><input placeholder="Password" type="password" className="io-password" name="password" onChange={this.saveInput} /><i className="io-mark fa fa-check" />
+            <i className="io-icon fa fa-unlock" /><input placeholder="Password" type="password" className="io-password" name="password" onChange={this.saveInput} />{/* <i className="io-mark fa fa-check" /> */}
           </div>
         </div>
         <div>
