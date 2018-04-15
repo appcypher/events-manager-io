@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 
 /**
  * Component for ceating navbars
@@ -9,9 +8,5 @@ import PropTypes from 'prop-types';
 const Navbar = props => (
   <nav className="io-navbar io-fixed-top">{props.children}</nav>
 );
-
-Navbar.propTypes = {
-  children: PropTypes.element.isRequired,
-};
 
 export default Navbar;
