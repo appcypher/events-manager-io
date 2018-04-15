@@ -16,7 +16,9 @@ class UserAction {
       })
         .then((res) => {
           dispatch({ type: 'USER_SIGNUP_SUCCESSFUL', payload: res.data });
-          successFunc();
+
+          // Get user's details.
+          UserAction.getUser(res.data.token, successFunc, failFunc)(dispatch);
         })
         .catch((err) => {
           if (err.response) {
@@ -41,7 +43,9 @@ class UserAction {
       })
         .then((res) => {
           dispatch({ type: 'USER_LOGIN_SUCCESSFUL', payload: res.data });
-          successFunc();
+
+          // Get user's details.
+          UserAction.getUser(res.data.token, successFunc, failFunc)(dispatch);
         })
         .catch((err) => {
           if (err.response) {
@@ -60,7 +64,7 @@ class UserAction {
   static getUser(token, successFunc, failFunc) {
     return (dispatch) => {
       axios({
-        method: 'POST',
+        method: 'GET',
         url: `${url}/api/v1/users`,
         headers: { token },
       })
@@ -109,29 +113,9 @@ class UserAction {
    * @param{Object} token - authentication token
    * @return{undefined}
    */
-  static logoutUser(token, successFunc, failFunc) {
+  static logoutUser() {
     return (dispatch) => {
-      axios({
-        method: 'POST',
-        url: `${url}/api/v1/users/logout`,
-        headers: { token },
-      })
-        .then((res) => {
-          dispatch({ type: 'USER_LOGOUT_SUCCESSFUL', payload: res.data });
-          successFunc();
-        })
-        .catch((err) => {
-          if (err.response) {
-            dispatch({ type: 'REQUEST_FAILED', payload: err.response.data });
-            failFunc();
-          }
-        });
-    };
-  }
-
-  static clearUserToken() {
-    return (dispatch) => {
-      dispatch({ type: 'USER_TOKEN_TO_BE_CLEARED', payload: null });
+      dispatch({ type: 'CLEAR_ALL_DATA', payload: null });
     };
   }
 }
