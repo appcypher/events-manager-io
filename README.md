@@ -10,7 +10,7 @@
 
 ![Eventsmanager Screenshot](screencapture.png)
 
-A simple full-featured website for managing events centers and scheduling events.
+A simple full-featured website for managing event-centers and scheduling events.
 
 The static version of EventsManagerIO can be accessed on [github pages](https://appcypher.github.io/EventsManager/template).
 
