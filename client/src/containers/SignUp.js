@@ -1,11 +1,22 @@
 import React from 'react';
 import classNames from 'classnames';
 import HomeNavbar from '../components/HomeNavbar';
+import HomeNavbarLoggedIn from '../components/HomeNavbarLoggedIn';
 import LoginContainer from '../components/LoginContainer';
 import SignUpForm from '../components/SignUpForm';
 import AlertModal from '../components/AlertModal';
 
 class SignUp extends React.Component {
+  static renderHomeNavbar() {
+    if (
+      localStorage.getItem('user.token') !== 'undefined' &&
+      localStorage.getItem('user.token') !== ''
+    ) {
+      return <HomeNavbarLoggedIn />;
+    }
+    return <HomeNavbar />;
+  }
+
   constructor(props) {
     super(props);
     this.state = {
@@ -37,7 +48,7 @@ class SignUp extends React.Component {
     const classes = classNames({ 'io-modal': true, hide });
     return (
       <div className="io-stretch-vertical">
-        <HomeNavbar />
+        {SignUp.renderHomeNavbar()}
         <LoginContainer>
           <SignUpForm showAlert={this.showAlert} />
         </LoginContainer>

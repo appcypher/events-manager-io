@@ -1,7 +1,9 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import classNames from 'classnames';
+import CenterAction from '../actions/centerActions';
 import DiscoverNavbar from '../components/DiscoverNavbar';
+import DiscoverNavbarLoggedIn from '../components/DiscoverNavbarLoggedIn';
 import DiscoverBody from '../components/DiscoverBody';
 import Pagination from '../components/Pagination';
 import Footer from '../components/Footer';
@@ -9,11 +11,19 @@ import MainFab from '../components/MainFab';
 import LabelledFab from '../components/LabelledFab';
 import FabGroup from '../components/FabGroup';
 import AddCenterModal from '../components/AddCenterModal';
-import CenterActions from '../actions/centerActions';
 import AlertModal from '../components/AlertModal';
 
-@connect(({ user, center }) => ({ user, center }))
-class Home extends React.Component {
+class Discover extends React.Component {
+  static renderDiscoverNavBar() {
+    if (
+      localStorage.getItem('user.token') !== 'undefined' &&
+      localStorage.getItem('user.token') !== ''
+    ) {
+      return <DiscoverNavbarLoggedIn />;
+    }
+    return <DiscoverNavbar />;
+  }
+
   constructor(props) {
     super(props);
     this.state = {
@@ -23,8 +33,9 @@ class Home extends React.Component {
         hide: true,
       },
     };
+
     // Get all centers
-    this.props.dispatch(CenterActions.getAllCenters(this.props.user.token));
+    this.props.getAllCenters(this.props.user.token);
   }
 
   componentDidMount() {
@@ -47,21 +58,19 @@ class Home extends React.Component {
     this.addCenterModal.showModal();
   }
 
+  showAddEventModal = () => {}
+
   toggleFabGroup = () => {
     this.fabGroup.toggleFab();
   }
 
-  showAddEventModal = () => {}
-
   render() {
-    const { centers } = this.props.center;
-    const nearCenters = centers.filter(eventCenter => eventCenter.location.trim().toLowerCase() === 'lagos');
     const { msg, hide } = this.state.alert;
     const alertClasses = classNames({ 'io-modal': true, hide });
     return (
       <div>
-        <DiscoverNavbar />
-        <DiscoverBody nearCenters={nearCenters} availableCenters={centers} />
+        {Discover.renderDiscoverNavBar()}
+        <DiscoverBody />
         <Pagination />
         <Footer />
         <MainFab toggleFab={this.toggleFabGroup} />
@@ -82,4 +91,12 @@ class Home extends React.Component {
   }
 }
 
-export default Home;
+const mapStateToProps = ({ user, centers }) => ({ user, centers });
+
+
+export default connect(
+  mapStateToProps,
+  {
+    getAllCenters: CenterAction.getAllCenters,
+  },
+)(Discover);
