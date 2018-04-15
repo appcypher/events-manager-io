@@ -15,11 +15,10 @@ class Profile extends React.Component {
   }
 
   render() {
-    const { events } = this.props;
     return (
       <div>
         <ProfileNavbar />
-        <ProfileBody data={events} />
+        <ProfileBody />
         <Footer />
       </div>
     );
