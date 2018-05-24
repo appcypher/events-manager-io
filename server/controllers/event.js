@@ -67,7 +67,7 @@ class EventController {
           event
             .destroy()
             .then(() => {
-              res.status(200).send({ message: 'event deleted!' })
+              res.status(200).send({ message: 'event deleted!' });
             })
             .catch((err) => {
               res.status(400).send({ message: err.errors ? err.errors[0].message : err.message });
