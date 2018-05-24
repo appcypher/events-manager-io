@@ -374,9 +374,14 @@ body {
   bottom: 25px;
   right: 25px;
   cursor: pointer;
+
   &:hover {
     filter: brightness(130%);
     background-color: $navbar-gray-deep;
+  }
+
+  &.hide {
+    display: none;
   }
 }
 
@@ -426,6 +431,10 @@ body {
 
     &:hover {
       filter: brightness(130%);
+    }
+
+    &.hide {
+      display: none;
     }
   }
 }

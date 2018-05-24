@@ -13,6 +13,8 @@ const ProfileEventCard = (props) => {
     imageUrl = placeholder;
   }
 
+  console.log(imageUrl);
+
   return (
     <div className="io-event-card"><img alt="" src={imageUrl} />
       <div className="io-content">
