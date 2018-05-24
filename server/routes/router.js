@@ -78,7 +78,10 @@ router.route('/api/v1/centers/:centerId')
 
 // Get all centers
 router.route('/api/v1/centers')
-  .get(EventCenterController.getAllCenters);
+  .get(
+    Validation.checkQueriesValid({ name: 'page', type: 'number', converter: Number }),
+    EventCenterController.getAllCenters,
+  );
 
 // Get a specific center and associated events
 router.route('/api/v1/centers/:centerId')

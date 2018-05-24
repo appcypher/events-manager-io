@@ -68,11 +68,21 @@ class EventCenterController {
    * @return{json}
    */
   static getAllCenters(req, res) {
+    const page = (req.query.page && Number(req.query.page) > 0) ? Number(req.query.page) : 1;
+    const interval = 4;
+    const offset = (page * interval) - interval;
+    const limit = offset + interval;
+
     EventCenter
-      .all()
-      .then((centers) => {
-        if (centers) {
-          res.status(200).send({ message: 'all centers delivered!', centers });
+      .findAndCountAll({ offset, limit })
+      .then((result) => {
+        if (result.rows && result.rows !== []) {
+          const maxExceeded = result.count < offset;
+          if (!maxExceeded) {
+            res.status(200).send({ message: 'all centers delivered!', centers: result.rows });
+          } else {
+            res.status(404).send({ message: 'maximum page exceeded!' });
+          }
         } else {
           res.status(404).send({ message: 'cannot find any center!' });
         }
