@@ -92,7 +92,7 @@ class UserController {
       })
       .then((user) => {
         const safeUser = user;
-        safeUser.password = 'xxxxxxxxxxxxxxxxxxxx';
+        safeUser.password = undefined;
         res.status(200).send({ message: 'user details delivered!', user: safeUser });
       })
       .catch((err) => {
@@ -120,8 +120,11 @@ class UserController {
             })
             .then((modifiedUser) => {
               const safeUser = modifiedUser;
-              safeUser.password = 'xxxxxxxxxxxxxxxxxxxx';
+              safeUser.password = undefined;
               res.status(200).send({ message: 'user profile updated!', user: safeUser });
+            })
+            .catch((err) => {
+              res.status(400).send({ message: err.errors ? err.errors[0].message : err.message });
             });
         } else {
           res.status(403).send({ message: 'you can only modify your own profile!' });

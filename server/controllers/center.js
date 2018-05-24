@@ -48,6 +48,9 @@ class EventCenterController {
             })
             .then((modifiedCenter) => {
               res.status(200).send({ message: 'center modified!', center: modifiedCenter });
+            })
+            .catch((err) => {
+              res.status(400).send({ message: err.errors ? err.errors[0].message : err.message });
             });
         } else {
           res.status(404).send({ message: 'cannot find specified center!' });
