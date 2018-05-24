@@ -36,7 +36,7 @@ class UserController {
             { expiresIn: '60m' },
           );
           const safeUser = user;
-          safeUser.password = 'xxxxxxxxxxxxxxxxxxxx';
+          safeUser.password = undefined;
           res.status(201).send({ message: 'user created!', user: safeUser, token });
         })
         .catch((err) => {
