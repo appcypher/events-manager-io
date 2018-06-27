@@ -14,7 +14,63 @@ import AddCenterModal from '../components/AddCenterModal';
 import AlertModal from '../components/AlertModal';
 
 class Discover extends React.Component {
-  static renderDiscoverNavBar() {
+  constructor(props) {
+    super(props);
+    this.state = {
+      hideFabGroup: true,
+      showAddCenterModal: false,
+      alert: {
+        msg: '',
+        hide: true,
+      },
+    };
+
+    // Get page 1 centers
+    this.props.getAllCenters(this.props.user.token, 1);
+  }
+
+  componentDidMount = () => {
+    document.title = 'Discover • EventsManagerIO';
+  }
+
+  getPageCenters = (pageNumber) => {
+    // Get page centers
+    this.props.getAllCenters(this.props.user.token, pageNumber);
+  }
+
+  hideAlert = () => {
+    this.setState({
+      alert: { hide: true },
+    });
+  }
+
+  showAlert = (msg) => {
+    this.setState({
+      alert: { msg, hide: false },
+    });
+  }
+
+  showAddCenterModal = () => {
+    this.setState({
+      showAddCenterModal: true,
+    });
+  }
+
+  hideAddCenterModal = () => {
+    this.setState({
+      showAddCenterModal: false,
+    });
+  }
+
+  showAddEventModal = () => {}
+
+  toggleFabGroup = () => {
+    this.setState({
+      hideFabGroup: !this.state.hideFabGroup,
+    });
+  }
+
+  renderDiscoverNavBar = () => {
     if (
       localStorage.getItem('user.token') !== 'undefined' &&
       localStorage.getItem('user.token') !== ''
@@ -24,65 +80,25 @@ class Discover extends React.Component {
     return <DiscoverNavbar />;
   }
 
-  constructor(props) {
-    super(props);
-    this.state = {
-      hideAddCenterModal: true,
-      alert: {
-        msg: '',
-        hide: true,
-      },
-    };
-
-    // Get all centers
-    this.props.getAllCenters(this.props.user.token);
-  }
-
-  componentDidMount() {
-    document.title = 'Discover • EventsManagerIO';
-  }
-
-  showAlert = (msg) => {
-    this.setState({
-      alert: { msg, hide: false },
-    });
-  }
-
-  hideAlert = () => {
-    this.setState({
-      alert: { hide: true },
-    });
-  }
-
-  showAddCenterModal = () => {
-    this.addCenterModal.showModal();
-  }
-
-  showAddEventModal = () => {}
-
-  toggleFabGroup = () => {
-    this.fabGroup.toggleFab();
-  }
-
   render() {
     const { msg, hide } = this.state.alert;
     const alertClasses = classNames({ 'io-modal': true, hide });
     return (
       <div>
-        {Discover.renderDiscoverNavBar()}
+        {this.renderDiscoverNavBar()}
         <DiscoverBody />
-        <Pagination />
+        <Pagination getPageCenters={this.getPageCenters} />
         <Footer />
-        <MainFab toggleFab={this.toggleFabGroup} />
-        <FabGroup ref={(c) => { this.fabGroup = c; }} >
+
+        <MainFab toggleFabGroup={this.toggleFabGroup} />
+        <FabGroup hideFabGroup={this.state.hideFabGroup} >
           <LabelledFab icon="shield" position="3" label="Make Admin" />
-          <LabelledFab icon="map-marker" position="2" label="Add New Center" showModal={this.showAddCenterModal} />
-          <LabelledFab icon="calendar" position="1" label="Add New Event" showModal={this.showAddEventModal} />
+          <LabelledFab icon="map-marker" position="2" label="Add New Center" showAddCenterModal={this.showAddCenterModal} />
+          <LabelledFab icon="calendar" position="1" label="Add New Event" showAddEventModal={this.showAddEventModal} />
         </FabGroup>
         <AddCenterModal
-          ref={(c) => { this.addCenterModal = c; }}
-          center={this.props.center}
-          user={this.props.user}
+          showAddCenterModal={this.state.showAddCenterModal}
+          hideAddCenterModal={this.hideAddCenterModal}
           showAlert={this.showAlert}
         />
         <AlertModal msg={msg} className={alertClasses} hideAlert={this.hideAlert} />

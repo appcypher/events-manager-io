@@ -3,31 +3,26 @@ import { connect } from 'react-redux';
 import DiscoverCenterCard from '../components/DiscoverCenterCard';
 
 class DiscoverCenterCardRow extends React.Component {
-  constructor(props) {
-    super(props);
-
+  render() {
     let centers = [...this.props.center.centers];
-    const centerCardElements = [];
 
     // If this component has a `type` prop with `near` value.
     if (this.props.type && this.props.type === 'near') {
       centers = centers.filter(eventCenter => eventCenter.location.trim().toLowerCase() === 'lagos');
     }
 
-    centers.forEach((center) => {
+    // Create a cardElements.
+    const centerCardElements = centers.map((center) => {
       // Get details of each center.
       const {
-        imageUrl, name, type, location,
+        picture1, name, type, location, description,
       } = center;
 
-      // Create centerCard elements and push them into centerCardElements
-      centerCardElements.push(<div className="col-6 col-md-4 col-lg-3"><DiscoverCenterCard imageUrl={imageUrl} name={name} type={type} location={location} /></div>);
+      return (<div className="col-6 col-md-4 col-lg-3"><DiscoverCenterCard imageUrl={picture1} name={name} type={type} location={location} description={description} /></div>);
     });
 
     this.state = { centerCardElements };
-  }
 
-  render() {
     return (
       <div className="row io-top-row">{this.state.centerCardElements}</div>
     );
@@ -35,7 +30,6 @@ class DiscoverCenterCardRow extends React.Component {
 }
 
 const mapStateToProps = ({ center }) => ({ center });
-
 
 export default connect(
   mapStateToProps,

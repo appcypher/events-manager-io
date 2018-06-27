@@ -2,7 +2,9 @@ import React from 'react';
 import placeholder from '../assets/images/placeholder.jpg';
 
 const DiscoverCenterCard = (props) => {
-  const { name, type, location } = props;
+  const {
+    name, type, location, description,
+  } = props;
   let { imageUrl } = props;
 
   // If image is not provided, use a placeholder image
@@ -16,6 +18,8 @@ const DiscoverCenterCard = (props) => {
       <div className="io-content">
         <div className="io-title">{name}</div>
         <div className="io-body">{type}</div>
+        <hr />
+        <p>{description}</p>
         <p>{location}</p>
       </div>
     </div>

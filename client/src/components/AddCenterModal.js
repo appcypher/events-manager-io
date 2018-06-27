@@ -1,7 +1,7 @@
 import React from 'react';
 import classNames from 'classnames';
-import store from '../store';
-import CenterActions from '../actions/centerActions';
+import { connect } from 'react-redux';
+import CenterAction from '../actions/centerActions';
 import ModalSection from '../components/ModalSection';
 import ModalList from '../components/ModalList';
 
@@ -42,19 +42,15 @@ class AddCenterModal extends React.Component {
     }
   }
 
-  cancel = () => { this.setState({ hide: true }); }
-
   submit = () => {
-    store.dispatch(CenterActions.createCenter(this.props.user.token, this.state));
-    this.setState({ hide: true });
-  }
-
-  showModal = () => {
-    this.setState({ hide: false });
+    const token = localStorage.getItem('user.token');
+    this.props.createCenter(token, this.state);
+    // Hide modal.
+    this.props.hideAddCenterModal();
   }
 
   render() {
-    const classes = classNames({ 'io-modal': true, hide: this.state.hide });
+    const classes = classNames({ 'io-modal': true, hide: !this.props.showAddCenterModal });
     const facilityList = ['Chairs', 'Tables', 'Parking Lot', 'Rest Rooms', 'Telescreens', 'Stage'];
 
     return (
@@ -74,7 +70,7 @@ class AddCenterModal extends React.Component {
               <ModalSection title="Facilities" extra="io-start"><ModalList list={facilityList} saveInput={this.saveInput} /></ModalSection>
             </form>
           </div>
-          <div className="io-footer"><button id="add-center-cancel" className="io-submit-btn io-sm" onClick={this.cancel}>CANCEL</button>
+          <div className="io-footer"><button id="add-center-cancel" className="io-submit-btn io-sm" onClick={this.props.hideAddCenterModal}>CANCEL</button>
             <button id="add-center-submit" className="io-submit-btn io-sm" onClick={this.submit}>SUBMIT</button>
           </div>
         </div>
@@ -83,4 +79,11 @@ class AddCenterModal extends React.Component {
   }
 }
 
-export default AddCenterModal;
+const mapStateToProps = ({ user }) => ({ user });
+
+export default connect(
+  mapStateToProps,
+  {
+    createCenter: CenterAction.createCenter,
+  },
+)(AddCenterModal);

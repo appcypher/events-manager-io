@@ -6,6 +6,27 @@ class CenterAction {
   static cloudinaryUploadPreset = 'knlmha0j';
 
   /**
+   * Upload image
+   * @param{Object} details - center details
+   * @return{Promise}
+   */
+  static uploadImage(details) {
+    // Upload image first.
+    const formData = new FormData();
+    formData.append('file', details.file);
+    formData.append('upload_preset', CenterAction.cloudinaryUploadPreset);
+
+    return axios({
+      method: 'POST',
+      url: CenterAction.cloudinaryUrl,
+      headers: {
+        'Content-Type': 'application/x-www-form-urlencoded',
+      },
+      data: formData,
+    });
+  }
+
+  /**
    * Creates a new center
    * @param{Object} token - authentication token
    * @param{Object} details - center details
@@ -13,43 +34,49 @@ class CenterAction {
    */
   static createCenter(token, details) {
     return (dispatch) => {
-      // Upload image first.
-      const formData = new FormData();
-      formData.append('file', details.file);
-      formData.append('upload_preset', CenterAction.cloudinaryUploadPreset);
-
-      axios({
-        method: 'POST',
-        url: CenterAction.cloudinaryUrl,
-        headers: {
-          'Content-Type': 'application/x-www-form-urlencoded',
-        },
-        data: formData,
-      })
-        .then((res) => {
-          console.log(res);
-
-          // Make request for creating new center.
-          axios({
-            method: 'POST',
-            url: `${url}/api/v1/centers`,
-            headers: { token },
-            data: details,
-          })
-            .then((resp) => {
-              dispatch({ type: 'CENTER_CREATE_SUCCESSFUL', payload: resp.data });
+      // If user chooses an image.
+      if (details.file && details.file !== []) {
+        // Upload image
+        CenterAction.uploadImage(details)
+          .then((res) => {
+            // Make request for creating new center.
+            axios({
+              method: 'POST',
+              url: `${url}/api/v1/centers`,
+              headers: { token },
+              data: { ...details, picture1: res.data.secure_url },
             })
-            .catch((err) => {
-              if (err.response) {
-                dispatch({ type: 'REQUEST_FAILED', payload: err.response.data });
-              }
-            });
+              .then((resp) => {
+                dispatch({ type: 'CENTER_CREATE_SUCCESSFUL', payload: resp.data });
+              })
+              .catch((err) => {
+                if (err.response) {
+                  dispatch({ type: 'REQUEST_FAILED', payload: err.response.data });
+                }
+              });
+          })
+          .catch((err) => {
+            if (err.response) {
+              dispatch({ type: 'REQUEST_FAILED', payload: err.response.data });
+            }
+          });
+      } else {
+        // Make request for creating new center.
+        axios({
+          method: 'POST',
+          url: `${url}/api/v1/centers`,
+          headers: { token },
+          data: { ...details },
         })
-        .catch((err) => {
-          if (err.response) {
-            dispatch({ type: 'REQUEST_FAILED', payload: err.response.data });
-          }
-        });
+          .then((resp) => {
+            dispatch({ type: 'CENTER_CREATE_SUCCESSFUL', payload: resp.data });
+          })
+          .catch((err) => {
+            if (err.response) {
+              dispatch({ type: 'REQUEST_FAILED', payload: err.response.data });
+            }
+          });
+      }
     };
   }
 
@@ -84,11 +111,11 @@ class CenterAction {
    * @param{Object} token - authentication token
    * @return{undefined}
    */
-  static getAllCenters(token) {
+  static getAllCenters(token, pageNumber) {
     return (dispatch) => {
       axios({
         method: 'GET',
-        url: `${url}/api/v1/centers`,
+        url: `${url}/api/v1/centers?page=${pageNumber}`,
         headers: { token },
       })
         .then((res) => {

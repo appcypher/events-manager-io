@@ -13,11 +13,12 @@ class EventCenterController {
     EventCenter
       .create({
         name: req.body.name,
-        description: req.body.description || null,
         type: req.body.type,
         price: req.body.price,
         location: req.body.location,
         userId: req.user.id,
+        description: req.body.description || null,
+        picture1: req.body.picture1 || null,
       })
       .then((center) => {
         res.status(201).send({ message: 'center created!', center });
@@ -69,7 +70,7 @@ class EventCenterController {
    */
   static getAllCenters(req, res) {
     const page = (req.query.page && Number(req.query.page) > 0) ? Number(req.query.page) : 1;
-    const interval = 4;
+    const interval = 8;
     const offset = (page * interval) - interval;
     const limit = offset + interval;
 
