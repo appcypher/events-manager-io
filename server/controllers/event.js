@@ -64,7 +64,14 @@ class EventController {
       .findOne({ where: { id: req.params.eventId } })
       .then((event) => {
         if (event) {
-          event.destroy().then(res.status(200).send({ message: 'event deleted!' }));
+          event
+            .destroy()
+            .then(() => {
+              res.status(200).send({ message: 'event deleted!' });
+            })
+            .catch((err) => {
+              res.status(400).send({ message: err.errors ? err.errors[0].message : err.message });
+            });
         } else {
           res.status(404).send({ message: 'cannot find specified event!' });
         }

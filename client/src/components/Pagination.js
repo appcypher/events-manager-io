@@ -1,17 +1,38 @@
 import React from 'react';
 
-const Pagination = () => (
-  <div className="io-col-center">
-    <ul className="pagination">
-      <li className="page-item disabled"><a href="/" className="page-link">&lt;&lt;</a></li>
-      <li className="page-item active"><a href="/" className="page-link">1</a></li>
-      <li className="page-item"> <a href="/" className="page-link">2</a></li>
-      <li className="page-item"> <a href="/" className="page-link">3</a></li>
-      <li className="page-item"> <a href="/" className="page-link">4</a></li>
-      <li className="page-item"> <a href="/" className="page-link">5</a></li>
-      <li className="page-item"> <a href="/" className="page-link">&gt;&gt;</a></li>
-    </ul>
-  </div>
-);
+class Pagination extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      activePageLink: 1,
+    };
+  }
+
+  changePage = (e) => {
+    const pageNumber = Number(e.currentTarget.dataset.id);
+    this.props.getPageCenters(pageNumber);
+    this.setState({ activePageLink: pageNumber });
+  }
+
+  checkActive = (pageNumber) => {
+    if (this.state.activePageLink === pageNumber) return 'active';
+    return '';
+  }
+
+  render() {
+    return (
+      <div className="io-col-center">
+        <ul className="pagination">
+          <li id="pagePrevious" className="page-item disabled"><span className="page-link">&lt;&lt;</span></li>
+          <li className={`page-item ${this.checkActive(1)}`}><span className="page-link" data-id="1" onClick={this.changePage}>1</span></li>
+          <li className={`page-item ${this.checkActive(2)}`}><span className="page-link" data-id="2" onClick={this.changePage}>2</span></li>
+          <li className={`page-item ${this.checkActive(3)}`}><span className="page-link" data-id="3" onClick={this.changePage}>3</span></li>
+          <li className={`page-item ${this.checkActive(4)}`}><span className="page-link" data-id="4" onClick={this.changePage}>4</span></li>
+          <li id="pageNext" className="page-item disabled"><span className="page-link">&gt;&gt;</span></li>
+        </ul>
+      </div>
+    );
+  }
+}
 
 export default Pagination;

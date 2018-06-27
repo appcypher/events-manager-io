@@ -13,11 +13,12 @@ class EventCenterController {
     EventCenter
       .create({
         name: req.body.name,
-        description: req.body.description || null,
         type: req.body.type,
         price: req.body.price,
         location: req.body.location,
         userId: req.user.id,
+        description: req.body.description || null,
+        picture1: req.body.picture1 || null,
       })
       .then((center) => {
         res.status(201).send({ message: 'center created!', center });
@@ -48,6 +49,9 @@ class EventCenterController {
             })
             .then((modifiedCenter) => {
               res.status(200).send({ message: 'center modified!', center: modifiedCenter });
+            })
+            .catch((err) => {
+              res.status(400).send({ message: err.errors ? err.errors[0].message : err.message });
             });
         } else {
           res.status(404).send({ message: 'cannot find specified center!' });
@@ -65,11 +69,21 @@ class EventCenterController {
    * @return{json}
    */
   static getAllCenters(req, res) {
+    const page = (req.query.page && Number(req.query.page) > 0) ? Number(req.query.page) : 1;
+    const interval = 8;
+    const offset = (page * interval) - interval;
+    const limit = offset + interval;
+
     EventCenter
-      .all()
-      .then((centers) => {
-        if (centers) {
-          res.status(200).send({ message: 'all centers delivered!', centers });
+      .findAndCountAll({ offset, limit })
+      .then((result) => {
+        if (result.rows && result.rows !== []) {
+          const maxExceeded = result.count < offset;
+          if (!maxExceeded) {
+            res.status(200).send({ message: 'all centers delivered!', centers: result.rows });
+          } else {
+            res.status(404).send({ message: 'maximum page exceeded!' });
+          }
         } else {
           res.status(404).send({ message: 'cannot find any center!' });
         }

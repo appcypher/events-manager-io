@@ -81,6 +81,9 @@ class FacilityController {
             })
             .then((modifiedFacility) => {
               res.status(200).send({ message: 'facility updated!', facility: modifiedFacility });
+            })
+            .catch((err) => {
+              res.status(400).send({ message: err.errors ? err.errors[0].message : err.message });
             });
         } else {
           res.status(404).send({ message: 'cannot find specified facility!' });

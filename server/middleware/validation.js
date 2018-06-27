@@ -23,6 +23,26 @@ class Validation {
   }
 
   /**
+   * Checks if request queries have the valid types.
+   * @param{Object} req - api request
+   * @param{Object} res - route response
+   * @param{Function} next - next middleware
+   * @return{undefined}
+   */
+  static checkQueriesValid(...queries) {
+    return (req, res, next) => {
+      /* eslint-disable no-restricted-syntax */
+      /* eslint-disable valid-typeof */
+      for (const q of queries) {
+        if (typeof q.converter(req.query[q.name]) !== q.type) {
+          return res.status(400).send({ message: `expects query(${q.name}) to have a type of ${q.type}!` });
+        }
+      }
+      return next();
+    };
+  }
+
+  /**
    * Trims body values
    * @param{Object} req - api request
    * @param{Object} res - route response
