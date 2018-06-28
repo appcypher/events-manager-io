@@ -165,27 +165,23 @@ class Validation {
     } return next();
   }
 
-  static findSlatedEvent = (req, res, next, event) => {
-    const date = req.body.date ? new Date(req.body.date).toISOString() : event.date;
-    Event
-      .findOne({
-        where: {
-          centerId: req.body.centerId || event.centerId,
-          date,
-        },
-      })
-      .then((slatedEvent) => {
-        if (!slatedEvent) {
-          next();
-        } else if (event.id === slatedEvent.id) {
-          next();
-        } else {
-          res.status(409).send({ message: 'event already slated for that date!' });
-        }
-      })
-      .catch((err) => {
-        res.status(400).send({ message: err.errors ? err.errors[0].message : err.message });
-      });
+  /**
+   * Checks if event date is valid
+   * @param{Object} req - api request
+   * @param{Object} res - route response
+   * @param{Function} next - next middleware
+   * @return{undefined}
+   */
+  static checkTimeValid(req, res, next) {
+    // Check if body contains a date key
+    if (!req.body.time) return next();
+
+    // Check time format
+    if (!req.body.time.match(/^([0-9]|[0-1][0-9]|2[0-3])\s*:\s*([0-9]|[0-5][0-9])$/)) {
+      return res.status(400).send({ message: 'time format is invalid! - make sure it is in 24-hour HH:MM format' });
+    }
+
+    return next();
   }
 
   /**
@@ -196,21 +192,35 @@ class Validation {
    * @return{undefined}
    */
   static checkDateNotTaken(req, res, next) {
-    if (req.params.eventId) {
-      Event.findById(req.params.eventId)
-        .then((event) => {
-          if (!event) {
-            res.status(404).send({ message: 'cannot find specified event!' });
-          } else {
-            Validation.findSlatedEvent(req, res, next, event);
-          }
-        })
-        .catch((err) => {
-          res.status(400).send({ message: err.errors ? err.errors[0].message : err.message });
-        });
-    } else {
-      Validation.findSlatedEvent(req, res, next, { id: -1, centerId: -1 });
-    }
+    const { eventId } = req.params;
+    const { centerId, date } = req.body;
+
+    const lowDate = new Date(`${date} 00:00`).toISOString();
+    const upDate = new Date(`${date} 23:59`).toISOString();
+
+    Event.findAll({
+      where: {
+        centerId,
+        $and: [
+          { date: { $gte: lowDate } },
+          { date: { $lte: upDate } },
+        ],
+      },
+    })
+      .then((events) => {
+        // If no event is found with conflicting schedule.
+        if (events.length === 0) {
+          next();
+        // If there are events with conflicting schedule and any of the event has the same id as the provided eventId.
+        } else if (eventId && events.some(el => Number(el.id) === Number(eventId))) {
+          next();
+        } else {
+          res.status(409).send({ message: 'event already slated for that date!' });
+        }
+      })
+      .catch((err) => {
+        res.status(400).send({ message: err.errors ? err.errors[0].message : err.message });
+      });
   }
 
   /**

@@ -16,7 +16,7 @@ class EventController {
         description: req.body.description || null,
         userId: req.user.id,
         centerId: parseInt(req.body.centerId, 10),
-        date: new Date(req.body.date).toISOString(),
+        date: new Date(`${req.body.date} ${req.body.time}`).toISOString(),
       })
       .then((event) => {
         res.status(201).send({ message: 'event created!', event });

@@ -11,14 +11,21 @@ class DiscoverCenterCardRow extends React.Component {
       centers = centers.filter(eventCenter => eventCenter.location.trim().toLowerCase() === 'lagos');
     }
 
+    // Count
+    let count = -1;
+
     // Create a cardElements.
     const centerCardElements = centers.map((center) => {
       // Get details of each center.
       const {
-        picture1, name, type, location, description,
+        id, picture1, name, type, location, description,
       } = center;
 
-      return (<div className="col-6 col-md-4 col-lg-3"><DiscoverCenterCard imageUrl={picture1} name={name} type={type} location={location} description={description} /></div>);
+      // Increment count.
+      count += 1;
+
+      // Return a card.
+      return (<div onClick={this.props.showViewCenterModal(id, count)} className="col-6 col-md-4 col-lg-3"><DiscoverCenterCard imageUrl={picture1} name={name} type={type} location={location} description={description} /></div>);
     });
 
     this.state = { centerCardElements };

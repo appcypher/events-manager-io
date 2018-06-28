@@ -75,7 +75,23 @@ class EventCenterController {
     const limit = offset + interval;
 
     EventCenter
-      .findAndCountAll({ offset, limit })
+      .findAndCountAll({
+        offset,
+        limit,
+        include: [
+          {
+            model: Event,
+            as: 'events',
+            required: false,
+            offset: 0,
+            limit: 10,
+            where: {
+              date: { $gte: new Date().toISOString() },
+            },
+          },
+          { model: Facility, as: 'facility' },
+        ],
+      })
       .then((result) => {
         if (result.rows && result.rows !== []) {
           const maxExceeded = result.count < offset;
