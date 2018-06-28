@@ -14,7 +14,7 @@ const DiscoverCenterCard = (props) => {
 
   return (
     <div className="io-center-card">
-      <img alt="" src={imageUrl} className="io-img" />
+      <div className="io-img"><img alt="" src={imageUrl} /></div>
       <div className="io-content">
         <div className="io-title">{name}</div>
         <div className="io-body">{type}</div>

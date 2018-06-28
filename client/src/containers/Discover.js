@@ -11,6 +11,7 @@ import MainFab from '../components/MainFab';
 import LabelledFab from '../components/LabelledFab';
 import FabGroup from '../components/FabGroup';
 import AddCenterModal from '../components/AddCenterModal';
+import ViewCenterModal from '../components/ViewCenterModal';
 import AlertModal from '../components/AlertModal';
 
 class Discover extends React.Component {
@@ -19,10 +20,9 @@ class Discover extends React.Component {
     this.state = {
       hideFabGroup: true,
       showAddCenterModal: false,
-      alert: {
-        msg: '',
-        hide: true,
-      },
+      showViewCenterModal: false,
+      viewCenterModalState: {},
+      alert: { msg: '', hide: true },
     };
 
     // Get page 1 centers
@@ -62,6 +62,22 @@ class Discover extends React.Component {
     });
   }
 
+  showViewCenterModal = (id, listPosition) => () => {
+    console.log('ViewCenter with id', id, 'clicked!', 'It\'s at position', listPosition, 'in list');
+    const center = [...this.props.center.centers][listPosition];
+
+    this.setState({
+      showViewCenterModal: true,
+      viewCenterModalState: center,
+    });
+  }
+
+  hideViewCenterModal = () => {
+    this.setState({
+      showViewCenterModal: false,
+    });
+  }
+
   showAddEventModal = () => {}
 
   toggleFabGroup = () => {
@@ -86,7 +102,7 @@ class Discover extends React.Component {
     return (
       <div>
         {this.renderDiscoverNavBar()}
-        <DiscoverBody />
+        <DiscoverBody showViewCenterModal={this.showViewCenterModal} />
         <Pagination getPageCenters={this.getPageCenters} />
         <Footer />
 
@@ -101,13 +117,19 @@ class Discover extends React.Component {
           hideAddCenterModal={this.hideAddCenterModal}
           showAlert={this.showAlert}
         />
+        <ViewCenterModal
+          viewCenterModalState={this.state.viewCenterModalState}
+          showViewCenterModal={this.state.showViewCenterModal}
+          hideViewCenterModal={this.hideViewCenterModal}
+          showAlert={this.showAlert}
+        />
         <AlertModal msg={msg} className={alertClasses} hideAlert={this.hideAlert} />
       </div>
     );
   }
 }
 
-const mapStateToProps = ({ user, centers }) => ({ user, centers });
+const mapStateToProps = ({ user, center }) => ({ user, center });
 
 
 export default connect(

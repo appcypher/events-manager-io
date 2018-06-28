@@ -94,9 +94,10 @@ router.route('/api/v1/centers/:centerId')
 router.route('/api/v1/events')
   .post(
     Validation.trimBodyValues,
-    Validation.checkBodyContains('title', 'date', 'centerId'),
+    Validation.checkBodyContains('title', 'date', 'time', 'centerId'),
     authenticate,
     Validation.checkDateValid,
+    Validation.checkTimeValid,
     Validation.checkDateNotTaken,
     Validation.checkAssociatedCenterExists,
     EventController.createEvent,

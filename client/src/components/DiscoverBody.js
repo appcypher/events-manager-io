@@ -13,9 +13,9 @@ class DiscoverBody extends React.Component {
       <div className="io-body-content">
         <div className="container-fluid">
           <DiscoverTitleCard>Event Centers Near You</DiscoverTitleCard>
-          <DiscoverCenterCardRow type="near" />
+          <DiscoverCenterCardRow type="near" showViewCenterModal={this.props.showViewCenterModal} />
           <DiscoverTitleCard>Available Event Centers</DiscoverTitleCard>
-          <DiscoverCenterCardRow />
+          <DiscoverCenterCardRow showViewCenterModal={this.props.showViewCenterModal} />
         </div>
       </div>
     );
