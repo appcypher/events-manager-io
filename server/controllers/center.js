@@ -46,6 +46,10 @@ class EventCenterController {
               type: req.body.type || center.type,
               price: req.body.price || center.price,
               location: req.body.location || center.location,
+              picture1: req.body.picture1 || center.picture1,
+              picture2: req.body.picture2 || center.picture2,
+              picture3: req.body.picture3 || center.picture3,
+              picture4: req.body.picture4 || center.picture4,
             })
             .then((modifiedCenter) => {
               res.status(200).send({ message: 'center modified!', center: modifiedCenter });

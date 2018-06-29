@@ -797,6 +797,17 @@ body {
   color: $navbar-gray-deep;
   border-radius: 30px;
   float: right;
+  &.long {
+    width: 100%;
+    background-color: $navbar-gray-deep;
+    color: white;
+
+    &:hover {
+      border: 2px solid $navbar-gray-deep;
+      background-color: rgba(0, 0, 0, 0);
+      color: $navbar-gray-deep;
+    }
+  }
   &:hover {
     background-color: $navbar-gray-deep;
     color: white;

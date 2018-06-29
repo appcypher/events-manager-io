@@ -89,20 +89,49 @@ class CenterAction {
    */
   static modifyCenter(token, details, param) {
     return (dispatch) => {
-      axios({
-        method: 'PUT',
-        url: `${url}/api/v1/centers/${param}`,
-        headers: { token },
-        data: details,
-      })
-        .then((res) => {
-          dispatch({ type: 'CENTER_MODIFY_SUCCESSFUL', payload: res.data });
+      // If user chooses an image.
+      if (details.file && details.file !== []) {
+        // Upload image
+        CenterAction.uploadImage(details)
+          .then((res) => {
+            // Make request for modifying center.
+            axios({
+              method: 'PUT',
+              url: `${url}/api/v1/centers/${param}`,
+              headers: { token },
+              data: { ...details, picture1: res.data.secure_url },
+            })
+              .then((resp) => {
+                dispatch({ type: 'CENTER_MODIFY_SUCCESSFUL', payload: resp.data });
+              })
+              .catch((err) => {
+                if (err.response) {
+                  dispatch({ type: 'REQUEST_FAILED', payload: err.response.data });
+                }
+              });
+          })
+          .catch((err) => {
+            if (err.response) {
+              dispatch({ type: 'REQUEST_FAILED', payload: err.response.data });
+            }
+          });
+      } else {
+        // Make request for modifying center.
+        axios({
+          method: 'PUT',
+          url: `${url}/api/v1/centers/${param}`,
+          headers: { token },
+          data: { ...details },
         })
-        .catch((err) => {
-          if (err.response) {
-            dispatch({ type: 'REQUEST_FAILED', payload: err.response.data });
-          }
-        });
+          .then((res) => {
+            dispatch({ type: 'CENTER_MODIFY_SUCCESSFUL', payload: res.data });
+          })
+          .catch((err) => {
+            if (err.response) {
+              dispatch({ type: 'REQUEST_FAILED', payload: err.response.data });
+            }
+          });
+      }
     };
   }
 
