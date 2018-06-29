@@ -13,6 +13,7 @@ import FabGroup from '../components/FabGroup';
 import AddCenterModal from '../components/AddCenterModal';
 import ViewCenterModal from '../components/ViewCenterModal';
 import AlertModal from '../components/AlertModal';
+import ModifyCenterModal from '../components/ModifyCenterModal';
 
 class Discover extends React.Component {
   constructor(props) {
@@ -21,7 +22,9 @@ class Discover extends React.Component {
       hideFabGroup: true,
       showAddCenterModal: false,
       showViewCenterModal: false,
+      showModifyCenterModal: false,
       viewCenterModalState: {},
+      modifyCenterModalState: { populate: false },
       alert: { msg: '', hide: true },
     };
 
@@ -63,7 +66,6 @@ class Discover extends React.Component {
   }
 
   showViewCenterModal = (id, listPosition) => () => {
-    console.log('ViewCenter with id', id, 'clicked!', 'It\'s at position', listPosition, 'in list');
     const center = [...this.props.center.centers][listPosition];
 
     this.setState({
@@ -75,6 +77,20 @@ class Discover extends React.Component {
   hideViewCenterModal = () => {
     this.setState({
       showViewCenterModal: false,
+    });
+  }
+
+  showModifyCenterModal = center => () => {
+    this.setState({
+      showViewCenterModal: false,
+      showModifyCenterModal: true,
+      modifyCenterModalState: { ...center, populate: true },
+    });
+  }
+
+  hideModifyCenterModal = () => {
+    this.setState({
+      showModifyCenterModal: false,
     });
   }
 
@@ -121,6 +137,13 @@ class Discover extends React.Component {
           viewCenterModalState={this.state.viewCenterModalState}
           showViewCenterModal={this.state.showViewCenterModal}
           hideViewCenterModal={this.hideViewCenterModal}
+          showModifyCenterModal={this.showModifyCenterModal}
+          showAlert={this.showAlert}
+        />
+        <ModifyCenterModal
+          modifyCenterModalState={this.state.modifyCenterModalState}
+          showModifyCenterModal={this.state.showModifyCenterModal}
+          hideModifyCenterModal={this.hideModifyCenterModal}
           showAlert={this.showAlert}
         />
         <AlertModal msg={msg} className={alertClasses} hideAlert={this.hideAlert} />

@@ -16,6 +16,13 @@ class ViewCenterModal extends React.Component {
     };
   }
 
+  renderModifyButton = () => {
+    if (localStorage.getItem('user.admin') === 'true') {
+      return <button id="add-center-cancel" className="io-submit-btn io-sm" onClick={this.props.showModifyCenterModal(this.props.viewCenterModalState)}>MODIFY</button>;
+    }
+    return '';
+  }
+
   render() {
     const classes = classNames({ 'io-modal': true, hide: !this.props.showViewCenterModal });
 
@@ -73,6 +80,7 @@ class ViewCenterModal extends React.Component {
             </div>
           </div>
           <div className="io-footer">
+            {this.renderModifyButton()}
             <button id="view-center-ok" className="io-submit-btn io-sm" onClick={this.props.hideViewCenterModal}>OK </button>
           </div>
         </div>
