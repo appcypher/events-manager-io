@@ -36,7 +36,7 @@ class ProfileUserCard extends React.Component {
           <div className="io-header">
             <div className="io-name">{fullname} </div>
             <div className="io-spacer" />
-            <i className="io-icon fa fa-pencil-square-o" />
+            <i className="io-icon fa fa-pencil" />
           </div>
           <div className="io-short">{tagline}</div>
           <div className="io-long">{description}</div>

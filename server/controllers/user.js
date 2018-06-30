@@ -2,7 +2,7 @@ import jwt from 'jsonwebtoken';
 import bcrypt from 'bcrypt';
 import db from '../models';
 
-const { User, Event } = db;
+const { User, Event, EventCenter } = db;
 
 class UserController {
   /**
@@ -87,7 +87,7 @@ class UserController {
     User
       .findById(req.user.id, {
         include: [
-          { model: Event, as: 'events' },
+          { model: Event, as: 'events', include: [{ model: EventCenter, as: 'center' }] },
         ],
       })
       .then((user) => {

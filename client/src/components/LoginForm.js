@@ -25,6 +25,8 @@ class LoginForm extends React.Component {
       localStorage.setItem('user.token', this.props.user.token);
       localStorage.setItem('user.admin', this.props.user.user.admin);
 
+      // console.log(user)
+
       // Change page.
       history.push('/discover');
     };

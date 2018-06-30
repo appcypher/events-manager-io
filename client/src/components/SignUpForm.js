@@ -33,6 +33,7 @@ class SignUpForm extends React.Component {
       // Change page.
       history.push('/discover');
     };
+
     const showError = () => this.props.showAlert(this.props.user.message);
 
     this.props.signupUser(

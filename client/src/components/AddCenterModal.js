@@ -60,13 +60,15 @@ class AddCenterModal extends React.Component {
           <div className="io-body io-overflow">
             <form className="io-content io-start">
               <ModalSection title="Name"><input placeholder="Enter name of hall here" className="io-input io-input-field" name="name" onChange={this.saveInput} /></ModalSection>
-              <ModalSection title="Description"><input placeholder="Enter description here" className="io-input io-input-field" name="description" onChange={this.saveInput} /></ModalSection>
+              <ModalSection title="Details"><input placeholder="Enter description here" className="io-input io-input-field" name="description" onChange={this.saveInput} /></ModalSection>
               <ModalSection title="Type"><input placeholder="Enter type of center here" className="io-input io-input-field" name="type" onChange={this.saveInput} /></ModalSection>
               <ModalSection title="Location"><input placeholder="Enter location here" className="io-input io-input-field" name="location" onChange={this.saveInput} /></ModalSection>
               <ModalSection title="Price">
-                <span>₦</span><input placeholder="Enter price here" type="number" className="io-input-grow io-input-field" name="price" onChange={this.saveInput} /><span>per day</span>
+                <span>₦</span><input placeholder="Enter price here" type="number" className="io-input-grow io-input-field number" name="price" onChange={this.saveInput} /><span>per day</span>
               </ModalSection>
-              <ModalSection title="Pictures"><input type="file" multiple className="io-upload-btn" name="pictures" onChange={this.saveImageInput} /></ModalSection>
+              <ModalSection title="Pictures">
+                <input type="file" multiple className="io-input-grow io-input-field io-upload-btn" name="pictures" onChange={this.saveImageInput} />
+              </ModalSection>
               <ModalSection title="Facilities" extra="io-start"><ModalList list={facilityList} saveInput={this.saveInput} /></ModalSection>
             </form>
           </div>

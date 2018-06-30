@@ -70,12 +70,12 @@ class UserAction {
       })
         .then((res) => {
           dispatch({ type: 'USER_GET_DETAILS_SUCCESSFUL', payload: res.data });
-          successFunc();
+          if (successFunc) successFunc();
         })
         .catch((err) => {
           if (err.response) {
             dispatch({ type: 'REQUEST_FAILED', payload: err.response.data });
-            failFunc();
+            if (failFunc) failFunc();
           }
         });
     };

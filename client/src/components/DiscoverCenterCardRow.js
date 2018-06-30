@@ -3,6 +3,11 @@ import { connect } from 'react-redux';
 import DiscoverCenterCard from '../components/DiscoverCenterCard';
 
 class DiscoverCenterCardRow extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {};
+  }
+
   render() {
     let centers = [...this.props.center.centers];
 
@@ -14,24 +19,34 @@ class DiscoverCenterCardRow extends React.Component {
     // Count
     let count = -1;
 
-    // Create a cardElements.
+    // Create centerCardElements by mapping details out of centers.
     const centerCardElements = centers.map((center) => {
       // Get details of each center.
       const {
-        id, picture1, name, type, location, description,
+        picture1, name, type, location, description,
       } = center;
 
       // Increment count.
       count += 1;
 
       // Return a card.
-      return (<div onClick={this.props.showViewCenterModal(id, count)} className="col-6 col-md-4 col-lg-3"><DiscoverCenterCard imageUrl={picture1} name={name} type={type} location={location} description={description} /></div>);
+      return (
+        <div onClick={this.props.showViewCenterModal(count)}>
+          <DiscoverCenterCard
+            imageUrl={picture1}
+            name={name}
+            type={type}
+            location={location}
+            description={description}
+          />
+        </div>
+      );
     });
 
-    this.state = { centerCardElements };
-
     return (
-      <div className="row io-top-row">{this.state.centerCardElements}</div>
+      <div className="io-center-container">
+        <div className="io-cards-container centers">{centerCardElements}</div>
+      </div>
     );
   }
 }

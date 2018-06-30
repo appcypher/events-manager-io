@@ -1,6 +1,7 @@
 import React from 'react';
 import ProfileUserCard from './ProfileUserCard';
-import ProfileEventCardRow from './ProfileEventCardRow';
+import DiscoverTitleCard from '../components/DiscoverTitleCard';
+import ProfileEventCards from './ProfileEventCards';
 
 class ProfileBody extends React.Component {
   constructor(props) {
@@ -13,7 +14,8 @@ class ProfileBody extends React.Component {
       <div className="io-body-content">
         <div className="container-fluid">
           <ProfileUserCard />
-          <ProfileEventCardRow />
+          <DiscoverTitleCard>Your Events</DiscoverTitleCard>
+          <ProfileEventCards />
         </div>
       </div>
     );
