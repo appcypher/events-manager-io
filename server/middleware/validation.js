@@ -211,7 +211,8 @@ class Validation {
         // If no event is found with conflicting schedule.
         if (events.length === 0) {
           next();
-        // If there are events with conflicting schedule and any of the event has the same id as the provided eventId.
+        // If there are events with conflicting schedule and any of the event
+        // has the same id as the provided eventId.
         } else if (eventId && events.some(el => Number(el.id) === Number(eventId))) {
           next();
         } else {

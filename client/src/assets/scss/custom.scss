@@ -9,6 +9,7 @@ $login-forgot-gray: #4e4f5f;
 $login-bg-gradient: linear-gradient(to bottom right, rgb(198, 189, 201), rgb(159, 114, 186), #733296); // Change this horrid color please! ;_;
 $login-bg-gradient-transparent: linear-gradient(to bottom right, rgba(198, 189, 201, .7), rgba(159, 114, 186, .7), rgba(115, 50, 150, .7)); // Change this horrid color please! ;_;
 $general-bg-gradient: linear-gradient(to bottom right, rgb(198, 189, 201), rgb(181, 149, 201), #a571c1); // Change this horrid color please! ;_;
+$card: #424553;
 $navbar-shadow: rgba(0, 0, 0, .2);
 $navbar-bg-gradient: linear-gradient(to right, #e45a53, #bb6deb); // Change this horrid color please! ;_;
 $card-btn-gradient: linear-gradient(to bottom right, #e8ccff, #9913ff); // Change this horrid color please! ;_;
@@ -346,16 +347,20 @@ body {
 .io-title-bar {
   display: flex;
   align-items: center;
+  justify-content: center;
   min-width: 300px;
   height: 50px;
   margin-top: 10px;
-  margin-bottom: 10px;
+  margin-bottom: 30px;
   padding: 5px 10px;
   font-weight: 900;
-  border-left: 3px solid $navbar-gray-deep;
+  border-left: 3px solid black;
+  border-right: 3px solid black;
   box-shadow: 3px 0px 2px $navbar-shadow;
   border-radius: 10px 0px 10px 0px;
-  background-color: $title-bar-light-purple;
+  background: $card;
+  color: rgb(201, 201, 201);
+  text-shadow: 3px 3px 5px  rgba(0, 0, 0, .7);
 }
 
 // FLOATING ACTION BUTTON
@@ -495,16 +500,21 @@ body {
     font-weight: 600;
     color: $navbar-gray-deep;
   }
+  .io-long {
+    width: 90%;
+  }
 }
 
 // CENTER CARD
 .io-center-card {
-  width: 220px;
-  min-width: 220px;
+  width: 280px;
   height: auto;
   margin-bottom: 20px;
   display: relative;
   box-shadow: 3px 3px 5px $navbar-shadow;
+  margin-left: 10px;
+  margin-right: 10px;
+  color: rgb(191, 191, 191);
   &:hover {
     box-shadow: 5px 5px 5px $navbar-shadow;
   }
@@ -513,7 +523,7 @@ body {
     border-radius: 5px 5px 0px 0px;
     border-top: 3px solid $navbar-gray-deep;
     top: 50px;
-    height: 200px;
+    height: 280px;
     img {
       object-fit: cover;
       width: 100%;
@@ -522,60 +532,126 @@ body {
   }
   .io-content {
     padding: 10px;
-    height: auto;
-    background-color: $title-bar-light-purple;
+    height: 200px;
+    background: $card;
+    font-size: 13px;
+
     .io-title {
+      font-size: 20px;
       font-weight: 900;
+      text-shadow: 1px 1px 5px black;
     }
+
     .io-body {
-      font-size: 12px;
+      font-size: 17px;
     }
-    p {
-      font-size: 10px;
+
+    .description {}
+
+    hr {
+      margin-top: 10px;
     }
   }
 }
 
 // EVENT CARD
+.io-center-container {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.io-cards-container {
+  display: flex;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+}
+
 .io-event-card {
   width: 520px;
   height: 150px;
-  border-left: 4px solid $navbar-gray-deep;
-  background-color: $title-bar-light-purple;
+  border-left: 4px solid black;
+  background: $card;
   box-shadow: 3px 0px 2px $navbar-shadow;
   border-radius: 5px;
   display: flex;
   line-height: 15px;
+  margin-bottom: 20px;
+  margin-left: 10px;
+  margin-right: 10px;
+  color: rgb(191, 191, 191);
   &:hover {
     box-shadow: 5px 3px 5px $navbar-shadow;
   }
   &.io-done {
-    background-color: #fff;
+    background: #f0f0f0;
     opacity: .5;
+
     &:hover {
       box-shadow: 3px 0px 2px $navbar-shadow;
       cursor: no-drop;
+    }
+
+    .io-delete {
+      color: black !important;
+      &:hover {
+        background-color: lightgray !important;
+        cursor: no-drop !important;
+      }
+    }
+
+    .io-edit {
+      color: black !important;
+      &:hover {
+        background-color: lightgray !important;
+        cursor: no-drop !important;
+      }
+    }
+
+    .io-header {
+      h5 {
+        text-shadow: none;
+      }
     }
   }
   .io-header {
     display: flex;
     align-items: flex-start;
     h5 {
-      color: $btn-purple;
       font-weight: 700;
       display: inline-block;
+      text-shadow: 1px 1px 5px black;
       flex-grow: 1;
     }
-    span {
+
+    .io-delete {
+      color: #989898;
       width: 30px;
       height: 30px;
-      padding: 5px;
+      padding: 3px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-left: -5px;
+      &:hover {
+        border-radius: 50%;
+        background-color: #4e5462;
+        cursor: pointer;
+        color: white;
+      }
+    }
+
+    .io-edit {
+      color: #989898;
+      width: 30px;
+      height: 30px;
+      padding: 3px;
       display: flex;
       align-items: center;
       justify-content: center;
       &:hover {
         border-radius: 50%;
-        background-color: $highlight-purple;
+        background-color: #4e5462;
         cursor: pointer;
         color: white;
       }
@@ -584,10 +660,11 @@ body {
   img {
     width: 200px;
     height: 150px;
+    object-fit: cover;
     opacity: .8;
   }
   .io-content {
-    margin: 5px 5px;
+    margin: 5px 10px;
     display: flex;
     width: 100%;
     flex-direction: column;
@@ -602,12 +679,14 @@ body {
       display: flex;
       .io-date {
         flex-grow: 1;
-        color: $btn-purple;
         font-size: 900;
       }
       .io-time {
-        color: $btn-purple;
+        // color: $card;
         font-size: 900;
+        border-radius: 5px;
+        background-color: #333540;
+        padding: 2px;
       }
     }
   }
@@ -648,12 +727,13 @@ body {
     .io-header {
       padding: 10px;
       font-weight: 900;
-      color: $navbar-gray-deep;
-      background-color: $title-bar-light-purple;
+      color: white;
+      background-color: $card;
       display: flex;
       justify-content: center;
       align-items: center;
       height: 45px;
+      text-shadow: 3px 3px 5px rgba(0, 0, 0, 0.7);
       &.io-error {
         background-color: $login-box-gray;
         color: white;
@@ -670,7 +750,7 @@ body {
         margin: 10px;
         overflow-x: auto;
         img {
-          width: 200px;
+          width: 425px;
           border-radius: 7px;
           margin-left: 10px;
         }
@@ -688,17 +768,26 @@ body {
         .io-section {
           display: flex;
           align-items: center;
-          margin: 8px 0px ;
+          margin: 20px 5px;
           &.io-start {
             display: flex;
             align-items: flex-start;
           }
           .io-text {
-            width: 21%;
+            width: 23%;
+            padding-left: 10px;
             border-radius: 0px 0px 0px 2px;
-            font-size: 15px;
-            font-weight: 900;
+            font-size: 14px;
+            font-weight: 1000;
+            text-transform: uppercase;
             color: $login-text-area-gray;
+            margin-right: 10px;
+            color: white;
+            background: $card;
+            // border-top-left-radius: 5px;
+            border-bottom-left-radius: 5px;
+            border-top-right-radius: 5px;
+            // border-bottom-left-radius: 3px;
           }
           .io-input {
             flex-grow: 1;
@@ -706,8 +795,14 @@ body {
           }
           .io-input-grow {
             flex-grow: 1;
+            margin-left: 5px;
             margin-right: 5px;
-            padding-left: 0px;
+            width: 200px;
+
+            &.io-upload-btn {
+              margin-left: 0px;
+              border: none;
+            }
           }
           .io-check-text {
             margin-left: 5px;
@@ -721,7 +816,13 @@ body {
           display: flex;
           align-items: center;
           .io-text {
-            margin: 0px 10px;
+            margin: 5px 20px;
+            color: white;
+            background: $card;
+            padding: 2px 7px;
+            border-radius: 3px;
+            border: 1px solid white;
+            box-shadow: 0px 0px 3px 3px $card;
           }
           .io-divider {
             background-color: $frame-purple;
@@ -741,13 +842,46 @@ body {
         }
         .io-event {
           display: flex;
+          margin-top: 10px;
           border-left: 3px solid $frame-purple;
+          border-right: 3px solid $frame-purple;
           padding-left: 10px;
           flex-direction: column;
           line-height: 10px;
-          margin-bottom: 20px;
+          margin-top: 20px;
+          padding-top: 10px;
+          background-color: rgb(241, 241, 241);
           h5 {
             color: purple;
+          }
+        }
+
+        // View Center
+        &.view {
+          display: flex;
+          justify-content: center;
+          flex-direction: column;
+          text-align: center;
+
+          .price {
+            color: $btn-purple;
+          }
+
+          .list-title {
+            font-size: 17px;
+            font-weight: 600;
+            margin: 0px;
+
+          }
+
+          .list-container {
+            display: flex;
+            justify-content: center;
+
+            .list {
+              width: 120px;
+              text-align: start;
+            }
           }
         }
       }
@@ -755,8 +889,8 @@ body {
     .io-footer {
       padding: 10px;
       font-weight: 900;
-      color: $navbar-gray;
-      background-color: $title-bar-light-purple;
+      color: white;
+      background-color: $card;
       display: flex;
       justify-content: flex-end;
       align-items: center;
@@ -781,7 +915,6 @@ body {
 
 // [MODAL] INPUT FIELD
 .io-input-field {
-  padding-left: 5px;
   border: none;
   border-bottom: 1px solid $login-input-gray;
   color: $navbar-gray-deep;
@@ -794,7 +927,7 @@ body {
   border: none;
   background: none;
   border: 1px solid $navbar-gray-deep;
-  color: $navbar-gray-deep;
+  color: white;
   border-radius: 30px;
   float: right;
   &.long {
@@ -864,12 +997,12 @@ body {
 
 // PARALLAX
 .io-parallax {
-  background-image: url("../images/hall-banner2.jpg");
+  background-image: linear-gradient( rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url("../images/hall-banner1.jpg");
   background-repeat: no-repeat;
   background-position: center;
   background-attachment: fixed;
   background-size: cover;
-  min-height: 400px;
+  height: 700px;
   padding: 30px 30px;
 
   h1 {
@@ -897,19 +1030,24 @@ body {
   align-items: center;
   flex-direction: column;
   img {
-    width: 200px;
-    height: 200px;
+    width: 300px;
+    height: 350px;
     border-radius: 5px;
+    // background-color: #e5e5e5;
+    border: 5px solid #fafafa;
+    box-shadow: 2px 3px 5px $navbar-shadow;
+    filter: grayscale(100%);
   }
 }
 
 // SLANT
 .io-slant {
   display: flex;
-  height:300px;
-  width:100%x;
-  background-image: url("../images/slant-center1.jpg");
+  height: 500px;
+  width: 100%;
+  background-image: linear-gradient( rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url("../images/slant-center1.jpg");
   background-position: center;
+  background-size: cover;
   .io-content {
     height:100%;
     width:500px;
@@ -925,11 +1063,15 @@ body {
     * {
       width: 350px;
     }
+    img {
+      height: 100%;
+      width: 100%;
+    }
   }
 
   &.io-reverse {
     justify-content: flex-end;
-    background-image: url("../images/slant-center4.jpg");
+    background-image: linear-gradient( rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url("../images/slant-center2.jpg");
     .io-content {
       display: flex;
       justify-content: flex-start;
@@ -947,8 +1089,12 @@ body {
 
 // ABOUT US
 .io-about {
-  min-height: 300px;
+  height: 500px;
   padding: 30px 20px;
+  display: flex;
+  flex-direction: column;
+  /* justify-content: center; */
+  align-items: center;
   h1 {
     font-weight: 700px;
   }
@@ -956,10 +1102,13 @@ body {
 
 // FOOTER
 .io-footer {
-  height: auto;
+  height: 500px;
   color: $login-input-gray;
   background-color: $navbar-gray;
   padding: 20px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 // CENTERING
@@ -981,10 +1130,19 @@ body {
 .pagination {
   margin-top: 50px;
   cursor: pointer;
-  .page-item.active .page-link {
-    background-color: $title-bar-light-purple;
-    border-color: $title-bar-light-purple;
+
+  .page-item {
+    .page-link {
+      color: black;
+    }
+
+    &.active .page-link {
+      background-color: $card;
+      border-color: $card;
+      color: white;
+    }
   }
+
 }
 
 .container-fluid {
@@ -1076,11 +1234,12 @@ body {
 
 @media only screen and (max-width: 700px) {
   .io-slant {
-    margin-bottom: 50px;
     .io-content {
       height:100%;
-      color: black;
-      width:500px;
+      color: white;
+      text-shadow: 1px 1px 5px  rgba(0, 0, 0, .7);
+      font-weight: 900;
+      width: 500px;
       background-color: rgba(0, 0, 0, 0);
       clip-path: polygon(
         0% 0,
@@ -1136,3 +1295,91 @@ body {
     }
   }
 }
+
+/****************** EVENT CARDS MEDIA QUERIES *******************/
+// These media queries are specific to Event Card and their 520px with + 20px margin
+
+@media only screen and (min-width: 2161px) {
+  .io-cards-container {
+    &.events {
+      width: 50%;
+    }
+  }
+}
+
+@media only screen and (max-width: 2160px) {
+  .io-cards-container {
+    &.events {
+      width: 1620px;
+    }
+  }
+}
+
+@media only screen and (max-width: 1620px) {
+  .io-cards-container {
+    &.events {
+      width: 1080px;
+    }
+  }
+}
+
+@media only screen and (max-width: 1080px) {
+  .io-cards-container {
+    &.events {
+      width: 540px;
+    }
+  }
+}
+
+/****************** CENTER CARDS MEDIA QUERIES *******************/
+// These media queries are specific to Center Card and their 280px with + 20px margin
+
+@media only screen and (max-width: 1801px) {
+  .io-cards-container {
+    &.centers {
+      width: 50%;
+    }
+  }
+}
+
+@media only screen and (max-width: 1800px) {
+  .io-cards-container {
+    &.centers {
+      width: 1500px;
+    }
+  }
+}
+
+@media only screen and (max-width: 1500px) {
+  .io-cards-container {
+    &.centers {
+      width: 1200px;
+    }
+  }
+}
+
+@media only screen and (max-width: 1200px) {
+  .io-cards-container {
+    &.centers {
+      width: 900px;
+    }
+  }
+}
+
+@media only screen and (max-width: 900px) {
+  .io-cards-container {
+    &.centers {
+      width: 600px;
+    }
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .io-cards-container {
+    &.centers {
+      width: 300px;
+    }
+  }
+}
+
+

@@ -65,7 +65,7 @@ class Discover extends React.Component {
     });
   }
 
-  showViewCenterModal = (id, listPosition) => () => {
+  showViewCenterModal = listPosition => () => {
     const center = [...this.props.center.centers][listPosition];
 
     this.setState({

@@ -64,17 +64,20 @@ class ViewCenterModal extends React.Component {
           <div className="io-header">CENTER DETAILS</div>
           <div className="io-body io-overflow">
             <div className="io-img-hgroup">{images}</div>
-            <div className="io-content">
-              <h2>{name}</h2>
-              <p>{type}</p>
-              <p>{location}.</p>
-              <p className="io-price">{`₦${price} per hour`}</p>
-              <ul className="io-list">Available Facilities
-                <li>Chairs</li>
-                <li>Tables</li>
-                <li>Parking Lot</li>
-                <li>Rest Rooms </li>
-              </ul>
+            <div className="io-content view">
+              <h2 className="name">{name}</h2>
+              <p className="type">{type}</p>
+              <p className="location">{location}.</p>
+              <p className="price">{`₦${price} per day`}</p>
+              <p className="list-title">Available Facilities</p>
+              <div className="list-container">
+                <ul className="list">
+                  <li>• Chairs</li>
+                  <li>• Tables</li>
+                  <li>• Parking Lot</li>
+                  <li>• Rest Rooms </li>
+                </ul>
+              </div>
               <div className="io-divider-text"><span className="io-divider" /><span className="io-text">Upcoming Events </span><span className="io-divider" /></div>
               {eventViews}
             </div>
