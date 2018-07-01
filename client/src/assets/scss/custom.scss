@@ -560,8 +560,6 @@ body {
       font-size: 17px;
     }
 
-    .description {}
-
     hr {
       margin-top: 10px;
     }
@@ -723,7 +721,7 @@ body {
   background-color: rgba(0,0,0,.4);
   justify-content: center;
   align-items: center;
-  
+
   &.io-error {
     background-color: rgba(0,0,0,.7);
   }
