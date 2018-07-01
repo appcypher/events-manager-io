@@ -2,6 +2,7 @@ import React from 'react';
 import classNames from 'classnames';
 import { connect } from 'react-redux';
 import CenterAction from '../actions/centerActions';
+import adjustPrice from '../adjust';
 
 class ViewCenterModal extends React.Component {
   constructor(props) {
@@ -59,7 +60,7 @@ class ViewCenterModal extends React.Component {
     }
 
     return (
-      <div id="view-center-modal" className={classes}>
+      <div id="view-center-modal" className={classes} onClick={this.props.hideViewCenterModal}>
         <div className="io-modal-body">
           <div className="io-header">CENTER DETAILS</div>
           <div className="io-body io-overflow">
@@ -68,7 +69,7 @@ class ViewCenterModal extends React.Component {
               <h2 className="name">{name}</h2>
               <p className="type">{type}</p>
               <p className="location">{location}.</p>
-              <p className="price">{`₦${price} per day`}</p>
+              <p className="price">{`₦${adjustPrice(price)} per day`}</p>
               <p className="list-title">Available Facilities</p>
               <div className="list-container">
                 <ul className="list">
@@ -92,7 +93,7 @@ class ViewCenterModal extends React.Component {
   }
 }
 
-const mapStateToProps = ({ user, center }) => ({ user, center });
+const mapStateToProps = ({ user }) => ({ user });
 
 export default connect(
   mapStateToProps,

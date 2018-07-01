@@ -46,10 +46,28 @@ class ModifyCenterModal extends React.Component {
   deleteCenter = () => {}
 
   submit = centerId => () => {
+    // Show loading screen.
+    this.props.showLoader();
+
+    // Callback for handling success.
+    const reloadPage = () => {
+      this.props.hideLoader();
+      this.props.hideModifyCenterModal();
+      this.props.showNotification(this.props.center.message);
+      setTimeout(
+        () => window.location.reload(),
+        2500,
+      );
+    };
+
+    // Callback for handling error.
+    const showError = () => {
+      this.props.hideLoader();
+      this.props.showAlertModal(this.props.center.message, 'error');
+    };
+
     const token = localStorage.getItem('user.token');
-    this.props.modifyCenter(token, this.state, centerId);
-    // Hide modal.
-    this.props.hideModifyCenterModal();
+    this.props.modifyCenter(token, this.state, centerId, reloadPage, showError);
   }
 
   render() {
@@ -84,7 +102,7 @@ class ModifyCenterModal extends React.Component {
 
 
     return (
-      <div id="modify-center-modal" className={classes}>
+      <div id="modify-center-modal" className={classes} onClick={this.props.hideModifyCenterModal}>
         <div className="io-modal-body">
           <div className="io-header">MODIFY CENTER</div>
           <div className="io-body io-overflow">
@@ -110,7 +128,7 @@ class ModifyCenterModal extends React.Component {
   }
 }
 
-const mapStateToProps = ({ user }) => ({ user });
+const mapStateToProps = ({ center }) => ({ center });
 
 export default connect(
   mapStateToProps,

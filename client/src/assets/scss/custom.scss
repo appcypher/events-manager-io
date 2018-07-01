@@ -1,12 +1,12 @@
 // COLOR FOR LOGIN/SIGNUP PAGE
 $login-box-gray: #242835;
-$login-title-gray: #acb1be;
+$login-title-gray: #8893ae;
 $login-border-gray: #393d52;
 $login-text-area-gray: #32364a;
 $login-placeholder-gray: #4e5462;
 $login-input-gray: #afb1be;
 $login-forgot-gray: #4e4f5f;
-$login-bg-gradient: linear-gradient(to bottom right, rgb(198, 189, 201), rgb(159, 114, 186), #733296); // Change this horrid color please! ;_;
+$login-bg-gradient: linear-gradient(to bottom right, rgb(189, 190, 201), rgb(158, 114, 186), #733296); // Change this horrid color please! ;_;
 $login-bg-gradient-transparent: linear-gradient(to bottom right, rgba(198, 189, 201, .7), rgba(159, 114, 186, .7), rgba(115, 50, 150, .7)); // Change this horrid color please! ;_;
 $general-bg-gradient: linear-gradient(to bottom right, rgb(198, 189, 201), rgb(181, 149, 201), #a571c1); // Change this horrid color please! ;_;
 $card: #424553;
@@ -361,6 +361,7 @@ body {
   background: $card;
   color: rgb(201, 201, 201);
   text-shadow: 3px 3px 5px  rgba(0, 0, 0, .7);
+  text-transform: uppercase;
 }
 
 // FLOATING ACTION BUTTON
@@ -408,17 +409,22 @@ body {
     margin: 10px 5px;
     cursor: pointer;
 
-    &.io-1 button { background-color: $fab-purple-1; }
-    &.io-2 button { background-color: $fab-purple-2; }
-    &.io-3 button { background-color: $fab-purple-3; }
-    &.io-1 span { background-color: $fab-purple-1; }
-    &.io-2 span { background-color: $fab-purple-2; }
-    &.io-3 span { background-color: $fab-purple-3; }
+    &[class*=" io-"] {
+      button {
+        background-color: $navbar-gray-deep;
+      }
+
+      .label {
+        background-color: $navbar-gray-deep;
+        width: 150px;
+        text-align: center;
+      }
+    }
 
     span {
       margin-right: 10px;
       padding: 5px 10px;
-      color: white;
+      color: #e1e1e1;
       background-color: gray;
       border-radius: 5px;
     }
@@ -427,8 +433,8 @@ body {
       width: 30px;
       height: 30px;
       background-color: red;
-      color: white;
-      font-size: 10px;
+      color: #e1e1e1;
+      font-size: 15px;
       border: none;
       border-radius: 50%;
       cursor: pointer;
@@ -451,7 +457,8 @@ body {
   padding: 10px;
   width: 100%;
   min-height: 200px;
-  border-radius: 6px;
+  border-top-left-radius: 6px;
+  border-top-right-radius: 6px;
   background-color: $login-text-area-gray;
   box-shadow: 1px 3px 3px $navbar-shadow;
   position: relative;
@@ -462,6 +469,8 @@ body {
     box-shadow: 0px 4px 5px $navbar-shadow;
     border-radius: 50%;
     width: 150px;
+    object-fit: cover;
+    height: 150px;
     position: absolute;
     top: -50px;
     right: 10%;
@@ -470,6 +479,7 @@ body {
     display: flex;
     align-items: flex-start;
     width: 100%;
+    margin-left: 10px;
     .io-name {
       font-size: 38px;
       line-height: 46px;
@@ -488,19 +498,21 @@ body {
       justify-content: center;
       &:hover {
         border-radius: 50%;
-        background-color: $highlight-purple;
+        background-color: $navbar-gray-deep;
         cursor: pointer;
         color: white;
       }
     }
   }
   .io-short {
+    margin-left: 10px;
     font-family: kaushanscript;
     font-size: 20px;
     font-weight: 600;
     color: $navbar-gray-deep;
   }
   .io-long {
+    margin-left: 10px;
     width: 90%;
   }
 }
@@ -515,9 +527,11 @@ body {
   margin-left: 10px;
   margin-right: 10px;
   color: rgb(191, 191, 191);
+
   &:hover {
     box-shadow: 5px 5px 5px $navbar-shadow;
   }
+
   cursor: pointer;
   .io-img {
     border-radius: 5px 5px 0px 0px;
@@ -580,9 +594,11 @@ body {
   margin-left: 10px;
   margin-right: 10px;
   color: rgb(191, 191, 191);
+
   &:hover {
     box-shadow: 5px 3px 5px $navbar-shadow;
   }
+
   &.io-done {
     background: #f0f0f0;
     opacity: .5;
@@ -635,7 +651,7 @@ body {
       margin-left: -5px;
       &:hover {
         border-radius: 50%;
-        background-color: #4e5462;
+        background-color: $login-text-area-gray;
         cursor: pointer;
         color: white;
       }
@@ -651,7 +667,7 @@ body {
       justify-content: center;
       &:hover {
         border-radius: 50%;
-        background-color: #4e5462;
+        background-color: $login-text-area-gray;
         cursor: pointer;
         color: white;
       }
@@ -707,6 +723,11 @@ body {
   background-color: rgba(0,0,0,.4);
   justify-content: center;
   align-items: center;
+  
+  &.io-error {
+    background-color: rgba(0,0,0,.7);
+  }
+
   .io-modal-body {
     border-top: 5px solid $login-box-gray;
     border-bottom: 5px solid $login-box-gray;
@@ -719,11 +740,21 @@ body {
     max-height: 600px;
     background-color: white;
     &.io-error {
-      height: 250px;
+      height: 270px;
+      width: 500px;
       min-height: initial;
       background: $login-bg-gradient-transparent;
       color: white;
     }
+
+    &.event {
+      height: 400px;
+
+      .io-body {
+        height: 300px;
+      }
+    }
+
     .io-header {
       padding: 10px;
       font-weight: 900;
@@ -959,11 +990,37 @@ body {
 }
 
 // DROPDOWN
+.io-dropdown {
+  max-height: 200px;
+  min-height: 34px;
+  position: relative;
+  top: -52.2%;
+  margin-left: 27.5%;
+  margin-right: 4%;
+  background-color: red;
+  background-color: #3a3f4f;
+  color: white;
+  box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.2);
+  color: white;
+  box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.2);
+  overflow: auto;
+
+  li {
+    padding: 5px 10px;
+    cursor: pointer;
+    &:hover {
+      background-color: white;
+      color: $navbar-gray-deep;
+    }
+  }
+}
+
 .io-dropdown-content {
   display: flex;
   flex-direction: column;
   min-width: 150px;
   max-height: 300px;
+  min-height: 300px;
   background-color: $navbar-gray;
   color: white;
   position: fixed;
@@ -991,9 +1048,6 @@ body {
     }
   }
 }
-
-// SNACKBAR // UNIMPLEMENTED (remember: snackbar is like fab)
-// .snackbar {}
 
 // PARALLAX
 .io-parallax {
@@ -1118,6 +1172,16 @@ body {
   width: 100%;
 }
 
+// OVERRIDING NOTIFICATION SNACKBAR
+.notification-bar {
+  min-width: 200px;
+  display: flex;
+  justify-content: center;
+  background-color: $card !important;
+  border: 2px solid #fff;
+  box-shadow: 0px 0px 3px 3px $card !important;
+}
+
 // OVERRIDING BOOTSTRAP
 .col-6.col-md-4.col-lg-3 {
   margin-top: 10px;
@@ -1143,6 +1207,10 @@ body {
     }
   }
 
+}
+
+.hide {
+  display: none;
 }
 
 .container-fluid {

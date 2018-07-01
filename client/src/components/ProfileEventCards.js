@@ -13,8 +13,8 @@ class ProfileEventCards extends React.Component {
     let events = [];
 
     // Populate events with user events if it exists.
-    if (this.props.user.user.events) {
-      ({ events } = this.props.user.user);
+    if (this.props.event.events) {
+      ({ events } = this.props.event);
     }
 
     // Count.
@@ -76,7 +76,7 @@ class ProfileEventCards extends React.Component {
   }
 }
 
-const mapStateToProps = ({ user }) => ({ user });
+const mapStateToProps = ({ user, event }) => ({ user, event });
 
 export default connect(
   mapStateToProps,

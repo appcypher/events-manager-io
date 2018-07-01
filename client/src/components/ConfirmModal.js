@@ -1,10 +1,10 @@
 import React from 'react';
 import classNames from 'classnames';
 
-const AlertModal = (props) => {
+const ConfirmModal = (props) => {
   const {
-    message, show, type,
-  } = props.alertModalState;
+    message, show, type, confirmText, callback,
+  } = props.confirmModalState;
 
   const classes = classNames({ 'io-modal': true, hide: !show });
 
@@ -16,7 +16,7 @@ const AlertModal = (props) => {
   }
 
   return (
-    <div className={`${classes} ${type} io-error`} onClick={props.hideAlertModal}>
+    <div className={`${classes} ${type}`} onClick={props.hideConfirmModal}>
       <div className="io-modal-body io-error">
         <div className="io-header io-error">{header}</div>
         <div className="io-body">
@@ -25,11 +25,12 @@ const AlertModal = (props) => {
           </div>
         </div>
         <div className="io-footer io-error">
-          <button id="view-center-ok" className="io-submit-btn io-sm" onClick={props.hideAlertModal}>OK </button>
+          <button id="view-center-ok" className="io-submit-btn io-sm" onClick={callback}>{confirmText} </button>
+          <button id="view-center-ok" className="io-submit-btn io-sm" onClick={props.hideConfirmModal}>CANCEL </button>
         </div>
       </div>
     </div>
   );
 };
 
-export default AlertModal;
+export default ConfirmModal;

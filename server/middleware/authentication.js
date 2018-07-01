@@ -10,12 +10,12 @@ import jwt from 'jsonwebtoken';
 export default function authenticate(req, res, next) {
   const token = req.body.token || req.headers.token;
   if (!token) {
-    res.status(401).send({ message: 'token is required!' });
+    res.status(401).send({ message: 'Token is required!' });
   } else {
     // Check if token matches the one provided at login
     jwt.verify(token, process.env.SECRET_KEY, (err, decoded) => {
       if (err) {
-        res.status(401).send({ message: 'token is invalid!' });
+        res.status(401).send({ message: 'Invalid token!' });
       } else {
         req.user = decoded;
         next();

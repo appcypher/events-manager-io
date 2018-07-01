@@ -30,7 +30,9 @@ class LoginForm extends React.Component {
       // Change page.
       history.push('/discover');
     };
-    const showError = () => this.props.showAlert(this.props.user.message);
+
+    // Callback for handling error.
+    const showError = () => this.props.showAlertModal(this.props.user.message, 'error');
 
     this.props.loginUser(
       {

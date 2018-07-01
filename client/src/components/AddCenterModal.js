@@ -17,7 +17,6 @@ class AddCenterModal extends React.Component {
       price: 0,
       file: null,
       pictures: [],
-      user: 0,
     };
   }
 
@@ -43,10 +42,29 @@ class AddCenterModal extends React.Component {
   }
 
   submit = () => {
+    // Show loading screen.
+    this.props.showLoader();
+
+    // Callback for handling success.
+    const reloadPage = () => {
+      this.props.hideLoader();
+      this.props.hideAddCenterModal();
+
+      this.props.showNotification(this.props.center.message);
+      setTimeout(
+        () => window.location.reload(),
+        2500,
+      );
+    };
+
+    // Callback for handling error.
+    const showError = () => {
+      this.props.hideLoader();
+      this.props.showAlertModal(this.props.center.message, 'error');
+    };
+
     const token = localStorage.getItem('user.token');
-    this.props.createCenter(token, this.state);
-    // Hide modal.
-    this.props.hideAddCenterModal();
+    this.props.createCenter(token, this.state, reloadPage, showError);
   }
 
   render() {
@@ -54,7 +72,7 @@ class AddCenterModal extends React.Component {
     const facilityList = ['Chairs', 'Tables', 'Parking Lot', 'Rest Rooms', 'Telescreens', 'Stage'];
 
     return (
-      <div id="add-center-modal" className={classes}>
+      <div id="add-center-modal" className={classes} onClick={this.props.hideAddCenterModal}>
         <div className="io-modal-body">
           <div className="io-header">CREATE NEW CENTER</div>
           <div className="io-body io-overflow">
@@ -82,7 +100,7 @@ class AddCenterModal extends React.Component {
   }
 }
 
-const mapStateToProps = ({ user }) => ({ user });
+const mapStateToProps = ({ center }) => ({ center });
 
 export default connect(
   mapStateToProps,
