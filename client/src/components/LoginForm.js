@@ -4,6 +4,9 @@ import { connect } from 'react-redux';
 import UserAction from '../actions/userActions';
 import history from '../index';
 
+/**
+ * Houses the login form and implements authentication process.
+ */
 class LoginForm extends React.Component {
   constructor(props) {
     super(props);
@@ -51,12 +54,10 @@ class LoginForm extends React.Component {
           <div className="io-input-group">
             <i className="io-icon fa fa-user" />
             <input placeholder="Username" type="email" name="username" onChange={this.saveInput} />
-            {/* <i className="io-mark fa fa-check" /> */}
           </div>
           <div className="io-input-group">
             <i className="io-icon fa fa-unlock-alt" />
             <input placeholder="Password" type="password" className="io-password" name="password" onChange={this.saveInput} />
-            {/* <i className="io-mark fa fa-check" /> */}
           </div>
         </div>
         <div>

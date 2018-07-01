@@ -5,6 +5,9 @@ import CenterAction from '../actions/centerActions';
 import ModalSection from '../components/ModalSection';
 import ModalList from '../components/ModalList';
 
+/**
+ * This modal allows the user to add new center.
+ */
 class AddCenterModal extends React.Component {
   constructor(props) {
     super(props);
@@ -20,6 +23,7 @@ class AddCenterModal extends React.Component {
     };
   }
 
+  // Store details from input fields.
   saveInput = (e) => {
     const { target } = e;
     if (target.type !== 'checkbox') {
@@ -29,6 +33,7 @@ class AddCenterModal extends React.Component {
     }
   }
 
+  // Store file info from selected images.
   saveImageInput = (e) => {
     let file = null;
 
@@ -50,7 +55,10 @@ class AddCenterModal extends React.Component {
       this.props.hideLoader();
       this.props.hideAddCenterModal();
 
+      // Show notification of success.
       this.props.showNotification(this.props.center.message);
+
+      // Relaod page after 2secs.
       setTimeout(
         () => window.location.reload(),
         2500,
@@ -85,7 +93,7 @@ class AddCenterModal extends React.Component {
                 <span>₦</span><input placeholder="Enter price here" type="number" className="io-input-grow io-input-field number" name="price" onChange={this.saveInput} /><span>per day</span>
               </ModalSection>
               <ModalSection title="Pictures">
-                <input type="file" multiple className="io-input-grow io-input-field io-upload-btn" name="pictures" onChange={this.saveImageInput} />
+                <input type="file" accept="image/*" multiple className="io-input-grow io-input-field io-upload-btn" name="pictures" onChange={this.saveImageInput} />
               </ModalSection>
               <ModalSection title="Facilities" extra="io-start"><ModalList list={facilityList} saveInput={this.saveInput} /></ModalSection>
             </form>

@@ -130,7 +130,10 @@ class EventCenterController {
     EventCenter
       .findAll({
         where: {
-          name: { $iRegexp: name },
+          $or: {
+            name: { $iRegexp: name },
+            location: { $iRegexp: name },
+          },
         },
         offset: 0,
         limit: 10,

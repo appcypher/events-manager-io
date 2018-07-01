@@ -5,7 +5,9 @@ import LoginContainer from '../components/LoginContainer';
 import LoginForm from '../components/LoginForm';
 import AlertModal from '../components/AlertModal';
 
-
+/**
+ * Shows information of the sign-in page.
+ */
 class SignIn extends React.Component {
   static renderHomeNavbar() {
     if (
@@ -25,6 +27,7 @@ class SignIn extends React.Component {
   }
 
   componentDidMount() {
+    // Show current page in document's title.
     document.title = 'LogIn • EventsManagerIO';
   }
 

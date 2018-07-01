@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 /**
- * Component for ceating navbars
+ * Contains footer information like contacts and links.
  * @param{undefined}
  * @return{React.Component}
  */

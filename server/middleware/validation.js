@@ -23,6 +23,50 @@ class Validation {
   }
 
   /**
+   * Checks if specified body keys are not null
+   * @param{Object} req - api request
+   * @param{Object} res - route response
+   * @param{Function} next - next middleware
+   * @return{undefined}
+   */
+  static checkNotNull(...params) {
+    return (req, res, next) => {
+      /* eslint-disable no-restricted-syntax */
+      for (const p of params) {
+        if (req.body[p] !== undefined) {
+          if (req.body[p] === null) {
+            const key = p[0].toUpperCase() + p.slice(1);
+            return res.status(400).send({ message: `${key} needs to have a value!` });
+          }
+        }
+      }
+      return next();
+    };
+  }
+
+  /**
+   * Checks if specified body keys are not an empty strings
+   * @param{Object} req - api request
+   * @param{Object} res - route response
+   * @param{Function} next - next middleware
+   * @return{undefined}
+   */
+  static checkNotEmpty(...params) {
+    return (req, res, next) => {
+      /* eslint-disable no-restricted-syntax */
+      for (const p of params) {
+        if (req.body[p] !== undefined) {
+          if (req.body[p] === '') {
+            const key = p[0].toUpperCase() + p.slice(1);
+            return res.status(400).send({ message: `${key} can't be empty!` });
+          }
+        }
+      }
+      return next();
+    };
+  }
+
+  /**
    * Checks if request queries have the valid types.
    * @param{Object} req - api request
    * @param{Object} res - route response

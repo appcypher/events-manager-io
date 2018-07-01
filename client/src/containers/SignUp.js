@@ -5,6 +5,9 @@ import LoginContainer from '../components/LoginContainer';
 import SignUpForm from '../components/SignUpForm';
 import AlertModal from '../components/AlertModal';
 
+/**
+ * Shows information of the sign-up page.
+ */
 class SignUp extends React.Component {
   static renderHomeNavbar() {
     if (
@@ -24,6 +27,7 @@ class SignUp extends React.Component {
   }
 
   componentDidMount() {
+    // Show current page in document's title.
     document.title = 'SignUp • EventsManagerIO';
   }
 

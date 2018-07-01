@@ -3,6 +3,9 @@ import { connect } from 'react-redux';
 import placeholder from '../assets/images/placeholder.jpg';
 import UserAction from '../actions/userActions';
 
+/**
+ * Shows information of the logged-in user on the profile page.
+ */
 class ProfileUserCard extends React.Component {
   constructor(props) {
     super(props);

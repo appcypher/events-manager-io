@@ -46,6 +46,7 @@ class Discover extends React.Component {
   }
 
   componentDidMount = () => {
+    // Show current page in document's title.
     document.title = 'Discover • EventsManagerIO';
   }
 
@@ -192,7 +193,7 @@ class Discover extends React.Component {
       <div>
         {this.renderDiscoverNavBar()}
         <DiscoverBody showViewCenterModal={this.showViewCenterModal} />
-        <Pagination getPageCenters={this.getPageCenters} />
+        <Pagination getPage={this.getPageCenters} />
         <Footer />
 
         <MainFab toggleFabGroup={this.toggleFabGroup} />

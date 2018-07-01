@@ -4,6 +4,9 @@ import { connect } from 'react-redux';
 import CenterAction from '../actions/centerActions';
 import adjustPrice from '../adjust';
 
+/**
+ * Shows information of a selected center.
+ */
 class ViewCenterModal extends React.Component {
   constructor(props) {
     super(props);
@@ -17,6 +20,7 @@ class ViewCenterModal extends React.Component {
     };
   }
 
+  // Modify button shows up only when the user is admin.
   renderModifyButton = () => {
     if (localStorage.getItem('user.admin') === 'true') {
       return <button id="add-center-cancel" className="io-submit-btn io-sm" onClick={this.props.showModifyCenterModal(this.props.viewCenterModalState)}>MODIFY</button>;
@@ -37,6 +41,8 @@ class ViewCenterModal extends React.Component {
 
     const eventViews = [];
 
+
+    // If events exist on center, then their details are mapped to UI elements.
     if (events) {
       for (let i = 0; i < events.length; i += 1) {
         const { title, date } = events[i];
@@ -54,7 +60,7 @@ class ViewCenterModal extends React.Component {
       }
     }
 
-    // If there is no event to display
+    // If there is no event to display, a message is shown.
     if (eventViews.length < 1) {
       eventViews.push(<h5>No available events for this center </h5>);
     }

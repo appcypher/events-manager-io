@@ -3,6 +3,9 @@ import { connect } from 'react-redux';
 import moment from 'moment';
 import placeholder from '../assets/images/placeholder.jpg';
 
+/**
+ * Contains the event cards that are shown on profile page.
+ */
 class ProfileEventCards extends React.Component {
   constructor(props) {
     super(props);
@@ -55,7 +58,12 @@ class ProfileEventCards extends React.Component {
               <div className="io-details">
                 <div className="io-header">
                   <h5>{title}</h5>
-                  <span className="io-edit"><i className="io-icon fa fa-pencil" /></span>
+                  <span
+                    className="io-edit"
+                    onClick={outOfDate !== 'io-done' ? this.props.showModifyEventModal(count) : () => {}}
+                  >
+                    <i className="io-icon fa fa-pencil" />
+                  </span>
                   <span className="io-delete"><i className="io-icon fa fa-trash" /></span>
                 </div>
                 <p>{name}</p>

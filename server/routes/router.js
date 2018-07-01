@@ -95,6 +95,8 @@ router.route('/api/v1/events')
   .post(
     Validation.trimBodyValues,
     Validation.checkBodyContains('title', 'date', 'time', 'centerId'),
+    Validation.checkNotNull('title', 'date', 'time', 'centerId'),
+    Validation.checkNotEmpty('title', 'date', 'time', 'centerId'),
     authenticate,
     Validation.checkDateValid,
     Validation.checkTimeValid,
@@ -107,6 +109,8 @@ router.route('/api/v1/events')
 router.route('/api/v1/events/:eventId')
   .put(
     Validation.trimBodyValues,
+    Validation.checkNotNull('title', 'date', 'time', 'centerId'),
+    Validation.checkNotEmpty('title', 'date', 'time', 'centerId'),
     authenticate,
     Validation.checkParamValid('eventId'),
     Validation.checkDateValid,

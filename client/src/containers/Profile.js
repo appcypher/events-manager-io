@@ -15,8 +15,11 @@ import AddEventModal from '../components/AddEventModal';
 import AlertModal from '../components/AlertModal';
 import ConfirmModal from '../components/ConfirmModal';
 import Loader from '../components/Loader';
+import ModifyEventModal from '../components/ModifyEventModal';
 
-
+/**
+ * Shows information of the profile page.
+ */
 class Profile extends React.Component {
   constructor(props) {
     super(props);
@@ -24,6 +27,7 @@ class Profile extends React.Component {
       hideFabGroup: true,
       showAddCenterModal: false,
       showAddEventModal: false,
+      modifyEventModalState: { populate: false },
       showLoader: false,
       notificationState: { message: '', show: false },
       alertModalState: { message: '', show: false, type: 'success' },
@@ -42,6 +46,14 @@ class Profile extends React.Component {
 
   componentDidMount() {
     document.title = 'Profile • EventsManagerIO';
+  }
+
+  getPageEvents = (pageNumber) => {
+    // Get token from local storage
+    const token = localStorage.getItem('user.token');
+
+    // Get page centers
+    this.props.getAllEvents(token, pageNumber);
   }
 
   showAddCenterModal = () => {
@@ -68,6 +80,23 @@ class Profile extends React.Component {
     if (e === undefined || e.target === e.currentTarget) {
       this.setState({
         showAddEventModal: false,
+      });
+    }
+  }
+
+  showModifyEventModal = listPosition => () => {
+    const event = [...this.props.event.events][listPosition];
+
+    this.setState({
+      showModifyEventModal: true,
+      modifyEventModalState: { ...event, populate: true },
+    });
+  }
+
+  hideModifyEventModal = (e) => {
+    if (e === undefined || e.target === e.currentTarget) {
+      this.setState({
+        showModifyEventModal: false,
       });
     }
   }
@@ -138,8 +167,8 @@ class Profile extends React.Component {
     return (
       <div>
         <ProfileNavbar />
-        <ProfileBody />
-        <Pagination getPageCenters={this.getPageCenters} />
+        <ProfileBody showModifyEventModal={this.showModifyEventModal} />
+        <Pagination getPage={this.getPageEvents} />
         <Footer />
 
 
@@ -167,6 +196,15 @@ class Profile extends React.Component {
           showLoader={this.showLoader}
           hideLoader={this.hideLoader}
           showNotification={this.showNotification}
+        />
+        <ModifyEventModal
+          modifyEventModalState={this.state.modifyEventModalState}
+          showModifyEventModal={this.state.showModifyEventModal}
+          hideModifyEventModal={this.hideModifyEventModal}
+          showNotification={this.showNotification}
+          showAlertModal={this.showAlertModal}
+          showLoader={this.showLoader}
+          hideLoader={this.hideLoader}
         />
         <Notification
           isActive={this.state.notificationState.show}
