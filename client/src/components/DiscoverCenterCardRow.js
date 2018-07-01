@@ -9,18 +9,13 @@ class DiscoverCenterCardRow extends React.Component {
   }
 
   render() {
-    let centers = [...this.props.center.centers];
-
-    // If this component has a `type` prop with `near` value.
-    if (this.props.type && this.props.type === 'near') {
-      centers = centers.filter(eventCenter => eventCenter.location.trim().toLowerCase() === 'lagos');
-    }
+    const centers = [...this.props.center.centers];
 
     // Count
     let count = -1;
 
     // Create centerCardElements by mapping details out of centers.
-    const centerCardElements = centers.map((center) => {
+    let centerCardElements = centers.map((center) => {
       // Get details of each center.
       const {
         picture1, name, type, location, description,
@@ -42,6 +37,12 @@ class DiscoverCenterCardRow extends React.Component {
         </div>
       );
     });
+
+    // If this component has a `type` prop with `near` filter result by proximity.
+    // Using `lagos` as default.
+    if (this.props.type && this.props.type === 'near') {
+      centerCardElements = centerCardElements.filter((element, index) => centers[index].location.trim().toLowerCase() === 'lagos');
+    }
 
     return (
       <div className="io-center-container">

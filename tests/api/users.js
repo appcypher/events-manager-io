@@ -30,7 +30,7 @@ describe('Users', () => {
       .end((err, res) => {
         expect(res.status).to.equal(201);
         expect(res.body).to.be.an('object');
-        expect(res.body.message).to.equal('user created!');
+        expect(res.body.message).to.equal('User created!');
         done();
       });
   });
@@ -45,7 +45,7 @@ describe('Users', () => {
       .end((err, res) => {
         expect(res.status).to.equal(409);
         expect(res.body).to.be.an('object');
-        expect(res.body.message).to.equal('username already taken!');
+        expect(res.body.message).to.equal('Username has been taken!');
         done();
       });
   });
@@ -60,7 +60,7 @@ describe('Users', () => {
       .end((err, res) => {
         expect(res.status).to.equal(409);
         expect(res.body).to.be.an('object');
-        expect(res.body.message).to.equal('email already taken!');
+        expect(res.body.message).to.equal('Email has been taken!');
         done();
       });
   });
@@ -75,7 +75,7 @@ describe('Users', () => {
       .end((err, res) => {
         expect(res.status).to.equal(400);
         expect(res.body).to.be.an('object');
-        expect(res.body.message).to.equal('email format is invalid!');
+        expect(res.body.message).to.equal('Invalid email!');
         done();
       });
   });
@@ -91,7 +91,7 @@ describe('Users', () => {
       .end((err, res) => {
         expect(res.status).to.equal(200);
         expect(res.body).to.be.an('object');
-        expect(res.body.message).to.equal('user logged in!');
+        expect(res.body.message).to.equal('User logged in!');
         done();
       });
   });
@@ -106,7 +106,7 @@ describe('Users', () => {
       .end((err, res) => {
         expect(res.status).to.equal(401);
         expect(res.body).to.be.an('object');
-        expect(res.body.message).to.equal('wrong password or username!');
+        expect(res.body.message).to.equal('Wrong password or username!');
         done();
       });
   });
@@ -121,7 +121,7 @@ describe('Users', () => {
       .end((err, res) => {
         expect(res.status).to.equal(401);
         expect(res.body).to.be.an('object');
-        expect(res.body.message).to.equal('wrong password or username!');
+        expect(res.body.message).to.equal('Wrong password or username!');
         done();
       });
   });

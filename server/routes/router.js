@@ -127,6 +127,13 @@ router.route('/api/v1/events/:eventId')
 
 
 /** ***************** Additional Endpoints ************** */
+// Get all centers by name
+router.route('/api/v1/centers')
+  .get(
+    Validation.checkQueriesValid({ name: 'name', type: 'string', converter: String }),
+    EventCenterController.getCentersByName,
+  );
+
 // Get user's details
 router.route('/api/v1/users')
   .get(

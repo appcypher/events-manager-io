@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import classNames from 'classnames';
+import { Notification } from 'react-notification';
 import CenterAction from '../actions/centerActions';
 import DiscoverNavbar from '../components/DiscoverNavbar';
 import DiscoverNavbarLoggedIn from '../components/DiscoverNavbarLoggedIn';
@@ -11,8 +11,11 @@ import MainFab from '../components/MainFab';
 import LabelledFab from '../components/LabelledFab';
 import FabGroup from '../components/FabGroup';
 import AddCenterModal from '../components/AddCenterModal';
+import AddEventModal from '../components/AddEventModal';
 import ViewCenterModal from '../components/ViewCenterModal';
 import AlertModal from '../components/AlertModal';
+import ConfirmModal from '../components/ConfirmModal';
+import Loader from '../components/Loader';
 import ModifyCenterModal from '../components/ModifyCenterModal';
 
 class Discover extends React.Component {
@@ -24,12 +27,22 @@ class Discover extends React.Component {
       showViewCenterModal: false,
       showModifyCenterModal: false,
       viewCenterModalState: {},
+      showAddEventModal: false,
       modifyCenterModalState: { populate: false },
-      alert: { msg: '', hide: true },
+      showLoader: false,
+      showNotification: false,
+      notificationState: { message: '', show: false },
+      alertModalState: { message: '', show: false, type: 'success' },
+      confirmModalState: {
+        message: '', show: false, confirmText: '', callback: null,
+      },
     };
 
+    // Get token from local storage
+    const token = localStorage.getItem('user.token');
+
     // Get page 1 centers
-    this.props.getAllCenters(this.props.user.token, 1);
+    this.props.getAllCenters(token, 1);
   }
 
   componentDidMount = () => {
@@ -41,28 +54,18 @@ class Discover extends React.Component {
     this.props.getAllCenters(this.props.user.token, pageNumber);
   }
 
-  hideAlert = () => {
-    this.setState({
-      alert: { hide: true },
-    });
-  }
-
-  showAlert = (msg) => {
-    this.setState({
-      alert: { msg, hide: false },
-    });
-  }
-
   showAddCenterModal = () => {
     this.setState({
       showAddCenterModal: true,
     });
   }
 
-  hideAddCenterModal = () => {
-    this.setState({
-      showAddCenterModal: false,
-    });
+  hideAddCenterModal = (e) => {
+    if (e === undefined || e.target === e.currentTarget) {
+      this.setState({
+        showAddCenterModal: false,
+      });
+    }
   }
 
   showViewCenterModal = listPosition => () => {
@@ -74,10 +77,12 @@ class Discover extends React.Component {
     });
   }
 
-  hideViewCenterModal = () => {
-    this.setState({
-      showViewCenterModal: false,
-    });
+  hideViewCenterModal = (e) => {
+    if (e === undefined || e.target === e.currentTarget) {
+      this.setState({
+        showViewCenterModal: false,
+      });
+    }
   }
 
   showModifyCenterModal = center => () => {
@@ -88,13 +93,83 @@ class Discover extends React.Component {
     });
   }
 
-  hideModifyCenterModal = () => {
+  hideModifyCenterModal = (e) => {
+    if (e === undefined || e.target === e.currentTarget) {
+      this.setState({
+        showModifyCenterModal: false,
+      });
+    }
+  }
+
+  showAddEventModal = () => {
     this.setState({
-      showModifyCenterModal: false,
+      showAddEventModal: true,
     });
   }
 
-  showAddEventModal = () => {}
+  hideAddEventModal = (e) => {
+    if (e === undefined || e.target === e.currentTarget) {
+      this.setState({
+        showAddEventModal: false,
+      });
+    }
+  }
+
+  showLoader = () => {
+    this.setState({
+      showLoader: true,
+    });
+  }
+
+  hideLoader = () => {
+    this.setState({
+      showLoader: false,
+    });
+  }
+
+  showNotification = (message) => {
+    this.setState({
+      notificationState: { show: true, message },
+    });
+
+    setTimeout(() => {
+      this.hideNotification();
+    }, 2500);
+  }
+
+  hideNotification = () => {
+    this.setState({
+      notificationState: { ...this.state.notificationState, show: false },
+    });
+  }
+
+  showAlertModal = (message, type) => {
+    this.setState({
+      alertModalState: { message, type, show: true },
+    });
+  }
+
+  hideAlertModal = () => {
+    this.setState({
+      alertModalState: { message: '', type: 'success', show: false },
+    });
+  }
+
+  showConfirmModal = (message, type, confirmText, callback) => {
+    this.setState({
+      confirmModalState: {
+        message, type, show: true, confirmText, callback,
+      },
+    });
+  }
+
+  hideConfirmModal = () => {
+    this.setState({
+      confirmModalState: {
+        message: '', type: 'success', show: false, confirmText: '', callback: null,
+      },
+    });
+  }
 
   toggleFabGroup = () => {
     this.setState({
@@ -113,8 +188,6 @@ class Discover extends React.Component {
   }
 
   render() {
-    const { msg, hide } = this.state.alert;
-    const alertClasses = classNames({ 'io-modal': true, hide });
     return (
       <div>
         {this.renderDiscoverNavBar()}
@@ -131,22 +204,51 @@ class Discover extends React.Component {
         <AddCenterModal
           showAddCenterModal={this.state.showAddCenterModal}
           hideAddCenterModal={this.hideAddCenterModal}
-          showAlert={this.showAlert}
+          showAlertModal={this.showAlertModal}
+          showLoader={this.showLoader}
+          hideLoader={this.hideLoader}
+          showNotification={this.showNotification}
         />
         <ViewCenterModal
           viewCenterModalState={this.state.viewCenterModalState}
           showViewCenterModal={this.state.showViewCenterModal}
           hideViewCenterModal={this.hideViewCenterModal}
           showModifyCenterModal={this.showModifyCenterModal}
-          showAlert={this.showAlert}
         />
         <ModifyCenterModal
           modifyCenterModalState={this.state.modifyCenterModalState}
           showModifyCenterModal={this.state.showModifyCenterModal}
           hideModifyCenterModal={this.hideModifyCenterModal}
-          showAlert={this.showAlert}
+          showNotification={this.showNotification}
+          showAlertModal={this.showAlertModal}
+          showLoader={this.showLoader}
+          hideLoader={this.hideLoader}
         />
-        <AlertModal msg={msg} className={alertClasses} hideAlert={this.hideAlert} />
+        <Loader
+          showLoader={this.state.showLoader}
+        />
+        <AddEventModal
+          showAddEventModal={this.state.showAddEventModal}
+          hideAddEventModal={this.hideAddEventModal}
+          showAlertModal={this.showAlertModal}
+          showLoader={this.showLoader}
+          hideLoader={this.hideLoader}
+          showNotification={this.showNotification}
+        />
+        <Notification
+          isActive={this.state.notificationState.show}
+          message={this.state.notificationState.message}
+          action=""
+          onClick={() => { }}
+        />
+        <AlertModal
+          alertModalState={this.state.alertModalState}
+          hideAlertModal={this.hideAlertModal}
+        />
+        <ConfirmModal
+          confirmModalState={this.state.confirmModalState}
+          hideConfirmModal={this.hideConfirmModal}
+        />
       </div>
     );
   }

@@ -11,14 +11,14 @@ export default (sequelize, DataTypes) => {
       allowNull: false,
       unique: true,
       validate: {
-        is: { args: /^[A-Za-z_](\w|_|[0-9])*$/, msg: 'username format is invalid! - make sure it is at least 2 characters' },
+        is: { args: /^[A-Za-z_](\w|_|[0-9])*$/, msg: 'Invalid name: make sure it is at least 2 characters!' },
       },
     },
     password: {
       type: DataTypes.STRING,
       allowNull: false,
       validate: {
-        len: { args: [5, 100], msg: 'password is too short! - make sure it is at least 5 characters' },
+        len: { args: [5, 100], msg: 'Password is too short!' },
       },
     },
     email: {
@@ -26,14 +26,14 @@ export default (sequelize, DataTypes) => {
       allowNull: false,
       unique: true,
       validate: {
-        isEmail: { args: true, msg: 'email format is invalid!' },
+        isEmail: { args: true, msg: 'Invalid email!' },
       },
     },
     fullname: {
       type: DataTypes.STRING,
       allowNull: false,
       validate: {
-        is: { args: /^[^\\+;./'"@~!#$%^&*()[\]=?]+$/, msg: 'fullname format is invalid! - make sure it doesn\'t contain punctuations' },
+        is: { args: /^[^\\+;./'"@~!#$%^&*()[\]=?]+$/, msg: 'Invalid name: Make sure it doesn\'t contain punctuations!' },
       },
     },
     admin: {

@@ -8,7 +8,7 @@ class EventAction {
    * @param{Object} details - center details
    * @return{undefined}
    */
-  static createEvent(token, details) {
+  static createEvent(token, details, successFunc, failFunc) {
     return (dispatch) => {
       dispatch({ type: 'REQUEST_MADE', payload: 'createEvent' });
       axios({
@@ -18,10 +18,16 @@ class EventAction {
         data: details,
       })
         .then((res) => {
-          dispatch({ type: 'EVENT_MODIFY_SUCCESSFUL', payload: res.data });
+          dispatch({ type: 'EVENT_CREATE_SUCCESSFUL', payload: res.data });
+          successFunc();
+          console.log('success', res);
         })
         .catch((err) => {
-          dispatch({ type: 'REQUEST_FAILED', payload: err.response.data });
+          if (err.response) {
+            dispatch({ type: 'REQUEST_FAILED', payload: err.response.data });
+            failFunc();
+          }
+          console.log('err', err);
         });
     };
   }
@@ -34,7 +40,7 @@ class EventAction {
    * @return{undefined}
    * @return{json}
    */
-  static modifyEvent(token, details, param) {
+  static modifyEvent(token, details, param, successFunc, failFunc) {
     return (dispatch) => {
       dispatch({ type: 'REQUEST_MADE', payload: 'modifyEvent' });
       axios({
@@ -45,9 +51,13 @@ class EventAction {
       })
         .then((res) => {
           dispatch({ type: 'EVENT_MODIFY_SUCCESSFUL', payload: res.data });
+          successFunc();
         })
         .catch((err) => {
-          dispatch({ type: 'REQUEST_FAILED', payload: err.response.data });
+          if (err.response) {
+            dispatch({ type: 'REQUEST_FAILED', payload: err.response.data });
+            failFunc();
+          }
         });
     };
   }
@@ -61,12 +71,12 @@ class EventAction {
     return (dispatch) => {
       dispatch({ type: 'REQUEST_MADE', payload: 'getAllEvents' });
       axios({
-        method: 'POST',
+        method: 'GET',
         url: `${url}/api/v1/events`,
         headers: { token },
       })
         .then((res) => {
-          dispatch({ type: 'EVENT_MODIFY_SUCCESSFUL', payload: res.data });
+          dispatch({ type: 'EVENTS_GET_ALL_SUCCESSFUL', payload: res.data });
         })
         .catch((err) => {
           dispatch({ type: 'REQUEST_FAILED', payload: err.response.data });
@@ -80,7 +90,7 @@ class EventAction {
    * @param{Number} param - event id
    * @return{json}
    */
-  static deleteEvent(token, param) {
+  static deleteEvent(token, param, successFunc, failFunc) {
     return (dispatch) => {
       dispatch({ type: 'REQUEST_MADE', payload: 'deleteEvent' });
       axios({
@@ -90,9 +100,13 @@ class EventAction {
       })
         .then((res) => {
           dispatch({ type: 'EVENT_DELETE_SUCCESSFUL', payload: res.data });
+          successFunc();
         })
         .catch((err) => {
-          dispatch({ type: 'REQUEST_FAILED', payload: err.response.data });
+          if (err.response) {
+            dispatch({ type: 'REQUEST_FAILED', payload: err.response.data });
+            failFunc();
+          }
         });
     };
   }

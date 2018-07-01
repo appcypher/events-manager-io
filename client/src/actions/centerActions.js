@@ -32,7 +32,7 @@ class CenterAction {
    * @param{Object} details - center details
    * @return{undefined}
    */
-  static createCenter(token, details) {
+  static createCenter(token, details, successFunc, failFunc) {
     return (dispatch) => {
       // If user chooses an image.
       if (details.file && details.file !== []) {
@@ -48,16 +48,19 @@ class CenterAction {
             })
               .then((resp) => {
                 dispatch({ type: 'CENTER_CREATE_SUCCESSFUL', payload: resp.data });
+                successFunc();
               })
               .catch((err) => {
                 if (err.response) {
                   dispatch({ type: 'REQUEST_FAILED', payload: err.response.data });
+                  failFunc();
                 }
               });
           })
           .catch((err) => {
             if (err.response) {
               dispatch({ type: 'REQUEST_FAILED', payload: err.response.data });
+              failFunc();
             }
           });
       } else {
@@ -70,11 +73,13 @@ class CenterAction {
         })
           .then((resp) => {
             dispatch({ type: 'CENTER_CREATE_SUCCESSFUL', payload: resp.data });
+            successFunc();
           })
           .catch((err) => {
             if (err.response) {
               dispatch({ type: 'REQUEST_FAILED', payload: err.response.data });
             }
+            failFunc();
           });
       }
     };
@@ -87,7 +92,7 @@ class CenterAction {
    * @param{Number} param - center id
    * @return{undefined}
    */
-  static modifyCenter(token, details, param) {
+  static modifyCenter(token, details, param, successFunc, failFunc) {
     return (dispatch) => {
       // If user chooses an image.
       if (details.file && details.file !== []) {
@@ -103,16 +108,19 @@ class CenterAction {
             })
               .then((resp) => {
                 dispatch({ type: 'CENTER_MODIFY_SUCCESSFUL', payload: resp.data });
+                successFunc();
               })
               .catch((err) => {
                 if (err.response) {
                   dispatch({ type: 'REQUEST_FAILED', payload: err.response.data });
+                  failFunc();
                 }
               });
           })
           .catch((err) => {
             if (err.response) {
               dispatch({ type: 'REQUEST_FAILED', payload: err.response.data });
+              failFunc();
             }
           });
       } else {
@@ -125,10 +133,12 @@ class CenterAction {
         })
           .then((res) => {
             dispatch({ type: 'CENTER_MODIFY_SUCCESSFUL', payload: res.data });
+            successFunc();
           })
           .catch((err) => {
             if (err.response) {
               dispatch({ type: 'REQUEST_FAILED', payload: err.response.data });
+              failFunc();
             }
           });
       }

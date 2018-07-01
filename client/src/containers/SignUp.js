@@ -1,5 +1,4 @@
 import React from 'react';
-import classNames from 'classnames';
 import HomeNavbar from '../components/HomeNavbar';
 import HomeNavbarLoggedIn from '../components/HomeNavbarLoggedIn';
 import LoginContainer from '../components/LoginContainer';
@@ -20,10 +19,7 @@ class SignUp extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      alert: {
-        msg: '',
-        hide: true,
-      },
+      alertModalState: { message: '', show: false, type: 'success' },
     };
   }
 
@@ -31,28 +27,29 @@ class SignUp extends React.Component {
     document.title = 'SignUp • EventsManagerIO';
   }
 
-  showAlert = (msg) => {
+  showAlertModal = (message, type) => {
     this.setState({
-      alert: { msg, hide: false },
+      alertModalState: { message, type, show: true },
     });
   }
 
-  hideAlert = () => {
+  hideAlertModal = () => {
     this.setState({
-      alert: { hide: true },
+      alertModalState: { message: '', type: 'success', show: false },
     });
   }
 
   render() {
-    const { msg, hide } = this.state.alert;
-    const classes = classNames({ 'io-modal': true, hide });
     return (
       <div className="io-stretch-vertical">
         {SignUp.renderHomeNavbar()}
         <LoginContainer>
           <SignUpForm showAlert={this.showAlert} />
         </LoginContainer>
-        <AlertModal msg={msg} className={classes} hideAlert={this.hideAlert} />
+        <AlertModal
+          alertModalState={this.state.alertModalState}
+          hideAlertModal={this.hideAlertModal}
+        />
       </div>
     );
   }
