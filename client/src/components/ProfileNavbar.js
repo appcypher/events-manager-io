@@ -9,8 +9,6 @@ import brand from '../assets/icons/brand.png';
 
 /**
  * Has the profile navbar styles
- * @param{undefined}
- * @return{React.Component}
  */
 class ProfileNavbar extends React.Component {
   constructor(props) {

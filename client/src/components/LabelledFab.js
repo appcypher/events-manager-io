@@ -1,5 +1,10 @@
 import React from 'react';
 
+/**
+ * The smaller fab that contains an action.
+ * @param{undefined}
+ * @return{React.Component}
+ */
 class LabelledFab extends React.Component {
   handleKeyDown = () => {}
 

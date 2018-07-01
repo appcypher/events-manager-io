@@ -2,6 +2,9 @@ import React from 'react';
 import { connect } from 'react-redux';
 import DiscoverCenterCard from '../components/DiscoverCenterCard';
 
+/**
+ * Component that houses the center cards.
+ */
 class DiscoverCenterCardRow extends React.Component {
   constructor(props) {
     super(props);

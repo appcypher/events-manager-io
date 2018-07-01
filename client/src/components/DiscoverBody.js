@@ -2,6 +2,11 @@ import React from 'react';
 import DiscoverTitleCard from '../components/DiscoverTitleCard';
 import DiscoverCenterCardRow from '../components/DiscoverCenterCardRow';
 
+/**
+ * Parent element for the content of discover page.
+ * @param{Object} props - passed properties
+ * @return{React.Component}
+ */
 class DiscoverBody extends React.Component {
   constructor(props) {
     super(props);

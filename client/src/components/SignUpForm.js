@@ -4,6 +4,9 @@ import { connect } from 'react-redux';
 import UserAction from '../actions/userActions';
 import history from '../index';
 
+/**
+ * Component containing the signup form and authentication logic.
+ */
 class SignUpForm extends React.Component {
   constructor(props) {
     super(props);
@@ -15,6 +18,7 @@ class SignUpForm extends React.Component {
     };
   }
 
+  // Store details from input fields.
   saveInput = (e) => {
     this.setState({ [e.target.name]: e.target.value });
   }

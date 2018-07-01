@@ -9,7 +9,7 @@ import ModalSection from '../components/ModalSection';
 /**
  * This modal allows the user to add new event.
  */
-class AddEventModal extends React.Component {
+class ModifyEventModal extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -21,20 +21,19 @@ class AddEventModal extends React.Component {
       centerNames: [],
       showDropdown: false,
       centerId: null,
+      center: { name: '' },
+      modifyEventModalState: this.props.modifyEventModalState,
     };
   }
 
   // Store centerid based on selection from dropdown.
-  pickCenter = (id, name, target) => () => {
+  pickCenter = (id, name) => () => {
     this.setState({
       ...this.state,
       centerId: id,
       showDropdown: false,
+      center: { name },
     });
-
-    // Add selected name in input field.
-    const target2 = target;
-    target2.value = name;
   }
 
   // Store details from input fields.
@@ -43,10 +42,11 @@ class AddEventModal extends React.Component {
 
     // Centername input.
     if (target.name === 'centerName') {
-      // Reset centerId
+      // Reset centerId and assign center new value from input.
       this.setState({
         ...this.state,
         centerId: null,
+        center: { name: target.value },
       });
 
       // Get token.
@@ -98,14 +98,14 @@ class AddEventModal extends React.Component {
     }
   }
 
-  submit = () => {
+  submit = eventId => () => {
     // Show loading screen.
     this.props.showLoader();
 
     // Callback for handling success.
     const reloadPage = () => {
       this.props.hideLoader();
-      this.props.hideAddEventModal();
+      this.props.hideModifyEventModal();
 
       // Show notification of success.
       this.props.showNotification(this.props.event.message);
@@ -124,29 +124,69 @@ class AddEventModal extends React.Component {
     };
 
     const token = localStorage.getItem('user.token');
-    this.props.createEvent(token, this.state, reloadPage, showError);
+    this.props.modifyEvent(token, this.state, eventId, reloadPage, showError);
   }
 
   render() {
-    const classes = classNames({ 'io-modal': true, hide: !this.props.showAddEventModal });
+    const classes = classNames({ 'io-modal': true, hide: !this.props.showModifyEventModal });
+    const eventId = this.props.modifyEventModalState.id;
+    let title;
+    let description;
+    let date;
+    let time;
+    let centerId;
+    let center;
+
+    // Displaying the selected center's existing details.
+    if (this.props.modifyEventModalState.populate) {
+      ({
+        title, description, date, centerId, center,
+      } = this.props.modifyEventModalState);
+
+      // Extracting date and time.
+      const year = date.slice(0, 4);
+      const month = date.slice(5, 7);
+      const day = date.slice(8, 10);
+      const hour = date.slice(11, 13);
+      const min = date.slice(14, 16);
+      date = `${year}-${month}-${day}`;
+      time = `${hour}:${min}`;
+
+      this.state = {
+        ...this.state,
+        title,
+        description,
+        date,
+        time,
+        centerId,
+        center,
+      };
+
+      this.props.modifyEventModalState.populate = false;
+    } else {
+      ({
+        title, description, date, time, centerId, center,
+      } = this.state);
+    }
+
     return (
-      <div className={classes} onClick={this.props.hideAddEventModal}>
+      <div className={classes} onClick={this.props.hideModifyEventModal}>
         <div className="io-modal-body event">
-          <div className="io-header">CREATE NEW EVENT</div>
+          <div className="io-header">MODIFY EVENT</div>
           <div className="io-body io-overflow">
             <form className="io-content io-start">
-              <ModalSection title="Title"><input placeholder="Enter name of event here" className="io-input io-input-field" name="title" onChange={this.saveInput} /></ModalSection>
-              <ModalSection title="Details"><input placeholder="Enter description here" className="io-input io-input-field" name="description" onChange={this.saveInput} /></ModalSection>
+              <ModalSection title="Title"><input value={title} placeholder="Enter name of event here" className="io-input io-input-field" name="title" onChange={this.saveInput} /></ModalSection>
+              <ModalSection title="Details"><input value={description} placeholder="Enter description here" className="io-input io-input-field" name="description" onChange={this.saveInput} /></ModalSection>
               <ModalSection title="Center">
-                <input placeholder="Enter center here" className="io-input io-input-field" autoComplete="off" name="centerName" onChange={this.saveInput} />
+                <input placeholder="Enter center here" value={center.name} className="io-input io-input-field" autoComplete="off" name="centerName" onChange={this.saveInput} />
               </ModalSection>
-              <ModalSection title="Date"><input type="date" placeholder="Enter date of event here" className="io-input io-input-field" name="date" onChange={this.saveInput} /></ModalSection>
-              <ModalSection title="Time"><input type="time" placeholder="Enter time of event here" className="io-input io-input-field" name="time" onChange={this.saveInput} /></ModalSection>
+              <ModalSection title="Date"><input value={date} type="date" placeholder="Enter date of event here" className="io-input io-input-field" name="date" onChange={this.saveInput} /></ModalSection>
+              <ModalSection title="Time"><input value={time} type="time" placeholder="Enter time of event here" className="io-input io-input-field" name="time" onChange={this.saveInput} /></ModalSection>
             </form>
           </div>
           <div className="io-footer">
-            <button id="add-center-cancel" className="io-submit-btn io-sm" onClick={this.props.hideAddEventModal}>CANCEL</button>
-            <button id="add-center-submit" className="io-submit-btn io-sm" onClick={this.submit}>SUBMIT</button>
+            <button id="add-center-cancel" className="io-submit-btn io-sm" onClick={this.props.hideModifyEventModal}>CANCEL</button>
+            <button id="add-center-submit" className="io-submit-btn io-sm" onClick={this.submit(eventId)}>SUBMIT</button>
           </div>
           <ul className={`io-dropdown ${this.state.showDropdown ? '' : 'hide'}`}>{this.state.centerNames}</ul>
         </div>
@@ -160,6 +200,6 @@ const mapStateToProps = ({ event }) => ({ event });
 export default connect(
   mapStateToProps,
   {
-    createEvent: EventAction.createEvent,
+    modifyEvent: EventAction.modifyEvent,
   },
-)(AddEventModal);
+)(ModifyEventModal);

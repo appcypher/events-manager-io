@@ -2,24 +2,19 @@ import React from 'react';
 import ProfileUserCard from './ProfileUserCard';
 import DiscoverTitleCard from '../components/DiscoverTitleCard';
 import ProfileEventCards from './ProfileEventCards';
-
-class ProfileBody extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {};
-  }
-
-  render() {
-    return (
-      <div className="io-body-content">
-        <div className="container-fluid">
-          <ProfileUserCard />
-          <DiscoverTitleCard>Your Events</DiscoverTitleCard>
-          <ProfileEventCards />
-        </div>
-      </div>
-    );
-  }
-}
+/**
+ * Houses contnet of the profile page.
+ * @param{undefined}
+ * @return{React.Component}
+ */
+const ProfileBody = props => (
+  <div className="io-body-content">
+    <div className="container-fluid">
+      <ProfileUserCard />
+      <DiscoverTitleCard>Your Events</DiscoverTitleCard>
+      <ProfileEventCards showModifyEventModal={props.showModifyEventModal} />
+    </div>
+  </div>
+);
 
 export default ProfileBody;

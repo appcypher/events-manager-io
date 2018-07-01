@@ -1,6 +1,11 @@
 import React from 'react';
 import classNames from 'classnames';
 
+/**
+ * Modal that asks for confirmation from the user.
+ * @param{props} - passed properties
+ * @return{React.Component}
+ */
 const ConfirmModal = (props) => {
   const {
     message, show, type, confirmText, callback,

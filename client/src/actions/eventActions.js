@@ -20,14 +20,12 @@ class EventAction {
         .then((res) => {
           dispatch({ type: 'EVENT_CREATE_SUCCESSFUL', payload: res.data });
           successFunc();
-          console.log('success', res);
         })
         .catch((err) => {
           if (err.response) {
             dispatch({ type: 'REQUEST_FAILED', payload: err.response.data });
             failFunc();
           }
-          console.log('err', err);
         });
     };
   }
@@ -44,7 +42,7 @@ class EventAction {
     return (dispatch) => {
       dispatch({ type: 'REQUEST_MADE', payload: 'modifyEvent' });
       axios({
-        method: 'POST',
+        method: 'PUT',
         url: `${url}/api/v1/events/${param}`,
         headers: { token },
         data: details,
@@ -67,12 +65,12 @@ class EventAction {
    * @param{Object} token - authentication token
    * @return{json}
    */
-  static getAllEvents(token) {
+  static getAllEvents(token, pageNumber) {
     return (dispatch) => {
       dispatch({ type: 'REQUEST_MADE', payload: 'getAllEvents' });
       axios({
         method: 'GET',
-        url: `${url}/api/v1/events`,
+        url: `${url}/api/v1/events?page=${pageNumber}`,
         headers: { token },
       })
         .then((res) => {

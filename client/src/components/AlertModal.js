@@ -1,6 +1,11 @@
 import React from 'react';
 import classNames from 'classnames';
 
+/**
+ * Modal that shows an error to the user.
+ * @param{props} - passed properties
+ * @return{React.Component}
+ */
 const AlertModal = (props) => {
   const {
     message, show, type,

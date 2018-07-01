@@ -1,5 +1,8 @@
 import React from 'react';
 
+/**
+ * Implements pagination for switching pages.
+ */
 class Pagination extends React.Component {
   constructor(props) {
     super(props);
@@ -10,7 +13,7 @@ class Pagination extends React.Component {
 
   changePage = (e) => {
     const pageNumber = Number(e.currentTarget.dataset.id);
-    this.props.getPageCenters(pageNumber);
+    this.props.getPage(pageNumber);
     this.setState({ activePageLink: pageNumber });
   }
 

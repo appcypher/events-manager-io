@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 /**
  * Encapsulates the login form
- * @param{undefined}
+ * @param{Object} props - passed properties
  * @return{React.Component}
  */
 const LoginContainer = props => (

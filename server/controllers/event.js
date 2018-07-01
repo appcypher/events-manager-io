@@ -90,7 +90,7 @@ class EventController {
    */
   static getAllEvents(req, res) {
     const page = (req.query.page && Number(req.query.page) > 0) ? Number(req.query.page) : 1;
-    const interval = 30;
+    const interval = 10;
     const offset = (page * interval) - interval;
     const limit = offset + interval;
 
