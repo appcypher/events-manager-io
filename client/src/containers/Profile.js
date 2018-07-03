@@ -141,7 +141,7 @@ class Profile extends React.Component {
     });
   }
 
-  showConfirmModal = (message, type, confirmText, callback) => {
+  showConfirmModal = (message, type, confirmText, callback) => () => {
     this.setState({
       confirmModalState: {
         message, type, show: true, confirmText, callback,
@@ -167,7 +167,14 @@ class Profile extends React.Component {
     return (
       <div>
         <ProfileNavbar />
-        <ProfileBody showModifyEventModal={this.showModifyEventModal} />
+        <ProfileBody
+          showModifyEventModal={this.showModifyEventModal}
+          showAlertModal={this.showAlertModal}
+          showLoader={this.showLoader}
+          hideLoader={this.hideLoader}
+          showNotification={this.showNotification}
+          showConfirmModal={this.showConfirmModal}
+        />
         <Pagination getPage={this.getPageEvents} />
         <Footer />
 

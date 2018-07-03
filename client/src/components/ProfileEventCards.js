@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import moment from 'moment';
 import placeholder from '../assets/images/placeholder.jpg';
+import EventAction from '../actions/eventActions';
 
 /**
  * Contains the event cards that are shown on profile page.
@@ -11,6 +12,45 @@ class ProfileEventCards extends React.Component {
     super(props);
     this.state = {};
   }
+
+  deleteEvent = listPosition => () => {
+    // Get the event id.
+    const eventId = this.props.event.events[listPosition].id;
+
+    // Show loading screen.
+    this.props.showLoader();
+
+    // Callback for handling success.
+    const reloadPage = () => {
+      this.props.hideLoader();
+
+      // Reload page after 2secs.
+      this.props.showNotification(this.props.event.message);
+
+      // Show notification of success.
+      setTimeout(
+        () => window.location.reload(),
+        2500,
+      );
+    };
+
+    // Callback for handling error.
+    const showError = () => {
+      this.props.hideLoader();
+      this.props.showAlertModal(this.props.center.message, 'error');
+    };
+
+    const token = localStorage.getItem('user.token');
+    this.props.deleteEvent(token, eventId, reloadPage, showError);
+  }
+
+  confirmDelete = count =>
+    this.props.showConfirmModal(
+      'Are you sure you want to delete?',
+      'confirm',
+      'PROCEED',
+      this.deleteEvent(count),
+    );
 
   render() {
     let events = [];
@@ -64,7 +104,12 @@ class ProfileEventCards extends React.Component {
                   >
                     <i className="io-icon fa fa-pencil" />
                   </span>
-                  <span className="io-delete"><i className="io-icon fa fa-trash" /></span>
+                  <span
+                    className="io-delete"
+                    onClick={outOfDate !== 'io-done' ? this.confirmDelete(count) : () => {}}
+                  >
+                    <i className="io-icon fa fa-trash" />
+                  </span>
                 </div>
                 <p>{name}</p>
                 <p className="io-location">{location}</p>
@@ -88,5 +133,7 @@ const mapStateToProps = ({ user, event }) => ({ user, event });
 
 export default connect(
   mapStateToProps,
-  {},
+  {
+    deleteEvent: EventAction.deleteEvent,
+  },
 )(ProfileEventCards);

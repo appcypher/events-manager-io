@@ -17,11 +17,11 @@ const ConfirmModal = (props) => {
   if (type === 'error') {
     header = 'ERROR!';
   } else {
-    header = 'SUCCESS!';
+    header = 'CONFIRM!';
   }
 
   return (
-    <div className={`${classes} ${type}`} onClick={props.hideConfirmModal}>
+    <div className={`${classes} ${type} io-error`} onClick={props.hideConfirmModal}>
       <div className="io-modal-body io-error">
         <div className="io-header io-error">{header}</div>
         <div className="io-body">

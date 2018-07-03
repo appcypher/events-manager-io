@@ -12,7 +12,14 @@ const ProfileBody = props => (
     <div className="container-fluid">
       <ProfileUserCard />
       <DiscoverTitleCard>Your Events</DiscoverTitleCard>
-      <ProfileEventCards showModifyEventModal={props.showModifyEventModal} />
+      <ProfileEventCards
+        showModifyEventModal={props.showModifyEventModal}
+        showAlertModal={props.showAlertModal}
+        showLoader={props.showLoader}
+        hideLoader={props.hideLoader}
+        showNotification={props.showNotification}
+        showConfirmModal={props.showConfirmModal}
+      />
     </div>
   </div>
 );
