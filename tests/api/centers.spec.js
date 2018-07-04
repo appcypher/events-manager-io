@@ -3,11 +3,10 @@ import request from 'supertest';
 import bcrypt from 'bcrypt';
 import server from '../../server/server';
 import { User, EventCenter } from '../../server/models';
-/* eslint-disable no-unused-expressions  */
 
 const hash = bcrypt.hashSync;
 
-const createAdminUser = () => {
+const createAdminUsers = () => {
   User.create({
     username: 'bayo', email: 'bayo@gmail.com', password: hash('bayo', 10), fullname: 'Bayo', admin: true,
   });
@@ -16,7 +15,7 @@ const createAdminUser = () => {
   });
 };
 
-const createNormalUser = () => {
+const createNormalUsers = () => {
   User.create({
     username: 'ben', email: 'ben@gmail.com', password: hash('ben', 10), fullname: 'Ben', admin: false,
   });
@@ -40,9 +39,8 @@ const createCenter = () => {
   });
 };
 
-createNormalUser();
-createAdminUser();
-createCenter();
+createNormalUsers();
+createAdminUsers();
 createCenter();
 
 describe('Centers', () => {

@@ -3,7 +3,6 @@ import request from 'supertest';
 import bcrypt from 'bcrypt';
 import server from '../../server/server';
 import { User } from '../../server/models';
-/* eslint-disable no-unused-expressions  */
 
 const hash = bcrypt.hashSync;
 
