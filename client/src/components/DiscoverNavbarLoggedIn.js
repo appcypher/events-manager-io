@@ -3,7 +3,6 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import UserAction from '../actions/userActions';
 import Navbar from './Navbar';
-import history from '../index';
 
 import brand from '../assets/icons/brand.png';
 
@@ -12,7 +11,7 @@ import brand from '../assets/icons/brand.png';
  * @param{undefined}
  * @return{React.Component}
  */
-class DiscoverNavbar extends React.Component {
+export class DiscoverNavbarLoggedIn extends React.Component {
   constructor(props) {
     super(props);
     this.state = {};
@@ -27,7 +26,7 @@ class DiscoverNavbar extends React.Component {
     this.props.logoutUser();
 
     // Change page.
-    history.push('/');
+    this.props.history.push('/');
   }
 
   render() {
@@ -63,4 +62,4 @@ export default connect(
   {
     logoutUser: UserAction.logoutUser,
   },
-)(DiscoverNavbar);
+)(DiscoverNavbarLoggedIn);

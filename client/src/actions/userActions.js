@@ -8,7 +8,7 @@ class UserAction {
    * @return{undefined}
    */
   static signupUser(details, successFunc, failFunc) {
-    return (dispatch) => {
+    return dispatch =>
       axios({
         method: 'POST',
         url: `${url}/api/v1/users`,
@@ -23,10 +23,9 @@ class UserAction {
         .catch((err) => {
           if (err.response) {
             dispatch({ type: 'REQUEST_FAILED', payload: err.response.data });
-            failFunc();
+            if (failFunc) failFunc();
           }
         });
-    };
   }
 
   /**
@@ -35,7 +34,7 @@ class UserAction {
    * @return{undefined}
    */
   static loginUser(details, successFunc, failFunc) {
-    return (dispatch) => {
+    return dispatch =>
       axios({
         method: 'POST',
         url: `${url}/api/v1/users/login`,
@@ -50,10 +49,9 @@ class UserAction {
         .catch((err) => {
           if (err.response) {
             dispatch({ type: 'REQUEST_FAILED', payload: err.response.data });
-            failFunc();
+            if (failFunc) failFunc();
           }
         });
-    };
   }
 
   /**
@@ -62,7 +60,7 @@ class UserAction {
    * @return{undefined}
    */
   static getUser(token, successFunc, failFunc) {
-    return (dispatch) => {
+    return dispatch =>
       axios({
         method: 'GET',
         url: `${url}/api/v1/users`,
@@ -78,7 +76,6 @@ class UserAction {
             if (failFunc) failFunc();
           }
         });
-    };
   }
 
   /**
@@ -88,7 +85,7 @@ class UserAction {
    * @return{undefined}
    */
   static modifyUserProfile(token, details, successFunc, failFunc) {
-    return (dispatch) => {
+    return dispatch =>
       axios({
         method: 'PUT',
         url: `${url}/api/v1/users`,
@@ -97,15 +94,14 @@ class UserAction {
       })
         .then((res) => {
           dispatch({ type: 'USER_MODIFY_PROFILE_SUCCESSFUL', payload: res.data });
-          successFunc();
+          if (successFunc) successFunc();
         })
         .catch((err) => {
           if (err.response) {
             dispatch({ type: 'REQUEST_FAILED', payload: err.response.data });
-            failFunc();
+            if (failFunc) failFunc();
           }
         });
-    };
   }
 
   /**
@@ -114,9 +110,8 @@ class UserAction {
    * @return{undefined}
    */
   static logoutUser() {
-    return (dispatch) => {
+    return dispatch =>
       dispatch({ type: 'CLEAR_ALL_DATA', payload: null });
-    };
   }
 }
 

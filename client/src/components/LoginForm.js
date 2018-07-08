@@ -2,12 +2,11 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import UserAction from '../actions/userActions';
-import history from '../index';
 
 /**
  * Houses the login form and implements authentication process.
  */
-class LoginForm extends React.Component {
+export class LoginForm extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -23,19 +22,28 @@ class LoginForm extends React.Component {
   submit = () => {
     const { username, password } = this.state;
 
+
+    // Show loading screen.
+    this.props.showLoader();
+
     const redirectToDiscover = () => {
       // Add token and admin status to localStorage.
       localStorage.setItem('user.token', this.props.user.token);
       localStorage.setItem('user.admin', this.props.user.user.admin);
 
-      // console.log(user)
+
+      // Hide loading screen.
+      this.props.hideLoader();
 
       // Change page.
-      history.push('/discover');
+      this.props.history.push('/discover');
     };
 
     // Callback for handling error.
-    const showError = () => this.props.showAlertModal(this.props.user.message, 'error');
+    const showError = () => {
+      this.props.hideLoader();
+      this.props.showAlertModal(this.props.user.message, 'error');
+    };
 
     this.props.loginUser(
       {
@@ -61,7 +69,7 @@ class LoginForm extends React.Component {
           </div>
         </div>
         <div>
-          <button id="signup-button" className="io-btn" onClick={this.submit}>LOG IN</button>
+          <button id="login-button" className="io-btn" onClick={this.submit}>LOG IN</button>
           <span className="io-anchor io-forgot">Forgotten password?</span>
         </div>
         <div className="io-extra io-login">

@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<testsuites errors="4"
+            failures="1"
+            tests="1">
+
+  <testsuite name="login"
+    errors="4" failures="1" hostname="" id="" package="login" skipped="0"
+    tests="1" time="2.003" timestamp="Tue, 03 Jul 2018 19:07:43 GMT">
+  
+    <testcase name="Login test" classname="login" time="2.003" assertions="1">  <failure message="Testing if element &lt;main&gt; contains text: &#34;News feed&#34;. Element could not be located.">    at Object.LoginTest [as Login test] (/Users/andeladeveloper/Desktop/Projects/events-manager-io/tests/e2e/login.js:8:15)
+    at _combinedTickCallback (internal/process/next_tick.js:131:7)</failure>
+
+    
+    </testcase>
+  
+
+  
+    <system-err>
+      ERROR: Unable to locate element: &#34;input[name=&#34;email&#34;]&#34; using: css selector
+    at Object.LoginTest [as Login test] (/Users/andeladeveloper/Desktop/Projects/events-manager-io/tests/e2e/login.js:5:8)
+    at Module.call (/Users/andeladeveloper/Desktop/Projects/events-manager-io/node_modules/nightwatch/lib/runner/module.js:62:34)
+    at /Users/andeladeveloper/Desktop/Projects/events-manager-io/node_modules/nightwatch/lib/runner/testcase.js:70:29
+    at _fulfilled (/Users/andeladeveloper/Desktop/Projects/events-manager-io/node_modules/q/q.js:834:54)
+    at self.promiseDispatch.done (/Users/andeladeveloper/Desktop/Projects/events-manager-io/node_modules/q/q.js:863:30)
+    at Promise.promise.promiseDispatch (/Users/andeladeveloper/Desktop/Projects/events-manager-io/node_modules/q/q.js:796:13)
+    at /Users/andeladeveloper/Desktop/Projects/events-manager-io/node_modules/q/q.js:556:49
+    at runSingle (/Users/andeladeveloper/Desktop/Projects/events-manager-io/node_modules/q/q.js:137:13)
+    at flush (/Users/andeladeveloper/Desktop/Projects/events-manager-io/node_modules/q/q.js:125:13)
+    at _combinedTickCallback (internal/process/next_tick.js:131:7)
+ERROR: Unable to locate element: &#34;input[name=&#34;password]&#34; using: css selector
+    at Object.LoginTest [as Login test] (/Users/andeladeveloper/Desktop/Projects/events-manager-io/tests/e2e/login.js:6:8)
+    at Module.call (/Users/andeladeveloper/Desktop/Projects/events-manager-io/node_modules/nightwatch/lib/runner/module.js:62:34)
+    at /Users/andeladeveloper/Desktop/Projects/events-manager-io/node_modules/nightwatch/lib/runner/testcase.js:70:29
+    at _fulfilled (/Users/andeladeveloper/Desktop/Projects/events-manager-io/node_modules/q/q.js:834:54)
+    at self.promiseDispatch.done (/Users/andeladeveloper/Desktop/Projects/events-manager-io/node_modules/q/q.js:863:30)
+    at Promise.promise.promiseDispatch (/Users/andeladeveloper/Desktop/Projects/events-manager-io/node_modules/q/q.js:796:13)
+    at /Users/andeladeveloper/Desktop/Projects/events-manager-io/node_modules/q/q.js:556:49
+    at runSingle (/Users/andeladeveloper/Desktop/Projects/events-manager-io/node_modules/q/q.js:137:13)
+    at flush (/Users/andeladeveloper/Desktop/Projects/events-manager-io/node_modules/q/q.js:125:13)
+    at _combinedTickCallback (internal/process/next_tick.js:131:7)
+ERROR: Unable to locate element: &#34;button[type=&#34;submit&#34;]&#34; using: css selector
+    at Object.LoginTest [as Login test] (/Users/andeladeveloper/Desktop/Projects/events-manager-io/tests/e2e/login.js:7:8)
+    at Module.call (/Users/andeladeveloper/Desktop/Projects/events-manager-io/node_modules/nightwatch/lib/runner/module.js:62:34)
+    at /Users/andeladeveloper/Desktop/Projects/events-manager-io/node_modules/nightwatch/lib/runner/testcase.js:70:29
+    at _fulfilled (/Users/andeladeveloper/Desktop/Projects/events-manager-io/node_modules/q/q.js:834:54)
+    at self.promiseDispatch.done (/Users/andeladeveloper/Desktop/Projects/events-manager-io/node_modules/q/q.js:863:30)
+    at Promise.promise.promiseDispatch (/Users/andeladeveloper/Desktop/Projects/events-manager-io/node_modules/q/q.js:796:13)
+    at /Users/andeladeveloper/Desktop/Projects/events-manager-io/node_modules/q/q.js:556:49
+    at runSingle (/Users/andeladeveloper/Desktop/Projects/events-manager-io/node_modules/q/q.js:137:13)
+    at flush (/Users/andeladeveloper/Desktop/Projects/events-manager-io/node_modules/q/q.js:125:13)
+    at _combinedTickCallback (internal/process/next_tick.js:131:7)
+ERROR: Unable to locate element: &#34;main&#34; using: css selector
+    at F.command (/Users/andeladeveloper/Desktop/Projects/events-manager-io/node_modules/nightwatch/lib/api/assertions/containsText.js:46:21)
+    at F.module.exports.BaseAssertion._scheduleAssertion (/Users/andeladeveloper/Desktop/Projects/events-manager-io/node_modules/nightwatch/lib/core/assertion.js:87:17)
+    at F.module.exports.BaseAssertion._executeCommand (/Users/andeladeveloper/Desktop/Projects/events-manager-io/node_modules/nightwatch/lib/core/assertion.js:82:17)
+    at AssertionInstance.commandFn [as _commandFn] (/Users/andeladeveloper/Desktop/Projects/events-manager-io/node_modules/nightwatch/lib/core/assertion.js:180:21)
+    at AsyncTree.runCommand (/Users/andeladeveloper/Desktop/Projects/events-manager-io/node_modules/nightwatch/lib/core/queue.js:154:30)
+    at AsyncTree.runChildNode (/Users/andeladeveloper/Desktop/Projects/events-manager-io/node_modules/nightwatch/lib/core/queue.js:114:8)
+    at AsyncTree.walkDown (/Users/andeladeveloper/Desktop/Projects/events-manager-io/node_modules/nightwatch/lib/core/queue.js:80:10)
+    at AsyncTree.walkUp (/Users/andeladeveloper/Desktop/Projects/events-manager-io/node_modules/nightwatch/lib/core/queue.js:97:8)
+    at AsyncTree.walkDown (/Users/andeladeveloper/Desktop/Projects/events-manager-io/node_modules/nightwatch/lib/core/queue.js:90:12)
+    at AsyncTree.traverse (/Users/andeladeveloper/Desktop/Projects/events-manager-io/node_modules/nightwatch/lib/core/queue.js:73:8)
+    </system-err>
+  
+
+  
+  </testsuite>
+</testsuites>

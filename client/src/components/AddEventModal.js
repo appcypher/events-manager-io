@@ -9,7 +9,7 @@ import ModalSection from '../components/ModalSection';
 /**
  * This modal allows the user to add new event.
  */
-class AddEventModal extends React.Component {
+export class AddEventModal extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -135,8 +135,8 @@ class AddEventModal extends React.Component {
           <div className="io-header">CREATE NEW EVENT</div>
           <div className="io-body io-overflow">
             <form className="io-content io-start">
-              <ModalSection title="Title"><input placeholder="Enter name of event here" className="io-input io-input-field" name="title" onChange={this.saveInput} /></ModalSection>
-              <ModalSection title="Details"><input placeholder="Enter description here" className="io-input io-input-field" name="description" onChange={this.saveInput} /></ModalSection>
+              <ModalSection title="Title"><input id="title" placeholder="Enter name of event here" className="io-input io-input-field" name="title" onChange={this.saveInput} /></ModalSection>
+              <ModalSection title="Details"><input id="description" placeholder="Enter description here" className="io-input io-input-field" name="description" onChange={this.saveInput} /></ModalSection>
               <ModalSection title="Center">
                 <input placeholder="Enter center here" className="io-input io-input-field" autoComplete="off" name="centerName" onChange={this.saveInput} />
               </ModalSection>

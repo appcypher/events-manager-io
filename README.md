@@ -12,7 +12,7 @@
 
 A simple full-featured website for managing event-centers and scheduling events.
 
-The static version of EventsManagerIO can be accessed on [github pages](https://appcypher.github.io/EventsManager/template).
+The static version of EventsManagerIO can be accessed on [github pages](https://appcypher.github.io/event-manager-io/template).
 
 ## Made With
   ### Client
@@ -43,7 +43,7 @@ The static version of EventsManagerIO can be accessed on [github pages](https://
 
 ## Installation.
   * Install [Nodejs](https://nodejs.org/en/download/) and [Postgres SQL](https://www.postgresql.org/download/)
-  * Clone this repo ``` git clone https://github.com/AppCypher/EventsManager.git ```
+  * Clone this repo ```git clone https://github.com/appcypher/event-manager-io.git```
   * Run ```npm install``` to install the required dependencies
   * Run ```npm test``` to fireup the tests
   * Navigate to http://localhost:3000/
@@ -65,12 +65,14 @@ The static version of EventsManagerIO can be accessed on [github pages](https://
     * sass:watch → watches the scss folder and transpiles the scss files to css on the fly
 
   ### Test
-    * test → sets NODE_ENV to test runs all tests "npm run test:api & npm run test:react",
-    * test:api → demigrates and remigrates test database; sets NODE_ENV to test; runs tests related to api endpoints; and creates a test report
-    * test:e2e → sets NODE_ENV to test and runs end-to-end unit tests
-    * test:react → sets NODE_ENV to test and runs react tests
-    * test:api:migrate → sets NODE_ENV to test and migrates test database
-    * test:api:demigrate → sets NODE_ENV to test and demigrates test database
+  * test → sets NODE_ENV to test runs all tests "npm run test:api & npm run test:react",
+  * test:api → demigrates and remigrates test database; sets NODE_ENV to test; runs tests related to api endpoints; and creates a test report
+  * test:e2e → sets NODE_ENV to test and runs end-to-end unit tests
+      * You need to download [JDK](http://www.oracle.com/technetwork/java/javase/downloads/index.html), [Selenium Server 3.9.1](http://selenium-release.storage.googleapis.com/index.html) and [Chrome driver 2.40](https://sites.google.com/a/chromium.org/chromedriver) for your system
+      * The Selenium and Chrome driver executables need to be copied into the `bin/` folder
+  * test:client → sets NODE_ENV to test and runs react tests
+  * test:api:migrate → sets NODE_ENV to test and migrates test database
+  * test:api:demigrate → sets NODE_ENV to test and demigrates test database
 
 ## Available APIs
 - API routes for users to create accounts and login to the application
@@ -105,4 +107,4 @@ The static version of EventsManagerIO can be accessed on [github pages](https://
 Check [here](https://swaggerhub.com/apis/appcypher/EventsManager/1.0.0) for full documentation.
 
 ## License
-[Apache License 2.0](https://github.com/AppCypher/HelloBooks/blob/master/LICENSE)
+[Apache License 2.0](https://github.com/appcypher/event-manager-io/blob/master/LICENSE)

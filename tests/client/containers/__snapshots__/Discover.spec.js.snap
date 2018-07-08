@@ -1,0 +1,3 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Discover /> Should maintain existing snapshot 1`] = `undefined`;

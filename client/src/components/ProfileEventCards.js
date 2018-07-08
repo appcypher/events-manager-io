@@ -7,7 +7,7 @@ import EventAction from '../actions/eventActions';
 /**
  * Contains the event cards that are shown on profile page.
  */
-class ProfileEventCards extends React.Component {
+export class ProfileEventCards extends React.Component {
   constructor(props) {
     super(props);
     this.state = {};

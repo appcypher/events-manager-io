@@ -3,8 +3,8 @@ import { Switch, Route } from 'react-router-dom';
 import Home from './Home';
 import SignIn from './SignIn';
 import SignUp from './SignUp';
-import Discover from './Discover';
-import Profile from './Profile';
+import ConnectedDiscover from './Discover';
+import ConnectedProfile from './Profile';
 
 // Bring in bootstrap
 import '../../../node_modules/bootstrap/dist/css/bootstrap.min.css';
@@ -23,8 +23,8 @@ const App = () => (
       <Route exact path="/home" component={Home} />
       <Route exact path="/signin" component={SignIn} />
       <Route exact path="/signup" component={SignUp} />
-      <Route exact path="/discover" component={Discover} />
-      <Route exact path="/profile" component={Profile} />
+      <Route exact path="/discover" component={ConnectedDiscover} />
+      <Route exact path="/profile" component={ConnectedProfile} />
     </Switch>
   </div>
 );

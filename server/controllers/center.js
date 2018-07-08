@@ -18,7 +18,11 @@ class EventCenterController {
         location: req.body.location,
         userId: req.user.id,
         description: req.body.description || null,
+        available: req.body.available != null ? req.body.available : true,
         picture1: req.body.picture1 || null,
+        picture2: req.body.picture2 || null,
+        picture3: req.body.picture3 || null,
+        picture4: req.body.picture4 || null,
       })
       .then((center) => {
         res.status(201).send({ message: 'Center created!', center });
@@ -46,6 +50,7 @@ class EventCenterController {
               type: req.body.type || center.type,
               price: req.body.price || center.price,
               location: req.body.location || center.location,
+              available: req.body.available != null ? req.body.available : center.available,
               picture1: req.body.picture1 || center.picture1,
               picture2: req.body.picture2 || center.picture2,
               picture3: req.body.picture3 || center.picture3,

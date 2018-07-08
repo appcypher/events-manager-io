@@ -10,6 +10,7 @@ import Footer from '../components/Footer';
 class Home extends React.Component {
   static renderHomeNavbar() {
     if (
+      localStorage.getItem('user.token') &&
       localStorage.getItem('user.token') !== 'undefined' &&
       localStorage.getItem('user.token') !== ''
     ) {

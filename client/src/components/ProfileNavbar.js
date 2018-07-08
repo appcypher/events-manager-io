@@ -3,14 +3,13 @@ import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import Navbar from './Navbar';
 import UserAction from '../actions/userActions';
-import history from '../index';
 
 import brand from '../assets/icons/brand.png';
 
 /**
  * Has the profile navbar styles
  */
-class ProfileNavbar extends React.Component {
+export class ProfileNavbar extends React.Component {
   constructor(props) {
     super(props);
     this.state = {};
@@ -25,7 +24,7 @@ class ProfileNavbar extends React.Component {
     this.props.logoutUser();
 
     // Change page.
-    history.push('/');
+    this.props.history.push('/');
   }
 
   render() {
