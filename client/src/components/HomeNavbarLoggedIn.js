@@ -9,7 +9,7 @@ import brand from '../assets/icons/brand.png';
  * @param{undefined}
  * @return{React.Component}
  */
-const HomeNavbarLoggedIn = () => (
+export const HomeNavbarLoggedIn = () => (
   <Navbar className="io-navbar io-fixed-top">
     <Link href to="/" className="io-brand">
       <div className="io-text">EventsManagerIO</div>

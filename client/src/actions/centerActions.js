@@ -37,8 +37,8 @@ class CenterAction {
       // If user chooses an image.
       if (details.file && details.file !== []) {
         // Upload image
-        CenterAction.uploadImage(details)
-          .then((res) => {
+        return CenterAction.uploadImage(details)
+          .then(res =>
             // Make request for creating new center.
             axios({
               method: 'POST',
@@ -48,40 +48,38 @@ class CenterAction {
             })
               .then((resp) => {
                 dispatch({ type: 'CENTER_CREATE_SUCCESSFUL', payload: resp.data });
-                successFunc();
+                if (successFunc) successFunc();
               })
               .catch((err) => {
                 if (err.response) {
                   dispatch({ type: 'REQUEST_FAILED', payload: err.response.data });
-                  failFunc();
+                  if (failFunc) failFunc();
                 }
-              });
-          })
+              }))
           .catch((err) => {
             if (err.response) {
               dispatch({ type: 'REQUEST_FAILED', payload: err.response.data });
-              failFunc();
+              if (failFunc) failFunc();
             }
-          });
-      } else {
-        // Make request for creating new center.
-        axios({
-          method: 'POST',
-          url: `${url}/api/v1/centers`,
-          headers: { token },
-          data: { ...details },
-        })
-          .then((resp) => {
-            dispatch({ type: 'CENTER_CREATE_SUCCESSFUL', payload: resp.data });
-            successFunc();
-          })
-          .catch((err) => {
-            if (err.response) {
-              dispatch({ type: 'REQUEST_FAILED', payload: err.response.data });
-            }
-            failFunc();
           });
       }
+      // Make request for creating new center.
+      return axios({
+        method: 'POST',
+        url: `${url}/api/v1/centers`,
+        headers: { token },
+        data: { ...details },
+      })
+        .then((resp) => {
+          dispatch({ type: 'CENTER_CREATE_SUCCESSFUL', payload: resp.data });
+          if (successFunc) successFunc();
+        })
+        .catch((err) => {
+          if (err.response) {
+            dispatch({ type: 'REQUEST_FAILED', payload: err.response.data });
+          }
+          if (failFunc) failFunc();
+        });
     };
   }
 
@@ -97,8 +95,8 @@ class CenterAction {
       // If user chooses an image.
       if (details.file && details.file !== []) {
         // Upload image
-        CenterAction.uploadImage(details)
-          .then((res) => {
+        return CenterAction.uploadImage(details)
+          .then(res =>
             // Make request for modifying center.
             axios({
               method: 'PUT',
@@ -108,40 +106,39 @@ class CenterAction {
             })
               .then((resp) => {
                 dispatch({ type: 'CENTER_MODIFY_SUCCESSFUL', payload: resp.data });
-                successFunc();
+                if (successFunc) successFunc();
               })
               .catch((err) => {
                 if (err.response) {
                   dispatch({ type: 'REQUEST_FAILED', payload: err.response.data });
-                  failFunc();
+                  if (failFunc) failFunc();
                 }
-              });
-          })
+              }))
           .catch((err) => {
             if (err.response) {
               dispatch({ type: 'REQUEST_FAILED', payload: err.response.data });
-              failFunc();
-            }
-          });
-      } else {
-        // Make request for modifying center.
-        axios({
-          method: 'PUT',
-          url: `${url}/api/v1/centers/${param}`,
-          headers: { token },
-          data: { ...details },
-        })
-          .then((res) => {
-            dispatch({ type: 'CENTER_MODIFY_SUCCESSFUL', payload: res.data });
-            successFunc();
-          })
-          .catch((err) => {
-            if (err.response) {
-              dispatch({ type: 'REQUEST_FAILED', payload: err.response.data });
-              failFunc();
+              if (failFunc) failFunc();
             }
           });
       }
+
+      // Make request for modifying center.
+      return axios({
+        method: 'PUT',
+        url: `${url}/api/v1/centers/${param}`,
+        headers: { token },
+        data: { ...details },
+      })
+        .then((res) => {
+          dispatch({ type: 'CENTER_MODIFY_SUCCESSFUL', payload: res.data });
+          if (successFunc) successFunc();
+        })
+        .catch((err) => {
+          if (err.response) {
+            dispatch({ type: 'REQUEST_FAILED', payload: err.response.data });
+            if (failFunc) failFunc();
+          }
+        });
     };
   }
 
@@ -151,7 +148,7 @@ class CenterAction {
    * @return{undefined}
    */
   static getAllCenters(token, pageNumber) {
-    return (dispatch) => {
+    return dispatch =>
       axios({
         method: 'GET',
         url: `${url}/api/v1/centers?page=${pageNumber}`,
@@ -165,7 +162,6 @@ class CenterAction {
             dispatch({ type: 'REQUEST_FAILED', payload: err.response.data });
           }
         });
-    };
   }
 
   /**
@@ -175,7 +171,7 @@ class CenterAction {
    * @return{undefined}
    */
   static getCenter(token, param) {
-    return (dispatch) => {
+    return dispatch =>
       axios({
         method: 'GET',
         url: `${url}/api/v1/centers/${param}`,
@@ -189,7 +185,6 @@ class CenterAction {
             dispatch({ type: 'REQUEST_FAILED', payload: err.response.data });
           }
         });
-    };
   }
 }
 

@@ -196,19 +196,23 @@ class Validation {
    */
   /* eslint-disable no-restricted-globals */
   static checkDateValid(req, res, next) {
-    // Check date isn't empty.
-    if (req.body.date === '') {
-      return res.status(400).send({ message: 'Invalid date: Make sure it is in YYYY-MM-DD format!' });
-    }
-    // Check date format
-    if (!req.body.date.match(/^[0-9]{4}-[0-9]{2}-[0-9]{2}$/)) {
-      return res.status(400).send({ message: 'Invalid date: Make sure it is in YYYY-MM-DD format!' });
+    if (req.body.date) {
+      // Check date isn't empty.
+      if (req.body.date === '') {
+        return res.status(400).send({ message: 'Invalid date: Make sure it is in YYYY-MM-DD format!' });
+      }
+      // Check date format
+      if (!req.body.date.match(/^[0-9]{4}-[0-9]{2}-[0-9]{2}$/)) {
+        return res.status(400).send({ message: 'Invalid date: Make sure it is in YYYY-MM-DD format!' });
+      }
+
+      // Check date range, .i.e, no invalid day or month value
+      if (isNaN(new Date(req.body.date))) {
+        return res.status(400).send({ message: 'Invalid date: Make sure it is in YYYY-MM-DD format!' });
+      }
     }
 
-    // Check date range, .i.e, no invalid day or month value
-    if (isNaN(new Date(req.body.date))) {
-      return res.status(400).send({ message: 'Invalid date: Make sure it is in YYYY-MM-DD format!' });
-    } return next();
+    return next();
   }
 
   /**
@@ -219,14 +223,16 @@ class Validation {
    * @return{undefined}
    */
   static checkTimeValid(req, res, next) {
-    // Check time isn't empty.
-    if (req.body.time === '') {
-      return res.status(400).send({ message: 'Invalid time: Make sure it is in 24-hour HH:MM format!' });
-    }
+    if (req.body.time) {
+      // Check time isn't empty.
+      if (req.body.time === '') {
+        return res.status(400).send({ message: 'Invalid time: Make sure it is in 24-hour HH:MM format!' });
+      }
 
-    // Check time format.
-    if (!req.body.time.match(/^([0-9]|[0-1][0-9]|2[0-3])\s*:\s*([0-9]|[0-5][0-9])$/)) {
-      return res.status(400).send({ message: 'Invalid time: Make sure it is in 24-hour HH:MM format!' });
+      // Check time format.
+      if (!req.body.time.match(/^([0-9]|[0-1][0-9]|2[0-3])\s*:\s*([0-9]|[0-5][0-9])$/)) {
+        return res.status(400).send({ message: 'Invalid time: Make sure it is in 24-hour HH:MM format!' });
+      }
     }
 
     return next();
@@ -241,35 +247,77 @@ class Validation {
    */
   static checkDateNotTaken(req, res, next) {
     const { eventId } = req.params;
-    const { centerId, date } = req.body;
 
-    const lowDate = new Date(`${date} 00:00`).toISOString();
-    const upDate = new Date(`${date} 23:59`).toISOString();
+    // Check date is deined in body.
+    if (req.body.date) {
+      const { date } = req.body;
 
-    Event.findAll({
-      where: {
-        centerId,
-        $and: [
-          { date: { $gte: lowDate } },
-          { date: { $lte: upDate } },
-        ],
-      },
-    })
-      .then((events) => {
-        // If no event is found with conflicting schedule.
-        if (events.length === 0) {
-          next();
-        // If there are events with conflicting schedule and any of the event
-        // has the same id as the provided eventId.
-        } else if (eventId && events.some(el => Number(el.id) === Number(eventId))) {
-          next();
-        } else {
-          res.status(409).send({ message: 'An event has already been slated for that date!' });
-        }
-      })
-      .catch((err) => {
-        res.status(400).send({ message: err.errors ? err.errors[0].message : err.message });
-      });
+      const lowDate = new Date(`${date} 00:00`).toISOString();
+      const upDate = new Date(`${date} 23:59`).toISOString();
+
+      // Check centerId is defined in body.
+      if (req.body.centerId) {
+        const { centerId } = req.body;
+
+        Event.findAll({
+          where: {
+            centerId,
+            $and: [
+              { date: { $gte: lowDate } },
+              { date: { $lte: upDate } },
+            ],
+          },
+        })
+          .then((events) => {
+            if (events) {
+              // Checking if no event is found with conflicting schedule.
+              if (
+                events.length === 0 ||
+                (eventId && events.some(el => Number(el.id) === Number(eventId)))) {
+                next();
+              } else res.status(409).send({ message: 'An event has already been slated for that date!' });
+            }
+          })
+          .catch((err) => {
+            res.status(400).send({ message: err.errors ? err.errors[0].message : err.message });
+          });
+
+        // If centerId is not defined in body.
+      } else {
+        Event.findById(eventId)
+          .then((event) => {
+            if (event) {
+              Event.findAll({
+                where: {
+                  centerId: event.centerId,
+                  $and: [
+                    { date: { $gte: lowDate } },
+                    { date: { $lte: upDate } },
+                  ],
+                },
+              })
+                .then((events) => {
+                  if (events) {
+                    // Checking if no event is found with conflicting schedule.
+                    if (
+                      events.length === 0 ||
+                      (eventId && events.some(el => Number(el.id) === Number(eventId)))) {
+                      next();
+                    } else res.status(409).send({ message: 'An event has already been slated for that date!' });
+                  }
+                })
+                .catch((err) => {
+                  res.status(400).send({
+                    message: err.errors ? err.errors[0].message : err.message,
+                  });
+                });
+            } else res.status(400).send({ message: 'CenterId is required in body!' });
+          })
+          .catch((err) => {
+            res.status(400).send({ message: err.errors ? err.errors[0].message : err.message });
+          });
+      }
+    } else next();
   }
 
   /**

@@ -3,24 +3,24 @@ import { connect } from 'react-redux';
 import { Notification } from 'react-notification';
 import UserAction from '../actions/userActions';
 import EventAction from '../actions/eventActions';
-import ProfileNavbar from '../components/ProfileNavbar';
+import ConnectedProfileNavbar from '../components/ProfileNavbar';
 import ProfileBody from '../components/ProfileBody';
 import Pagination from '../components/Pagination';
 import Footer from '../components/Footer';
 import MainFab from '../components/MainFab';
 import LabelledFab from '../components/LabelledFab';
 import FabGroup from '../components/FabGroup';
-import AddCenterModal from '../components/AddCenterModal';
-import AddEventModal from '../components/AddEventModal';
+import ConnectedAddCenterModal from '../components/AddCenterModal';
+import ConnectedAddEventModal from '../components/AddEventModal';
+import ConnectedModifyEventModal from '../components/ModifyEventModal';
 import AlertModal from '../components/AlertModal';
 import ConfirmModal from '../components/ConfirmModal';
 import Loader from '../components/Loader';
-import ModifyEventModal from '../components/ModifyEventModal';
 
 /**
  * Shows information of the profile page.
  */
-class Profile extends React.Component {
+export class Profile extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -166,7 +166,7 @@ class Profile extends React.Component {
   render() {
     return (
       <div>
-        <ProfileNavbar />
+        <ConnectedProfileNavbar history={this.props.history} />
         <ProfileBody
           showModifyEventModal={this.showModifyEventModal}
           showAlertModal={this.showAlertModal}
@@ -185,7 +185,7 @@ class Profile extends React.Component {
           <LabelledFab icon="map-marker" position="2" label="Add New Center" showAddCenterModal={this.showAddCenterModal} />
           <LabelledFab icon="calendar" position="1" label="Add New Event" showAddEventModal={this.showAddEventModal} />
         </FabGroup>
-        <AddCenterModal
+        <ConnectedAddCenterModal
           showAddCenterModal={this.state.showAddCenterModal}
           hideAddCenterModal={this.hideAddCenterModal}
           showAlertModal={this.showAlertModal}
@@ -196,7 +196,7 @@ class Profile extends React.Component {
         <Loader
           showLoader={this.state.showLoader}
         />
-        <AddEventModal
+        <ConnectedAddEventModal
           showAddEventModal={this.state.showAddEventModal}
           hideAddEventModal={this.hideAddEventModal}
           showAlertModal={this.showAlertModal}
@@ -204,7 +204,7 @@ class Profile extends React.Component {
           hideLoader={this.hideLoader}
           showNotification={this.showNotification}
         />
-        <ModifyEventModal
+        <ConnectedModifyEventModal
           modifyEventModalState={this.state.modifyEventModalState}
           showModifyEventModal={this.state.showModifyEventModal}
           hideModifyEventModal={this.hideModifyEventModal}

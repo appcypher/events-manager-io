@@ -1,0 +1,697 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Pagination Should maintain existing snapshot 1`] = `
+ShallowWrapper {
+  "length": 1,
+  Symbol(enzyme.__root__): [Circular],
+  Symbol(enzyme.__unrendered__): <Pagination />,
+  Symbol(enzyme.__renderer__): Object {
+    "batchedUpdates": [Function],
+    "getNode": [Function],
+    "render": [Function],
+    "simulateEvent": [Function],
+    "unmount": [Function],
+  },
+  Symbol(enzyme.__node__): Object {
+    "instance": null,
+    "key": undefined,
+    "nodeType": "host",
+    "props": Object {
+      "children": <ul
+        className="pagination"
+      >
+        <li
+          className="page-item disabled"
+          id="pagePrevious"
+        >
+          <span
+            className="page-link"
+          >
+            &lt;&lt;
+          </span>
+        </li>
+        <li
+          className="page-item active"
+        >
+          <span
+            className="page-link"
+            data-id="1"
+            onClick={[Function]}
+          >
+            1
+          </span>
+        </li>
+        <li
+          className="page-item "
+        >
+          <span
+            className="page-link"
+            data-id="2"
+            onClick={[Function]}
+          >
+            2
+          </span>
+        </li>
+        <li
+          className="page-item "
+        >
+          <span
+            className="page-link"
+            data-id="3"
+            onClick={[Function]}
+          >
+            3
+          </span>
+        </li>
+        <li
+          className="page-item "
+        >
+          <span
+            className="page-link"
+            data-id="4"
+            onClick={[Function]}
+          >
+            4
+          </span>
+        </li>
+        <li
+          className="page-item disabled"
+          id="pageNext"
+        >
+          <span
+            className="page-link"
+          >
+            &gt;&gt;
+          </span>
+        </li>
+      </ul>,
+      "className": "io-col-center",
+    },
+    "ref": null,
+    "rendered": Object {
+      "instance": null,
+      "key": undefined,
+      "nodeType": "host",
+      "props": Object {
+        "children": Array [
+          <li
+            className="page-item disabled"
+            id="pagePrevious"
+          >
+            <span
+              className="page-link"
+            >
+              &lt;&lt;
+            </span>
+          </li>,
+          <li
+            className="page-item active"
+          >
+            <span
+              className="page-link"
+              data-id="1"
+              onClick={[Function]}
+            >
+              1
+            </span>
+          </li>,
+          <li
+            className="page-item "
+          >
+            <span
+              className="page-link"
+              data-id="2"
+              onClick={[Function]}
+            >
+              2
+            </span>
+          </li>,
+          <li
+            className="page-item "
+          >
+            <span
+              className="page-link"
+              data-id="3"
+              onClick={[Function]}
+            >
+              3
+            </span>
+          </li>,
+          <li
+            className="page-item "
+          >
+            <span
+              className="page-link"
+              data-id="4"
+              onClick={[Function]}
+            >
+              4
+            </span>
+          </li>,
+          <li
+            className="page-item disabled"
+            id="pageNext"
+          >
+            <span
+              className="page-link"
+            >
+              &gt;&gt;
+            </span>
+          </li>,
+        ],
+        "className": "pagination",
+      },
+      "ref": null,
+      "rendered": Array [
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "host",
+          "props": Object {
+            "children": <span
+              className="page-link"
+            >
+              &lt;&lt;
+            </span>,
+            "className": "page-item disabled",
+            "id": "pagePrevious",
+          },
+          "ref": null,
+          "rendered": Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "host",
+            "props": Object {
+              "children": "<<",
+              "className": "page-link",
+            },
+            "ref": null,
+            "rendered": "<<",
+            "type": "span",
+          },
+          "type": "li",
+        },
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "host",
+          "props": Object {
+            "children": <span
+              className="page-link"
+              data-id="1"
+              onClick={[Function]}
+            >
+              1
+            </span>,
+            "className": "page-item active",
+          },
+          "ref": null,
+          "rendered": Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "host",
+            "props": Object {
+              "children": "1",
+              "className": "page-link",
+              "data-id": "1",
+              "onClick": [Function],
+            },
+            "ref": null,
+            "rendered": "1",
+            "type": "span",
+          },
+          "type": "li",
+        },
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "host",
+          "props": Object {
+            "children": <span
+              className="page-link"
+              data-id="2"
+              onClick={[Function]}
+            >
+              2
+            </span>,
+            "className": "page-item ",
+          },
+          "ref": null,
+          "rendered": Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "host",
+            "props": Object {
+              "children": "2",
+              "className": "page-link",
+              "data-id": "2",
+              "onClick": [Function],
+            },
+            "ref": null,
+            "rendered": "2",
+            "type": "span",
+          },
+          "type": "li",
+        },
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "host",
+          "props": Object {
+            "children": <span
+              className="page-link"
+              data-id="3"
+              onClick={[Function]}
+            >
+              3
+            </span>,
+            "className": "page-item ",
+          },
+          "ref": null,
+          "rendered": Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "host",
+            "props": Object {
+              "children": "3",
+              "className": "page-link",
+              "data-id": "3",
+              "onClick": [Function],
+            },
+            "ref": null,
+            "rendered": "3",
+            "type": "span",
+          },
+          "type": "li",
+        },
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "host",
+          "props": Object {
+            "children": <span
+              className="page-link"
+              data-id="4"
+              onClick={[Function]}
+            >
+              4
+            </span>,
+            "className": "page-item ",
+          },
+          "ref": null,
+          "rendered": Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "host",
+            "props": Object {
+              "children": "4",
+              "className": "page-link",
+              "data-id": "4",
+              "onClick": [Function],
+            },
+            "ref": null,
+            "rendered": "4",
+            "type": "span",
+          },
+          "type": "li",
+        },
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "host",
+          "props": Object {
+            "children": <span
+              className="page-link"
+            >
+              &gt;&gt;
+            </span>,
+            "className": "page-item disabled",
+            "id": "pageNext",
+          },
+          "ref": null,
+          "rendered": Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "host",
+            "props": Object {
+              "children": ">>",
+              "className": "page-link",
+            },
+            "ref": null,
+            "rendered": ">>",
+            "type": "span",
+          },
+          "type": "li",
+        },
+      ],
+      "type": "ul",
+    },
+    "type": "div",
+  },
+  Symbol(enzyme.__nodes__): Array [
+    Object {
+      "instance": null,
+      "key": undefined,
+      "nodeType": "host",
+      "props": Object {
+        "children": <ul
+          className="pagination"
+        >
+          <li
+            className="page-item disabled"
+            id="pagePrevious"
+          >
+            <span
+              className="page-link"
+            >
+              &lt;&lt;
+            </span>
+          </li>
+          <li
+            className="page-item active"
+          >
+            <span
+              className="page-link"
+              data-id="1"
+              onClick={[Function]}
+            >
+              1
+            </span>
+          </li>
+          <li
+            className="page-item "
+          >
+            <span
+              className="page-link"
+              data-id="2"
+              onClick={[Function]}
+            >
+              2
+            </span>
+          </li>
+          <li
+            className="page-item "
+          >
+            <span
+              className="page-link"
+              data-id="3"
+              onClick={[Function]}
+            >
+              3
+            </span>
+          </li>
+          <li
+            className="page-item "
+          >
+            <span
+              className="page-link"
+              data-id="4"
+              onClick={[Function]}
+            >
+              4
+            </span>
+          </li>
+          <li
+            className="page-item disabled"
+            id="pageNext"
+          >
+            <span
+              className="page-link"
+            >
+              &gt;&gt;
+            </span>
+          </li>
+        </ul>,
+        "className": "io-col-center",
+      },
+      "ref": null,
+      "rendered": Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "host",
+        "props": Object {
+          "children": Array [
+            <li
+              className="page-item disabled"
+              id="pagePrevious"
+            >
+              <span
+                className="page-link"
+              >
+                &lt;&lt;
+              </span>
+            </li>,
+            <li
+              className="page-item active"
+            >
+              <span
+                className="page-link"
+                data-id="1"
+                onClick={[Function]}
+              >
+                1
+              </span>
+            </li>,
+            <li
+              className="page-item "
+            >
+              <span
+                className="page-link"
+                data-id="2"
+                onClick={[Function]}
+              >
+                2
+              </span>
+            </li>,
+            <li
+              className="page-item "
+            >
+              <span
+                className="page-link"
+                data-id="3"
+                onClick={[Function]}
+              >
+                3
+              </span>
+            </li>,
+            <li
+              className="page-item "
+            >
+              <span
+                className="page-link"
+                data-id="4"
+                onClick={[Function]}
+              >
+                4
+              </span>
+            </li>,
+            <li
+              className="page-item disabled"
+              id="pageNext"
+            >
+              <span
+                className="page-link"
+              >
+                &gt;&gt;
+              </span>
+            </li>,
+          ],
+          "className": "pagination",
+        },
+        "ref": null,
+        "rendered": Array [
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "host",
+            "props": Object {
+              "children": <span
+                className="page-link"
+              >
+                &lt;&lt;
+              </span>,
+              "className": "page-item disabled",
+              "id": "pagePrevious",
+            },
+            "ref": null,
+            "rendered": Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "host",
+              "props": Object {
+                "children": "<<",
+                "className": "page-link",
+              },
+              "ref": null,
+              "rendered": "<<",
+              "type": "span",
+            },
+            "type": "li",
+          },
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "host",
+            "props": Object {
+              "children": <span
+                className="page-link"
+                data-id="1"
+                onClick={[Function]}
+              >
+                1
+              </span>,
+              "className": "page-item active",
+            },
+            "ref": null,
+            "rendered": Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "host",
+              "props": Object {
+                "children": "1",
+                "className": "page-link",
+                "data-id": "1",
+                "onClick": [Function],
+              },
+              "ref": null,
+              "rendered": "1",
+              "type": "span",
+            },
+            "type": "li",
+          },
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "host",
+            "props": Object {
+              "children": <span
+                className="page-link"
+                data-id="2"
+                onClick={[Function]}
+              >
+                2
+              </span>,
+              "className": "page-item ",
+            },
+            "ref": null,
+            "rendered": Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "host",
+              "props": Object {
+                "children": "2",
+                "className": "page-link",
+                "data-id": "2",
+                "onClick": [Function],
+              },
+              "ref": null,
+              "rendered": "2",
+              "type": "span",
+            },
+            "type": "li",
+          },
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "host",
+            "props": Object {
+              "children": <span
+                className="page-link"
+                data-id="3"
+                onClick={[Function]}
+              >
+                3
+              </span>,
+              "className": "page-item ",
+            },
+            "ref": null,
+            "rendered": Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "host",
+              "props": Object {
+                "children": "3",
+                "className": "page-link",
+                "data-id": "3",
+                "onClick": [Function],
+              },
+              "ref": null,
+              "rendered": "3",
+              "type": "span",
+            },
+            "type": "li",
+          },
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "host",
+            "props": Object {
+              "children": <span
+                className="page-link"
+                data-id="4"
+                onClick={[Function]}
+              >
+                4
+              </span>,
+              "className": "page-item ",
+            },
+            "ref": null,
+            "rendered": Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "host",
+              "props": Object {
+                "children": "4",
+                "className": "page-link",
+                "data-id": "4",
+                "onClick": [Function],
+              },
+              "ref": null,
+              "rendered": "4",
+              "type": "span",
+            },
+            "type": "li",
+          },
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "host",
+            "props": Object {
+              "children": <span
+                className="page-link"
+              >
+                &gt;&gt;
+              </span>,
+              "className": "page-item disabled",
+              "id": "pageNext",
+            },
+            "ref": null,
+            "rendered": Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "host",
+              "props": Object {
+                "children": ">>",
+                "className": "page-link",
+              },
+              "ref": null,
+              "rendered": ">>",
+              "type": "span",
+            },
+            "type": "li",
+          },
+        ],
+        "type": "ul",
+      },
+      "type": "div",
+    },
+  ],
+  Symbol(enzyme.__options__): Object {
+    "adapter": ReactSixteenAdapter {
+      "options": Object {
+        "enableComponentDidUpdateOnSetState": true,
+      },
+    },
+  },
+}
+`;

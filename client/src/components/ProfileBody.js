@@ -1,7 +1,7 @@
 import React from 'react';
 import ProfileUserCard from './ProfileUserCard';
 import DiscoverTitleCard from '../components/DiscoverTitleCard';
-import ProfileEventCards from './ProfileEventCards';
+import ConnectedProfileEventCards from './ProfileEventCards';
 /**
  * Houses contnet of the profile page.
  * @param{undefined}
@@ -12,7 +12,7 @@ const ProfileBody = props => (
     <div className="container-fluid">
       <ProfileUserCard />
       <DiscoverTitleCard>Your Events</DiscoverTitleCard>
-      <ProfileEventCards
+      <ConnectedProfileEventCards
         showModifyEventModal={props.showModifyEventModal}
         showAlertModal={props.showAlertModal}
         showLoader={props.showLoader}

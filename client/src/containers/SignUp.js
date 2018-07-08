@@ -1,28 +1,20 @@
 import React from 'react';
 import HomeNavbar from '../components/HomeNavbar';
-import HomeNavbarLoggedIn from '../components/HomeNavbarLoggedIn';
+import ConnectedHomeNavbarLoggedIn from '../components/HomeNavbarLoggedIn';
 import LoginContainer from '../components/LoginContainer';
-import SignUpForm from '../components/SignUpForm';
+import ConnectedSignUpForm from '../components/SignUpForm';
 import AlertModal from '../components/AlertModal';
+import Loader from '../components/Loader';
 
 /**
  * Shows information of the sign-up page.
  */
 class SignUp extends React.Component {
-  static renderHomeNavbar() {
-    if (
-      localStorage.getItem('user.token') !== 'undefined' &&
-      localStorage.getItem('user.token') !== ''
-    ) {
-      return <HomeNavbarLoggedIn />;
-    }
-    return <HomeNavbar />;
-  }
-
   constructor(props) {
     super(props);
     this.state = {
       alertModalState: { message: '', show: false, type: 'success' },
+      showLoader: false,
     };
   }
 
@@ -43,16 +35,47 @@ class SignUp extends React.Component {
     });
   }
 
+  showLoader = () => {
+    this.setState({
+      showLoader: true,
+    });
+  }
+
+  hideLoader = () => {
+    this.setState({
+      showLoader: false,
+    });
+  }
+
+  renderHomeNavbar = () => {
+    if (
+      localStorage.getItem('user.token') &&
+      localStorage.getItem('user.token') !== 'undefined' &&
+      localStorage.getItem('user.token') !== ''
+    ) {
+      return <ConnectedHomeNavbarLoggedIn />;
+    }
+    return <HomeNavbar />;
+  }
+
   render() {
     return (
       <div className="io-stretch-vertical">
-        {SignUp.renderHomeNavbar()}
+        {this.renderHomeNavbar()}
         <LoginContainer>
-          <SignUpForm showAlert={this.showAlert} />
+          <ConnectedSignUpForm
+            showAlertModal={this.showAlertModal}
+            showLoader={this.showLoader}
+            hideLoader={this.hideLoader}
+            history={this.props.history}
+          />
         </LoginContainer>
         <AlertModal
           alertModalState={this.state.alertModalState}
           hideAlertModal={this.hideAlertModal}
+        />
+        <Loader
+          showLoader={this.state.showLoader}
         />
       </div>
     );

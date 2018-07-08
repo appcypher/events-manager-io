@@ -27,11 +27,6 @@ app.use(bodyParser.urlencoded({ extended: false }));
 
 // Set public folder for react routes
 app.use('/', express.static(path.join(__dirname, '/../client/public')));
-app.use('/signin', express.static(path.join(__dirname, '/../client/public')));
-app.use('/signup', express.static(path.join(__dirname, '/../client/public')));
-app.use('/discover', express.static(path.join(__dirname, '/../client/public')));
-app.use('/profile', express.static(path.join(__dirname, '/../client/public')));
-
 
 // Set router for api endpoints
 app.use('/', router);

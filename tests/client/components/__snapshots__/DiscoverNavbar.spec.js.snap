@@ -1,0 +1,467 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`DiscoverNavbar Should maintain existing snapshot 1`] = `
+ShallowWrapper {
+  "length": 1,
+  Symbol(enzyme.__root__): [Circular],
+  Symbol(enzyme.__unrendered__): <DiscoverNavbar />,
+  Symbol(enzyme.__renderer__): Object {
+    "batchedUpdates": [Function],
+    "getNode": [Function],
+    "render": [Function],
+    "simulateEvent": [Function],
+    "unmount": [Function],
+  },
+  Symbol(enzyme.__node__): Object {
+    "instance": null,
+    "key": undefined,
+    "nodeType": "function",
+    "props": Object {
+      "children": Array [
+        <Link
+          className="io-brand"
+          href={true}
+          replace={false}
+          to="/"
+        >
+          <div
+            className="io-text"
+          >
+            EventsManagerIO
+          </div>
+          <img
+            alt=""
+            className="io-img"
+            src="test-file-stub"
+          />
+        </Link>,
+        <div
+          className="io-middle"
+        >
+          <input
+            className="io-search-bar"
+            placeholder="Type keyword here"
+            type="text"
+          />
+          <i
+            className="io-search-button fa fa-search"
+          />
+        </div>,
+        <div
+          className="io-end"
+        >
+          <Link
+            className="io-text"
+            href={true}
+            replace={false}
+            to="/signin"
+          >
+            LOGIN
+          </Link>
+          <Link
+            className="io-text"
+            href={true}
+            replace={false}
+            to="/signup"
+          >
+            SIGNUP
+          </Link>
+        </div>,
+      ],
+      "classNameName": "io-navbar io-fixed-top",
+    },
+    "ref": null,
+    "rendered": Array [
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "class",
+        "props": Object {
+          "children": Array [
+            <div
+              className="io-text"
+            >
+              EventsManagerIO
+            </div>,
+            <img
+              alt=""
+              className="io-img"
+              src="test-file-stub"
+            />,
+          ],
+          "className": "io-brand",
+          "href": true,
+          "replace": false,
+          "to": "/",
+        },
+        "ref": null,
+        "rendered": Array [
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "host",
+            "props": Object {
+              "children": "EventsManagerIO",
+              "className": "io-text",
+            },
+            "ref": null,
+            "rendered": "EventsManagerIO",
+            "type": "div",
+          },
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "host",
+            "props": Object {
+              "alt": "",
+              "className": "io-img",
+              "src": "test-file-stub",
+            },
+            "ref": null,
+            "rendered": null,
+            "type": "img",
+          },
+        ],
+        "type": [Function],
+      },
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "host",
+        "props": Object {
+          "children": Array [
+            <input
+              className="io-search-bar"
+              placeholder="Type keyword here"
+              type="text"
+            />,
+            <i
+              className="io-search-button fa fa-search"
+            />,
+          ],
+          "className": "io-middle",
+        },
+        "ref": null,
+        "rendered": Array [
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "host",
+            "props": Object {
+              "className": "io-search-bar",
+              "placeholder": "Type keyword here",
+              "type": "text",
+            },
+            "ref": null,
+            "rendered": null,
+            "type": "input",
+          },
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "host",
+            "props": Object {
+              "className": "io-search-button fa fa-search",
+            },
+            "ref": null,
+            "rendered": null,
+            "type": "i",
+          },
+        ],
+        "type": "div",
+      },
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "host",
+        "props": Object {
+          "children": Array [
+            <Link
+              className="io-text"
+              href={true}
+              replace={false}
+              to="/signin"
+            >
+              LOGIN
+            </Link>,
+            <Link
+              className="io-text"
+              href={true}
+              replace={false}
+              to="/signup"
+            >
+              SIGNUP
+            </Link>,
+          ],
+          "className": "io-end",
+        },
+        "ref": null,
+        "rendered": Array [
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "class",
+            "props": Object {
+              "children": "LOGIN",
+              "className": "io-text",
+              "href": true,
+              "replace": false,
+              "to": "/signin",
+            },
+            "ref": null,
+            "rendered": "LOGIN",
+            "type": [Function],
+          },
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "class",
+            "props": Object {
+              "children": "SIGNUP",
+              "className": "io-text",
+              "href": true,
+              "replace": false,
+              "to": "/signup",
+            },
+            "ref": null,
+            "rendered": "SIGNUP",
+            "type": [Function],
+          },
+        ],
+        "type": "div",
+      },
+    ],
+    "type": [Function],
+  },
+  Symbol(enzyme.__nodes__): Array [
+    Object {
+      "instance": null,
+      "key": undefined,
+      "nodeType": "function",
+      "props": Object {
+        "children": Array [
+          <Link
+            className="io-brand"
+            href={true}
+            replace={false}
+            to="/"
+          >
+            <div
+              className="io-text"
+            >
+              EventsManagerIO
+            </div>
+            <img
+              alt=""
+              className="io-img"
+              src="test-file-stub"
+            />
+          </Link>,
+          <div
+            className="io-middle"
+          >
+            <input
+              className="io-search-bar"
+              placeholder="Type keyword here"
+              type="text"
+            />
+            <i
+              className="io-search-button fa fa-search"
+            />
+          </div>,
+          <div
+            className="io-end"
+          >
+            <Link
+              className="io-text"
+              href={true}
+              replace={false}
+              to="/signin"
+            >
+              LOGIN
+            </Link>
+            <Link
+              className="io-text"
+              href={true}
+              replace={false}
+              to="/signup"
+            >
+              SIGNUP
+            </Link>
+          </div>,
+        ],
+        "classNameName": "io-navbar io-fixed-top",
+      },
+      "ref": null,
+      "rendered": Array [
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "class",
+          "props": Object {
+            "children": Array [
+              <div
+                className="io-text"
+              >
+                EventsManagerIO
+              </div>,
+              <img
+                alt=""
+                className="io-img"
+                src="test-file-stub"
+              />,
+            ],
+            "className": "io-brand",
+            "href": true,
+            "replace": false,
+            "to": "/",
+          },
+          "ref": null,
+          "rendered": Array [
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "host",
+              "props": Object {
+                "children": "EventsManagerIO",
+                "className": "io-text",
+              },
+              "ref": null,
+              "rendered": "EventsManagerIO",
+              "type": "div",
+            },
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "host",
+              "props": Object {
+                "alt": "",
+                "className": "io-img",
+                "src": "test-file-stub",
+              },
+              "ref": null,
+              "rendered": null,
+              "type": "img",
+            },
+          ],
+          "type": [Function],
+        },
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "host",
+          "props": Object {
+            "children": Array [
+              <input
+                className="io-search-bar"
+                placeholder="Type keyword here"
+                type="text"
+              />,
+              <i
+                className="io-search-button fa fa-search"
+              />,
+            ],
+            "className": "io-middle",
+          },
+          "ref": null,
+          "rendered": Array [
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "host",
+              "props": Object {
+                "className": "io-search-bar",
+                "placeholder": "Type keyword here",
+                "type": "text",
+              },
+              "ref": null,
+              "rendered": null,
+              "type": "input",
+            },
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "host",
+              "props": Object {
+                "className": "io-search-button fa fa-search",
+              },
+              "ref": null,
+              "rendered": null,
+              "type": "i",
+            },
+          ],
+          "type": "div",
+        },
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "host",
+          "props": Object {
+            "children": Array [
+              <Link
+                className="io-text"
+                href={true}
+                replace={false}
+                to="/signin"
+              >
+                LOGIN
+              </Link>,
+              <Link
+                className="io-text"
+                href={true}
+                replace={false}
+                to="/signup"
+              >
+                SIGNUP
+              </Link>,
+            ],
+            "className": "io-end",
+          },
+          "ref": null,
+          "rendered": Array [
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "class",
+              "props": Object {
+                "children": "LOGIN",
+                "className": "io-text",
+                "href": true,
+                "replace": false,
+                "to": "/signin",
+              },
+              "ref": null,
+              "rendered": "LOGIN",
+              "type": [Function],
+            },
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "class",
+              "props": Object {
+                "children": "SIGNUP",
+                "className": "io-text",
+                "href": true,
+                "replace": false,
+                "to": "/signup",
+              },
+              "ref": null,
+              "rendered": "SIGNUP",
+              "type": [Function],
+            },
+          ],
+          "type": "div",
+        },
+      ],
+      "type": [Function],
+    },
+  ],
+  Symbol(enzyme.__options__): Object {
+    "adapter": ReactSixteenAdapter {
+      "options": Object {
+        "enableComponentDidUpdateOnSetState": true,
+      },
+    },
+  },
+}
+`;

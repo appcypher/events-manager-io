@@ -2,12 +2,11 @@ import React from 'react';
 import classNames from 'classnames';
 import { connect } from 'react-redux';
 import CenterAction from '../actions/centerActions';
-import adjustPrice from '../adjust';
 
 /**
  * Shows information of a selected center.
  */
-class ViewCenterModal extends React.Component {
+export class ViewCenterModal extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -16,9 +15,29 @@ class ViewCenterModal extends React.Component {
       type: '',
       price: '',
       location: '',
+      available: true,
       events: [],
     };
   }
+
+  adjustPrice = (price) => {
+    let str = '';
+
+    if (price) {
+      const priceString = (price).toString().split('').reverse().join('');
+
+      for (let i = 0; i < priceString.length; i += 1) {
+        str += priceString[i];
+        if ((i + 1) % 3 === 0 && i !== priceString.length - 1) {
+          str += ',';
+        }
+      }
+
+      str = str.split('').reverse().join('');
+    }
+
+    return str;
+  };
 
   // Modify button shows up only when the user is admin.
   renderModifyButton = () => {
@@ -32,15 +51,16 @@ class ViewCenterModal extends React.Component {
     const classes = classNames({ 'io-modal': true, hide: !this.props.showViewCenterModal });
 
     const {
-      picture1, name, type, location, price, events,
+      picture1, name, type, location, available, price, events,
     } = this.props.viewCenterModalState;
+
+    const availability = available ? 'CURRENTLY AVAILABLE' : 'NOT AVAILABLE';
 
     const images = [
       <img src={picture1} alt="" />,
     ];
 
     const eventViews = [];
-
 
     // If events exist on center, then their details are mapped to UI elements.
     if (events) {
@@ -72,10 +92,11 @@ class ViewCenterModal extends React.Component {
           <div className="io-body io-overflow">
             <div className="io-img-hgroup">{images}</div>
             <div className="io-content view">
+              <h5 className="available" >{availability}</h5>
               <h2 className="name">{name}</h2>
               <p className="type">{type}</p>
               <p className="location">{location}.</p>
-              <p className="price">{`₦${adjustPrice(price)} per day`}</p>
+              <p className="price">{`₦${this.adjustPrice(price)} per day`}</p>
               <p className="list-title">Available Facilities</p>
               <div className="list-container">
                 <ul className="list">

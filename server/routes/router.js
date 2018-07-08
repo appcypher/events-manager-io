@@ -114,9 +114,9 @@ router.route('/api/v1/events/:eventId')
     authenticate,
     Validation.checkParamValid('eventId'),
     Validation.checkDateValid,
+    Validation.checkUserOwnEvent,
     Validation.checkDateNotTaken,
     Validation.checkAssociatedCenterExists,
-    Validation.checkUserOwnEvent,
     EventController.modifyEvent,
   );
 

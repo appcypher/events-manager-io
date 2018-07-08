@@ -63,9 +63,11 @@ class UserController {
             if (!check) { // If password does not match
               res.status(401).send({ message: 'Wrong password or username!' });
             } else {
+              const safeUser = user;
+              safeUser.password = undefined;
               // Create a token that lasts for an hour
               const token = jwt.sign({ id: user.id, admin: user.admin }, process.env.SECRET_KEY, { expiresIn: '60m' });
-              res.status(200).send({ message: 'User logged in!', token });
+              res.status(200).send({ message: 'User logged in!', user: safeUser, token });
             }
           });
         } else {
