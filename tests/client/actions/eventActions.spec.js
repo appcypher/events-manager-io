@@ -6,13 +6,13 @@ import {
   putEventsResponse,
   deleteEventsResponse,
 } from '../mocks/axiosMock';
+import url from '../../../client/src/url';
 
 describe('EventAction', () => {
   const token = '';
   const details = {};
   const successFunc = () => {};
   const failFunc = () => {};
-  const url = 'http://localhost:3000';
 
   let store;
   let mock = mockAxios();

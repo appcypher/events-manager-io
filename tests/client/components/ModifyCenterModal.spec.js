@@ -37,13 +37,13 @@ describe('ModifyCenterModal', () => {
 
   it('should respond to change event and change the state of modal', () => {
     wrapper = mount(<ModifyCenterModal store={store} modifyCenterModalState={{ id: 1 }} />);
-    wrapper.find('#name').simulate('change', { target: { name: 'name', value: 'Ace' } });
+    wrapper.find('#modify-center-name').simulate('change', { target: { name: 'name', value: 'Ace' } });
     expect(wrapper.state('name')).toEqual('Ace');
   });
 
   it('should respond to change event and change the state of modal', () => {
     wrapper = mount(<ModifyCenterModal store={store} modifyCenterModalState={{ id: 1 }} />);
-    wrapper.find('#location').simulate('change', { target: { name: 'location', value: 'Lagos' } });
+    wrapper.find('#modify-center-location').simulate('change', { target: { name: 'location', value: 'Lagos' } });
     expect(wrapper.state('location')).toEqual('Lagos');
   });
 });

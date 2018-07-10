@@ -6,13 +6,13 @@ import {
   postCentersResponse,
   putCentersResponse,
 } from '../mocks/axiosMock';
+import url from '../../../client/src/url';
 
 describe('CenterAction', () => {
   const token = '';
   const details = {};
   const successFunc = () => {};
   const failFunc = () => {};
-  const url = 'http://localhost:3000';
 
   let store;
   let mock = mockAxios();

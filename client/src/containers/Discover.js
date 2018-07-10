@@ -190,7 +190,7 @@ export class Discover extends React.Component {
 
   render() {
     return (
-      <div>
+      <div id="discover-page">
         {this.renderDiscoverNavBar()}
         <DiscoverBody showViewCenterModal={this.showViewCenterModal} />
         <Pagination getPage={this.getPageCenters} />

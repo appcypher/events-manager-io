@@ -76,7 +76,7 @@ export class SignUpForm extends React.Component {
           </div>
         </div>
         <div>
-          <button id="login-button" className="io-btn io-signup" onClick={this.submit}>SIGN UP</button><span className="io-extra">Subscribe for newsletter</span>
+          <button id="signup-button" className="io-btn io-signup" onClick={this.submit}>SIGN UP</button><span className="io-extra">Subscribe for newsletter</span>
         </div>
         <div className="io-extra io-signup">
           <span>Already have an account? </span><Link href to="/signin" className="io-anchor">sign in here </Link>

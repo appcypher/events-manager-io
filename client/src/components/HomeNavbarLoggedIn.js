@@ -20,7 +20,7 @@ export const HomeNavbarLoggedIn = () => (
       <a href="/#about">ABOUT US</a>
     </div>
     <div className="io-end">
-      <Link href to="/discover" className="io-text">DISCOVER</Link>
+      <Link id="goto-discover" href to="/discover" className="io-text">DISCOVER</Link>
       <Link href to="/profile" className="io-text">PROFILE</Link>
     </div>
   </Navbar>

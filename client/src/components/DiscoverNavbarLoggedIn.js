@@ -33,7 +33,7 @@ export class DiscoverNavbarLoggedIn extends React.Component {
     return (
       <Navbar classNameName="io-navbar io-fixed-top">
         <Link href to="/" className="io-brand">
-          <div className="io-text">EventsManagerIO</div>
+          <div id="goto-home" className="io-text">EventsManagerIO</div>
           <img alt="" src={brand} className="io-img" />
         </Link>
         <div className="io-middle">
@@ -43,7 +43,7 @@ export class DiscoverNavbarLoggedIn extends React.Component {
         <div className="io-end">
           <Link href to="/profile">
             <i className="io-icon fa fa-user" />
-            <div className="io-text io-switchable">PROFILE</div>
+            <div id="goto-profile" className="io-text io-switchable">PROFILE</div>
           </Link>
           <i className="io-icon fa fa-bell" />
           <div className="io-text io-switchable">MESSAGES</div>

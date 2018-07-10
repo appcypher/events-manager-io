@@ -130,23 +130,23 @@ export class AddEventModal extends React.Component {
   render() {
     const classes = classNames({ 'io-modal': true, hide: !this.props.showAddEventModal });
     return (
-      <div className={classes} onClick={this.props.hideAddEventModal}>
+      <div id="add-event-modal" className={classes} onClick={this.props.hideAddEventModal}>
         <div className="io-modal-body event">
           <div className="io-header">CREATE NEW EVENT</div>
           <div className="io-body io-overflow">
             <form className="io-content io-start">
-              <ModalSection title="Title"><input id="title" placeholder="Enter name of event here" className="io-input io-input-field" name="title" onChange={this.saveInput} /></ModalSection>
-              <ModalSection title="Details"><input id="description" placeholder="Enter description here" className="io-input io-input-field" name="description" onChange={this.saveInput} /></ModalSection>
+              <ModalSection title="Title"><input id="add-event-title" placeholder="Enter name of event here" className="io-input io-input-field" name="title" onChange={this.saveInput} /></ModalSection>
+              <ModalSection title="Details"><input id="add-event-description" placeholder="Enter description here" className="io-input io-input-field" name="description" onChange={this.saveInput} /></ModalSection>
               <ModalSection title="Center">
-                <input placeholder="Enter center here" className="io-input io-input-field" autoComplete="off" name="centerName" onChange={this.saveInput} />
+                <input id="add-event-center" placeholder="Enter center here" className="io-input io-input-field" autoComplete="off" name="centerName" onChange={this.saveInput} />
               </ModalSection>
-              <ModalSection title="Date"><input type="date" placeholder="Enter date of event here" className="io-input io-input-field" name="date" onChange={this.saveInput} /></ModalSection>
-              <ModalSection title="Time"><input type="time" placeholder="Enter time of event here" className="io-input io-input-field" name="time" onChange={this.saveInput} /></ModalSection>
+              <ModalSection title="Date"><input id="add-event-date" type="date" placeholder="Enter date of event here" className="io-input io-input-field" name="date" onChange={this.saveInput} /></ModalSection>
+              <ModalSection title="Time"><input id="add-event-time" type="time" placeholder="Enter time of event here" className="io-input io-input-field" name="time" onChange={this.saveInput} /></ModalSection>
             </form>
           </div>
           <div className="io-footer">
-            <button id="add-center-cancel" className="io-submit-btn io-sm" onClick={this.props.hideAddEventModal}>CANCEL</button>
-            <button id="add-center-submit" className="io-submit-btn io-sm" onClick={this.submit}>SUBMIT</button>
+            <button id="add-event-cancel" className="io-submit-btn io-sm" onClick={this.props.hideAddEventModal}>CANCEL</button>
+            <button id="add-event-submit" className="io-submit-btn io-sm" onClick={this.submit}>SUBMIT</button>
           </div>
           <ul className={`io-dropdown ${this.state.showDropdown ? '' : 'hide'}`}>{this.state.centerNames}</ul>
         </div>

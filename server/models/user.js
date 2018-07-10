@@ -11,7 +11,7 @@ export default (sequelize, DataTypes) => {
       allowNull: false,
       unique: true,
       validate: {
-        is: { args: /^[A-Za-z_](\w|_|[0-9])*$/, msg: 'Invalid name: make sure it is at least 2 characters!' },
+        is: { args: /^[A-Za-z_](\w|_|[0-9.])*$/, msg: 'Invalid name: make sure it is at least 2 characters!' },
       },
     },
     password: {
@@ -33,7 +33,7 @@ export default (sequelize, DataTypes) => {
       type: DataTypes.STRING,
       allowNull: false,
       validate: {
-        is: { args: /^[^\\+;./'"@~!#$%^&*()[\]=?]+$/, msg: 'Invalid name: Make sure it doesn\'t contain punctuations!' },
+        is: { args: /^[^\\+;/'"@~!#$%^&*()[\]=?]+$/, msg: 'Invalid name: Make sure it doesn\'t contain punctuations!' },
       },
     },
     admin: {

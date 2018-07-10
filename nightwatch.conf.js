@@ -3,6 +3,8 @@ require('babel-core/register')();
 module.exports = {
   src_folders: ['./tests/e2e'],
 
+  exclude: ['./tests/e2e/utils'],
+
   selenium: {
     start_process: true,
     server_path: './bin/selenium-server-standalone-3.9.1.jar',

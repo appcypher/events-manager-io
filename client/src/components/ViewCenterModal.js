@@ -42,7 +42,7 @@ export class ViewCenterModal extends React.Component {
   // Modify button shows up only when the user is admin.
   renderModifyButton = () => {
     if (localStorage.getItem('user.admin') === 'true') {
-      return <button id="add-center-cancel" className="io-submit-btn io-sm" onClick={this.props.showModifyCenterModal(this.props.viewCenterModalState)}>MODIFY</button>;
+      return <button id="modify-center" className="io-submit-btn io-sm" onClick={this.props.showModifyCenterModal(this.props.viewCenterModalState)}>MODIFY</button>;
     }
     return '';
   }

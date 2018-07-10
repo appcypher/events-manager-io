@@ -36,7 +36,6 @@ export class ModifyCenterModal extends React.Component {
     } else {
       this.setState({ [target.name]: target.checked });
     }
-    console.log(this.state.available);
   }
 
   // Store file info from selected images.
@@ -78,7 +77,6 @@ export class ModifyCenterModal extends React.Component {
     };
 
     const token = localStorage.getItem('user.token');
-    console.log(this.state);
     this.props.modifyCenter(token, this.state, centerId, reloadPage, showError);
   }
 
@@ -96,7 +94,6 @@ export class ModifyCenterModal extends React.Component {
 
     // Displaying the selected center's existing details.
     if (this.props.modifyCenterModalState.populate) {
-      console.log('passed state>', this.props.modifyCenterModalState);
       ({
         name, description, type, location, available, price,
       } = this.props.modifyCenterModalState);
@@ -109,7 +106,6 @@ export class ModifyCenterModal extends React.Component {
         available,
         price,
       };
-      console.log('state>', this.state);
       this.props.modifyCenterModalState.populate = false;
     } else {
       ({
@@ -117,20 +113,18 @@ export class ModifyCenterModal extends React.Component {
       } = this.state);
     }
 
-    console.log('available', available);
-
     return (
       <div id="modify-center-modal" className={classes} onClick={this.props.hideModifyCenterModal}>
         <div className="io-modal-body">
           <div className="io-header">MODIFY CENTER</div>
           <div className="io-body io-overflow">
             <form className="io-content io-start">
-              <ModalSection title="Name"><input value={name} id="name" placeholder="Enter name of hall here" className="io-input io-input-field" name="name" onChange={this.saveInput} /></ModalSection>
-              <ModalSection title="Details"><input value={description} placeholder="Enter description here" className="io-input io-input-field" name="description" onChange={this.saveInput} /></ModalSection>
-              <ModalSection title="Type"><input value={type} placeholder="Enter type of center here" className="io-input io-input-field" name="type" onChange={this.saveInput} /></ModalSection>
-              <ModalSection title="Location"><input value={location} id="location" placeholder="Enter location here" className="io-input io-input-field" name="location" onChange={this.saveInput} /></ModalSection>
+              <ModalSection title="Name"><input value={name} id="modify-center-name" placeholder="Enter name of hall here" className="io-input io-input-field" name="name" onChange={this.saveInput} /></ModalSection>
+              <ModalSection title="Details"><input value={description} id="modify-center-description" placeholder="Enter description here" className="io-input io-input-field" name="description" onChange={this.saveInput} /></ModalSection>
+              <ModalSection title="Type"><input value={type} id="modify-center-type" placeholder="Enter type of center here" className="io-input io-input-field" name="type" onChange={this.saveInput} /></ModalSection>
+              <ModalSection title="Location"><input value={location} id="modify-center-location" placeholder="Enter location here" className="io-input io-input-field" name="location" onChange={this.saveInput} /></ModalSection>
               <ModalSection title="Price">
-                <span>₦</span><input value={price} placeholder="Enter price here" type="number" className="io-input-grow io-input-field" name="price" onChange={this.saveInput} /><span>per day</span>
+                <span>₦</span><input value={price} id="modify-center-price" placeholder="Enter price here" type="number" className="io-input-grow io-input-field" name="price" onChange={this.saveInput} /><span>per day</span>
               </ModalSection>
               <ModalSection title="Pictures"><input type="file" accept="image/*" multiple className="io-input-grow io-input-field io-upload-btn" name="pictures" onChange={this.saveImageInput} /></ModalSection>
               <ModalSection title="Available" extra="io-start"><ModalList list={availablility} checked={available} saveInput={this.saveInput} /></ModalSection>
@@ -139,7 +133,7 @@ export class ModifyCenterModal extends React.Component {
           </div>
           <div className="io-footer">
             <button className="io-submit-btn io-sm" onClick={this.props.hideModifyCenterModal} onChange={this.handleChange}>CANCEL</button>
-            <button className="io-submit-btn io-sm" onClick={this.submit(centerId)}>SUBMIT</button>
+            <button id="modify-center-submit" className="io-submit-btn io-sm" onClick={this.submit(centerId)}>SUBMIT</button>
           </div>
         </div>
       </div>

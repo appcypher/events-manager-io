@@ -21,7 +21,7 @@ const ConfirmModal = (props) => {
   }
 
   return (
-    <div className={`${classes} ${type} io-error`} onClick={props.hideConfirmModal}>
+    <div id="confirm-modal" className={`${classes} ${type} io-error`} onClick={props.hideConfirmModal}>
       <div className="io-modal-body io-error">
         <div className="io-header io-error">{header}</div>
         <div className="io-body">
@@ -30,8 +30,8 @@ const ConfirmModal = (props) => {
           </div>
         </div>
         <div className="io-footer io-error">
-          <button id="view-center-ok" className="io-submit-btn io-sm" onClick={callback}>{confirmText} </button>
-          <button id="view-center-ok" className="io-submit-btn io-sm" onClick={props.hideConfirmModal}>CANCEL </button>
+          <button id="confirm-ok" className="io-submit-btn io-sm" onClick={callback}>{confirmText} </button>
+          <button id="confirm-cancel" className="io-submit-btn io-sm" onClick={props.hideConfirmModal}>CANCEL </button>
         </div>
       </div>
     </div>
