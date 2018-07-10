@@ -165,7 +165,7 @@ export class Profile extends React.Component {
 
   render() {
     return (
-      <div>
+      <div id="profile-page">
         <ConnectedProfileNavbar history={this.props.history} />
         <ProfileBody
           showModifyEventModal={this.showModifyEventModal}

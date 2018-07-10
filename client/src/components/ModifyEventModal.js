@@ -170,13 +170,13 @@ export class ModifyEventModal extends React.Component {
     }
 
     return (
-      <div className={classes} onClick={this.props.hideModifyEventModal}>
+      <div id="modify-event-modal" className={classes} onClick={this.props.hideModifyEventModal}>
         <div className="io-modal-body event">
           <div className="io-header">MODIFY EVENT</div>
           <div className="io-body io-overflow">
             <form className="io-content io-start">
-              <ModalSection title="Title"><input value={title} id="title" placeholder="Enter name of event here" className="io-input io-input-field" name="title" onChange={this.saveInput} /></ModalSection>
-              <ModalSection title="Details"><input value={description} id="description" placeholder="Enter description here" className="io-input io-input-field" name="description" onChange={this.saveInput} /></ModalSection>
+              <ModalSection title="Title"><input value={title} id="modify-event-title" placeholder="Enter name of event here" className="io-input io-input-field" name="title" onChange={this.saveInput} /></ModalSection>
+              <ModalSection title="Details"><input value={description} id="modify-event-description" placeholder="Enter description here" className="io-input io-input-field" name="description" onChange={this.saveInput} /></ModalSection>
               <ModalSection title="Center">
                 <input placeholder="Enter center here" value={center.name} className="io-input io-input-field" autoComplete="off" name="centerName" onChange={this.saveInput} />
               </ModalSection>
@@ -185,8 +185,8 @@ export class ModifyEventModal extends React.Component {
             </form>
           </div>
           <div className="io-footer">
-            <button id="add-center-cancel" className="io-submit-btn io-sm" onClick={this.props.hideModifyEventModal}>CANCEL</button>
-            <button id="add-center-submit" className="io-submit-btn io-sm" onClick={this.submit(eventId)}>SUBMIT</button>
+            <button id="modify-event-cancel" className="io-submit-btn io-sm" onClick={this.props.hideModifyEventModal}>CANCEL</button>
+            <button id="modify-event-submit" className="io-submit-btn io-sm" onClick={this.submit(eventId)}>SUBMIT</button>
           </div>
           <ul className={`io-dropdown ${this.state.showDropdown ? '' : 'hide'}`}>{this.state.centerNames}</ul>
         </div>

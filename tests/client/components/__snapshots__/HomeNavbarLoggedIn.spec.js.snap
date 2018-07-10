@@ -66,6 +66,7 @@ ShallowWrapper {
           <Link
             className="io-text"
             href={true}
+            id="goto-discover"
             replace={false}
             to="/discover"
           >
@@ -194,6 +195,7 @@ ShallowWrapper {
             <Link
               className="io-text"
               href={true}
+              id="goto-discover"
               replace={false}
               to="/discover"
             >
@@ -220,6 +222,7 @@ ShallowWrapper {
               "children": "DISCOVER",
               "className": "io-text",
               "href": true,
+              "id": "goto-discover",
               "replace": false,
               "to": "/discover",
             },
@@ -292,6 +295,7 @@ ShallowWrapper {
             <Link
               className="io-text"
               href={true}
+              id="goto-discover"
               replace={false}
               to="/discover"
             >
@@ -420,6 +424,7 @@ ShallowWrapper {
               <Link
                 className="io-text"
                 href={true}
+                id="goto-discover"
                 replace={false}
                 to="/discover"
               >
@@ -446,6 +451,7 @@ ShallowWrapper {
                 "children": "DISCOVER",
                 "className": "io-text",
                 "href": true,
+                "id": "goto-discover",
                 "replace": false,
                 "to": "/discover",
               },

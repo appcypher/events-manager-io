@@ -1,8 +1,6 @@
 import axios from 'axios';
 import MockAdapter from 'axios-mock-adapter';
-
-// Url
-const url = 'http://localhost:3000';
+import url from '../../../client/src/url';
 
 // Response data
 const getCentersResponse = {

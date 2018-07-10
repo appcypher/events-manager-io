@@ -33,13 +33,13 @@ describe('AddEventModal', () => {
 
   it('should respond to change event and change the state of modal', () => {
     wrapper = mount(<AddEventModal store={store} />);
-    wrapper.find('#title').simulate('change', { target: { name: 'title', value: 'Party' } });
+    wrapper.find('#add-event-title').simulate('change', { target: { name: 'title', value: 'Party' } });
     expect(wrapper.state('title')).toEqual('Party');
   });
 
   it('should respond to change event and change the state of modal', () => {
     wrapper = mount(<AddEventModal store={store} />);
-    wrapper.find('#description').simulate('change', { target: { name: 'description', value: 'It will be nice' } });
+    wrapper.find('#add-event-description').simulate('change', { target: { name: 'description', value: 'It will be nice' } });
     expect(wrapper.state('description')).toEqual('It will be nice');
   });
 });
