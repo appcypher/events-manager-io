@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<testsuites errors="0"
+            failures="1"
+            tests="2">
+
+  <testsuite name="signin.spec"
+    errors="0" failures="1" hostname="" id="" package="signin.spec" skipped="0"
+    tests="2" time="10.56" timestamp="Mon, 09 Jul 2018 09:16:56 GMT">
+  
+    <testcase name="Regular Login" classname="signin.spec" time="8.436" assertions="2">
+
+    
+
+    
+    </testcase>
+  
+    <testcase name="Admin Login" classname="signin.spec" time="2.127" assertions="1">  <failure message="Timed out while waiting for element &lt;body&gt; to be present for 2000 milliseconds.">    at Object.AdminLogin [as Admin Login] (/Users/andeladeveloper/Desktop/Projects/events-manager-io/tests/e2e/signin.spec.js:24:8)
+    at _combinedTickCallback (internal/process/next_tick.js:131:7)</failure>
+
+    
+    </testcase>
+  
+
+  
+
+  
+  </testsuite>
+</testsuites>

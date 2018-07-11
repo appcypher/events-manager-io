@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<testsuites errors="0"
+            failures="0"
+            tests="3">
+
+  <testsuite name="center.spec"
+    errors="0" failures="0" hostname="" id="" package="center.spec" skipped="0"
+    tests="3" time="29.94" timestamp="Mon, 09 Jul 2018 12:59:43 GMT">
+  
+    <testcase name="View Center" classname="center.spec" time="8.591" assertions="1">
+
+    
+    </testcase>
+  
+    <testcase name="Create Center" classname="center.spec" time="13.85" assertions="5">
+
+    
+
+    
+
+    
+
+    
+
+    
+    </testcase>
+  
+    <testcase name="Modify Center" classname="center.spec" time="7.505" assertions="3">
+
+    
+
+    
+
+    
+    </testcase>
+  
+
+  
+
+  
+  </testsuite>
+</testsuites>

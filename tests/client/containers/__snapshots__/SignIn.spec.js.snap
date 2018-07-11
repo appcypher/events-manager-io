@@ -1,6 +1,10 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+<<<<<<< HEAD
 exports[`<SignIn /> should maintain existing snapshot 1`] = `
+=======
+exports[`<SignIn /> Should maintain existing snapshot 1`] = `
+>>>>>>> 3a61c4e8b27f096ee0a69bc247d734a3e37bdf4b
 ShallowWrapper {
   "length": 1,
   Symbol(enzyme.__root__): [Circular],

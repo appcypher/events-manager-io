@@ -4,7 +4,11 @@ exports[`ProfileEventCards Should maintain existing snapshot 1`] = `
 ShallowWrapper {
   "length": 1,
   Symbol(enzyme.__root__): [Circular],
+<<<<<<< HEAD
   Symbol(enzyme.__unrendered__): <Provider
+=======
+  Symbol(enzyme.__unrendered__): <Connect(ProfileEventCards)
+>>>>>>> 3a61c4e8b27f096ee0a69bc247d734a3e37bdf4b
     store={
       Object {
         "clearActions": [Function],
@@ -15,12 +19,16 @@ ShallowWrapper {
         "subscribe": [Function],
       }
     }
+<<<<<<< HEAD
   >
     <Connect(ProfileEventCards)
       showConfirmModal={[Function]}
       showModifyEventModal={[Function]}
     />
   </Provider>,
+=======
+  />,
+>>>>>>> 3a61c4e8b27f096ee0a69bc247d734a3e37bdf4b
   Symbol(enzyme.__renderer__): Object {
     "batchedUpdates": [Function],
     "getNode": [Function],
@@ -33,8 +41,48 @@ ShallowWrapper {
     "key": undefined,
     "nodeType": "class",
     "props": Object {
+<<<<<<< HEAD
       "showConfirmModal": [Function],
       "showModifyEventModal": [Function],
+=======
+      "deleteEvent": [Function],
+      "event": Object {
+        "events": Array [],
+        "message": "",
+      },
+      "store": Object {
+        "clearActions": [Function],
+        "dispatch": [Function],
+        "getActions": [Function],
+        "getState": [Function],
+        "replaceReducer": [Function],
+        "subscribe": [Function],
+      },
+      "storeSubscription": Subscription {
+        "listeners": Object {
+          "clear": [Function],
+          "get": [Function],
+          "notify": [Function],
+          "subscribe": [Function],
+        },
+        "onStateChange": [Function],
+        "parentSub": undefined,
+        "store": Object {
+          "clearActions": [Function],
+          "dispatch": [Function],
+          "getActions": [Function],
+          "getState": [Function],
+          "replaceReducer": [Function],
+          "subscribe": [Function],
+        },
+        "unsubscribe": [Function],
+      },
+      "user": Object {
+        "message": "",
+        "token": "",
+        "user": Object {},
+      },
+>>>>>>> 3a61c4e8b27f096ee0a69bc247d734a3e37bdf4b
     },
     "ref": null,
     "rendered": null,
@@ -46,8 +94,48 @@ ShallowWrapper {
       "key": undefined,
       "nodeType": "class",
       "props": Object {
+<<<<<<< HEAD
         "showConfirmModal": [Function],
         "showModifyEventModal": [Function],
+=======
+        "deleteEvent": [Function],
+        "event": Object {
+          "events": Array [],
+          "message": "",
+        },
+        "store": Object {
+          "clearActions": [Function],
+          "dispatch": [Function],
+          "getActions": [Function],
+          "getState": [Function],
+          "replaceReducer": [Function],
+          "subscribe": [Function],
+        },
+        "storeSubscription": Subscription {
+          "listeners": Object {
+            "clear": [Function],
+            "get": [Function],
+            "notify": [Function],
+            "subscribe": [Function],
+          },
+          "onStateChange": [Function],
+          "parentSub": undefined,
+          "store": Object {
+            "clearActions": [Function],
+            "dispatch": [Function],
+            "getActions": [Function],
+            "getState": [Function],
+            "replaceReducer": [Function],
+            "subscribe": [Function],
+          },
+          "unsubscribe": [Function],
+        },
+        "user": Object {
+          "message": "",
+          "token": "",
+          "user": Object {},
+        },
+>>>>>>> 3a61c4e8b27f096ee0a69bc247d734a3e37bdf4b
       },
       "ref": null,
       "rendered": null,

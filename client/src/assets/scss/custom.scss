@@ -663,6 +663,7 @@ body {
       display: flex;
       align-items: center;
       justify-content: center;
+      margin-left: -5px;
       &:hover {
         border-radius: 50%;
         background-color: $login-text-area-gray;
