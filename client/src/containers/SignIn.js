@@ -1,59 +1,82 @@
 import React from 'react';
-import classNames from 'classnames';
 import HomeNavbar from '../components/HomeNavbar';
-import HomeNavbarLoggedIn from '../components/HomeNavbarLoggedIn';
+import ConnectedHomeNavbarLoggedIn from '../components/HomeNavbarLoggedIn';
 import LoginContainer from '../components/LoginContainer';
-import LoginForm from '../components/LoginForm';
+import ConnectedLoginForm from '../components/LoginForm';
 import AlertModal from '../components/AlertModal';
+import Loader from '../components/Loader';
 
-
+/**
+ * Shows information of the sign-in page.
+ */
 class SignIn extends React.Component {
-  static renderHomeNavbar() {
-    if (
-      localStorage.getItem('user.token') !== 'undefined' &&
-      localStorage.getItem('user.token') !== ''
-    ) {
-      return <HomeNavbarLoggedIn />;
-    }
-    return <HomeNavbar />;
-  }
-
   constructor(props) {
     super(props);
     this.state = {
-      alert: {
-        msg: '',
-        hide: true,
-      },
+      alertModalState: { message: '', show: false, type: 'success' },
+      showLoader: false,
     };
   }
 
   componentDidMount() {
+    // Show current page in document's title.
     document.title = 'LogIn • EventsManagerIO';
   }
 
-  showAlert = (msg) => {
+  showAlertModal = (message, type) => {
     this.setState({
-      alert: { msg, hide: false },
+      alertModalState: { message, type, show: true },
     });
   }
 
-  hideAlert = () => {
+  hideAlertModal = () => {
     this.setState({
-      alert: { hide: true },
+      alertModalState: { message: '', type: 'success', show: false },
     });
+  }
+
+  showLoader = () => {
+    this.setState({
+      showLoader: true,
+    });
+  }
+
+  hideLoader = () => {
+    this.setState({
+      showLoader: false,
+    });
+  }
+
+  renderHomeNavbar = () => {
+    if (
+      localStorage.getItem('user.token') &&
+      localStorage.getItem('user.token') !== 'undefined' &&
+      localStorage.getItem('user.token') !== ''
+    ) {
+      return <ConnectedHomeNavbarLoggedIn />;
+    }
+    return <HomeNavbar />;
   }
 
   render() {
-    const { msg, hide } = this.state.alert;
-    const classes = classNames({ 'io-modal': true, hide });
     return (
       <div className="io-stretch-vertical">
-        {SignIn.renderHomeNavbar()}
+        {this.renderHomeNavbar()}
         <LoginContainer>
-          <LoginForm showAlert={this.showAlert} />
+          <ConnectedLoginForm
+            showAlertModal={this.showAlertModal}
+            showLoader={this.showLoader}
+            hideLoader={this.hideLoader}
+            history={this.props.history}
+          />
         </LoginContainer>
-        <AlertModal msg={msg} className={classes} hideAlert={this.hideAlert} />
+        <AlertModal
+          alertModalState={this.state.alertModalState}
+          hideAlertModal={this.hideAlertModal}
+        />
+        <Loader
+          showLoader={this.state.showLoader}
+        />
       </div>
     );
   }

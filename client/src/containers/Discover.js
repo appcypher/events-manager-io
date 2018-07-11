@@ -1,35 +1,52 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import classNames from 'classnames';
+import { Notification } from 'react-notification';
 import CenterAction from '../actions/centerActions';
 import DiscoverNavbar from '../components/DiscoverNavbar';
-import DiscoverNavbarLoggedIn from '../components/DiscoverNavbarLoggedIn';
+import ConnectedDiscoverNavbarLoggedIn from '../components/DiscoverNavbarLoggedIn';
 import DiscoverBody from '../components/DiscoverBody';
 import Pagination from '../components/Pagination';
 import Footer from '../components/Footer';
 import MainFab from '../components/MainFab';
 import LabelledFab from '../components/LabelledFab';
 import FabGroup from '../components/FabGroup';
-import AddCenterModal from '../components/AddCenterModal';
+import ConnectedAddCenterModal from '../components/AddCenterModal';
+import ConnectedAddEventModal from '../components/AddEventModal';
+import ConnectedModifyCenterModal from '../components/ModifyCenterModal';
+import ConnectedViewCenterModal from '../components/ViewCenterModal';
 import AlertModal from '../components/AlertModal';
+import ConfirmModal from '../components/ConfirmModal';
+import Loader from '../components/Loader';
 
-class Discover extends React.Component {
+export class Discover extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       hideFabGroup: true,
       showAddCenterModal: false,
-      alert: {
-        msg: '',
-        hide: true,
+      showViewCenterModal: false,
+      showModifyCenterModal: false,
+      viewCenterModalState: {},
+      showAddEventModal: false,
+      modifyCenterModalState: { populate: false },
+      showLoader: false,
+      showNotification: false,
+      notificationState: { message: '', show: false },
+      alertModalState: { message: '', show: false, type: 'success' },
+      confirmModalState: {
+        message: '', show: false, confirmText: '', callback: null,
       },
     };
 
+    // Get token from local storage
+    const token = localStorage.getItem('user.token');
+
     // Get page 1 centers
-    this.props.getAllCenters(this.props.user.token, 1);
+    this.props.getAllCenters(token, 1);
   }
 
   componentDidMount = () => {
+    // Show current page in document's title.
     document.title = 'Discover • EventsManagerIO';
   }
 
@@ -38,31 +55,122 @@ class Discover extends React.Component {
     this.props.getAllCenters(this.props.user.token, pageNumber);
   }
 
-  hideAlert = () => {
-    this.setState({
-      alert: { hide: true },
-    });
-  }
-
-  showAlert = (msg) => {
-    this.setState({
-      alert: { msg, hide: false },
-    });
-  }
-
   showAddCenterModal = () => {
     this.setState({
       showAddCenterModal: true,
     });
   }
 
-  hideAddCenterModal = () => {
+  hideAddCenterModal = (e) => {
+    if (e === undefined || e.target === e.currentTarget) {
+      this.setState({
+        showAddCenterModal: false,
+      });
+    }
+  }
+
+  showViewCenterModal = listPosition => () => {
+    const center = [...this.props.center.centers][listPosition];
+
     this.setState({
-      showAddCenterModal: false,
+      showViewCenterModal: true,
+      viewCenterModalState: center,
     });
   }
 
-  showAddEventModal = () => {}
+  hideViewCenterModal = (e) => {
+    if (e === undefined || e.target === e.currentTarget) {
+      this.setState({
+        showViewCenterModal: false,
+      });
+    }
+  }
+
+  showModifyCenterModal = center => () => {
+    this.setState({
+      showViewCenterModal: false,
+      showModifyCenterModal: true,
+      modifyCenterModalState: { ...center, populate: true },
+    });
+  }
+
+  hideModifyCenterModal = (e) => {
+    if (e === undefined || e.target === e.currentTarget) {
+      this.setState({
+        showModifyCenterModal: false,
+      });
+    }
+  }
+
+  showAddEventModal = () => {
+    this.setState({
+      showAddEventModal: true,
+    });
+  }
+
+  hideAddEventModal = (e) => {
+    if (e === undefined || e.target === e.currentTarget) {
+      this.setState({
+        showAddEventModal: false,
+      });
+    }
+  }
+
+  showLoader = () => {
+    this.setState({
+      showLoader: true,
+    });
+  }
+
+  hideLoader = () => {
+    this.setState({
+      showLoader: false,
+    });
+  }
+
+  showNotification = (message) => {
+    this.setState({
+      notificationState: { show: true, message },
+    });
+
+    setTimeout(() => {
+      this.hideNotification();
+    }, 2500);
+  }
+
+  hideNotification = () => {
+    this.setState({
+      notificationState: { ...this.state.notificationState, show: false },
+    });
+  }
+
+  showAlertModal = (message, type) => {
+    this.setState({
+      alertModalState: { message, type, show: true },
+    });
+  }
+
+  hideAlertModal = () => {
+    this.setState({
+      alertModalState: { message: '', type: 'success', show: false },
+    });
+  }
+
+  showConfirmModal = (message, type, confirmText, callback) => {
+    this.setState({
+      confirmModalState: {
+        message, type, show: true, confirmText, callback,
+      },
+    });
+  }
+
+  hideConfirmModal = () => {
+    this.setState({
+      confirmModalState: {
+        message: '', type: 'success', show: false, confirmText: '', callback: null,
+      },
+    });
+  }
 
   toggleFabGroup = () => {
     this.setState({
@@ -75,19 +183,17 @@ class Discover extends React.Component {
       localStorage.getItem('user.token') !== 'undefined' &&
       localStorage.getItem('user.token') !== ''
     ) {
-      return <DiscoverNavbarLoggedIn />;
+      return <ConnectedDiscoverNavbarLoggedIn history={this.props.history} />;
     }
     return <DiscoverNavbar />;
   }
 
   render() {
-    const { msg, hide } = this.state.alert;
-    const alertClasses = classNames({ 'io-modal': true, hide });
     return (
-      <div>
+      <div id="discover-page">
         {this.renderDiscoverNavBar()}
-        <DiscoverBody />
-        <Pagination getPageCenters={this.getPageCenters} />
+        <DiscoverBody showViewCenterModal={this.showViewCenterModal} />
+        <Pagination getPage={this.getPageCenters} />
         <Footer />
 
         <MainFab toggleFabGroup={this.toggleFabGroup} />
@@ -96,18 +202,60 @@ class Discover extends React.Component {
           <LabelledFab icon="map-marker" position="2" label="Add New Center" showAddCenterModal={this.showAddCenterModal} />
           <LabelledFab icon="calendar" position="1" label="Add New Event" showAddEventModal={this.showAddEventModal} />
         </FabGroup>
-        <AddCenterModal
+        <ConnectedAddCenterModal
           showAddCenterModal={this.state.showAddCenterModal}
           hideAddCenterModal={this.hideAddCenterModal}
-          showAlert={this.showAlert}
+          showAlertModal={this.showAlertModal}
+          showLoader={this.showLoader}
+          hideLoader={this.hideLoader}
+          showNotification={this.showNotification}
         />
-        <AlertModal msg={msg} className={alertClasses} hideAlert={this.hideAlert} />
+        <ConnectedViewCenterModal
+          viewCenterModalState={this.state.viewCenterModalState}
+          showViewCenterModal={this.state.showViewCenterModal}
+          hideViewCenterModal={this.hideViewCenterModal}
+          showModifyCenterModal={this.showModifyCenterModal}
+        />
+        <ConnectedModifyCenterModal
+          modifyCenterModalState={this.state.modifyCenterModalState}
+          showModifyCenterModal={this.state.showModifyCenterModal}
+          hideModifyCenterModal={this.hideModifyCenterModal}
+          showNotification={this.showNotification}
+          showAlertModal={this.showAlertModal}
+          showLoader={this.showLoader}
+          hideLoader={this.hideLoader}
+        />
+        <Loader
+          showLoader={this.state.showLoader}
+        />
+        <ConnectedAddEventModal
+          showAddEventModal={this.state.showAddEventModal}
+          hideAddEventModal={this.hideAddEventModal}
+          showAlertModal={this.showAlertModal}
+          showLoader={this.showLoader}
+          hideLoader={this.hideLoader}
+          showNotification={this.showNotification}
+        />
+        <Notification
+          isActive={this.state.notificationState.show}
+          message={this.state.notificationState.message}
+          action=""
+          onClick={() => { }}
+        />
+        <AlertModal
+          alertModalState={this.state.alertModalState}
+          hideAlertModal={this.hideAlertModal}
+        />
+        <ConfirmModal
+          confirmModalState={this.state.confirmModalState}
+          hideConfirmModal={this.hideConfirmModal}
+        />
       </div>
     );
   }
 }
 
-const mapStateToProps = ({ user, centers }) => ({ user, centers });
+const mapStateToProps = ({ user, center }) => ({ user, center });
 
 
 export default connect(

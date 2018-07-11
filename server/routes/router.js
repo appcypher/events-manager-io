@@ -94,9 +94,12 @@ router.route('/api/v1/centers/:centerId')
 router.route('/api/v1/events')
   .post(
     Validation.trimBodyValues,
-    Validation.checkBodyContains('title', 'date', 'centerId'),
+    Validation.checkBodyContains('title', 'date', 'time', 'centerId'),
+    Validation.checkNotNull('title', 'date', 'time', 'centerId'),
+    Validation.checkNotEmpty('title', 'date', 'time', 'centerId'),
     authenticate,
     Validation.checkDateValid,
+    Validation.checkTimeValid,
     Validation.checkDateNotTaken,
     Validation.checkAssociatedCenterExists,
     EventController.createEvent,
@@ -106,12 +109,14 @@ router.route('/api/v1/events')
 router.route('/api/v1/events/:eventId')
   .put(
     Validation.trimBodyValues,
+    Validation.checkNotNull('title', 'date', 'time', 'centerId'),
+    Validation.checkNotEmpty('title', 'date', 'time', 'centerId'),
     authenticate,
     Validation.checkParamValid('eventId'),
     Validation.checkDateValid,
+    Validation.checkUserOwnEvent,
     Validation.checkDateNotTaken,
     Validation.checkAssociatedCenterExists,
-    Validation.checkUserOwnEvent,
     EventController.modifyEvent,
   );
 
@@ -126,6 +131,13 @@ router.route('/api/v1/events/:eventId')
 
 
 /** ***************** Additional Endpoints ************** */
+// Get all centers by name
+router.route('/api/v1/centers')
+  .get(
+    Validation.checkQueriesValid({ name: 'name', type: 'string', converter: String }),
+    EventCenterController.getCentersByName,
+  );
+
 // Get user's details
 router.route('/api/v1/users')
   .get(

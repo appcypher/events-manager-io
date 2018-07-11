@@ -19,9 +19,9 @@ export default (sequelize, DataTypes) => {
       type: DataTypes.DATE,
       allowNull: false,
       validate: {
-        isDate: { args: true, msg: 'date format is invalid! - make sure it is in YYYY-MM-DD format' },
-        isAfter: { args: moment().add(1, 'day').toISOString(), msg: 'date format is invalid! - make sure it is not less than a day from now' },
-        isBefore: { args: moment().add(30, 'day').toISOString(), msg: 'date format is invalid! - make sure it is not more than a month from now' },
+        isDate: { args: true, msg: 'Invalid date: Make sure it is in YYYY-MM-DD format!' },
+        isAfter: { args: moment().add(1, 'day').toISOString(), msg: 'Invalid date: Make sure it is not less than a day from now!' },
+        isBefore: { args: moment().add(30, 'day').toISOString(), msg: 'Invalid date: Make sure it is not more than a month from now!' },
       },
     },
     centerId: {
@@ -44,7 +44,7 @@ export default (sequelize, DataTypes) => {
 
   Event.associate = (models) => {
     Event.belongsTo(models.User, { foreignKey: 'userId' });
-    Event.belongsTo(models.EventCenter, { foreignKey: 'centerId' });
+    Event.belongsTo(models.EventCenter, { as: 'center', foreignKey: 'centerId' });
   };
 
   return Event;

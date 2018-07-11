@@ -5,6 +5,11 @@ import center1 from '../assets/images/center1.jpg';
 import center3 from '../assets/images/center3.jpg';
 import center4 from '../assets/images/center4.jpg';
 
+/**
+ * The card that shows more info about the site.
+ * @param{props} - passed properties
+ * @return{React.Component}
+ */
 const HomeShowcaseSection = () => (
   <div className="container-fluid">
     <div className="row io-top-row justify-content-center">

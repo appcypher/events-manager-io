@@ -26,7 +26,7 @@ class FacilityController {
               stage: req.body.stage || facility.stage,
             })
             .then((modifiedFacility) => {
-              res.status(200).send({ message: 'facility updated!', facility: modifiedFacility });
+              res.status(200).send({ message: 'Facility updated!', facility: modifiedFacility });
             })
             .catch((err) => {
               res.status(400).send({ message: err.errors ? err.errors[0].message : err.message });
@@ -45,7 +45,7 @@ class FacilityController {
               centerId: req.body.centerId,
             })
             .then((newFacility) => {
-              res.status(201).send({ message: 'facility created!', facility: newFacility });
+              res.status(201).send({ message: 'Facility created!', facility: newFacility });
             })
             .catch((err) => {
               res.status(400).send({ message: err.errors ? err.errors[0].message : err.message });
@@ -80,13 +80,13 @@ class FacilityController {
               stage: req.body.stage || facility.stage,
             })
             .then((modifiedFacility) => {
-              res.status(200).send({ message: 'facility updated!', facility: modifiedFacility });
+              res.status(200).send({ message: 'Facility updated!', facility: modifiedFacility });
             })
             .catch((err) => {
               res.status(400).send({ message: err.errors ? err.errors[0].message : err.message });
             });
         } else {
-          res.status(404).send({ message: 'cannot find specified facility!' });
+          res.status(404).send({ message: 'Cannot find specified facility!' });
         }
       })
       .catch((err) => {

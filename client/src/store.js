@@ -8,6 +8,6 @@ export default createStore(
   reducers,
   compose(
     middleware,
-    window.devToolsExtension ? window.devToolsExtension() : f => f
+    window.devToolsExtension ? window.devToolsExtension() : f => f,
   ),
 );

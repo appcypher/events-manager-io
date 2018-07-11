@@ -2,9 +2,11 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import UserAction from '../actions/userActions';
-import history from '../index';
 
-class SignUpForm extends React.Component {
+/**
+ * Component containing the signup form and authentication logic.
+ */
+export class SignUpForm extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -15,6 +17,7 @@ class SignUpForm extends React.Component {
     };
   }
 
+  // Store details from input fields.
   saveInput = (e) => {
     this.setState({ [e.target.name]: e.target.value });
   }
@@ -24,16 +27,26 @@ class SignUpForm extends React.Component {
       username, password, email, fullname,
     } = this.state;
 
+    // Show loading screen.
+    this.props.showLoader();
 
     const redirectToDiscover = () => {
       // Add token and admin status to localStorage.
       localStorage.setItem('user.token', this.props.user.token);
       localStorage.setItem('user.admin', this.props.user.user.admin);
 
+      // Hide loading screen.
+      this.props.hideLoader();
+
       // Change page.
-      history.push('/discover');
+      this.props.history.push('/discover');
     };
-    const showError = () => this.props.showAlert(this.props.user.message);
+
+    // Callback for handling error.
+    const showError = () => {
+      this.props.hideLoader();
+      this.props.showAlertModal(this.props.user.message, 'error');
+    };
 
     this.props.signupUser(
       {
@@ -63,7 +76,7 @@ class SignUpForm extends React.Component {
           </div>
         </div>
         <div>
-          <button id="login-button" className="io-btn io-signup" onClick={this.submit}>SIGN UP</button><span className="io-extra">Subscribe for newsletter</span>
+          <button id="signup-button" className="io-btn io-signup" onClick={this.submit}>SIGN UP</button><span className="io-extra">Subscribe for newsletter</span>
         </div>
         <div className="io-extra io-signup">
           <span>Already have an account? </span><Link href to="/signin" className="io-anchor">sign in here </Link>

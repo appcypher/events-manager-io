@@ -1,0 +1,223 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<SignIn /> should maintain existing snapshot 1`] = `
+ShallowWrapper {
+  "length": 1,
+  Symbol(enzyme.__root__): [Circular],
+  Symbol(enzyme.__unrendered__): <SignIn />,
+  Symbol(enzyme.__renderer__): Object {
+    "batchedUpdates": [Function],
+    "getNode": [Function],
+    "render": [Function],
+    "simulateEvent": [Function],
+    "unmount": [Function],
+  },
+  Symbol(enzyme.__node__): Object {
+    "instance": null,
+    "key": undefined,
+    "nodeType": "host",
+    "props": Object {
+      "children": Array [
+        <HomeNavbar />,
+        <LoginContainer>
+          <Connect(LoginForm)
+            hideLoader={[Function]}
+            showAlertModal={[Function]}
+            showLoader={[Function]}
+          />
+        </LoginContainer>,
+        <AlertModal
+          alertModalState={
+            Object {
+              "message": "",
+              "show": false,
+              "type": "success",
+            }
+          }
+          hideAlertModal={[Function]}
+        />,
+        <Loader
+          showLoader={false}
+        />,
+      ],
+      "className": "io-stretch-vertical",
+    },
+    "ref": null,
+    "rendered": Array [
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "function",
+        "props": Object {},
+        "ref": null,
+        "rendered": null,
+        "type": [Function],
+      },
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "function",
+        "props": Object {
+          "children": <Connect(LoginForm)
+            hideLoader={[Function]}
+            showAlertModal={[Function]}
+            showLoader={[Function]}
+          />,
+        },
+        "ref": null,
+        "rendered": Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "class",
+          "props": Object {
+            "hideLoader": [Function],
+            "history": undefined,
+            "showAlertModal": [Function],
+            "showLoader": [Function],
+          },
+          "ref": null,
+          "rendered": null,
+          "type": [Function],
+        },
+        "type": [Function],
+      },
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "function",
+        "props": Object {
+          "alertModalState": Object {
+            "message": "",
+            "show": false,
+            "type": "success",
+          },
+          "hideAlertModal": [Function],
+        },
+        "ref": null,
+        "rendered": null,
+        "type": [Function],
+      },
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "function",
+        "props": Object {
+          "showLoader": false,
+        },
+        "ref": null,
+        "rendered": null,
+        "type": [Function],
+      },
+    ],
+    "type": "div",
+  },
+  Symbol(enzyme.__nodes__): Array [
+    Object {
+      "instance": null,
+      "key": undefined,
+      "nodeType": "host",
+      "props": Object {
+        "children": Array [
+          <HomeNavbar />,
+          <LoginContainer>
+            <Connect(LoginForm)
+              hideLoader={[Function]}
+              showAlertModal={[Function]}
+              showLoader={[Function]}
+            />
+          </LoginContainer>,
+          <AlertModal
+            alertModalState={
+              Object {
+                "message": "",
+                "show": false,
+                "type": "success",
+              }
+            }
+            hideAlertModal={[Function]}
+          />,
+          <Loader
+            showLoader={false}
+          />,
+        ],
+        "className": "io-stretch-vertical",
+      },
+      "ref": null,
+      "rendered": Array [
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "function",
+          "props": Object {},
+          "ref": null,
+          "rendered": null,
+          "type": [Function],
+        },
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "function",
+          "props": Object {
+            "children": <Connect(LoginForm)
+              hideLoader={[Function]}
+              showAlertModal={[Function]}
+              showLoader={[Function]}
+            />,
+          },
+          "ref": null,
+          "rendered": Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "class",
+            "props": Object {
+              "hideLoader": [Function],
+              "history": undefined,
+              "showAlertModal": [Function],
+              "showLoader": [Function],
+            },
+            "ref": null,
+            "rendered": null,
+            "type": [Function],
+          },
+          "type": [Function],
+        },
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "function",
+          "props": Object {
+            "alertModalState": Object {
+              "message": "",
+              "show": false,
+              "type": "success",
+            },
+            "hideAlertModal": [Function],
+          },
+          "ref": null,
+          "rendered": null,
+          "type": [Function],
+        },
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "function",
+          "props": Object {
+            "showLoader": false,
+          },
+          "ref": null,
+          "rendered": null,
+          "type": [Function],
+        },
+      ],
+      "type": "div",
+    },
+  ],
+  Symbol(enzyme.__options__): Object {
+    "adapter": ReactSixteenAdapter {
+      "options": Object {
+        "enableComponentDidUpdateOnSetState": true,
+      },
+    },
+  },
+}
+`;

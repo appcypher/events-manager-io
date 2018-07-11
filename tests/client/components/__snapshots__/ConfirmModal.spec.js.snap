@@ -1,0 +1,475 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ConfirmModal Should maintain existing snapshot 1`] = `
+ShallowWrapper {
+  "length": 1,
+  Symbol(enzyme.__root__): [Circular],
+  Symbol(enzyme.__unrendered__): <ConfirmModal
+    confirmModalState={
+      Object {
+        "callback": [Function],
+        "continueTest": "",
+        "message": "",
+        "show": true,
+        "type": "error",
+      }
+    }
+  />,
+  Symbol(enzyme.__renderer__): Object {
+    "batchedUpdates": [Function],
+    "getNode": [Function],
+    "render": [Function],
+    "simulateEvent": [Function],
+    "unmount": [Function],
+  },
+  Symbol(enzyme.__node__): Object {
+    "instance": null,
+    "key": undefined,
+    "nodeType": "host",
+    "props": Object {
+      "children": <div
+        className="io-modal-body io-error"
+      >
+        <div
+          className="io-header io-error"
+        >
+          ERROR!
+        </div>
+        <div
+          className="io-body"
+        >
+          <div
+            className="io-content io-error"
+          >
+            <h2>
+              
+               
+            </h2>
+          </div>
+        </div>
+        <div
+          className="io-footer io-error"
+        >
+          <button
+            className="io-submit-btn io-sm"
+            id="confirm-ok"
+            onClick={[Function]}
+          >
+             
+          </button>
+          <button
+            className="io-submit-btn io-sm"
+            id="confirm-cancel"
+          >
+            CANCEL 
+          </button>
+        </div>
+      </div>,
+      "className": "io-modal error io-error",
+      "id": "confirm-modal",
+      "onClick": undefined,
+    },
+    "ref": null,
+    "rendered": Object {
+      "instance": null,
+      "key": undefined,
+      "nodeType": "host",
+      "props": Object {
+        "children": Array [
+          <div
+            className="io-header io-error"
+          >
+            ERROR!
+          </div>,
+          <div
+            className="io-body"
+          >
+            <div
+              className="io-content io-error"
+            >
+              <h2>
+                
+                 
+              </h2>
+            </div>
+          </div>,
+          <div
+            className="io-footer io-error"
+          >
+            <button
+              className="io-submit-btn io-sm"
+              id="confirm-ok"
+              onClick={[Function]}
+            >
+               
+            </button>
+            <button
+              className="io-submit-btn io-sm"
+              id="confirm-cancel"
+            >
+              CANCEL 
+            </button>
+          </div>,
+        ],
+        "className": "io-modal-body io-error",
+      },
+      "ref": null,
+      "rendered": Array [
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "host",
+          "props": Object {
+            "children": "ERROR!",
+            "className": "io-header io-error",
+          },
+          "ref": null,
+          "rendered": "ERROR!",
+          "type": "div",
+        },
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "host",
+          "props": Object {
+            "children": <div
+              className="io-content io-error"
+            >
+              <h2>
+                
+                 
+              </h2>
+            </div>,
+            "className": "io-body",
+          },
+          "ref": null,
+          "rendered": Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "host",
+            "props": Object {
+              "children": <h2>
+                
+                 
+              </h2>,
+              "className": "io-content io-error",
+            },
+            "ref": null,
+            "rendered": Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "host",
+              "props": Object {
+                "children": Array [
+                  "",
+                  " ",
+                ],
+              },
+              "ref": null,
+              "rendered": Array [
+                "",
+                " ",
+              ],
+              "type": "h2",
+            },
+            "type": "div",
+          },
+          "type": "div",
+        },
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "host",
+          "props": Object {
+            "children": Array [
+              <button
+                className="io-submit-btn io-sm"
+                id="confirm-ok"
+                onClick={[Function]}
+              >
+                 
+              </button>,
+              <button
+                className="io-submit-btn io-sm"
+                id="confirm-cancel"
+              >
+                CANCEL 
+              </button>,
+            ],
+            "className": "io-footer io-error",
+          },
+          "ref": null,
+          "rendered": Array [
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "host",
+              "props": Object {
+                "children": Array [
+                  undefined,
+                  " ",
+                ],
+                "className": "io-submit-btn io-sm",
+                "id": "confirm-ok",
+                "onClick": [Function],
+              },
+              "ref": null,
+              "rendered": Array [
+                undefined,
+                " ",
+              ],
+              "type": "button",
+            },
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "host",
+              "props": Object {
+                "children": "CANCEL ",
+                "className": "io-submit-btn io-sm",
+                "id": "confirm-cancel",
+                "onClick": undefined,
+              },
+              "ref": null,
+              "rendered": "CANCEL ",
+              "type": "button",
+            },
+          ],
+          "type": "div",
+        },
+      ],
+      "type": "div",
+    },
+    "type": "div",
+  },
+  Symbol(enzyme.__nodes__): Array [
+    Object {
+      "instance": null,
+      "key": undefined,
+      "nodeType": "host",
+      "props": Object {
+        "children": <div
+          className="io-modal-body io-error"
+        >
+          <div
+            className="io-header io-error"
+          >
+            ERROR!
+          </div>
+          <div
+            className="io-body"
+          >
+            <div
+              className="io-content io-error"
+            >
+              <h2>
+                
+                 
+              </h2>
+            </div>
+          </div>
+          <div
+            className="io-footer io-error"
+          >
+            <button
+              className="io-submit-btn io-sm"
+              id="confirm-ok"
+              onClick={[Function]}
+            >
+               
+            </button>
+            <button
+              className="io-submit-btn io-sm"
+              id="confirm-cancel"
+            >
+              CANCEL 
+            </button>
+          </div>
+        </div>,
+        "className": "io-modal error io-error",
+        "id": "confirm-modal",
+        "onClick": undefined,
+      },
+      "ref": null,
+      "rendered": Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "host",
+        "props": Object {
+          "children": Array [
+            <div
+              className="io-header io-error"
+            >
+              ERROR!
+            </div>,
+            <div
+              className="io-body"
+            >
+              <div
+                className="io-content io-error"
+              >
+                <h2>
+                  
+                   
+                </h2>
+              </div>
+            </div>,
+            <div
+              className="io-footer io-error"
+            >
+              <button
+                className="io-submit-btn io-sm"
+                id="confirm-ok"
+                onClick={[Function]}
+              >
+                 
+              </button>
+              <button
+                className="io-submit-btn io-sm"
+                id="confirm-cancel"
+              >
+                CANCEL 
+              </button>
+            </div>,
+          ],
+          "className": "io-modal-body io-error",
+        },
+        "ref": null,
+        "rendered": Array [
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "host",
+            "props": Object {
+              "children": "ERROR!",
+              "className": "io-header io-error",
+            },
+            "ref": null,
+            "rendered": "ERROR!",
+            "type": "div",
+          },
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "host",
+            "props": Object {
+              "children": <div
+                className="io-content io-error"
+              >
+                <h2>
+                  
+                   
+                </h2>
+              </div>,
+              "className": "io-body",
+            },
+            "ref": null,
+            "rendered": Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "host",
+              "props": Object {
+                "children": <h2>
+                  
+                   
+                </h2>,
+                "className": "io-content io-error",
+              },
+              "ref": null,
+              "rendered": Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "host",
+                "props": Object {
+                  "children": Array [
+                    "",
+                    " ",
+                  ],
+                },
+                "ref": null,
+                "rendered": Array [
+                  "",
+                  " ",
+                ],
+                "type": "h2",
+              },
+              "type": "div",
+            },
+            "type": "div",
+          },
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "host",
+            "props": Object {
+              "children": Array [
+                <button
+                  className="io-submit-btn io-sm"
+                  id="confirm-ok"
+                  onClick={[Function]}
+                >
+                   
+                </button>,
+                <button
+                  className="io-submit-btn io-sm"
+                  id="confirm-cancel"
+                >
+                  CANCEL 
+                </button>,
+              ],
+              "className": "io-footer io-error",
+            },
+            "ref": null,
+            "rendered": Array [
+              Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "host",
+                "props": Object {
+                  "children": Array [
+                    undefined,
+                    " ",
+                  ],
+                  "className": "io-submit-btn io-sm",
+                  "id": "confirm-ok",
+                  "onClick": [Function],
+                },
+                "ref": null,
+                "rendered": Array [
+                  undefined,
+                  " ",
+                ],
+                "type": "button",
+              },
+              Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "host",
+                "props": Object {
+                  "children": "CANCEL ",
+                  "className": "io-submit-btn io-sm",
+                  "id": "confirm-cancel",
+                  "onClick": undefined,
+                },
+                "ref": null,
+                "rendered": "CANCEL ",
+                "type": "button",
+              },
+            ],
+            "type": "div",
+          },
+        ],
+        "type": "div",
+      },
+      "type": "div",
+    },
+  ],
+  Symbol(enzyme.__options__): Object {
+    "adapter": ReactSixteenAdapter {
+      "options": Object {
+        "enableComponentDidUpdateOnSetState": true,
+      },
+    },
+  },
+}
+`;

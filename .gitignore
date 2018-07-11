@@ -2,3 +2,5 @@ node_modules/
 coverage/
 .env
 .nyc_output/
+test_output/
+selenium-debug.log

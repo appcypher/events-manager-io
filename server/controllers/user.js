@@ -2,7 +2,7 @@ import jwt from 'jsonwebtoken';
 import bcrypt from 'bcrypt';
 import db from '../models';
 
-const { User, Event } = db;
+const { User } = db;
 
 class UserController {
   /**
@@ -17,7 +17,7 @@ class UserController {
       req.body.password === null ||
       req.body.password.length < 5
     ) {
-      res.status(400).send({ message: 'password is too short! - make sure it is at least 5 characters' });
+      res.status(400).send({ message: 'Password is too short!' });
     } else {
       // Hash password to save in the database
       const password = bcrypt.hashSync(req.body.password, 10);
@@ -30,14 +30,14 @@ class UserController {
           admin: false,
         })
         .then((user) => {
-          const token = jwt.sign( // Create a token that lasts for an hour
+          const token = jwt.sign( // Create a token that lasts for a day
             { id: user.id, admin: false },
             process.env.SECRET_KEY,
-            { expiresIn: '60m' },
+            { expiresIn: '24h' },
           );
           const safeUser = user;
           safeUser.password = undefined;
-          res.status(201).send({ message: 'user created!', user: safeUser, token });
+          res.status(201).send({ message: 'User created!', user: safeUser, token });
         })
         .catch((err) => {
           res.status(400).send({ message: err.errors ? err.errors[0].message : err.message });
@@ -61,15 +61,17 @@ class UserController {
           // Compare hashed password
           bcrypt.compare(req.body.password, user.password).then((check) => {
             if (!check) { // If password does not match
-              res.status(401).send({ message: 'wrong password or username!' });
+              res.status(401).send({ message: 'Wrong password or username!' });
             } else {
+              const safeUser = user;
+              safeUser.password = undefined;
               // Create a token that lasts for an hour
               const token = jwt.sign({ id: user.id, admin: user.admin }, process.env.SECRET_KEY, { expiresIn: '60m' });
-              res.status(200).send({ message: 'user logged in!', token });
+              res.status(200).send({ message: 'User logged in!', user: safeUser, token });
             }
           });
         } else {
-          res.status(401).send({ message: 'wrong password or username!' });
+          res.status(401).send({ message: 'Wrong password or username!' });
         }
       })
       .catch((err) => {
@@ -85,15 +87,11 @@ class UserController {
    */
   static getUser(req, res) {
     User
-      .findById(req.user.id, {
-        include: [
-          { model: Event, as: 'events' },
-        ],
-      })
+      .findById(req.user.id)
       .then((user) => {
         const safeUser = user;
         safeUser.password = undefined;
-        res.status(200).send({ message: 'user details delivered!', user: safeUser });
+        res.status(200).send({ message: 'User details delivered!', user: safeUser });
       })
       .catch((err) => {
         res.status(400).send({ message: err.errors ? err.errors[0].message : err.message });
@@ -121,13 +119,13 @@ class UserController {
             .then((modifiedUser) => {
               const safeUser = modifiedUser;
               safeUser.password = undefined;
-              res.status(200).send({ message: 'user profile updated!', user: safeUser });
+              res.status(200).send({ message: 'User profile updated!', user: safeUser });
             })
             .catch((err) => {
               res.status(400).send({ message: err.errors ? err.errors[0].message : err.message });
             });
         } else {
-          res.status(403).send({ message: 'you can only modify your own profile!' });
+          res.status(403).send({ message: 'You can only modify your own profile!' });
         }
       })
       .catch((err) => {
@@ -142,7 +140,7 @@ class UserController {
    * @param{Object} res - route response
    * @return{json} registered user details
    */
-  static logoutUser(req, res) { res.send(200).send({ message: 'user logged out!' }); }
+  static logoutUser(req, res) { res.send(200).send({ message: 'User logged out!' }); }
 }
 
 export default UserController;

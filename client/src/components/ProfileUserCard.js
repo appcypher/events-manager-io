@@ -3,32 +3,28 @@ import { connect } from 'react-redux';
 import placeholder from '../assets/images/placeholder.jpg';
 import UserAction from '../actions/userActions';
 
+/**
+ * Shows information of the logged-in user on the profile page.
+ */
 class ProfileUserCard extends React.Component {
   constructor(props) {
     super(props);
-
-    // No-op functions.
-    const successFunc = () => {};
-    const failFunc = () => {};
-
-    // NOTE: Needs proper syncing.
-    let imageUrl = this.props.user.user.picture;
-
-    // If image is not provided, use a placeholder image
-    if (!imageUrl) {
-      imageUrl = placeholder;
-    }
-
-    this.state = { ...this.props.user.user, imageUrl };
-
-    // Get user
-    this.props.getUser(localStorage.getItem('user.token'), successFunc, failFunc);
+    this.state = {};
   }
 
   render() {
-    const {
-      imageUrl, tagline, fullname, description,
-    } = this.state;
+    const { tagline, description, email } = this.props.user.user;
+    let { fullname, picture } = this.props.user.user;
+
+    // If image is not provided, use a placeholder image
+    if (!picture) {
+      picture = placeholder;
+    }
+
+    // If fullname is available, capitalize first character.
+    if (fullname) {
+      fullname = fullname[0].toUpperCase() + fullname.slice(1);
+    }
 
     return (
       <div className="io-col-center">
@@ -36,11 +32,12 @@ class ProfileUserCard extends React.Component {
           <div className="io-header">
             <div className="io-name">{fullname} </div>
             <div className="io-spacer" />
-            <i className="io-icon fa fa-pencil-square-o" />
+            <span><i className="io-icon fa fa-pencil" /></span>
           </div>
           <div className="io-short">{tagline}</div>
+          <div className="io-long">{email}</div>
           <div className="io-long">{description}</div>
-          <img alt="profile_img" src={imageUrl} className="io-img" />
+          <img alt="profile_img" src={picture} className="io-img" />
         </div>
       </div>
     );

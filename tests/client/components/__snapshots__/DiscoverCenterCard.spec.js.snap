@@ -1,0 +1,350 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ConfirmModal Should maintain existing snapshot 1`] = `
+ShallowWrapper {
+  "length": 1,
+  Symbol(enzyme.__root__): [Circular],
+  Symbol(enzyme.__unrendered__): <DiscoverCenterCard
+    description=""
+    location=""
+    name=""
+    type=""
+  />,
+  Symbol(enzyme.__renderer__): Object {
+    "batchedUpdates": [Function],
+    "getNode": [Function],
+    "render": [Function],
+    "simulateEvent": [Function],
+    "unmount": [Function],
+  },
+  Symbol(enzyme.__node__): Object {
+    "instance": null,
+    "key": undefined,
+    "nodeType": "host",
+    "props": Object {
+      "children": Array [
+        <div
+          className="io-img"
+        >
+          <img
+            alt=""
+            src="test-file-stub"
+          />
+        </div>,
+        <div
+          className="io-content"
+        >
+          <div
+            className="io-title"
+          >
+            
+          </div>
+          <div
+            className="io-body"
+          >
+            
+          </div>
+          <hr />
+          <p
+            className="description"
+          >
+            
+          </p>
+          <p>
+            
+          </p>
+        </div>,
+      ],
+      "className": "io-center-card animated zoom-in",
+    },
+    "ref": null,
+    "rendered": Array [
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "host",
+        "props": Object {
+          "children": <img
+            alt=""
+            src="test-file-stub"
+          />,
+          "className": "io-img",
+        },
+        "ref": null,
+        "rendered": Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "host",
+          "props": Object {
+            "alt": "",
+            "src": "test-file-stub",
+          },
+          "ref": null,
+          "rendered": null,
+          "type": "img",
+        },
+        "type": "div",
+      },
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "host",
+        "props": Object {
+          "children": Array [
+            <div
+              className="io-title"
+            >
+              
+            </div>,
+            <div
+              className="io-body"
+            >
+              
+            </div>,
+            <hr />,
+            <p
+              className="description"
+            >
+              
+            </p>,
+            <p>
+              
+            </p>,
+          ],
+          "className": "io-content",
+        },
+        "ref": null,
+        "rendered": Array [
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "host",
+            "props": Object {
+              "children": "",
+              "className": "io-title",
+            },
+            "ref": null,
+            "rendered": "",
+            "type": "div",
+          },
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "host",
+            "props": Object {
+              "children": "",
+              "className": "io-body",
+            },
+            "ref": null,
+            "rendered": "",
+            "type": "div",
+          },
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "host",
+            "props": Object {},
+            "ref": null,
+            "rendered": null,
+            "type": "hr",
+          },
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "host",
+            "props": Object {
+              "children": "",
+              "className": "description",
+            },
+            "ref": null,
+            "rendered": "",
+            "type": "p",
+          },
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "host",
+            "props": Object {
+              "children": "",
+            },
+            "ref": null,
+            "rendered": "",
+            "type": "p",
+          },
+        ],
+        "type": "div",
+      },
+    ],
+    "type": "div",
+  },
+  Symbol(enzyme.__nodes__): Array [
+    Object {
+      "instance": null,
+      "key": undefined,
+      "nodeType": "host",
+      "props": Object {
+        "children": Array [
+          <div
+            className="io-img"
+          >
+            <img
+              alt=""
+              src="test-file-stub"
+            />
+          </div>,
+          <div
+            className="io-content"
+          >
+            <div
+              className="io-title"
+            >
+              
+            </div>
+            <div
+              className="io-body"
+            >
+              
+            </div>
+            <hr />
+            <p
+              className="description"
+            >
+              
+            </p>
+            <p>
+              
+            </p>
+          </div>,
+        ],
+        "className": "io-center-card animated zoom-in",
+      },
+      "ref": null,
+      "rendered": Array [
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "host",
+          "props": Object {
+            "children": <img
+              alt=""
+              src="test-file-stub"
+            />,
+            "className": "io-img",
+          },
+          "ref": null,
+          "rendered": Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "host",
+            "props": Object {
+              "alt": "",
+              "src": "test-file-stub",
+            },
+            "ref": null,
+            "rendered": null,
+            "type": "img",
+          },
+          "type": "div",
+        },
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "host",
+          "props": Object {
+            "children": Array [
+              <div
+                className="io-title"
+              >
+                
+              </div>,
+              <div
+                className="io-body"
+              >
+                
+              </div>,
+              <hr />,
+              <p
+                className="description"
+              >
+                
+              </p>,
+              <p>
+                
+              </p>,
+            ],
+            "className": "io-content",
+          },
+          "ref": null,
+          "rendered": Array [
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "host",
+              "props": Object {
+                "children": "",
+                "className": "io-title",
+              },
+              "ref": null,
+              "rendered": "",
+              "type": "div",
+            },
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "host",
+              "props": Object {
+                "children": "",
+                "className": "io-body",
+              },
+              "ref": null,
+              "rendered": "",
+              "type": "div",
+            },
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "host",
+              "props": Object {},
+              "ref": null,
+              "rendered": null,
+              "type": "hr",
+            },
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "host",
+              "props": Object {
+                "children": "",
+                "className": "description",
+              },
+              "ref": null,
+              "rendered": "",
+              "type": "p",
+            },
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "host",
+              "props": Object {
+                "children": "",
+              },
+              "ref": null,
+              "rendered": "",
+              "type": "p",
+            },
+          ],
+          "type": "div",
+        },
+      ],
+      "type": "div",
+    },
+  ],
+  Symbol(enzyme.__options__): Object {
+    "adapter": ReactSixteenAdapter {
+      "options": Object {
+        "enableComponentDidUpdateOnSetState": true,
+      },
+    },
+  },
+}
+`;

@@ -3,7 +3,6 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import UserAction from '../actions/userActions';
 import Navbar from './Navbar';
-import history from '../index';
 
 import brand from '../assets/icons/brand.png';
 
@@ -12,7 +11,7 @@ import brand from '../assets/icons/brand.png';
  * @param{undefined}
  * @return{React.Component}
  */
-class DiscoverNavbar extends React.Component {
+export class DiscoverNavbarLoggedIn extends React.Component {
   constructor(props) {
     super(props);
     this.state = {};
@@ -27,14 +26,14 @@ class DiscoverNavbar extends React.Component {
     this.props.logoutUser();
 
     // Change page.
-    history.push('/');
+    this.props.history.push('/');
   }
 
   render() {
     return (
       <Navbar classNameName="io-navbar io-fixed-top">
         <Link href to="/" className="io-brand">
-          <div className="io-text">EventsManagerIO</div>
+          <div id="goto-home" className="io-text">EventsManagerIO</div>
           <img alt="" src={brand} className="io-img" />
         </Link>
         <div className="io-middle">
@@ -44,12 +43,12 @@ class DiscoverNavbar extends React.Component {
         <div className="io-end">
           <Link href to="/profile">
             <i className="io-icon fa fa-user" />
-            <div className="io-text io-switchable">PROFILE</div>
+            <div id="goto-profile" className="io-text io-switchable">PROFILE</div>
           </Link>
           <i className="io-icon fa fa-bell" />
           <div className="io-text io-switchable">MESSAGES</div>
           <i className="io-icon fa fa-cog" />
-          <div className="io-text io-switchable" onClick={this.logoutUser}>LOGOUT</div>
+          <div id="discover-navbar-logout" className="io-text io-switchable" onClick={this.logoutUser}>LOGOUT</div>
         </div>
       </Navbar>
     );
@@ -63,4 +62,4 @@ export default connect(
   {
     logoutUser: UserAction.logoutUser,
   },
-)(DiscoverNavbar);
+)(DiscoverNavbarLoggedIn);

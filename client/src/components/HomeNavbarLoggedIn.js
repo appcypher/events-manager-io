@@ -9,7 +9,7 @@ import brand from '../assets/icons/brand.png';
  * @param{undefined}
  * @return{React.Component}
  */
-const HomeNavbarLoggedIn = () => (
+export const HomeNavbarLoggedIn = () => (
   <Navbar className="io-navbar io-fixed-top">
     <Link href to="/" className="io-brand">
       <div className="io-text">EventsManagerIO</div>
@@ -20,7 +20,7 @@ const HomeNavbarLoggedIn = () => (
       <a href="/#about">ABOUT US</a>
     </div>
     <div className="io-end">
-      <Link href to="/discover" className="io-text">DISCOVER</Link>
+      <Link id="goto-discover" href to="/discover" className="io-text">DISCOVER</Link>
       <Link href to="/profile" className="io-text">PROFILE</Link>
     </div>
   </Navbar>

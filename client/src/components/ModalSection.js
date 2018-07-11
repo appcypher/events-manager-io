@@ -1,5 +1,10 @@
 import React from 'react';
 
+/**
+ * Represnts a line of input in the modal.
+ * @param{Object} props - passed properties
+ * @return{React.Component}
+ */
 const ModalSection = (props) => {
   const { title, children } = props;
   let { extra } = props;

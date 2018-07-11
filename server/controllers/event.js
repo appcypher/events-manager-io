@@ -1,6 +1,6 @@
 import db from '../models';
 
-const { Event } = db;
+const { Event, EventCenter } = db;
 
 class EventController {
   /**
@@ -16,10 +16,10 @@ class EventController {
         description: req.body.description || null,
         userId: req.user.id,
         centerId: parseInt(req.body.centerId, 10),
-        date: new Date(req.body.date).toISOString(),
+        date: new Date(`${req.body.date} ${req.body.time}`).toISOString(),
       })
       .then((event) => {
-        res.status(201).send({ message: 'event created!', event });
+        res.status(201).send({ message: 'Event created!', event });
       })
       .catch((err) => {
         res.status(400).send({ message: err.errors ? err.errors[0].message : err.message });
@@ -43,9 +43,9 @@ class EventController {
             centerId: req.body.centerId || event.centerId,
             date: req.body.date != null ? new Date(req.body.date).toISOString() : event.date,
           });
-          res.status(200).send({ message: 'event modified!', event });
+          res.status(200).send({ message: 'Event modified!', event });
         } else {
-          res.status(404).send({ message: 'cannot find specified event!' });
+          res.status(404).send({ message: 'Cannot find specified event!' });
         }
       })
       .catch((err) => {
@@ -67,13 +67,13 @@ class EventController {
           event
             .destroy()
             .then(() => {
-              res.status(200).send({ message: 'event deleted!' });
+              res.status(200).send({ message: 'Event deleted!' });
             })
             .catch((err) => {
               res.status(400).send({ message: err.errors ? err.errors[0].message : err.message });
             });
         } else {
-          res.status(404).send({ message: 'cannot find specified event!' });
+          res.status(404).send({ message: 'Cannot find specified event!' });
         }
       })
       .catch((err) => {
@@ -89,13 +89,28 @@ class EventController {
    * @return{json}
    */
   static getAllEvents(req, res) {
+    const page = (req.query.page && Number(req.query.page) > 0) ? Number(req.query.page) : 1;
+    const interval = 10;
+    const offset = (page * interval) - interval;
+    const limit = offset + interval;
+
     Event
-      .findAll({ where: { userId: req.user.id } })
-      .then((events) => {
-        if (events) {
-          res.status(200).send({ message: 'all events delivered!', events });
+      .findAndCountAll({
+        offset,
+        limit,
+        where: { userId: req.user.id },
+        include: [{ model: EventCenter, as: 'center' }],
+      })
+      .then((result) => {
+        if (result.rows && result.rows !== []) {
+          const maxExceeded = result.count < offset;
+          if (!maxExceeded) {
+            res.status(200).send({ message: 'All events delivered!', events: result.rows });
+          } else {
+            res.status(404).send({ message: 'Maximum page exceeded!' });
+          }
         } else {
-          res.status(403).send({ message: 'you have no event!' });
+          res.status(404).send({ message: 'You have no event!' });
         }
       })
       .catch((err) => {

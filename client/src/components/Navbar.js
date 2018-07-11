@@ -2,7 +2,7 @@ import React from 'react';
 
 /**
  * Component for ceating navbars
- * @param{undefined}
+ * @param{props} - passed properties
  * @return{React.Component}
  */
 const Navbar = props => (

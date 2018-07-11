@@ -1,6 +1,11 @@
 import React from 'react';
 import placeholder from '../assets/images/placeholder.jpg';
 
+/**
+ * Component in the shape of a card that contains brief details about a center.
+ * @param{Object} props - passed properties
+ * @return{React.Component}
+ */
 const DiscoverCenterCard = (props) => {
   const {
     name, type, location, description,
@@ -13,13 +18,13 @@ const DiscoverCenterCard = (props) => {
   }
 
   return (
-    <div className="io-center-card">
-      <img alt="" src={imageUrl} className="io-img" />
+    <div className="io-center-card animated zoom-in" >
+      <div className="io-img"><img alt="" src={imageUrl} /></div>
       <div className="io-content">
         <div className="io-title">{name}</div>
         <div className="io-body">{type}</div>
         <hr />
-        <p>{description}</p>
+        <p className="description">{description}</p>
         <p>{location}</p>
       </div>
     </div>

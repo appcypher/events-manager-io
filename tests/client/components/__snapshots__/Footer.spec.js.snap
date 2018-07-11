@@ -1,0 +1,1003 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Footer Should maintain existing snapshot 1`] = `
+ShallowWrapper {
+  "length": 1,
+  Symbol(enzyme.__root__): [Circular],
+  Symbol(enzyme.__unrendered__): <Footer />,
+  Symbol(enzyme.__renderer__): Object {
+    "batchedUpdates": [Function],
+    "getNode": [Function],
+    "render": [Function],
+    "simulateEvent": [Function],
+    "unmount": [Function],
+  },
+  Symbol(enzyme.__node__): Object {
+    "instance": null,
+    "key": undefined,
+    "nodeType": "host",
+    "props": Object {
+      "children": <div
+        className="container-fluid"
+      >
+        <div
+          className="row io-top-row justify-content-center"
+        >
+          <div
+            className="col-6"
+          >
+            <h3>
+               CONTACT 
+            </h3>
+            <p>
+              appcypher@outlook.com
+            </p>
+            <p>
+              +234 234 567 8901
+            </p>
+            <p>
+              +234 099 765 4321
+            </p>
+            <p>
+              Lagos, Nigeria.
+            </p>
+          </div>
+          <div
+            className="col-6"
+          >
+            <h3>
+               NAVIGATE 
+            </h3>
+            <Link
+              href={true}
+              replace={false}
+              to="/signin"
+            >
+              Login
+            </Link>
+            <Link
+              href={true}
+              replace={false}
+              to="/signout"
+            >
+              Signup
+            </Link>
+            <Link
+              href={true}
+              replace={false}
+              to="/discover"
+            >
+              Discover
+            </Link>
+            <Link
+              href={true}
+              replace={false}
+              to="/profile"
+            >
+              Profile
+            </Link>
+            <Link
+              href={true}
+              replace={false}
+              to="/home#about"
+            >
+              About
+            </Link>
+            <Link
+              href={true}
+              replace={false}
+              to="/home#footer"
+            >
+              Contact
+            </Link>
+          </div>
+        </div>
+      </div>,
+      "className": "io-footer",
+      "id": "footer",
+    },
+    "ref": null,
+    "rendered": Object {
+      "instance": null,
+      "key": undefined,
+      "nodeType": "host",
+      "props": Object {
+        "children": <div
+          className="row io-top-row justify-content-center"
+        >
+          <div
+            className="col-6"
+          >
+            <h3>
+               CONTACT 
+            </h3>
+            <p>
+              appcypher@outlook.com
+            </p>
+            <p>
+              +234 234 567 8901
+            </p>
+            <p>
+              +234 099 765 4321
+            </p>
+            <p>
+              Lagos, Nigeria.
+            </p>
+          </div>
+          <div
+            className="col-6"
+          >
+            <h3>
+               NAVIGATE 
+            </h3>
+            <Link
+              href={true}
+              replace={false}
+              to="/signin"
+            >
+              Login
+            </Link>
+            <Link
+              href={true}
+              replace={false}
+              to="/signout"
+            >
+              Signup
+            </Link>
+            <Link
+              href={true}
+              replace={false}
+              to="/discover"
+            >
+              Discover
+            </Link>
+            <Link
+              href={true}
+              replace={false}
+              to="/profile"
+            >
+              Profile
+            </Link>
+            <Link
+              href={true}
+              replace={false}
+              to="/home#about"
+            >
+              About
+            </Link>
+            <Link
+              href={true}
+              replace={false}
+              to="/home#footer"
+            >
+              Contact
+            </Link>
+          </div>
+        </div>,
+        "className": "container-fluid",
+      },
+      "ref": null,
+      "rendered": Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "host",
+        "props": Object {
+          "children": Array [
+            <div
+              className="col-6"
+            >
+              <h3>
+                 CONTACT 
+              </h3>
+              <p>
+                appcypher@outlook.com
+              </p>
+              <p>
+                +234 234 567 8901
+              </p>
+              <p>
+                +234 099 765 4321
+              </p>
+              <p>
+                Lagos, Nigeria.
+              </p>
+            </div>,
+            <div
+              className="col-6"
+            >
+              <h3>
+                 NAVIGATE 
+              </h3>
+              <Link
+                href={true}
+                replace={false}
+                to="/signin"
+              >
+                Login
+              </Link>
+              <Link
+                href={true}
+                replace={false}
+                to="/signout"
+              >
+                Signup
+              </Link>
+              <Link
+                href={true}
+                replace={false}
+                to="/discover"
+              >
+                Discover
+              </Link>
+              <Link
+                href={true}
+                replace={false}
+                to="/profile"
+              >
+                Profile
+              </Link>
+              <Link
+                href={true}
+                replace={false}
+                to="/home#about"
+              >
+                About
+              </Link>
+              <Link
+                href={true}
+                replace={false}
+                to="/home#footer"
+              >
+                Contact
+              </Link>
+            </div>,
+          ],
+          "className": "row io-top-row justify-content-center",
+        },
+        "ref": null,
+        "rendered": Array [
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "host",
+            "props": Object {
+              "children": Array [
+                <h3>
+                   CONTACT 
+                </h3>,
+                <p>
+                  appcypher@outlook.com
+                </p>,
+                <p>
+                  +234 234 567 8901
+                </p>,
+                <p>
+                  +234 099 765 4321
+                </p>,
+                <p>
+                  Lagos, Nigeria.
+                </p>,
+              ],
+              "className": "col-6",
+            },
+            "ref": null,
+            "rendered": Array [
+              Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "host",
+                "props": Object {
+                  "children": " CONTACT ",
+                },
+                "ref": null,
+                "rendered": " CONTACT ",
+                "type": "h3",
+              },
+              Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "host",
+                "props": Object {
+                  "children": "appcypher@outlook.com",
+                },
+                "ref": null,
+                "rendered": "appcypher@outlook.com",
+                "type": "p",
+              },
+              Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "host",
+                "props": Object {
+                  "children": "+234 234 567 8901",
+                },
+                "ref": null,
+                "rendered": "+234 234 567 8901",
+                "type": "p",
+              },
+              Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "host",
+                "props": Object {
+                  "children": "+234 099 765 4321",
+                },
+                "ref": null,
+                "rendered": "+234 099 765 4321",
+                "type": "p",
+              },
+              Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "host",
+                "props": Object {
+                  "children": "Lagos, Nigeria.",
+                },
+                "ref": null,
+                "rendered": "Lagos, Nigeria.",
+                "type": "p",
+              },
+            ],
+            "type": "div",
+          },
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "host",
+            "props": Object {
+              "children": Array [
+                <h3>
+                   NAVIGATE 
+                </h3>,
+                <Link
+                  href={true}
+                  replace={false}
+                  to="/signin"
+                >
+                  Login
+                </Link>,
+                <Link
+                  href={true}
+                  replace={false}
+                  to="/signout"
+                >
+                  Signup
+                </Link>,
+                <Link
+                  href={true}
+                  replace={false}
+                  to="/discover"
+                >
+                  Discover
+                </Link>,
+                <Link
+                  href={true}
+                  replace={false}
+                  to="/profile"
+                >
+                  Profile
+                </Link>,
+                <Link
+                  href={true}
+                  replace={false}
+                  to="/home#about"
+                >
+                  About
+                </Link>,
+                <Link
+                  href={true}
+                  replace={false}
+                  to="/home#footer"
+                >
+                  Contact
+                </Link>,
+              ],
+              "className": "col-6",
+            },
+            "ref": null,
+            "rendered": Array [
+              Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "host",
+                "props": Object {
+                  "children": " NAVIGATE ",
+                },
+                "ref": null,
+                "rendered": " NAVIGATE ",
+                "type": "h3",
+              },
+              Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "class",
+                "props": Object {
+                  "children": "Login",
+                  "href": true,
+                  "replace": false,
+                  "to": "/signin",
+                },
+                "ref": null,
+                "rendered": "Login",
+                "type": [Function],
+              },
+              Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "class",
+                "props": Object {
+                  "children": "Signup",
+                  "href": true,
+                  "replace": false,
+                  "to": "/signout",
+                },
+                "ref": null,
+                "rendered": "Signup",
+                "type": [Function],
+              },
+              Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "class",
+                "props": Object {
+                  "children": "Discover",
+                  "href": true,
+                  "replace": false,
+                  "to": "/discover",
+                },
+                "ref": null,
+                "rendered": "Discover",
+                "type": [Function],
+              },
+              Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "class",
+                "props": Object {
+                  "children": "Profile",
+                  "href": true,
+                  "replace": false,
+                  "to": "/profile",
+                },
+                "ref": null,
+                "rendered": "Profile",
+                "type": [Function],
+              },
+              Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "class",
+                "props": Object {
+                  "children": "About",
+                  "href": true,
+                  "replace": false,
+                  "to": "/home#about",
+                },
+                "ref": null,
+                "rendered": "About",
+                "type": [Function],
+              },
+              Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "class",
+                "props": Object {
+                  "children": "Contact",
+                  "href": true,
+                  "replace": false,
+                  "to": "/home#footer",
+                },
+                "ref": null,
+                "rendered": "Contact",
+                "type": [Function],
+              },
+            ],
+            "type": "div",
+          },
+        ],
+        "type": "div",
+      },
+      "type": "div",
+    },
+    "type": "div",
+  },
+  Symbol(enzyme.__nodes__): Array [
+    Object {
+      "instance": null,
+      "key": undefined,
+      "nodeType": "host",
+      "props": Object {
+        "children": <div
+          className="container-fluid"
+        >
+          <div
+            className="row io-top-row justify-content-center"
+          >
+            <div
+              className="col-6"
+            >
+              <h3>
+                 CONTACT 
+              </h3>
+              <p>
+                appcypher@outlook.com
+              </p>
+              <p>
+                +234 234 567 8901
+              </p>
+              <p>
+                +234 099 765 4321
+              </p>
+              <p>
+                Lagos, Nigeria.
+              </p>
+            </div>
+            <div
+              className="col-6"
+            >
+              <h3>
+                 NAVIGATE 
+              </h3>
+              <Link
+                href={true}
+                replace={false}
+                to="/signin"
+              >
+                Login
+              </Link>
+              <Link
+                href={true}
+                replace={false}
+                to="/signout"
+              >
+                Signup
+              </Link>
+              <Link
+                href={true}
+                replace={false}
+                to="/discover"
+              >
+                Discover
+              </Link>
+              <Link
+                href={true}
+                replace={false}
+                to="/profile"
+              >
+                Profile
+              </Link>
+              <Link
+                href={true}
+                replace={false}
+                to="/home#about"
+              >
+                About
+              </Link>
+              <Link
+                href={true}
+                replace={false}
+                to="/home#footer"
+              >
+                Contact
+              </Link>
+            </div>
+          </div>
+        </div>,
+        "className": "io-footer",
+        "id": "footer",
+      },
+      "ref": null,
+      "rendered": Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "host",
+        "props": Object {
+          "children": <div
+            className="row io-top-row justify-content-center"
+          >
+            <div
+              className="col-6"
+            >
+              <h3>
+                 CONTACT 
+              </h3>
+              <p>
+                appcypher@outlook.com
+              </p>
+              <p>
+                +234 234 567 8901
+              </p>
+              <p>
+                +234 099 765 4321
+              </p>
+              <p>
+                Lagos, Nigeria.
+              </p>
+            </div>
+            <div
+              className="col-6"
+            >
+              <h3>
+                 NAVIGATE 
+              </h3>
+              <Link
+                href={true}
+                replace={false}
+                to="/signin"
+              >
+                Login
+              </Link>
+              <Link
+                href={true}
+                replace={false}
+                to="/signout"
+              >
+                Signup
+              </Link>
+              <Link
+                href={true}
+                replace={false}
+                to="/discover"
+              >
+                Discover
+              </Link>
+              <Link
+                href={true}
+                replace={false}
+                to="/profile"
+              >
+                Profile
+              </Link>
+              <Link
+                href={true}
+                replace={false}
+                to="/home#about"
+              >
+                About
+              </Link>
+              <Link
+                href={true}
+                replace={false}
+                to="/home#footer"
+              >
+                Contact
+              </Link>
+            </div>
+          </div>,
+          "className": "container-fluid",
+        },
+        "ref": null,
+        "rendered": Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "host",
+          "props": Object {
+            "children": Array [
+              <div
+                className="col-6"
+              >
+                <h3>
+                   CONTACT 
+                </h3>
+                <p>
+                  appcypher@outlook.com
+                </p>
+                <p>
+                  +234 234 567 8901
+                </p>
+                <p>
+                  +234 099 765 4321
+                </p>
+                <p>
+                  Lagos, Nigeria.
+                </p>
+              </div>,
+              <div
+                className="col-6"
+              >
+                <h3>
+                   NAVIGATE 
+                </h3>
+                <Link
+                  href={true}
+                  replace={false}
+                  to="/signin"
+                >
+                  Login
+                </Link>
+                <Link
+                  href={true}
+                  replace={false}
+                  to="/signout"
+                >
+                  Signup
+                </Link>
+                <Link
+                  href={true}
+                  replace={false}
+                  to="/discover"
+                >
+                  Discover
+                </Link>
+                <Link
+                  href={true}
+                  replace={false}
+                  to="/profile"
+                >
+                  Profile
+                </Link>
+                <Link
+                  href={true}
+                  replace={false}
+                  to="/home#about"
+                >
+                  About
+                </Link>
+                <Link
+                  href={true}
+                  replace={false}
+                  to="/home#footer"
+                >
+                  Contact
+                </Link>
+              </div>,
+            ],
+            "className": "row io-top-row justify-content-center",
+          },
+          "ref": null,
+          "rendered": Array [
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "host",
+              "props": Object {
+                "children": Array [
+                  <h3>
+                     CONTACT 
+                  </h3>,
+                  <p>
+                    appcypher@outlook.com
+                  </p>,
+                  <p>
+                    +234 234 567 8901
+                  </p>,
+                  <p>
+                    +234 099 765 4321
+                  </p>,
+                  <p>
+                    Lagos, Nigeria.
+                  </p>,
+                ],
+                "className": "col-6",
+              },
+              "ref": null,
+              "rendered": Array [
+                Object {
+                  "instance": null,
+                  "key": undefined,
+                  "nodeType": "host",
+                  "props": Object {
+                    "children": " CONTACT ",
+                  },
+                  "ref": null,
+                  "rendered": " CONTACT ",
+                  "type": "h3",
+                },
+                Object {
+                  "instance": null,
+                  "key": undefined,
+                  "nodeType": "host",
+                  "props": Object {
+                    "children": "appcypher@outlook.com",
+                  },
+                  "ref": null,
+                  "rendered": "appcypher@outlook.com",
+                  "type": "p",
+                },
+                Object {
+                  "instance": null,
+                  "key": undefined,
+                  "nodeType": "host",
+                  "props": Object {
+                    "children": "+234 234 567 8901",
+                  },
+                  "ref": null,
+                  "rendered": "+234 234 567 8901",
+                  "type": "p",
+                },
+                Object {
+                  "instance": null,
+                  "key": undefined,
+                  "nodeType": "host",
+                  "props": Object {
+                    "children": "+234 099 765 4321",
+                  },
+                  "ref": null,
+                  "rendered": "+234 099 765 4321",
+                  "type": "p",
+                },
+                Object {
+                  "instance": null,
+                  "key": undefined,
+                  "nodeType": "host",
+                  "props": Object {
+                    "children": "Lagos, Nigeria.",
+                  },
+                  "ref": null,
+                  "rendered": "Lagos, Nigeria.",
+                  "type": "p",
+                },
+              ],
+              "type": "div",
+            },
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "host",
+              "props": Object {
+                "children": Array [
+                  <h3>
+                     NAVIGATE 
+                  </h3>,
+                  <Link
+                    href={true}
+                    replace={false}
+                    to="/signin"
+                  >
+                    Login
+                  </Link>,
+                  <Link
+                    href={true}
+                    replace={false}
+                    to="/signout"
+                  >
+                    Signup
+                  </Link>,
+                  <Link
+                    href={true}
+                    replace={false}
+                    to="/discover"
+                  >
+                    Discover
+                  </Link>,
+                  <Link
+                    href={true}
+                    replace={false}
+                    to="/profile"
+                  >
+                    Profile
+                  </Link>,
+                  <Link
+                    href={true}
+                    replace={false}
+                    to="/home#about"
+                  >
+                    About
+                  </Link>,
+                  <Link
+                    href={true}
+                    replace={false}
+                    to="/home#footer"
+                  >
+                    Contact
+                  </Link>,
+                ],
+                "className": "col-6",
+              },
+              "ref": null,
+              "rendered": Array [
+                Object {
+                  "instance": null,
+                  "key": undefined,
+                  "nodeType": "host",
+                  "props": Object {
+                    "children": " NAVIGATE ",
+                  },
+                  "ref": null,
+                  "rendered": " NAVIGATE ",
+                  "type": "h3",
+                },
+                Object {
+                  "instance": null,
+                  "key": undefined,
+                  "nodeType": "class",
+                  "props": Object {
+                    "children": "Login",
+                    "href": true,
+                    "replace": false,
+                    "to": "/signin",
+                  },
+                  "ref": null,
+                  "rendered": "Login",
+                  "type": [Function],
+                },
+                Object {
+                  "instance": null,
+                  "key": undefined,
+                  "nodeType": "class",
+                  "props": Object {
+                    "children": "Signup",
+                    "href": true,
+                    "replace": false,
+                    "to": "/signout",
+                  },
+                  "ref": null,
+                  "rendered": "Signup",
+                  "type": [Function],
+                },
+                Object {
+                  "instance": null,
+                  "key": undefined,
+                  "nodeType": "class",
+                  "props": Object {
+                    "children": "Discover",
+                    "href": true,
+                    "replace": false,
+                    "to": "/discover",
+                  },
+                  "ref": null,
+                  "rendered": "Discover",
+                  "type": [Function],
+                },
+                Object {
+                  "instance": null,
+                  "key": undefined,
+                  "nodeType": "class",
+                  "props": Object {
+                    "children": "Profile",
+                    "href": true,
+                    "replace": false,
+                    "to": "/profile",
+                  },
+                  "ref": null,
+                  "rendered": "Profile",
+                  "type": [Function],
+                },
+                Object {
+                  "instance": null,
+                  "key": undefined,
+                  "nodeType": "class",
+                  "props": Object {
+                    "children": "About",
+                    "href": true,
+                    "replace": false,
+                    "to": "/home#about",
+                  },
+                  "ref": null,
+                  "rendered": "About",
+                  "type": [Function],
+                },
+                Object {
+                  "instance": null,
+                  "key": undefined,
+                  "nodeType": "class",
+                  "props": Object {
+                    "children": "Contact",
+                    "href": true,
+                    "replace": false,
+                    "to": "/home#footer",
+                  },
+                  "ref": null,
+                  "rendered": "Contact",
+                  "type": [Function],
+                },
+              ],
+              "type": "div",
+            },
+          ],
+          "type": "div",
+        },
+        "type": "div",
+      },
+      "type": "div",
+    },
+  ],
+  Symbol(enzyme.__options__): Object {
+    "adapter": ReactSixteenAdapter {
+      "options": Object {
+        "enableComponentDidUpdateOnSetState": true,
+      },
+    },
+  },
+}
+`;

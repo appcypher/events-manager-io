@@ -2,9 +2,11 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import UserAction from '../actions/userActions';
-import history from '../index';
 
-class LoginForm extends React.Component {
+/**
+ * Houses the login form and implements authentication process.
+ */
+export class LoginForm extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -20,15 +22,28 @@ class LoginForm extends React.Component {
   submit = () => {
     const { username, password } = this.state;
 
+
+    // Show loading screen.
+    this.props.showLoader();
+
     const redirectToDiscover = () => {
       // Add token and admin status to localStorage.
       localStorage.setItem('user.token', this.props.user.token);
       localStorage.setItem('user.admin', this.props.user.user.admin);
 
+
+      // Hide loading screen.
+      this.props.hideLoader();
+
       // Change page.
-      history.push('/discover');
+      this.props.history.push('/discover');
     };
-    const showError = () => this.props.showAlert(this.props.user.message);
+
+    // Callback for handling error.
+    const showError = () => {
+      this.props.hideLoader();
+      this.props.showAlertModal(this.props.user.message, 'error');
+    };
 
     this.props.loginUser(
       {
@@ -47,16 +62,14 @@ class LoginForm extends React.Component {
           <div className="io-input-group">
             <i className="io-icon fa fa-user" />
             <input placeholder="Username" type="email" name="username" onChange={this.saveInput} />
-            {/* <i className="io-mark fa fa-check" /> */}
           </div>
           <div className="io-input-group">
             <i className="io-icon fa fa-unlock-alt" />
             <input placeholder="Password" type="password" className="io-password" name="password" onChange={this.saveInput} />
-            {/* <i className="io-mark fa fa-check" /> */}
           </div>
         </div>
         <div>
-          <button id="signup-button" className="io-btn" onClick={this.submit}>LOG IN</button>
+          <button id="login-button" className="io-btn" onClick={this.submit}>LOG IN</button>
           <span className="io-anchor io-forgot">Forgotten password?</span>
         </div>
         <div className="io-extra io-login">
