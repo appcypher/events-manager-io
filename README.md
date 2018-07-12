@@ -4,6 +4,7 @@
 [![Coverage Status](https://coveralls.io/repos/github/AppCypher/EventsManager/badge.svg?branch=ch-continuous-integration-153009907)](https://coveralls.io/github/AppCypher/EventsManager?branch=ch-continuous-integration-153009907 "coveralls")
 [![Maintainability](https://api.codeclimate.com/v1/badges/7c612f2c1714c2378112/maintainability)](https://codeclimate.com/github/AppCypher/EventsManager/maintainability)
 [![Test Coverage](https://api.codeclimate.com/v1/badges/7c612f2c1714c2378112/test_coverage)](https://codeclimate.com/github/AppCypher/EventsManager/test_coverage)
+[![codecov](https://codecov.io/gh/appcypher/events-manager-io/branch/dev/graph/badge.svg)](https://codecov.io/gh/appcypher/events-manager-io)
 [![Swagger API](https://img.shields.io/swagger/valid/2.0/https/raw.githubusercontent.com/OAI/OpenAPI-Specification/master/examples/v2.0/json/petstore-expanded.json.svg)](https://swaggerhub.com/apis/appcypher/EventsManager/1.0.0)
 ![Maintained](https://img.shields.io/maintenance/yes/2018.svg)
 [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
