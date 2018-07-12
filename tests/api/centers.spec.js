@@ -53,7 +53,9 @@ describe('Centers', () => {
           .get('/api/v1/centers')
           .end((err2, res2) => {
             expect(res2.status).to.equal(200);
-            expect(res2.body).to.be.an('object');
+            expect(res2.body.centers).to.be.an('array');
+            expect(res2.body.centers[0].events).to.be.an('array');
+            expect(res2.body.centers[0].events.length).to.be.below(11);
             expect(res2.body.message).to.equal('All centers delivered!');
             done();
           });
@@ -70,6 +72,8 @@ describe('Centers', () => {
           .end((err2, res2) => {
             expect(res2.status).to.equal(200);
             expect(res2.body).to.be.an('object');
+            expect(res2.body.center.events).to.be.an('array');
+            expect(res2.body.center.events.length).to.be.below(11);
             expect(res2.body.message).to.equal('Center delivered!');
             done();
           });
@@ -90,7 +94,9 @@ describe('Centers', () => {
           })
           .end((err2, res2) => {
             expect(res2.status).to.equal(201);
-            expect(res2.body).to.be.an('object');
+            expect(res2.body.center.userId).to.be.a('number');
+            expect(res2.body.center.name).to.equal('Jake\'s Hall');
+            expect(res2.body.center.price).to.be.a('number');
             expect(res2.body.message).to.equal('Center created!');
             done();
           });
@@ -112,7 +118,6 @@ describe('Centers', () => {
           })
           .end((err2, res2) => {
             expect(res2.status).to.equal(403);
-            expect(res2.body).to.be.an('object');
             expect(res2.body.message).to.equal('You don\'t have enough permission to access this route!');
             done();
           });
@@ -172,11 +177,14 @@ describe('Centers', () => {
           .put('/api/v1/centers/2')
           .set('token', token)
           .send({
-            name: 'John\'s Hall', description: 'New shiny hall',
+            name: 'New Hall', description: 'New shiny hall',
           })
           .end((err2, res2) => {
             expect(res2.status).to.equal(200);
-            expect(res2.body).to.be.an('object');
+            expect(res2.body.center.userId).to.be.a('number');
+            expect(res2.body.center.price).to.be.a('number');
+            expect(res2.body.center.name).to.equal('New Hall');
+            expect(res2.body.center.type).to.equal('Multipurpose Hall');
             expect(res2.body.message).to.equal('Center modified!');
             done();
           });
@@ -193,11 +201,10 @@ describe('Centers', () => {
           .put('/api/v1/centers/2')
           .set('token', token)
           .send({
-            name: 'John\'s Hall', description: 'New shiny hall',
+            name: 'New Hall', description: 'New shiny hall',
           })
           .end((err2, res2) => {
             expect(res2.status).to.equal(403);
-            expect(res2.body).to.be.an('object');
             expect(res2.body.message).to.equal('You don\'t have enough permission to access this route!');
             done();
           });

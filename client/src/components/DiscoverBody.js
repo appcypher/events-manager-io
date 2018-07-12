@@ -1,6 +1,6 @@
 import React from 'react';
 import DiscoverTitleCard from '../components/DiscoverTitleCard';
-import DiscoverCenterCardRow from '../components/DiscoverCenterCardRow';
+import ConnectedDiscoverCenterCardRow from '../components/DiscoverCenterCardRow';
 
 /**
  * Parent element for the content of discover page.
@@ -18,9 +18,9 @@ class DiscoverBody extends React.Component {
       <div className="io-body-content">
         <div className="container-fluid">
           <DiscoverTitleCard>Event Centers Near You</DiscoverTitleCard>
-          <DiscoverCenterCardRow type="near" showViewCenterModal={this.props.showViewCenterModal} />
+          <ConnectedDiscoverCenterCardRow type="near" showViewCenterModal={this.props.showViewCenterModal} />
           <DiscoverTitleCard>Available Event Centers</DiscoverTitleCard>
-          <DiscoverCenterCardRow showViewCenterModal={this.props.showViewCenterModal} />
+          <ConnectedDiscoverCenterCardRow showViewCenterModal={this.props.showViewCenterModal} />
         </div>
       </div>
     );

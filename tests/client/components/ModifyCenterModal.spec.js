@@ -27,7 +27,6 @@ describe('ModifyCenterModal', () => {
   });
 
   it('Should render connected component', () => {
-    // eslint-disable-next-line
     wrapper = mount(
       <Provider store={store}>
         <ConnectedModifyCenterModal modifyCenterModalState={{ id: 1 }} />

@@ -47,8 +47,8 @@ export class DiscoverNavbarLoggedIn extends React.Component {
           </Link>
           <i className="io-icon fa fa-bell" />
           <div className="io-text io-switchable">MESSAGES</div>
-          <i className="io-icon fa fa-cog" />
-          <div className="io-text io-switchable" onClick={this.logoutUser}>LOGOUT</div>
+          <i className="io-icon fa fa-sign-out" onClick={this.logoutUser} />
+          <div id="discover-navbar-logout" className="io-text io-switchable" onClick={this.logoutUser}>LOGOUT</div>
         </div>
       </Navbar>
     );

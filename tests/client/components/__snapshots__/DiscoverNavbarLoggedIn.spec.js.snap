@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`DiscoverNavbarLoggedIn Should maintain existing snapshot 1`] = `
+exports[`DiscoverNavbarLoggedIn should maintain existing snapshot 1`] = `
 ShallowWrapper {
   "length": 1,
   Symbol(enzyme.__root__): [Circular],

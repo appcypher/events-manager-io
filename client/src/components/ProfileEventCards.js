@@ -14,6 +14,9 @@ export class ProfileEventCards extends React.Component {
   }
 
   deleteEvent = listPosition => () => {
+    // Get user token
+    const token = localStorage.getItem('user.token');
+
     // Get the event id.
     const eventId = this.props.event.events[listPosition].id;
 
@@ -29,7 +32,7 @@ export class ProfileEventCards extends React.Component {
 
       // Show notification of success.
       setTimeout(
-        () => window.location.reload(),
+        () => { this.props.getAllEvents(token, 1); },
         2500,
       );
     };
@@ -40,7 +43,6 @@ export class ProfileEventCards extends React.Component {
       this.props.showAlertModal(this.props.center.message, 'error');
     };
 
-    const token = localStorage.getItem('user.token');
     this.props.deleteEvent(token, eventId, reloadPage, showError);
   }
 
@@ -135,5 +137,6 @@ export default connect(
   mapStateToProps,
   {
     deleteEvent: EventAction.deleteEvent,
+    getAllEvents: EventAction.getAllEvents,
   },
 )(ProfileEventCards);

@@ -64,7 +64,7 @@ export class AddCenterModal extends React.Component {
 
       // Reload page after 2secs.
       setTimeout(
-        () => window.location.reload(),
+        () => { this.props.getAllCenters(); },
         2500,
       );
     };
@@ -98,10 +98,10 @@ export class AddCenterModal extends React.Component {
                 <span>₦</span><input id="add-center-price" placeholder="Enter price here" type="number" className="io-input-grow io-input-field number" name="price" onChange={this.saveInput} /><span>per day</span>
               </ModalSection>
               <ModalSection title="Pictures">
-                <input type="file" accept="image/*" multiple className="io-input-grow io-input-field io-upload-btn" name="pictures" onChange={this.saveImageInput} />
+                <input id="add-center-pictures" type="file" accept="image/*" multiple className="io-input-grow io-input-field io-upload-btn" name="pictures" onChange={this.saveImageInput} />
               </ModalSection>
-              <ModalSection title="Available" extra="io-start"><ModalList list={availablility} checked={this.state.available} saveInput={this.saveInput} /></ModalSection>
-              <ModalSection title="Facilities" extra="io-start"><ModalList list={facilityList} saveInput={this.saveInput} /></ModalSection>
+              <ModalSection title="Available" extra="io-start add-center-available"><ModalList list={availablility} checked={this.state.available} saveInput={this.saveInput} /></ModalSection>
+              <ModalSection title="Facilities" extra="io-start add-center-facilities"><ModalList list={facilityList} saveInput={this.saveInput} /></ModalSection>
             </form>
           </div>
           <div className="io-footer">
@@ -120,5 +120,6 @@ export default connect(
   mapStateToProps,
   {
     createCenter: CenterAction.createCenter,
+    getAllCenters: CenterAction.getAllCenters,
   },
 )(AddCenterModal);

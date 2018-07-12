@@ -4,7 +4,7 @@ exports[`ProfileEventCards Should maintain existing snapshot 1`] = `
 ShallowWrapper {
   "length": 1,
   Symbol(enzyme.__root__): [Circular],
-  Symbol(enzyme.__unrendered__): <Connect(ProfileEventCards)
+  Symbol(enzyme.__unrendered__): <Provider
     store={
       Object {
         "clearActions": [Function],
@@ -15,7 +15,12 @@ ShallowWrapper {
         "subscribe": [Function],
       }
     }
-  />,
+  >
+    <Connect(ProfileEventCards)
+      showConfirmModal={[Function]}
+      showModifyEventModal={[Function]}
+    />
+  </Provider>,
   Symbol(enzyme.__renderer__): Object {
     "batchedUpdates": [Function],
     "getNode": [Function],
@@ -28,43 +33,8 @@ ShallowWrapper {
     "key": undefined,
     "nodeType": "class",
     "props": Object {
-      "deleteEvent": [Function],
-      "event": Object {
-        "events": Array [],
-        "message": "",
-      },
-      "store": Object {
-        "clearActions": [Function],
-        "dispatch": [Function],
-        "getActions": [Function],
-        "getState": [Function],
-        "replaceReducer": [Function],
-        "subscribe": [Function],
-      },
-      "storeSubscription": Subscription {
-        "listeners": Object {
-          "clear": [Function],
-          "get": [Function],
-          "notify": [Function],
-          "subscribe": [Function],
-        },
-        "onStateChange": [Function],
-        "parentSub": undefined,
-        "store": Object {
-          "clearActions": [Function],
-          "dispatch": [Function],
-          "getActions": [Function],
-          "getState": [Function],
-          "replaceReducer": [Function],
-          "subscribe": [Function],
-        },
-        "unsubscribe": [Function],
-      },
-      "user": Object {
-        "message": "",
-        "token": "",
-        "user": Object {},
-      },
+      "showConfirmModal": [Function],
+      "showModifyEventModal": [Function],
     },
     "ref": null,
     "rendered": null,
@@ -76,43 +46,8 @@ ShallowWrapper {
       "key": undefined,
       "nodeType": "class",
       "props": Object {
-        "deleteEvent": [Function],
-        "event": Object {
-          "events": Array [],
-          "message": "",
-        },
-        "store": Object {
-          "clearActions": [Function],
-          "dispatch": [Function],
-          "getActions": [Function],
-          "getState": [Function],
-          "replaceReducer": [Function],
-          "subscribe": [Function],
-        },
-        "storeSubscription": Subscription {
-          "listeners": Object {
-            "clear": [Function],
-            "get": [Function],
-            "notify": [Function],
-            "subscribe": [Function],
-          },
-          "onStateChange": [Function],
-          "parentSub": undefined,
-          "store": Object {
-            "clearActions": [Function],
-            "dispatch": [Function],
-            "getActions": [Function],
-            "getState": [Function],
-            "replaceReducer": [Function],
-            "subscribe": [Function],
-          },
-          "unsubscribe": [Function],
-        },
-        "user": Object {
-          "message": "",
-          "token": "",
-          "user": Object {},
-        },
+        "showConfirmModal": [Function],
+        "showModifyEventModal": [Function],
       },
       "ref": null,
       "rendered": null,

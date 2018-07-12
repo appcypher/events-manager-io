@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<testsuites errors="0"
+            failures="0"
+            tests="1">
+
+  <testsuite name="pages.spec"
+    errors="0" failures="0" hostname="" id="" package="pages.spec" skipped="0"
+    tests="1" time="14.53" timestamp="Mon, 09 Jul 2018 12:22:47 GMT">
+  
+    <testcase name="View All Pages" classname="pages.spec" time="14.53" assertions="2">
+
+    
+
+    
+    </testcase>
+  
+
+  
+
+  
+  </testsuite>
+</testsuites>

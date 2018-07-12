@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<testsuites errors="0"
+            failures="0"
+            tests="2">
+
+  <testsuite name="utils.signin.spec"
+    errors="0" failures="0" hostname="" id="" package="utils" skipped="0"
+    tests="2" time="12.80" timestamp="Mon, 09 Jul 2018 09:02:31 GMT">
+  
+    <testcase name="Regular Login" classname="utils.signin.spec" time="7.397" assertions="2">
+
+    
+
+    
+    </testcase>
+  
+    <testcase name="Admin Login" classname="utils.signin.spec" time="5.404" assertions="2">
+
+    
+
+    
+    </testcase>
+  
+
+  
+
+  
+  </testsuite>
+</testsuites>

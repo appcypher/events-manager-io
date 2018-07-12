@@ -89,8 +89,7 @@ export class AddEventModal extends React.Component {
               showDropdown: false,
             });
           }
-        })
-        .catch(() => { });
+        });
 
     // Other inputs
     } else {
@@ -99,6 +98,9 @@ export class AddEventModal extends React.Component {
   }
 
   submit = () => {
+    // Get token.
+    const token = localStorage.getItem('user.token');
+
     // Show loading screen.
     this.props.showLoader();
 
@@ -112,7 +114,7 @@ export class AddEventModal extends React.Component {
 
       // Relaod page after 2secs.
       setTimeout(
-        () => window.location.reload(),
+        () => { this.props.getAllEvents(token, 1); },
         2500,
       );
     };
@@ -123,7 +125,6 @@ export class AddEventModal extends React.Component {
       this.props.showAlertModal(this.props.event.message, 'error');
     };
 
-    const token = localStorage.getItem('user.token');
     this.props.createEvent(token, this.state, reloadPage, showError);
   }
 
@@ -161,5 +162,6 @@ export default connect(
   mapStateToProps,
   {
     createEvent: EventAction.createEvent,
+    getAllEvents: EventAction.getAllEvents,
   },
 )(AddEventModal);

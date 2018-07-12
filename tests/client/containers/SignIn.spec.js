@@ -13,7 +13,7 @@ describe('<SignIn />', () => {
     expect(wrapper.length).toEqual(1);
   });
 
-  it('Should maintain existing snapshot', () => {
+  it('should maintain existing snapshot', () => {
     expect(wrapper).toMatchSnapshot();
   });
 });

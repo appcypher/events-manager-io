@@ -22,12 +22,24 @@ describe('ProfileEventCards', () => {
   });
 
   it('Should maintain existing snapshot', () => {
-    wrapper = shallow(<ConnectedProfileEventCards store={store} />);
+    wrapper = shallow(
+      <Provider store={store}>
+        <ConnectedProfileEventCards
+          showModifyEventModal={() => {}}
+          showConfirmModal={() => {}}
+        />
+      </Provider>);
     expect(wrapper).toMatchSnapshot();
   });
 
   it('Should render connected component', () => {
-    wrapper = mount(<Provider store={store}><ConnectedProfileEventCards /></Provider>);
+    wrapper = mount(
+      <Provider store={store}>
+        <ConnectedProfileEventCards
+          showModifyEventModal={() => {}}
+          showConfirmModal={() => {}}
+        />
+      </Provider>);
     expect(wrapper.length).toEqual(1);
   });
 });

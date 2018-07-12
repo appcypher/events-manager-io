@@ -57,7 +57,7 @@ ShallowWrapper {
           <a
             href="/#about"
           >
-            ABOUT US
+            ABOUT
           </a>
         </div>,
         <div
@@ -152,7 +152,7 @@ ShallowWrapper {
             <a
               href="/#about"
             >
-              ABOUT US
+              ABOUT
             </a>,
           ],
           "className": "io-middle io-start",
@@ -176,11 +176,11 @@ ShallowWrapper {
             "key": undefined,
             "nodeType": "host",
             "props": Object {
-              "children": "ABOUT US",
+              "children": "ABOUT",
               "href": "/#about",
             },
             "ref": null,
-            "rendered": "ABOUT US",
+            "rendered": "ABOUT",
             "type": "a",
           },
         ],
@@ -286,7 +286,7 @@ ShallowWrapper {
             <a
               href="/#about"
             >
-              ABOUT US
+              ABOUT
             </a>
           </div>,
           <div
@@ -381,7 +381,7 @@ ShallowWrapper {
               <a
                 href="/#about"
               >
-                ABOUT US
+                ABOUT
               </a>,
             ],
             "className": "io-middle io-start",
@@ -405,11 +405,11 @@ ShallowWrapper {
               "key": undefined,
               "nodeType": "host",
               "props": Object {
-                "children": "ABOUT US",
+                "children": "ABOUT",
                 "href": "/#about",
               },
               "ref": null,
-              "rendered": "ABOUT US",
+              "rendered": "ABOUT",
               "type": "a",
             },
           ],

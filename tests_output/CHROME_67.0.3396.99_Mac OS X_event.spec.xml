@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<testsuites errors="3"
+            failures="0"
+            tests="3">
+
+  <testsuite name="event.spec"
+    errors="3" failures="0" hostname="" id="" package="event.spec" skipped="0"
+    tests="3" time="29.80" timestamp="Mon, 09 Jul 2018 12:17:08 GMT">
+  
+    <testcase name="Create Event" classname="event.spec" time="17.59" assertions="5">
+
+    
+
+    
+
+    
+
+    
+
+    
+    </testcase>
+  
+    <testcase name="Modify Event" classname="event.spec" time="7.019" assertions="1">
+
+    
+    </testcase>
+  
+    <testcase name="Delete Event" classname="event.spec" time="5.186" assertions="1">
+
+    
+    </testcase>
+  
+
+  
+    <system-err>
+      ERROR: Unable to locate element: &#34;#modify-event-center&#34; using: css selector
+    at Object.ModifyEvent [as Modify Event] (/Users/andeladeveloper/Desktop/Projects/events-manager-io/tests/e2e/event.spec.js:58:8)
+    at Module.call (/Users/andeladeveloper/Desktop/Projects/events-manager-io/node_modules/nightwatch/lib/runner/module.js:62:34)
+    at /Users/andeladeveloper/Desktop/Projects/events-manager-io/node_modules/nightwatch/lib/runner/testcase.js:70:29
+    at _fulfilled (/Users/andeladeveloper/Desktop/Projects/events-manager-io/node_modules/q/q.js:834:54)
+    at self.promiseDispatch.done (/Users/andeladeveloper/Desktop/Projects/events-manager-io/node_modules/q/q.js:863:30)
+    at Promise.promise.promiseDispatch (/Users/andeladeveloper/Desktop/Projects/events-manager-io/node_modules/q/q.js:796:13)
+    at /Users/andeladeveloper/Desktop/Projects/events-manager-io/node_modules/q/q.js:556:49
+    at runSingle (/Users/andeladeveloper/Desktop/Projects/events-manager-io/node_modules/q/q.js:137:13)
+    at flush (/Users/andeladeveloper/Desktop/Projects/events-manager-io/node_modules/q/q.js:125:13)
+    at _combinedTickCallback (internal/process/next_tick.js:131:7)
+ERROR: Unable to locate element: &#34;#modify-event-center&#34; using: css selector
+    at Object.ModifyEvent [as Modify Event] (/Users/andeladeveloper/Desktop/Projects/events-manager-io/tests/e2e/event.spec.js:59:8)
+    at Module.call (/Users/andeladeveloper/Desktop/Projects/events-manager-io/node_modules/nightwatch/lib/runner/module.js:62:34)
+    at /Users/andeladeveloper/Desktop/Projects/events-manager-io/node_modules/nightwatch/lib/runner/testcase.js:70:29
+    at _fulfilled (/Users/andeladeveloper/Desktop/Projects/events-manager-io/node_modules/q/q.js:834:54)
+    at self.promiseDispatch.done (/Users/andeladeveloper/Desktop/Projects/events-manager-io/node_modules/q/q.js:863:30)
+    at Promise.promise.promiseDispatch (/Users/andeladeveloper/Desktop/Projects/events-manager-io/node_modules/q/q.js:796:13)
+    at /Users/andeladeveloper/Desktop/Projects/events-manager-io/node_modules/q/q.js:556:49
+    at runSingle (/Users/andeladeveloper/Desktop/Projects/events-manager-io/node_modules/q/q.js:137:13)
+    at flush (/Users/andeladeveloper/Desktop/Projects/events-manager-io/node_modules/q/q.js:125:13)
+    at _combinedTickCallback (internal/process/next_tick.js:131:7)
+ERROR: Unable to locate element: &#34;.io-dropdown :nth-child(1)&#34; using: css selector
+    at Object.ModifyEvent [as Modify Event] (/Users/andeladeveloper/Desktop/Projects/events-manager-io/tests/e2e/event.spec.js:61:8)
+    at Module.call (/Users/andeladeveloper/Desktop/Projects/events-manager-io/node_modules/nightwatch/lib/runner/module.js:62:34)
+    at /Users/andeladeveloper/Desktop/Projects/events-manager-io/node_modules/nightwatch/lib/runner/testcase.js:70:29
+    at _fulfilled (/Users/andeladeveloper/Desktop/Projects/events-manager-io/node_modules/q/q.js:834:54)
+    at self.promiseDispatch.done (/Users/andeladeveloper/Desktop/Projects/events-manager-io/node_modules/q/q.js:863:30)
+    at Promise.promise.promiseDispatch (/Users/andeladeveloper/Desktop/Projects/events-manager-io/node_modules/q/q.js:796:13)
+    at /Users/andeladeveloper/Desktop/Projects/events-manager-io/node_modules/q/q.js:556:49
+    at runSingle (/Users/andeladeveloper/Desktop/Projects/events-manager-io/node_modules/q/q.js:137:13)
+    at flush (/Users/andeladeveloper/Desktop/Projects/events-manager-io/node_modules/q/q.js:125:13)
+    at _combinedTickCallback (internal/process/next_tick.js:131:7)
+    </system-err>
+  
+
+  
+  </testsuite>
+</testsuites>

@@ -28,7 +28,6 @@ describe('ProfileNavbar', () => {
   });
 
   it('Should render connected component', () => {
-    // eslint-disable-next-line
     wrapper = mount(
       <BrowserRouter>
         <Provider store={store}>

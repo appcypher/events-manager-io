@@ -36,10 +36,4 @@ describe('AddCenterModal', () => {
     wrapper.find('#add-center-name').simulate('change', { target: { name: 'name', value: 'Ace' } });
     expect(wrapper.state('name')).toEqual('Ace');
   });
-
-  it('should respond to change event and change the state of modal', () => {
-    wrapper = mount(<AddCenterModal store={store} />);
-    wrapper.find('#add-center-location').simulate('change', { target: { name: 'location', value: 'Lagos' } });
-    expect(wrapper.state('location')).toEqual('Lagos');
-  });
 });

@@ -663,6 +663,7 @@ body {
       display: flex;
       align-items: center;
       justify-content: center;
+      margin-left: -5px;
       &:hover {
         border-radius: 50%;
         background-color: $login-text-area-gray;
@@ -1092,6 +1093,7 @@ body {
   img {
     width: 300px;
     height: 350px;
+    object-fit: cover;
     border-radius: 5px;
     // background-color: #e5e5e5;
     border: 5px solid #fafafa;
@@ -1149,12 +1151,16 @@ body {
 
 // ABOUT US
 .io-about {
-  height: 500px;
+  height: auto;
+  min-height: 500px;
   padding: 30px 20px;
   display: flex;
   flex-direction: column;
   /* justify-content: center; */
   align-items: center;
+  font-size: 18px;
+  background-color: #242835;
+  color: white;
   h1 {
     font-weight: 700px;
   }
@@ -1335,19 +1341,32 @@ body {
 }
 
 @media only screen and (max-width: 600px) {
-    // Overriding bootstrap
-    .row {
-      flex-direction: column;
-      align-items: center;
+  // Overriding bootstrap
+  .row {
+    flex-direction: column;
+    align-items: center;
+  }
+  .io-footer .col-6 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    a {
+      display: block;
     }
-    .io-footer .col-6 {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      a {
-        display: block;
-      }
-    }
+  }
+
+  .io-event-card {
+    width: auto;
+  }
+
+  .io-modal-body {
+    width: auto !important;
+  }
+
+  .io-navbar {
+    font-size: 12px;
+  }
+
 }
 
 // Discover navbar responsiveness
@@ -1456,4 +1475,47 @@ body {
   }
 }
 
+/****************** ANIMATIONS *******************/
+@keyframes bounce {
+  0%,
+  20%,
+  50%,
+  80%,
+  100% {
+    transform: translateY(0) scale(1);
+  }
+  40% {
+    transform: translateY(-30px);
+  }
+  60% {
+    transform: translateY(-15px);
+  }
+}
+@keyframes zoom-in {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+.animated {
+  &.bounce {
+    &:hover {
+      animation-name: bounce;
+      animation-duration: 1.5s;
+    }
+  }
 
+  &.zoom-in {
+    &:hover {
+      animation-name: zoom-in;
+      animation-duration: 1s;
+      animation-timing-function: ease-in-out;
+      animation-iteration-count: infinite;
+    }
+  }
+}

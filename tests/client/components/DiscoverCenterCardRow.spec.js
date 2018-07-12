@@ -1,7 +1,7 @@
 import React from 'react';
 import { Provider } from 'react-redux';
 import { shallow, mount } from 'enzyme';
-import DiscoverCenterCardRow from '../../../client/src/components/DiscoverCenterCardRow';
+import ConnectedDiscoverCenterCardRow from '../../../client/src/components/DiscoverCenterCardRow';
 import mockStore from '../mocks/storeMock';
 import { mockAxios } from '../mocks/axiosMock';
 
@@ -22,12 +22,18 @@ describe('DiscoverCenterCardRow', () => {
   });
 
   it('Should maintain existing snapshot', () => {
-    wrapper = shallow(<DiscoverCenterCardRow store={store} />);
+    wrapper = shallow(
+      <Provider store={store}>
+        <ConnectedDiscoverCenterCardRow showViewCenterModal={() => {}} />
+      </Provider>);
     expect(wrapper).toMatchSnapshot();
   });
 
   it('Should render connected component', () => {
-    wrapper = mount(<Provider store={store}><DiscoverCenterCardRow /></Provider>);
+    wrapper = mount(
+      <Provider store={store}>
+        <ConnectedDiscoverCenterCardRow showViewCenterModal={() => {}} />
+      </Provider>);
     expect(wrapper.length).toEqual(1);
   });
 });

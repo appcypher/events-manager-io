@@ -29,10 +29,20 @@ ShallowWrapper {
     "nodeType": "class",
     "props": Object {
       "center": Object {
-        "centers": Array [],
+        "centers": Array [
+          Object {
+            "description": "",
+            "location": "",
+            "name": "",
+            "picture1": null,
+            "price": "5000",
+            "type": "",
+          },
+        ],
         "message": "",
       },
       "createCenter": [Function],
+      "getAllCenters": [Function],
       "store": Object {
         "clearActions": [Function],
         "dispatch": [Function],
@@ -72,10 +82,20 @@ ShallowWrapper {
       "nodeType": "class",
       "props": Object {
         "center": Object {
-          "centers": Array [],
+          "centers": Array [
+            Object {
+              "description": "",
+              "location": "",
+              "name": "",
+              "picture1": null,
+              "price": "5000",
+              "type": "",
+            },
+          ],
           "message": "",
         },
         "createCenter": [Function],
+        "getAllCenters": [Function],
         "store": Object {
           "clearActions": [Function],
           "dispatch": [Function],

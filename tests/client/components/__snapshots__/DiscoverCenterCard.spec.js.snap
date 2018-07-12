@@ -55,7 +55,7 @@ ShallowWrapper {
           </p>
         </div>,
       ],
-      "className": "io-center-card",
+      "className": "io-center-card animated zoom-in",
     },
     "ref": null,
     "rendered": Array [
@@ -216,7 +216,7 @@ ShallowWrapper {
             </p>
           </div>,
         ],
-        "className": "io-center-card",
+        "className": "io-center-card animated zoom-in",
       },
       "ref": null,
       "rendered": Array [

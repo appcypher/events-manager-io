@@ -5,7 +5,7 @@ import DiscoverCenterCard from '../components/DiscoverCenterCard';
 /**
  * Component that houses the center cards.
  */
-class DiscoverCenterCardRow extends React.Component {
+export class DiscoverCenterCardRow extends React.Component {
   constructor(props) {
     super(props);
     this.state = {};

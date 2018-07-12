@@ -13,7 +13,7 @@ const ModalList = (props) => {
   props.list.forEach((item) => {
     // Spaces are stripped from the names.
     const name = item.toLowerCase().replace(/\s+/g, '');
-    listElements.push(<li key={index += 1}><input type="checkbox" name={name} checked={props.checked} onChange={props.saveInput} /><span className="io-check-text">{item}</span></li>);
+    listElements.push(<li key={index += 1}><input className="io-checkbox" type="checkbox" name={name} checked={props.checked} onChange={props.saveInput} /><span className="io-check-text">{item}</span></li>);
   });
 
   return (

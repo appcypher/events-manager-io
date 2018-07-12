@@ -12,7 +12,6 @@ describe('ConfirmModal', () => {
   };
 
   it('Should maintain existing snapshot', () => {
-    // eslint-disable-next-line
     wrapper = shallow(
       <DiscoverCenterCard
         name={props.name}
@@ -24,7 +23,6 @@ describe('ConfirmModal', () => {
   });
 
   it('Should render connected component', () => {
-    // eslint-disable-next-line
     wrapper = shallow(
       <DiscoverCenterCard
         name={props.name}

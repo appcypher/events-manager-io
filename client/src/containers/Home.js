@@ -1,6 +1,6 @@
 import React from 'react';
 import HomeNavbar from '../components/HomeNavbar';
-import HomeNavbarLoggedIn from '../components/HomeNavbarLoggedIn';
+import ConnectedHomeNavbarLoggedIn from '../components/HomeNavbarLoggedIn';
 import HomeBody from '../components/HomeBody';
 import Footer from '../components/Footer';
 
@@ -14,7 +14,7 @@ class Home extends React.Component {
       localStorage.getItem('user.token') !== 'undefined' &&
       localStorage.getItem('user.token') !== ''
     ) {
-      return <HomeNavbarLoggedIn />;
+      return <ConnectedHomeNavbarLoggedIn />;
     }
     return <HomeNavbar />;
   }

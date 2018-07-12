@@ -17,7 +17,7 @@ export const HomeNavbarLoggedIn = () => (
     </Link>
     <div className="io-middle io-start">
       <a href="/#footer">CONTACT</a>
-      <a href="/#about">ABOUT US</a>
+      <a href="/#about">ABOUT</a>
     </div>
     <div className="io-end">
       <Link id="goto-discover" href to="/discover" className="io-text">DISCOVER</Link>

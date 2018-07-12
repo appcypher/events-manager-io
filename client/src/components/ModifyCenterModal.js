@@ -65,7 +65,7 @@ export class ModifyCenterModal extends React.Component {
 
       // Show notification of success.
       setTimeout(
-        () => window.location.reload(),
+        () => { this.props.getAllCenters(); },
         2500,
       );
     };
@@ -126,9 +126,9 @@ export class ModifyCenterModal extends React.Component {
               <ModalSection title="Price">
                 <span>₦</span><input value={price} id="modify-center-price" placeholder="Enter price here" type="number" className="io-input-grow io-input-field" name="price" onChange={this.saveInput} /><span>per day</span>
               </ModalSection>
-              <ModalSection title="Pictures"><input type="file" accept="image/*" multiple className="io-input-grow io-input-field io-upload-btn" name="pictures" onChange={this.saveImageInput} /></ModalSection>
-              <ModalSection title="Available" extra="io-start"><ModalList list={availablility} checked={available} saveInput={this.saveInput} /></ModalSection>
-              <ModalSection title="Facilities" extra="io-start"><ModalList list={facilityList} saveInput={this.saveInput} /></ModalSection>
+              <ModalSection title="Pictures"><input id="modify-center-pictures" type="file" accept="image/*" multiple className="io-input-grow io-input-field io-upload-btn" name="pictures" onChange={this.saveImageInput} /></ModalSection>
+              <ModalSection title="Available" extra="io-start modify-center-available"><ModalList list={availablility} checked={available} saveInput={this.saveInput} /></ModalSection>
+              <ModalSection title="Facilities" extra="io-start modify-center-facilities"><ModalList list={facilityList} saveInput={this.saveInput} /></ModalSection>
             </form>
           </div>
           <div className="io-footer">
@@ -147,5 +147,6 @@ export default connect(
   mapStateToProps,
   {
     modifyCenter: CenterAction.modifyCenter,
+    getAllCenters: CenterAction.getAllCenters,
   },
 )(ModifyCenterModal);

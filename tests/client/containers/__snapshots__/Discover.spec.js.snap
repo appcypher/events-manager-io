@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<Discover /> Should maintain existing snapshot 1`] = `
+exports[`<Discover /> should maintain existing snapshot 1`] = `
 ShallowWrapper {
   "length": 1,
   Symbol(enzyme.__root__): [Circular],
@@ -29,7 +29,16 @@ ShallowWrapper {
     "nodeType": "class",
     "props": Object {
       "center": Object {
-        "centers": Array [],
+        "centers": Array [
+          Object {
+            "description": "",
+            "location": "",
+            "name": "",
+            "picture1": null,
+            "price": "5000",
+            "type": "",
+          },
+        ],
         "message": "",
       },
       "getAllCenters": [Function],
@@ -77,7 +86,16 @@ ShallowWrapper {
       "nodeType": "class",
       "props": Object {
         "center": Object {
-          "centers": Array [],
+          "centers": Array [
+            Object {
+              "description": "",
+              "location": "",
+              "name": "",
+              "picture1": null,
+              "price": "5000",
+              "type": "",
+            },
+          ],
           "message": "",
         },
         "getAllCenters": [Function],

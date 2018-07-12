@@ -29,7 +29,14 @@ ShallowWrapper {
     "nodeType": "class",
     "props": Object {
       "event": Object {
-        "events": Array [],
+        "events": Array [
+          Object {
+            "center": "",
+            "date": "",
+            "description": "",
+            "title": "",
+          },
+        ],
         "message": "",
       },
       "getAllEvents": [Function],
@@ -78,7 +85,14 @@ ShallowWrapper {
       "nodeType": "class",
       "props": Object {
         "event": Object {
-          "events": Array [],
+          "events": Array [
+            Object {
+              "center": "",
+              "date": "",
+              "description": "",
+              "title": "",
+            },
+          ],
           "message": "",
         },
         "getAllEvents": [Function],

@@ -30,9 +30,17 @@ ShallowWrapper {
     "props": Object {
       "createEvent": [Function],
       "event": Object {
-        "events": Array [],
+        "events": Array [
+          Object {
+            "center": "",
+            "date": "",
+            "description": "",
+            "title": "",
+          },
+        ],
         "message": "",
       },
+      "getAllEvents": [Function],
       "store": Object {
         "clearActions": [Function],
         "dispatch": [Function],
@@ -73,9 +81,17 @@ ShallowWrapper {
       "props": Object {
         "createEvent": [Function],
         "event": Object {
-          "events": Array [],
+          "events": Array [
+            Object {
+              "center": "",
+              "date": "",
+              "description": "",
+              "title": "",
+            },
+          ],
           "message": "",
         },
+        "getAllEvents": [Function],
         "store": Object {
           "clearActions": [Function],
           "dispatch": [Function],

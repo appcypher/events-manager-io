@@ -29,9 +29,17 @@ ShallowWrapper {
     "nodeType": "class",
     "props": Object {
       "event": Object {
-        "events": Array [],
+        "events": Array [
+          Object {
+            "center": "",
+            "date": "",
+            "description": "",
+            "title": "",
+          },
+        ],
         "message": "",
       },
+      "getAllEvents": [Function],
       "modifyEvent": [Function],
       "store": Object {
         "clearActions": [Function],
@@ -72,9 +80,17 @@ ShallowWrapper {
       "nodeType": "class",
       "props": Object {
         "event": Object {
-          "events": Array [],
+          "events": Array [
+            Object {
+              "center": "",
+              "date": "",
+              "description": "",
+              "title": "",
+            },
+          ],
           "message": "",
         },
+        "getAllEvents": [Function],
         "modifyEvent": [Function],
         "store": Object {
           "clearActions": [Function],

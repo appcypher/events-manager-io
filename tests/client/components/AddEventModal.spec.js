@@ -1,4 +1,5 @@
 import React from 'react';
+import sinon from 'sinon';
 import { Provider } from 'react-redux';
 import { shallow, mount } from 'enzyme';
 import ConnectedAddEventModal, { AddEventModal } from '../../../client/src/components/AddEventModal';
@@ -41,5 +42,15 @@ describe('AddEventModal', () => {
     wrapper = mount(<AddEventModal store={store} />);
     wrapper.find('#add-event-description').simulate('change', { target: { name: 'description', value: 'It will be nice' } });
     expect(wrapper.state('description')).toEqual('It will be nice');
+  });
+
+  it('should call pickCenter when center is selected', () => {
+    wrapper = mount(<AddEventModal store={store} />);
+
+    const func1 = sinon.spy(wrapper.instance(), 'pickCenter');
+
+    wrapper.instance().pickCenter(1, '', { value: '' })();
+
+    expect(func1.called).toBeTruthy();
   });
 });

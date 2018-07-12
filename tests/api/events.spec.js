@@ -44,6 +44,9 @@ const createNormalUsers = () => {
   User.create({
     username: 'albert', email: 'albert@gmail.com', password: hash('albert', 10), fullname: 'Albert', admin: false,
   });
+  User.create({
+    username: 'cain', email: 'cain@gmail.com', password: hash('cain', 10), fullname: 'Cain', admin: false,
+  });
 };
 
 const createCenters = () => {
@@ -87,7 +90,9 @@ describe('Events', () => {
           })
           .end((err2, res2) => {
             expect(res2.status).to.equal(201);
-            expect(res2.body).to.be.an('object');
+            expect(res2.body.event).to.be.an('object');
+            expect(res2.body.event.userId).to.be.a('number');
+            expect(res2.body.event.title).to.equal('Jake\'s Birthday');
             expect(res2.body.message).to.equal('Event created!');
             done();
           });
@@ -121,7 +126,9 @@ describe('Events', () => {
           })
           .end((err2, res2) => {
             expect(res2.status).to.equal(201);
-            expect(res2.body).to.be.an('object');
+            expect(res2.body.event).to.be.an('object');
+            expect(res2.body.event.userId).to.be.a('number');
+            expect(res2.body.event.title).to.equal('Jake\'s Birthday');
             expect(res2.body.message).to.equal('Event created!');
             done();
           });
@@ -173,7 +180,6 @@ describe('Events', () => {
           })
           .end((err2, res2) => {
             expect(res2.status).to.equal(409);
-            expect(res2.body).to.be.an('object');
             expect(res2.body.message).to.equal('An event has already been slated for that date!');
             done();
           });
@@ -206,7 +212,6 @@ describe('Events', () => {
           })
           .end((err2, res2) => {
             expect(res2.status).to.equal(404);
-            expect(res2.body).to.be.an('object');
             expect(res2.body.message).to.equal('Specified event center does not exist!');
             done();
           });
@@ -313,7 +318,9 @@ describe('Events', () => {
               })
               .end((err3, res3) => {
                 expect(res3.status).to.equal(200);
-                expect(res3.body).to.be.an('object');
+                expect(res2.body.event).to.be.an('object');
+                expect(res2.body.event.userId).to.be.a('number');
+                expect(res2.body.event.title).to.equal('My introduction');
                 expect(res3.body.message).to.equal('Event modified!');
                 done();
               });
@@ -365,7 +372,6 @@ describe('Events', () => {
                   })
                   .end((err3, res3) => {
                     expect(res3.status).to.equal(403);
-                    expect(res3.body).to.be.an('object');
                     expect(res3.body.message).to.equal('You do not own this event!');
                     done();
                   });
@@ -405,7 +411,6 @@ describe('Events', () => {
               .set('token', token)
               .end((err3, res3) => {
                 expect(res3.status).to.equal(200);
-                expect(res3.body).to.be.an('object');
                 expect(res3.body.message).to.equal('Event deleted!');
                 done();
               });
@@ -425,8 +430,42 @@ describe('Events', () => {
           .set('token', token)
           .end((err2, res2) => {
             expect(res2.status).to.equal(404);
-            expect(res2.body).to.be.an('object');
             expect(res2.body.message).to.equal('Event does not exist!');
+            done();
+          });
+      });
+  });
+
+  it('(GET /api/v1/events) should return 200 if there are events available for a user', (done) => {
+    request(server)
+      .post('/api/v1/users/login')
+      .send({ username: 'anaeze', password: 'anaeze' })
+      .end((err, res) => {
+        const { token } = res.body;
+        request(server)
+          .get('/api/v1/events')
+          .set('token', token)
+          .end((err3, res3) => {
+            expect(res3.status).to.equal(200);
+            expect(res3.body.events).to.be.an('array');
+            expect(res3.body.message).to.equal('All events delivered!');
+            done();
+          });
+      });
+  });
+
+  it('(GET /api/v1/events) should return 404 if requested page of events does not exist', (done) => {
+    request(server)
+      .post('/api/v1/users/login')
+      .send({ username: 'anaeze', password: 'anaeze' })
+      .end((err, res) => {
+        const { token } = res.body;
+        request(server)
+          .get('/api/v1/events?page=200')
+          .set('token', token)
+          .end((err3, res3) => {
+            expect(res3.status).to.equal(404);
+            expect(res3.body.message).to.equal('Maximum page exceeded!');
             done();
           });
       });
