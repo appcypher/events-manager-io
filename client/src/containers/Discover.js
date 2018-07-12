@@ -15,7 +15,6 @@ import ConnectedAddEventModal from '../components/AddEventModal';
 import ConnectedModifyCenterModal from '../components/ModifyCenterModal';
 import ConnectedViewCenterModal from '../components/ViewCenterModal';
 import AlertModal from '../components/AlertModal';
-import ConfirmModal from '../components/ConfirmModal';
 import Loader from '../components/Loader';
 
 export class Discover extends React.Component {

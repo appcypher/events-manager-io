@@ -124,7 +124,6 @@ describe('Centers', () => {
       });
   });
 
-
   it('(POST /centers) should return 400 if name field is missing', (done) => {
     request(server)
       .post('/api/v1/users/login')
@@ -206,6 +205,22 @@ describe('Centers', () => {
           .end((err2, res2) => {
             expect(res2.status).to.equal(403);
             expect(res2.body.message).to.equal('You don\'t have enough permission to access this route!');
+            done();
+          });
+      });
+  });
+
+  it('(GET /api/v1/centers/) should return 200 if centers with specified name exists', (done) => {
+    request(server)
+      .post('/api/v1/users/login')
+      .send({ username: 'ben', password: 'ben' })
+      .end(() => {
+        request(server)
+          .get('/api/v1/centers?name=J')
+          .end((err2, res2) => {
+            expect(res2.status).to.equal(200);
+            expect(res2.body.centers).to.be.an('array');
+            expect(res2.body.message).to.equal('All centers delivered!');
             done();
           });
       });

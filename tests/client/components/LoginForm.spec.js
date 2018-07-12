@@ -33,7 +33,7 @@ describe('LoginForm', () => {
     expect(wrapper.length).toEqual(1);
   });
 
-  it('should call submit function when AddCenterModal form is opened, filled, and submitted', () => {
+  it('should call submit function when LoginForm form is opened, filled, and submitted', () => {
     wrapper = mount(
       <BrowserRouter>
         <Provider store={store}>

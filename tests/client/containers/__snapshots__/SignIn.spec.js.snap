@@ -18,7 +18,7 @@ ShallowWrapper {
     "nodeType": "host",
     "props": Object {
       "children": Array [
-        <HomeNavbar />,
+        <HomeNavbarLoggedIn />,
         <LoginContainer>
           <Connect(LoginForm)
             hideLoader={[Function]}
@@ -118,7 +118,7 @@ ShallowWrapper {
       "nodeType": "host",
       "props": Object {
         "children": Array [
-          <HomeNavbar />,
+          <HomeNavbarLoggedIn />,
           <LoginContainer>
             <Connect(LoginForm)
               hideLoader={[Function]}

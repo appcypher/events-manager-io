@@ -140,7 +140,7 @@ class UserController {
    * @param{Object} res - route response
    * @return{json} registered user details
    */
-  static logoutUser(req, res) { res.send(200).send({ message: 'User logged out!' }); }
+  static logoutUser(req, res) { res.status(200).send({ message: 'User logged out!' }); }
 }
 
 export default UserController;
