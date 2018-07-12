@@ -28,7 +28,11 @@ describe('Users', () => {
       .send(userSignup)
       .end((err, res) => {
         expect(res.status).to.equal(201);
-        expect(res.body).to.be.an('object');
+        expect(res.body.user.id).to.be.an('number');
+        expect(res.body.user).to.not.have.any.keys('password');
+        expect(res.body.user.username).to.equal('james');
+        expect(res.body.user.email).to.equal('james@yahoo.com');
+        expect(res.body.user.admin).to.equal(false);
         expect(res.body.message).to.equal('User created!');
         done();
       });
@@ -43,7 +47,6 @@ describe('Users', () => {
       .send(userSignup)
       .end((err, res) => {
         expect(res.status).to.equal(409);
-        expect(res.body).to.be.an('object');
         expect(res.body.message).to.equal('Username has been taken!');
         done();
       });
@@ -58,7 +61,6 @@ describe('Users', () => {
       .send(userSignup)
       .end((err, res) => {
         expect(res.status).to.equal(409);
-        expect(res.body).to.be.an('object');
         expect(res.body.message).to.equal('Email has been taken!');
         done();
       });
@@ -73,14 +75,13 @@ describe('Users', () => {
       .send(userSignup)
       .end((err, res) => {
         expect(res.status).to.equal(400);
-        expect(res.body).to.be.an('object');
         expect(res.body.message).to.equal('Invalid email!');
         done();
       });
   });
 
   /* LOGIN */
-  it('(POST /api/v1/users/login) should 201 if credentials valid', (done) => {
+  it('(POST /api/v1/users/login) should 200 if credentials valid', (done) => {
     const userLogin = {
       username: 'john', password: 'johnp',
     };
@@ -89,7 +90,11 @@ describe('Users', () => {
       .send(userLogin)
       .end((err, res) => {
         expect(res.status).to.equal(200);
-        expect(res.body).to.be.an('object');
+        expect(res.body.user.id).to.be.an('number');
+        expect(res.body.user).to.not.have.any.keys('password');
+        expect(res.body.user.username).to.equal('john');
+        expect(res.body.user.email).to.equal('john@gmail.com');
+        expect(res.body.user.admin).to.equal(false);
         expect(res.body.message).to.equal('User logged in!');
         done();
       });
@@ -104,7 +109,6 @@ describe('Users', () => {
       .send(userLogin)
       .end((err, res) => {
         expect(res.status).to.equal(401);
-        expect(res.body).to.be.an('object');
         expect(res.body.message).to.equal('Wrong password or username!');
         done();
       });
@@ -119,7 +123,6 @@ describe('Users', () => {
       .send(userLogin)
       .end((err, res) => {
         expect(res.status).to.equal(401);
-        expect(res.body).to.be.an('object');
         expect(res.body.message).to.equal('Wrong password or username!');
         done();
       });

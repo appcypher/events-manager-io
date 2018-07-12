@@ -156,22 +156,6 @@ export class Discover extends React.Component {
     });
   }
 
-  showConfirmModal = (message, type, confirmText, callback) => {
-    this.setState({
-      confirmModalState: {
-        message, type, show: true, confirmText, callback,
-      },
-    });
-  }
-
-  hideConfirmModal = () => {
-    this.setState({
-      confirmModalState: {
-        message: '', type: 'success', show: false, confirmText: '', callback: null,
-      },
-    });
-  }
-
   toggleFabGroup = () => {
     this.setState({
       hideFabGroup: !this.state.hideFabGroup,
@@ -245,10 +229,6 @@ export class Discover extends React.Component {
         <AlertModal
           alertModalState={this.state.alertModalState}
           hideAlertModal={this.hideAlertModal}
-        />
-        <ConfirmModal
-          confirmModalState={this.state.confirmModalState}
-          hideConfirmModal={this.hideConfirmModal}
         />
       </div>
     );

@@ -29,7 +29,6 @@ ShallowWrapper {
     "nodeType": "class",
     "props": Object {
       "event": Object {
-<<<<<<< HEAD
         "events": Array [
           Object {
             "center": "",
@@ -38,11 +37,9 @@ ShallowWrapper {
             "title": "",
           },
         ],
-=======
-        "events": Array [],
->>>>>>> 3a61c4e8b27f096ee0a69bc247d734a3e37bdf4b
         "message": "",
       },
+      "getAllEvents": [Function],
       "modifyEvent": [Function],
       "store": Object {
         "clearActions": [Function],
@@ -83,7 +80,6 @@ ShallowWrapper {
       "nodeType": "class",
       "props": Object {
         "event": Object {
-<<<<<<< HEAD
           "events": Array [
             Object {
               "center": "",
@@ -92,11 +88,9 @@ ShallowWrapper {
               "title": "",
             },
           ],
-=======
-          "events": Array [],
->>>>>>> 3a61c4e8b27f096ee0a69bc247d734a3e37bdf4b
           "message": "",
         },
+        "getAllEvents": [Function],
         "modifyEvent": [Function],
         "store": Object {
           "clearActions": [Function],

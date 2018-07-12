@@ -27,7 +27,7 @@ ShallowWrapper {
             className="io-home-card"
           >
             <p>
-              Lorem ipsum dolor sit amet
+              Low Prices
             </p>
             <img
               alt=""
@@ -42,7 +42,7 @@ ShallowWrapper {
             className="io-home-card"
           >
             <p>
-              Lorem ipsum dolor sit amet
+              Best Facilities
             </p>
             <img
               alt=""
@@ -57,7 +57,7 @@ ShallowWrapper {
             className="io-home-card"
           >
             <p>
-              Lorem ipsum dolor sit amet
+              Professional Services
             </p>
             <img
               alt=""
@@ -82,7 +82,7 @@ ShallowWrapper {
               className="io-home-card"
             >
               <p>
-                Lorem ipsum dolor sit amet
+                Low Prices
               </p>
               <img
                 alt=""
@@ -97,7 +97,7 @@ ShallowWrapper {
               className="io-home-card"
             >
               <p>
-                Lorem ipsum dolor sit amet
+                Best Facilities
               </p>
               <img
                 alt=""
@@ -112,7 +112,7 @@ ShallowWrapper {
               className="io-home-card"
             >
               <p>
-                Lorem ipsum dolor sit amet
+                Professional Services
               </p>
               <img
                 alt=""
@@ -134,7 +134,7 @@ ShallowWrapper {
               className="io-home-card"
             >
               <p>
-                Lorem ipsum dolor sit amet
+                Low Prices
               </p>
               <img
                 alt=""
@@ -151,7 +151,7 @@ ShallowWrapper {
             "props": Object {
               "children": Array [
                 <p>
-                  Lorem ipsum dolor sit amet
+                  Low Prices
                 </p>,
                 <img
                   alt=""
@@ -167,10 +167,10 @@ ShallowWrapper {
                 "key": undefined,
                 "nodeType": "host",
                 "props": Object {
-                  "children": "Lorem ipsum dolor sit amet",
+                  "children": "Low Prices",
                 },
                 "ref": null,
-                "rendered": "Lorem ipsum dolor sit amet",
+                "rendered": "Low Prices",
                 "type": "p",
               },
               Object {
@@ -199,7 +199,7 @@ ShallowWrapper {
               className="io-home-card"
             >
               <p>
-                Lorem ipsum dolor sit amet
+                Best Facilities
               </p>
               <img
                 alt=""
@@ -216,7 +216,7 @@ ShallowWrapper {
             "props": Object {
               "children": Array [
                 <p>
-                  Lorem ipsum dolor sit amet
+                  Best Facilities
                 </p>,
                 <img
                   alt=""
@@ -232,10 +232,10 @@ ShallowWrapper {
                 "key": undefined,
                 "nodeType": "host",
                 "props": Object {
-                  "children": "Lorem ipsum dolor sit amet",
+                  "children": "Best Facilities",
                 },
                 "ref": null,
-                "rendered": "Lorem ipsum dolor sit amet",
+                "rendered": "Best Facilities",
                 "type": "p",
               },
               Object {
@@ -264,7 +264,7 @@ ShallowWrapper {
               className="io-home-card"
             >
               <p>
-                Lorem ipsum dolor sit amet
+                Professional Services
               </p>
               <img
                 alt=""
@@ -281,7 +281,7 @@ ShallowWrapper {
             "props": Object {
               "children": Array [
                 <p>
-                  Lorem ipsum dolor sit amet
+                  Professional Services
                 </p>,
                 <img
                   alt=""
@@ -297,10 +297,10 @@ ShallowWrapper {
                 "key": undefined,
                 "nodeType": "host",
                 "props": Object {
-                  "children": "Lorem ipsum dolor sit amet",
+                  "children": "Professional Services",
                 },
                 "ref": null,
-                "rendered": "Lorem ipsum dolor sit amet",
+                "rendered": "Professional Services",
                 "type": "p",
               },
               Object {
@@ -341,7 +341,7 @@ ShallowWrapper {
               className="io-home-card"
             >
               <p>
-                Lorem ipsum dolor sit amet
+                Low Prices
               </p>
               <img
                 alt=""
@@ -356,7 +356,7 @@ ShallowWrapper {
               className="io-home-card"
             >
               <p>
-                Lorem ipsum dolor sit amet
+                Best Facilities
               </p>
               <img
                 alt=""
@@ -371,7 +371,7 @@ ShallowWrapper {
               className="io-home-card"
             >
               <p>
-                Lorem ipsum dolor sit amet
+                Professional Services
               </p>
               <img
                 alt=""
@@ -396,7 +396,7 @@ ShallowWrapper {
                 className="io-home-card"
               >
                 <p>
-                  Lorem ipsum dolor sit amet
+                  Low Prices
                 </p>
                 <img
                   alt=""
@@ -411,7 +411,7 @@ ShallowWrapper {
                 className="io-home-card"
               >
                 <p>
-                  Lorem ipsum dolor sit amet
+                  Best Facilities
                 </p>
                 <img
                   alt=""
@@ -426,7 +426,7 @@ ShallowWrapper {
                 className="io-home-card"
               >
                 <p>
-                  Lorem ipsum dolor sit amet
+                  Professional Services
                 </p>
                 <img
                   alt=""
@@ -448,7 +448,7 @@ ShallowWrapper {
                 className="io-home-card"
               >
                 <p>
-                  Lorem ipsum dolor sit amet
+                  Low Prices
                 </p>
                 <img
                   alt=""
@@ -465,7 +465,7 @@ ShallowWrapper {
               "props": Object {
                 "children": Array [
                   <p>
-                    Lorem ipsum dolor sit amet
+                    Low Prices
                   </p>,
                   <img
                     alt=""
@@ -481,10 +481,10 @@ ShallowWrapper {
                   "key": undefined,
                   "nodeType": "host",
                   "props": Object {
-                    "children": "Lorem ipsum dolor sit amet",
+                    "children": "Low Prices",
                   },
                   "ref": null,
-                  "rendered": "Lorem ipsum dolor sit amet",
+                  "rendered": "Low Prices",
                   "type": "p",
                 },
                 Object {
@@ -513,7 +513,7 @@ ShallowWrapper {
                 className="io-home-card"
               >
                 <p>
-                  Lorem ipsum dolor sit amet
+                  Best Facilities
                 </p>
                 <img
                   alt=""
@@ -530,7 +530,7 @@ ShallowWrapper {
               "props": Object {
                 "children": Array [
                   <p>
-                    Lorem ipsum dolor sit amet
+                    Best Facilities
                   </p>,
                   <img
                     alt=""
@@ -546,10 +546,10 @@ ShallowWrapper {
                   "key": undefined,
                   "nodeType": "host",
                   "props": Object {
-                    "children": "Lorem ipsum dolor sit amet",
+                    "children": "Best Facilities",
                   },
                   "ref": null,
-                  "rendered": "Lorem ipsum dolor sit amet",
+                  "rendered": "Best Facilities",
                   "type": "p",
                 },
                 Object {
@@ -578,7 +578,7 @@ ShallowWrapper {
                 className="io-home-card"
               >
                 <p>
-                  Lorem ipsum dolor sit amet
+                  Professional Services
                 </p>
                 <img
                   alt=""
@@ -595,7 +595,7 @@ ShallowWrapper {
               "props": Object {
                 "children": Array [
                   <p>
-                    Lorem ipsum dolor sit amet
+                    Professional Services
                   </p>,
                   <img
                     alt=""
@@ -611,10 +611,10 @@ ShallowWrapper {
                   "key": undefined,
                   "nodeType": "host",
                   "props": Object {
-                    "children": "Lorem ipsum dolor sit amet",
+                    "children": "Professional Services",
                   },
                   "ref": null,
-                  "rendered": "Lorem ipsum dolor sit amet",
+                  "rendered": "Professional Services",
                   "type": "p",
                 },
                 Object {

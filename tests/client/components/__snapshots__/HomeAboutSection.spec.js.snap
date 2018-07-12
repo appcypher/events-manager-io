@@ -22,7 +22,42 @@ ShallowWrapper {
           ABOUT US 
         </h1>,
         <p>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla aliquet non dolor sit amet tincidunt. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla aliquet non dolor sit amet tincidunt. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla aliquet non dolor sit amet tincidunt.
+          <br />
+          We are a medium-sized centre renting and event management company situated in Lagos.
+          <br />
+          All our centres offer flexible space for a range of events. We are able arrange events
+          <br />
+          that thousands of guests. Our centers are fitted with state-of-the-art facilities to
+          <br />
+          make your dream event a reality.
+          <br />
+          <br />
+          We also provide on-ground services like catering and traffic management in case such
+          <br />
+          services are required.
+          <br />
+          <br />
+          We have the perfect venues for:
+          <br />
+          • Conferences and corporate events
+          <br />
+          • Meetings
+          <br />
+          • Private and fine dining
+          <br />
+          • Gala dinners
+          <br />
+          • Press conferences
+          <br />
+          • Lectures and seminars (two theatres with tiered seating)
+          <br />
+          • Wedding Venue for ceremonies and receptions
+          <br />
+          • Fashion shows
+          <br />
+          • Exhibitions – small and medium
+          <br />
+          • Filming location for feature films or television series
         </p>,
       ],
       "className": "io-about",
@@ -46,10 +81,236 @@ ShallowWrapper {
         "key": undefined,
         "nodeType": "host",
         "props": Object {
-          "children": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla aliquet non dolor sit amet tincidunt. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla aliquet non dolor sit amet tincidunt. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla aliquet non dolor sit amet tincidunt.",
+          "children": Array [
+            <br />,
+            "We are a medium-sized centre renting and event management company situated in Lagos.",
+            <br />,
+            "All our centres offer flexible space for a range of events. We are able arrange events",
+            <br />,
+            "that thousands of guests. Our centers are fitted with state-of-the-art facilities to",
+            <br />,
+            "make your dream event a reality.",
+            <br />,
+            <br />,
+            "We also provide on-ground services like catering and traffic management in case such",
+            <br />,
+            "services are required.",
+            <br />,
+            <br />,
+            "We have the perfect venues for:",
+            <br />,
+            "• Conferences and corporate events",
+            <br />,
+            "• Meetings",
+            <br />,
+            "• Private and fine dining",
+            <br />,
+            "• Gala dinners",
+            <br />,
+            "• Press conferences",
+            <br />,
+            "• Lectures and seminars (two theatres with tiered seating)",
+            <br />,
+            "• Wedding Venue for ceremonies and receptions",
+            <br />,
+            "• Fashion shows",
+            <br />,
+            "• Exhibitions – small and medium",
+            <br />,
+            "• Filming location for feature films or television series",
+          ],
         },
         "ref": null,
-        "rendered": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla aliquet non dolor sit amet tincidunt. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla aliquet non dolor sit amet tincidunt. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla aliquet non dolor sit amet tincidunt.",
+        "rendered": Array [
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "host",
+            "props": Object {},
+            "ref": null,
+            "rendered": null,
+            "type": "br",
+          },
+          "We are a medium-sized centre renting and event management company situated in Lagos.",
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "host",
+            "props": Object {},
+            "ref": null,
+            "rendered": null,
+            "type": "br",
+          },
+          "All our centres offer flexible space for a range of events. We are able arrange events",
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "host",
+            "props": Object {},
+            "ref": null,
+            "rendered": null,
+            "type": "br",
+          },
+          "that thousands of guests. Our centers are fitted with state-of-the-art facilities to",
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "host",
+            "props": Object {},
+            "ref": null,
+            "rendered": null,
+            "type": "br",
+          },
+          "make your dream event a reality.",
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "host",
+            "props": Object {},
+            "ref": null,
+            "rendered": null,
+            "type": "br",
+          },
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "host",
+            "props": Object {},
+            "ref": null,
+            "rendered": null,
+            "type": "br",
+          },
+          "We also provide on-ground services like catering and traffic management in case such",
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "host",
+            "props": Object {},
+            "ref": null,
+            "rendered": null,
+            "type": "br",
+          },
+          "services are required.",
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "host",
+            "props": Object {},
+            "ref": null,
+            "rendered": null,
+            "type": "br",
+          },
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "host",
+            "props": Object {},
+            "ref": null,
+            "rendered": null,
+            "type": "br",
+          },
+          "We have the perfect venues for:",
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "host",
+            "props": Object {},
+            "ref": null,
+            "rendered": null,
+            "type": "br",
+          },
+          "• Conferences and corporate events",
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "host",
+            "props": Object {},
+            "ref": null,
+            "rendered": null,
+            "type": "br",
+          },
+          "• Meetings",
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "host",
+            "props": Object {},
+            "ref": null,
+            "rendered": null,
+            "type": "br",
+          },
+          "• Private and fine dining",
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "host",
+            "props": Object {},
+            "ref": null,
+            "rendered": null,
+            "type": "br",
+          },
+          "• Gala dinners",
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "host",
+            "props": Object {},
+            "ref": null,
+            "rendered": null,
+            "type": "br",
+          },
+          "• Press conferences",
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "host",
+            "props": Object {},
+            "ref": null,
+            "rendered": null,
+            "type": "br",
+          },
+          "• Lectures and seminars (two theatres with tiered seating)",
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "host",
+            "props": Object {},
+            "ref": null,
+            "rendered": null,
+            "type": "br",
+          },
+          "• Wedding Venue for ceremonies and receptions",
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "host",
+            "props": Object {},
+            "ref": null,
+            "rendered": null,
+            "type": "br",
+          },
+          "• Fashion shows",
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "host",
+            "props": Object {},
+            "ref": null,
+            "rendered": null,
+            "type": "br",
+          },
+          "• Exhibitions – small and medium",
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "host",
+            "props": Object {},
+            "ref": null,
+            "rendered": null,
+            "type": "br",
+          },
+          "• Filming location for feature films or television series",
+        ],
         "type": "p",
       },
     ],
@@ -66,7 +327,42 @@ ShallowWrapper {
             ABOUT US 
           </h1>,
           <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla aliquet non dolor sit amet tincidunt. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla aliquet non dolor sit amet tincidunt. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla aliquet non dolor sit amet tincidunt.
+            <br />
+            We are a medium-sized centre renting and event management company situated in Lagos.
+            <br />
+            All our centres offer flexible space for a range of events. We are able arrange events
+            <br />
+            that thousands of guests. Our centers are fitted with state-of-the-art facilities to
+            <br />
+            make your dream event a reality.
+            <br />
+            <br />
+            We also provide on-ground services like catering and traffic management in case such
+            <br />
+            services are required.
+            <br />
+            <br />
+            We have the perfect venues for:
+            <br />
+            • Conferences and corporate events
+            <br />
+            • Meetings
+            <br />
+            • Private and fine dining
+            <br />
+            • Gala dinners
+            <br />
+            • Press conferences
+            <br />
+            • Lectures and seminars (two theatres with tiered seating)
+            <br />
+            • Wedding Venue for ceremonies and receptions
+            <br />
+            • Fashion shows
+            <br />
+            • Exhibitions – small and medium
+            <br />
+            • Filming location for feature films or television series
           </p>,
         ],
         "className": "io-about",
@@ -90,10 +386,236 @@ ShallowWrapper {
           "key": undefined,
           "nodeType": "host",
           "props": Object {
-            "children": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla aliquet non dolor sit amet tincidunt. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla aliquet non dolor sit amet tincidunt. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla aliquet non dolor sit amet tincidunt.",
+            "children": Array [
+              <br />,
+              "We are a medium-sized centre renting and event management company situated in Lagos.",
+              <br />,
+              "All our centres offer flexible space for a range of events. We are able arrange events",
+              <br />,
+              "that thousands of guests. Our centers are fitted with state-of-the-art facilities to",
+              <br />,
+              "make your dream event a reality.",
+              <br />,
+              <br />,
+              "We also provide on-ground services like catering and traffic management in case such",
+              <br />,
+              "services are required.",
+              <br />,
+              <br />,
+              "We have the perfect venues for:",
+              <br />,
+              "• Conferences and corporate events",
+              <br />,
+              "• Meetings",
+              <br />,
+              "• Private and fine dining",
+              <br />,
+              "• Gala dinners",
+              <br />,
+              "• Press conferences",
+              <br />,
+              "• Lectures and seminars (two theatres with tiered seating)",
+              <br />,
+              "• Wedding Venue for ceremonies and receptions",
+              <br />,
+              "• Fashion shows",
+              <br />,
+              "• Exhibitions – small and medium",
+              <br />,
+              "• Filming location for feature films or television series",
+            ],
           },
           "ref": null,
-          "rendered": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla aliquet non dolor sit amet tincidunt. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla aliquet non dolor sit amet tincidunt. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla aliquet non dolor sit amet tincidunt.",
+          "rendered": Array [
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "host",
+              "props": Object {},
+              "ref": null,
+              "rendered": null,
+              "type": "br",
+            },
+            "We are a medium-sized centre renting and event management company situated in Lagos.",
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "host",
+              "props": Object {},
+              "ref": null,
+              "rendered": null,
+              "type": "br",
+            },
+            "All our centres offer flexible space for a range of events. We are able arrange events",
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "host",
+              "props": Object {},
+              "ref": null,
+              "rendered": null,
+              "type": "br",
+            },
+            "that thousands of guests. Our centers are fitted with state-of-the-art facilities to",
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "host",
+              "props": Object {},
+              "ref": null,
+              "rendered": null,
+              "type": "br",
+            },
+            "make your dream event a reality.",
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "host",
+              "props": Object {},
+              "ref": null,
+              "rendered": null,
+              "type": "br",
+            },
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "host",
+              "props": Object {},
+              "ref": null,
+              "rendered": null,
+              "type": "br",
+            },
+            "We also provide on-ground services like catering and traffic management in case such",
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "host",
+              "props": Object {},
+              "ref": null,
+              "rendered": null,
+              "type": "br",
+            },
+            "services are required.",
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "host",
+              "props": Object {},
+              "ref": null,
+              "rendered": null,
+              "type": "br",
+            },
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "host",
+              "props": Object {},
+              "ref": null,
+              "rendered": null,
+              "type": "br",
+            },
+            "We have the perfect venues for:",
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "host",
+              "props": Object {},
+              "ref": null,
+              "rendered": null,
+              "type": "br",
+            },
+            "• Conferences and corporate events",
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "host",
+              "props": Object {},
+              "ref": null,
+              "rendered": null,
+              "type": "br",
+            },
+            "• Meetings",
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "host",
+              "props": Object {},
+              "ref": null,
+              "rendered": null,
+              "type": "br",
+            },
+            "• Private and fine dining",
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "host",
+              "props": Object {},
+              "ref": null,
+              "rendered": null,
+              "type": "br",
+            },
+            "• Gala dinners",
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "host",
+              "props": Object {},
+              "ref": null,
+              "rendered": null,
+              "type": "br",
+            },
+            "• Press conferences",
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "host",
+              "props": Object {},
+              "ref": null,
+              "rendered": null,
+              "type": "br",
+            },
+            "• Lectures and seminars (two theatres with tiered seating)",
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "host",
+              "props": Object {},
+              "ref": null,
+              "rendered": null,
+              "type": "br",
+            },
+            "• Wedding Venue for ceremonies and receptions",
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "host",
+              "props": Object {},
+              "ref": null,
+              "rendered": null,
+              "type": "br",
+            },
+            "• Fashion shows",
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "host",
+              "props": Object {},
+              "ref": null,
+              "rendered": null,
+              "type": "br",
+            },
+            "• Exhibitions – small and medium",
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "host",
+              "props": Object {},
+              "ref": null,
+              "rendered": null,
+              "type": "br",
+            },
+            "• Filming location for feature films or television series",
+          ],
           "type": "p",
         },
       ],

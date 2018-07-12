@@ -29,7 +29,6 @@ ShallowWrapper {
     "nodeType": "class",
     "props": Object {
       "center": Object {
-<<<<<<< HEAD
         "centers": Array [
           Object {
             "description": "",
@@ -40,12 +39,10 @@ ShallowWrapper {
             "type": "",
           },
         ],
-=======
-        "centers": Array [],
->>>>>>> 3a61c4e8b27f096ee0a69bc247d734a3e37bdf4b
         "message": "",
       },
       "createCenter": [Function],
+      "getAllCenters": [Function],
       "store": Object {
         "clearActions": [Function],
         "dispatch": [Function],
@@ -85,7 +82,6 @@ ShallowWrapper {
       "nodeType": "class",
       "props": Object {
         "center": Object {
-<<<<<<< HEAD
           "centers": Array [
             Object {
               "description": "",
@@ -96,12 +92,10 @@ ShallowWrapper {
               "type": "",
             },
           ],
-=======
-          "centers": Array [],
->>>>>>> 3a61c4e8b27f096ee0a69bc247d734a3e37bdf4b
           "message": "",
         },
         "createCenter": [Function],
+        "getAllCenters": [Function],
         "store": Object {
           "clearActions": [Function],
           "dispatch": [Function],

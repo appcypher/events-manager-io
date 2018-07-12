@@ -99,6 +99,9 @@ export class ModifyEventModal extends React.Component {
   }
 
   submit = eventId => () => {
+    // Get token.
+    const token = localStorage.getItem('user.token');
+
     // Show loading screen.
     this.props.showLoader();
 
@@ -112,7 +115,7 @@ export class ModifyEventModal extends React.Component {
 
       // Relaod page after 2secs.
       setTimeout(
-        () => window.location.reload(),
+        () => { this.props.getAllEvents(token, 1); },
         2500,
       );
     };
@@ -123,7 +126,6 @@ export class ModifyEventModal extends React.Component {
       this.props.showAlertModal(this.props.event.message, 'error');
     };
 
-    const token = localStorage.getItem('user.token');
     this.props.modifyEvent(token, this.state, eventId, reloadPage, showError);
   }
 
@@ -201,5 +203,6 @@ export default connect(
   mapStateToProps,
   {
     modifyEvent: EventAction.modifyEvent,
+    getAllEvents: EventAction.getAllEvents,
   },
 )(ModifyEventModal);

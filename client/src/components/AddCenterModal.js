@@ -64,7 +64,7 @@ export class AddCenterModal extends React.Component {
 
       // Reload page after 2secs.
       setTimeout(
-        () => window.location.reload(),
+        () => { this.props.getAllCenters(); },
         2500,
       );
     };
@@ -120,5 +120,6 @@ export default connect(
   mapStateToProps,
   {
     createCenter: CenterAction.createCenter,
+    getAllCenters: CenterAction.getAllCenters,
   },
 )(AddCenterModal);

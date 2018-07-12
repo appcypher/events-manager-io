@@ -65,7 +65,7 @@ export class ModifyCenterModal extends React.Component {
 
       // Show notification of success.
       setTimeout(
-        () => window.location.reload(),
+        () => { this.props.getAllCenters(); },
         2500,
       );
     };
@@ -147,5 +147,6 @@ export default connect(
   mapStateToProps,
   {
     modifyCenter: CenterAction.modifyCenter,
+    getAllCenters: CenterAction.getAllCenters,
   },
 )(ModifyCenterModal);

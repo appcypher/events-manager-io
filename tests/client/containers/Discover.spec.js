@@ -12,9 +12,9 @@ describe('<Discover />', () => {
   let wrapper;
   let store;
   const mock = mockAxios();
-  localStorage.setItem('user.admin', 'true');
 
   beforeEach(() => {
+    localStorage.setItem('user.admin', 'true');
     store = mockStore();
     const user = { token: '', user: {} };
     wrapper = shallow(<Discover getAllCenters={() => {}} user={user} />);
@@ -55,6 +55,7 @@ describe('<Discover />', () => {
     wrapper.find('.add-center-available input[type="checkbox"]').first().simulate('change', { currentTarget: { checked: false } });
     wrapper.find('.add-center-facilities input[type="checkbox"]').at(1).simulate('change', { currentTarget: { checked: true } });
     wrapper.find('#add-center-pictures').simulate('change', { target: { files: ['image/path'] } });
+    wrapper.find('Discover').instance().hideAddCenterModal();
     wrapper.find('#add-center-submit').simulate('click');
 
     expect(func1.called).toBeTruthy();
@@ -83,6 +84,7 @@ describe('<Discover />', () => {
     wrapper.find('.modify-center-available input[type="checkbox"]').first().simulate('change', { currentTarget: { checked: false } });
     wrapper.find('.modify-center-facilities input[type="checkbox"]').at(1).simulate('change', { currentTarget: { checked: true } });
     wrapper.find('#modify-center-pictures').simulate('change', { target: { files: ['image/path'] } });
+    wrapper.find('Discover').instance().hideModifyCenterModal();
     wrapper.find('#modify-center-submit').simulate('click');
 
     expect(func1.called).toBeTruthy();
@@ -134,6 +136,7 @@ describe('<Discover />', () => {
     wrapper.find('#add-event-center').simulate('change', { currentTarget: { value: 't' } });
     wrapper.find('#add-event-date').simulate('change', { target: { value: '11-07-2018' } });
     wrapper.find('#add-event-time').simulate('change', { target: { value: '5:00PM' } });
+    wrapper.find('Discover').instance().hideAddEventModal();
     wrapper.find('#add-event-submit').simulate('click');
 
     expect(func1.called).toBeTruthy();

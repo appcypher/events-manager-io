@@ -55,11 +55,7 @@ ShallowWrapper {
           </p>
         </div>,
       ],
-<<<<<<< HEAD
       "className": "io-center-card animated zoom-in",
-=======
-      "className": "io-center-card",
->>>>>>> 3a61c4e8b27f096ee0a69bc247d734a3e37bdf4b
     },
     "ref": null,
     "rendered": Array [
@@ -220,11 +216,7 @@ ShallowWrapper {
             </p>
           </div>,
         ],
-<<<<<<< HEAD
         "className": "io-center-card animated zoom-in",
-=======
-        "className": "io-center-card",
->>>>>>> 3a61c4e8b27f096ee0a69bc247d734a3e37bdf4b
       },
       "ref": null,
       "rendered": Array [
