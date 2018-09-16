@@ -13,7 +13,7 @@
 
 A simple full-featured website for managing event-centers and scheduling events.
 
-The static version of EventsManagerIO can be accessed on [github pages](https://appcypher.github.io/event-manager-io/template).
+**See EventsManagerIO running [here](http://events-manager-io.herokuapp.com/).**
 
 ## Made With
   ### Client
