@@ -11,7 +11,7 @@
 
 ![Eventsmanager Screenshot](screencapture.png)
 
-A simple full-featured website for managing event-centers and scheduling events.
+A simple site for managing event-centers and scheduling events.
 
 **See EventsManagerIO running [here](http://events-manager-io.herokuapp.com/).**
 
