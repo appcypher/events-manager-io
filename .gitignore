@@ -2,5 +2,6 @@ node_modules/
 coverage/
 .env
 .nyc_output/
-test_output/
+tests_output/
 selenium-debug.log
+**/.DS_Store

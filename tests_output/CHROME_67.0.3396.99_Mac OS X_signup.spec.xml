@@ -5,9 +5,9 @@
 
   <testsuite name="signup.spec"
     errors="0" failures="0" hostname="" id="" package="signup.spec" skipped="0"
-    tests="1" time="8.786" timestamp="Mon, 09 Jul 2018 09:14:57 GMT">
+    tests="1" time="13.92" timestamp="Thu, 12 Jul 2018 14:48:37 GMT">
   
-    <testcase name="User Signup" classname="signup.spec" time="8.786" assertions="2">
+    <testcase name="User Signup" classname="signup.spec" time="13.92" assertions="2">
 
     
 
