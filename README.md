@@ -8,7 +8,7 @@
 ![Maintained](https://img.shields.io/maintenance/yes/2019.svg)
 [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 
-![Eventsmanager Screenshot](screencapture.png)
+![Eventsmanager Screenshot](media/discover.png)
 
 A simple site for managing event-centers and scheduling events.
 
@@ -108,3 +108,17 @@ Check [here](https://swaggerhub.com/apis/appcypher/EventsManager/1.0.0) for full
 
 ## License
 [Apache License 2.0](https://github.com/appcypher/event-manager-io/blob/master/LICENSE)
+
+## Screnshots
+
+LANDING PAGE
+![Eventsmanager Screenshot](media/landing-page.png)
+
+LOGIN
+![Eventsmanager Screenshot](media/login.png)
+
+PROFILE
+![Eventsmanager Screenshot](media/profile.png)
+
+DIALOG
+![Eventsmanager Screenshot](media/dialog.png)
